@@ -1,0 +1,784 @@
+ 
+
+
+
+RFC 4242                                 Quentin LEFFRAY, Nicolas MAGERE
+Intended Status: Experimental                                    Epitech
+Expires: May 20, 2013                                  December 14, 2012
+
+
+           RTCP: A Communication Protocol For R-Type Project
+
+
+Abstract
+
+   This memorandum describes RTCP, the communication protocol for a
+   project from Epitech's school : R-Type.
+
+   This protocol is used for designing a "Shoot Them Up" game, based on
+   server-client (in both ways) relation.
+
+   The server's aim is to interpret all incoming requests from clients
+   to manage at both several games and all connections.
+
+   Client for its is to contact the server on the one hand to give his
+   EP (End Point) to connect to it, and on the other hand to send
+   regularly datas to continue the game. The following document
+   describes server-client interactions.
+
+Status of this Memo
+
+   This Internet-Draft is submitted to IETF in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF), its areas, and its working groups.  Note that
+   other groups may also distribute working documents as
+   Internet-Drafts.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   The list of current Internet-Drafts can be accessed at
+   http://www.ietf.org/1id-abstracts.html
+
+   The list of Internet-Draft Shadow Directories can be accessed at
+   http://www.ietf.org/shadow.html
+
+
+Copyright and License Notice
+
+ 
+
+
+Epitech                   Expires May 20, 2013                  [Page 1]
+
+RFC 12345             Babel Communication Protocol     December 14, 2012
+
+
+   Copyright (c) 2012 IETF Trust and the persons identified as the
+   document authors. All rights reserved.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+Epitech                   Expires May 20, 2013                  [Page 2]
+
+RFC 12345             Babel Communication Protocol     December 14, 2012
+
+
+Table of Contents
+
+   1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  5
+     1.1  Terminology . . . . . . . . . . . . . . . . . . . . . . . .  5
+   2. Terms definition  . . . . . . . . . . . . . . . . . . . . . . .  5
+   3. Concept of RTCP protocol  . . . . . . . . . . . . . . . . . . .  5
+     3.1 Communication between client and server  . . . . . . . . . .  5
+   4. Standard packet format for data transfer  . . . . . . . . . . .  6
+     4.1 UDP packet format  . . . . . . . . . . . . . . . . . . . . .  6
+       4.1.1 Scheme of an UDP packet  . . . . . . . . . . . . . . . .  6
+       4.1.2 Structure of an UDP packet . . . . . . . . . . . . . . .  6
+     4.2 TCP packet format  . . . . . . . . . . . . . . . . . . . . .  7
+       4.2.1 Scheme of a TCP packet . . . . . . . . . . . . . . . . .  7
+       4.2.2 Structure of a TCP packet  . . . . . . . . . . . . . . .  7
+   5. errors identifiers  . . . . . . . . . . . . . . . . . . . . . .  7
+     5.1 1xx : success  . . . . . . . . . . . . . . . . . . . . . . .  7
+     5.2 2xx : client error . . . . . . . . . . . . . . . . . . . . .  7
+     5.3 3xx : server error . . . . . . . . . . . . . . . . . . . . .  7
+     5.4 4xx : global error . . . . . . . . . . . . . . . . . . . . .  8
+   6.  Commands . . . . . . . . . . . . . . . . . . . . . . . . . . .  8
+     6.1 Communication between several clients  . . . . . . . . . . .  8
+       6.1.1 Testing connection between clients . . . . . . . . . . .  8
+       6.1.2 Set the quality of the transmission  . . . . . . . . . .  8
+       6.1.3 Notify a client disconnection  . . . . . . . . . . . . .  8
+       6.1.4 Send data by type  . . . . . . . . . . . . . . . . . . .  9
+         6.1.4.1 Send voice data  . . . . . . . . . . . . . . . . . .  9
+         6.1.4.2 Send video data  . . . . . . . . . . . . . . . . . .  9
+         6.1.4.3 Send text data . . . . . . . . . . . . . . . . . . .  9
+         6.1.4.4 Send file  . . . . . . . . . . . . . . . . . . . . .  9
+         6.1.4.5 Send unspecified data  . . . . . . . . . . . . . . .  9
+     6.2 Commands from a client to a server . . . . . . . . . . . . . 10
+       6.2.1 GLOBAL_REGISTER  . . . . . . . . . . . . . . . . . . . . 10
+       6.2.2 GLOBAL_LOG . . . . . . . . . . . . . . . . . . . . . . . 10
+       6.2.3 GLOBAL_LOGOUT  . . . . . . . . . . . . . . . . . . . . . 10
+       6.2.4 CLIENT_INVITE  . . . . . . . . . . . . . . . . . . . . . 10
+       6.2.5 CLIENT_ACCEPT  . . . . . . . . . . . . . . . . . . . . . 11
+       6.2.6 CLIENT_SHARED  . . . . . . . . . . . . . . . . . . . . . 11
+       6.2.7 CONTACT_WATCH  . . . . . . . . . . . . . . . . . . . . . 11
+     6.3 Commands from a server to a client . . . . . . . . . . . . . 11
+       6.3.1 GLOBAL_NOTIFY  . . . . . . . . . . . . . . . . . . . . . 11
+       6.3.2 CLIENT_INCOMING  . . . . . . . . . . . . . . . . . . . . 12
+       6.3.3 CLIENT_ALLOW . . . . . . . . . . . . . . . . . . . . . . 12
+       6.3.4 CLIENT_SUMMON  . . . . . . . . . . . . . . . . . . . . . 13
+   7.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+     7.1  Normative References  . . . . . . . . . . . . . . . . . . . 13
+     7.2  Informative References  . . . . . . . . . . . . . . . . . . 13
+   Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 13
+
+ 
+
+
+Epitech                   Expires May 20, 2013                  [Page 3]
+
+RFC 12345             Babel Communication Protocol     December 14, 2012
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+Epitech                   Expires May 20, 2013                  [Page 4]
+
+RFC 12345             Babel Communication Protocol     December 14, 2012
+
+
+1.  Introduction
+
+   As said before, the RTCP (R-Type Communication Protocol) protocol has
+   been designed for creating a "Shoot Them Up" game, based on server-
+   client (in both ways) relation.
+
+   The RTCP has been developed on systems using the TCP and UDP network
+   protocol.
+
+   The TCP network is used when a client launches a game : every
+   important data, (such as map, textures, etc) will be transmitted on
+   this way, to avoid data perdition.
+
+   The UDP protocol is used for all in-game transmitted datas (like each
+   client coordinates).
+
+1.1  Terminology
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in RFC 2119 [RFC2119].
+
+
+2. Terms definition
+
+   - Endpoint : define a couple of service, ip address and port.
+
+
+3. Concept of RTCP protocol
+
+   The RTCP protocol is a binary one, based on one main interaction :
+   client-server (in both ways).
+
+3.1 Communication between client and server
+
+   This part has been developed to manage exchanges between servers and
+   clients, it's based on TCP and UDP network protocols.
+   As said before, the server is the central point of every client which
+   connects to.
+
+   The TCP network is used when a client is not playing the game (is in
+   a waiting room, creating one), or is just launching it : every
+   important data, (such as map, textures, etc) will be transmitted as
+   this, to avoid data perdition.
+   The UDP protocol is used for all others transmitted datas (like each
+   client coordinates).
+
+
+ 
+
+
+Epitech                   Expires May 20, 2013                  [Page 5]
+
+RFC 12345             Babel Communication Protocol     December 14, 2012
+
+
+   Let's see the implementation of the client-server communication (TCP
+   level).
+   Notice that each command's description is available below (see part
+   6-Commands).
+
+        *from Client to Server
+
+   First, each client has to CONNECT to the server.
+   After that, it can CREATE_ROOM, LEAVE_ROOM, JOIN_ROOM, INVITE_PLAYER,
+   be INVITED, SET_GAME_PARAM, PING, and LAUNCH_GAME.
+
+
+        *from Server to Client
+
+   When a client emits a CONNECT, the server responds to it with
+   ACK_CREATE_ROOM. The server can also transfer information to client
+   through BEGIN_STREAM, STREAM, END_STREAM commands.
+
+
+4. Standard packet format for data transfer
+
+4.1 UDP packet format
+
+   The UDP protocol is used for communication between client and server.
+
+4.1.1 Scheme of an UDP packet
+
+   +---------------+--------------------------+
+   | Len = 16 bits | Player's token = 16 bits |
+   +---------------+--------------------------+
+   |      Input/Output Type = 32 bits         |
+   +------------------------------------------+
+   |      Game's clock = 32 bits              |
+   +------------------------------------------+
+   |      Value of Input/Output = n bits      |
+   +------------------------------------------+
+
+4.1.2 Structure of an UDP packet
+
+   Remember that UDP is used for in-game packet transfer. An UDP packet
+   is structured with 5 different fields :
+
+   - The first one ("Len") represents the total length of the packet.
+   - The second one ("Player's token") is an identifying number which
+   differs for each client, in order to distinguish any of them.
+   - The third one ("Input / Output Type") represents the type of the
+   packet, sent for INPUT (client to server transmission), or OUTPUT
+   (server to client transmission).
+ 
+
+
+Epitech                   Expires May 20, 2013                  [Page 6]
+
+RFC 12345             Babel Communication Protocol     December 14, 2012
+
+
+   - The fourth one ("Game's clock") contains the game's time of the
+   packet before being sent.
+   - The last field ("Value of Input/Output") represents the data itself
+   in the case of data transfer.
+
+4.2 TCP packet format
+
+   The TCP protocol is used for communication server-client and server-
+   server.
+
+4.2.1 Scheme of a TCP packet
+
+   +---------------+--------------------------+
+   | Len = 16 bits |      Type = 16 bits      |
+   +---------------+--------------------------+
+   |            Data = n bits                 |
+   +------------------------------------------+
+
+4.2.2 Structure of a TCP packet
+
+   Remember that TCP is used for all non in-game packet transfer. A TCP
+   packet is structured with 3 different field :
+
+   - The first one ("Len") represents the total length of the packet.
+   - The second one ("Type") contains the request or the command type.
+   - The last field ("Data") represents the arguments.
+
+
+5. errors identifiers
+
+5.1 1xx : success
+
+   - 101 : success
+
+5.2 2xx : client error
+
+   - 201 : user refused
+   - 202 : user did not respond
+   - 203 : client failed to connect
+   - 204 : client understands request but refused to process it
+
+5.3 3xx : server error
+
+   - 301 : server failed to transfer request
+   - 302 : server failed to process request
+   - 303 : server refused this command
+   - 304 : server understands request but refusedk to process it
+   - 305 : insufficient privileges
+ 
+
+
+Epitech                   Expires May 20, 2013                  [Page 7]
+
+RFC 12345             Babel Communication Protocol     December 14, 2012
+
+
+   - 306 : transferred user not found
+
+5.4 4xx : global error
+
+   - 401 : invalid request
+   - 402 : incomplete request
+   - 403 : forbidden request
+   - 404 : request not found
+
+
+6.  Commands
+
+6.1 Communication between several clients
+
+   The client-client communication are made through some commands inside
+   the CALL section.
+
+6.1.1 Testing connection between clients
+
+   Commands :
+   CALL_PING = 1101
+   CALL_PONG = 1102
+
+   Description :
+   Those commands MUST be used to test the connection between two
+   clients. The first one send a CALL_PING as the frame request. The
+   client target will answer with a CALL_PONG if he had successfully
+   receive the CALL_PING.  
+
+6.1.2 Set the quality of the transmission
+
+   Commands :
+   CALL_INCREASE_QUALITY = 1103
+   CALL_DECREASE_QUALITY = 1104
+
+   Description :
+   Those commands MAY be used to set the quality of the transmission
+   from another client. They can be useful to adapt the quality of the
+   transmission based on the latency.
+
+6.1.3 Notify a client disconnection
+
+   Command :
+   CALL_DISCONNECTION = 1105
+
+   Description : This command SHOULD be used as the frame request to
+   notify the disconnection to others clients.
+
+ 
+
+
+Epitech                   Expires May 20, 2013                  [Page 8]
+
+RFC 12345             Babel Communication Protocol     December 14, 2012
+
+
+6.1.4 Send data by type
+
+   The following request can be used to transfer data to another client.
+
+6.1.4.1 Send voice data
+
+   Command :
+   CALL_VOICE_PACKET = 1106
+
+   Description :
+   This command MUST be used as the frame request to send voice data.
+   The data MUST be stored in the data section of the frame.
+
+6.1.4.2 Send video data
+
+   Command :
+   CALL_VIDEO_PACKET = 1107
+
+   Description :
+   This command MAY be used as the frame request to send video data. The
+   data MUST be stored in the data section of the frame.
+
+6.1.4.3 Send text data
+
+   Command :
+   CALL_TEXT_PACKET = 1108
+
+   Description :
+   This command MAY be used as the frame request to send text data. The
+   data MUST be stored in the data section of the frame.
+
+6.1.4.4 Send file
+
+   Command :
+   CALL_FILE_PACKET = 1109
+
+   Description :
+   This command MAY be used as the frame request to send file data. The
+   data MUST be stored in the data section of the frame.
+
+6.1.4.5 Send unspecified data
+
+   Command :
+   CALL_UNSPECIFIED_PACKET = 1110
+
+   Description :
+   This command MAY be used as the frame request to send unspecified
+   data. The data MUST be stored in the data section of the frame.
+ 
+
+
+Epitech                   Expires May 20, 2013                  [Page 9]
+
+RFC 12345             Babel Communication Protocol     December 14, 2012
+
+
+6.2 Commands from a client to a server
+
+6.2.1 GLOBAL_REGISTER 	 Command :
+   GLOBAL_REGISTER = 1201
+
+   Parameters : <username>:<hash> 	 Description :
+   This command allow users to register on the network. It is used for
+   the creation of 'user account' on that network.
+
+   The parameters are the following:
+   - Username : name of the user
+   - Hash : A md5 hash compose as <username>'/'<password>
+
+6.2.2 GLOBAL_LOG
+
+   Command :
+   GLOBAL_LOG = 1202
+
+   Parameters : <hash>
+
+   Description :
+   This command inform the servers' network that the user is 'online'.
+   After a successful log, the user is allow to send or receive calls.
+   The parameter hash is the same as for GLOBAL_REGISTER.
+
+6.2.3 GLOBAL_LOGOUT
+
+   Command :
+   GLOBAL_LOGOUT = 1203
+
+   Description:
+   This command inform the servers' network the user is offline. After
+   logout, the user MUST NOT receive or send calls.
+
+6.2.4 CLIENT_INVITE
+
+   Command :
+   CLIENT_INVITE = 1301
+
+   Parameters : <endpoint>:<target>
+
+   Description :
+   This command initiate a dialog between to clients. 
+
+   The parameters are the following:
+   - endpoint : it is the network endpoint the sender will use to
+   communicate with the target.
+   - target : a URI referring to a contact of the user.
+ 
+
+
+Epitech                   Expires May 20, 2013                 [Page 10]
+
+RFC 12345             Babel Communication Protocol     December 14, 2012
+
+
+6.2.5 CLIENT_ACCEPT
+
+   Command :
+   CLIENT_ACCEPT = 1302
+
+   Parameters : <endpoint>:<target>:<response Yes = 1 | No = 0>
+
+   Description:
+   This command is used, after receiving a CLIENT_INVITE, to accept the
+   call or not. The parameters are the following:
+   - from : it is the user who sent the request.
+   - endpoint : it is the network endpoint the sender will use to
+   communicate with the target.
+   - response : user's response to the call.
+
+6.2.6 CLIENT_SHARED
+
+   Command :
+   CLIENT_SHARED = 1303
+
+   Parameters : <user_1>:<user_2>
+
+   Description:
+   This command is use by a user who has successfully invite another
+   contact in a progressing call.It informs user_1 that user_2 is
+   include in that call.
+
+   Both parameters are URI referring to clients as describe above.
+
+6.2.7 CONTACT_WATCH
+
+   Command :
+   CONTACT_WATCH = 1401
+
+   Parameters : <user>
+
+   Description:
+   This command is used to inform the server the client want
+   notifications on status' changing about the user.
+
+6.3 Commands from a server to a client
+
+6.3.1 GLOBAL_NOTIFY
+
+   Command :
+   GLOBAL_NOTIFY = 1204
+
+   Parameters: <user>:<state>
+ 
+
+
+Epitech                   Expires May 20, 2013                 [Page 11]
+
+RFC 12345             Babel Communication Protocol     December 14, 2012
+
+
+   Description:
+   This command is used to notify the client that the user has changed
+   his status.
+
+   The status MUST be one of the following:
+   - CONNECTED	(0)
+   - DISCONNECTED	(1)
+
+   The status MAY be:
+   - BUSY		(2)
+   - AWAY		(3)
+   - LOCK		(4)
+
+
+6.3.2 CLIENT_INCOMING
+
+   Command :
+   CLIENT_INCOMING = 1304
+
+   Parameters: <user>:<ep1>:<ep2>:<ep3>:<ep4>:<ep5>
+
+   Description:
+   This command is used to inform a client that another client is
+   attempting a connection on him.
+   The parameters are:
+   - user :
+   	the user attempting a connection
+   - ep1 :
+   	the network endpoint the caller will use to stream audio data.
+   - ep2 :
+   	the network endpoint the caller will use to stream video data.
+   - ep3 :
+   	the network endpoint the caller will use to stream text for chat.
+   - ep4 :
+   	the network endpoint the caller will use to transfer file.
+   - ep5 :
+   	the network endpoint the caller will use for emergency
+   communications.
+
+   The endpoint from 2 to 5 are OPTIONAL so, if you don't use one of
+   them, you MUST set it to 0.
+
+6.3.3 CLIENT_ALLOW
+
+   Command :
+   CLIENT_ALLOW = 1305
+
+   Parameters: <user>:<ep1>:<ep2>:<ep3>:<ep4>:<ep5>
+ 
+
+
+Epitech                   Expires May 20, 2013                 [Page 12]
+
+RFC 12345             Babel Communication Protocol     December 14, 2012
+
+
+   Description:
+   This command is used to inform a client that his correspondent has
+   accepted is call. It also give the client the Endpoints his
+   correspondent will use in same order as in CLIENT_INCOMING command
+   (see above).
+
+6.3.4 CLIENT_SUMMON
+
+   Command : CLIENT_SUMMON = 1306
+
+   Parameters : <user>
+
+   Description:
+   This command is used to encourage the client to invite the specified
+   user. If CLIENT_SHARED is implemented, you MUST also implement
+   CLIENT_SUMMON.
+
+7.  References
+
+7.1  Normative References
+
+   [KEYWORDS] Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
+
+   [RFC1776]  Crocker, S., "The Address is the Message", RFC 1776, April
+              1 1995.
+
+   [TRUTHS]   Callon, R., "The Twelve Networking Truths", RFC 1925,
+              April 1 1996.
+
+
+7.2  Informative References
+
+   [EVILBIT]  Bellovin, S., "The Security Flag in the IPv4 Header",
+              RFC 3514, April 1 2003.
+
+   [RFC5513]  Farrel, A., "IANA Considerations for Three Letter
+              Acronyms", RFC 5513, April 1 2009.
+
+   [RFC5514]  Vyncke, E., "IPv6 over Social Networks", RFC 5514, April 1
+              2009.
+
+
+
+Authors' Addresses
+
+
+   Benjamin BUSINARO - busina_b
+ 
+
+
+Epitech                   Expires May 20, 2013                 [Page 13]
+
+RFC 12345             Babel Communication Protocol     December 14, 2012
+
+
+   Pierre MARTIN - mart_i
+   Quentin LEFFRAY - leffra_q
+
+   Epitech students
+
+   EMail: busina_b@epitech.eu
+          mart_i@epitech.eu
+          leffra_q@epitech.eu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epitech                   Expires May 20, 2013                 [Page 14]

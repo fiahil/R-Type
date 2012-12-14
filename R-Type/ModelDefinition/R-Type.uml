@@ -525,6 +525,47 @@
         name="IService"
         isAbstract="false"
         isLeaf="false">
+        <targetEnds>
+          <association
+            Id="151a53eb-df85-41dc-b93e-e80745a30357"
+            isDerived="false"
+            sourceEndRoleName="IService"
+            targetEndRoleName="IPlayer"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="2b8e6d0b-052f-4676-aa54-4389f724c9b5"
+              LastKnownName="IPlayer"
+              LastKnownLocation="R-Type.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4d5802ef-a8b5-464b-a86b-b4be870be3e5"
+                  name="IService"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="78432f50-98f0-4c39-af4a-94cd6e815223"
+                  name="IPlayer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedOperations>
           <operation
             Id="34943f68-94da-423c-a714-ada1fa8a9f0c"
@@ -677,6 +718,47 @@
         name="IRequest"
         isAbstract="false"
         isLeaf="false">
+        <targetEnds>
+          <association
+            Id="e0460937-2eb3-45c8-8c65-bb8eee0d4afb"
+            isDerived="false"
+            sourceEndRoleName="IRequest"
+            targetEndRoleName="IService"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="0ab7a2e9-beab-41d4-b87d-992fff3b77ed"
+              LastKnownName="IService"
+              LastKnownLocation="R-Type.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1bc5e5df-0953-4f2c-98ac-16b79e7257c0"
+                  name="IRequest"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1edd7f5a-9aae-49b1-8d42-daadfdbc543f"
+                  name="IService"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedOperations>
           <operation
             Id="233b1c3c-2094-4a5d-b907-008e14db4b13"
@@ -776,6 +858,86 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="24fc41fb-3473-4b37-bc5c-4950cc499770"
+            isDerived="false"
+            sourceEndRoleName="EndPoint"
+            targetEndRoleName="ISocket"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="aee05202-b0f6-402c-959e-3c83e75e1254"
+              LastKnownName="ISocket"
+              LastKnownLocation="R-Type.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="018f6e53-41c8-40a9-bdb5-44ebe9e333d7"
+                  name="EndPoint"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="45277c8f-fec5-4795-9247-5a6f2f41ad56"
+                  name="ISocket"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="9a3d49de-9b5f-4e6b-988c-55b67bc8a99d"
+            isDerived="false"
+            sourceEndRoleName="EndPoint"
+            targetEndRoleName="IService"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="0ab7a2e9-beab-41d4-b87d-992fff3b77ed"
+              LastKnownName="IService"
+              LastKnownLocation="R-Type.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="610f5093-ae61-407b-b983-6f7f7ece8b46"
+                  name="EndPoint"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="92c10633-114e-4bd8-b884-eefacb2b072e"
+                  name="IService"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="cec4fd3d-0c4c-4279-926b-cd8c8a1c4ebc"
@@ -896,58 +1058,6 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <targetEnds>
-          <association
-            Id="ebd3cbaf-2117-4ee3-9b67-e8509ccae218"
-            isDerived="false"
-            sourceEndRoleName=""
-            targetEndRoleName=""
-            isLeaf="false"
-            isAbstract="false">
-            <interfaceMoniker
-              Id="31ee0d10-d417-4d73-98b0-d3b1e0378a34"
-              LastKnownName="IRoom"
-              LastKnownLocation="R-Type.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="8294b555-5078-410e-b825-b4e50ba028f7"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="f27d1b15-b798-4148-be70-c09dea142255"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="c41dd6f1-8978-421e-a946-e1abccd3a2a9"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="ae31ded6-8456-48a8-8f6a-8735e0e1028f"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="c26b80e1-b1aa-4532-b8aa-2aa5bccf7d37"
@@ -1032,20 +1142,21 @@
         isActiveClass="false">
         <targetEnds>
           <association
-            Id="e6681f93-e67c-4329-9954-224a49a4833c"
+            Id="9e6397e8-3df9-4928-88fc-3be5260b1551"
             isDerived="false"
-            sourceEndRoleName=""
-            targetEndRoleName=""
+            sourceEndRoleName="Hall"
+            targetEndRoleName="RoomManager"
             isLeaf="false"
             isAbstract="false">
-            <interfaceMoniker
-              Id="2b8e6d0b-052f-4676-aa54-4389f724c9b5"
-              LastKnownName="IPlayer"
+            <classMoniker
+              Id="96249f82-5752-44b5-b62e-00bd48257c15"
+              LastKnownName="RoomManager"
               LastKnownLocation="R-Type.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="0fece5fb-0ec4-47b1-a89d-a031e0c6caac"
+                  Id="6ac707c9-8cea-4caf-b4ef-e91c5846f2a3"
+                  name="Hall"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1057,27 +1168,15 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="af1678f1-4e0b-4667-8737-4f7d2131f74e"
+                  Id="bcf38906-ebcb-4e5b-85c4-07ed41be7de2"
+                  name="RoomManager"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
                   aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="6461cec5-3eea-4760-8cad-9680e33f973a"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="16591dd8-f17e-4e2b-b165-cfbdd924732c"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
+                  isComposite="false" />
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -1124,20 +1223,21 @@
         isActiveClass="false">
         <targetEnds>
           <association
-            Id="9b44a84d-d72a-459e-958a-ca2fd7c8916d"
+            Id="49737304-1562-4236-ace3-e0d35ccb036a"
             isDerived="false"
-            sourceEndRoleName=""
-            targetEndRoleName=""
+            sourceEndRoleName="RegisterManager"
+            targetEndRoleName="Hall"
             isLeaf="false"
             isAbstract="false">
-            <interfaceMoniker
-              Id="b2c36c7b-2997-4458-9431-b3d61d98f7e7"
-              LastKnownName="IAccount"
+            <classMoniker
+              Id="56d1db62-6c77-4232-84c3-c8d3acb94f9a"
+              LastKnownName="Hall"
               LastKnownLocation="R-Type.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="182ad324-253a-442d-b85e-3a8d662e0d09"
+                  Id="87c9e0f1-974a-45bb-9c80-37e282cb4c83"
+                  name="RegisterManager"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1149,27 +1249,15 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="5c96cb54-e095-4e06-96bf-c53874788138"
+                  Id="775dba29-3eea-4662-83c9-51dd4771b13a"
+                  name="Hall"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
                   aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="0e600f12-200e-4d43-a281-1fe82b891361"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="3a5861a3-da0e-457b-a58c-17d6bb8a5fa2"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
+                  isComposite="false" />
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -1213,6 +1301,47 @@
         name="IRoom"
         isAbstract="false"
         isLeaf="false">
+        <targetEnds>
+          <association
+            Id="303dd179-6c4b-4c33-893b-892b9e688a19"
+            isDerived="false"
+            sourceEndRoleName="IRoom"
+            targetEndRoleName="RoomManager"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="96249f82-5752-44b5-b62e-00bd48257c15"
+              LastKnownName="RoomManager"
+              LastKnownLocation="R-Type.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="37f7be05-a779-4676-b61e-9b6976ac44ab"
+                  name="IRoom"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fff2b91d-1d40-46e8-8c68-90d508a869b1"
+                  name="RoomManager"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedOperations>
           <operation
             Id="adf5592f-d3af-4ea3-be67-69372a2dca8f"
@@ -1323,6 +1452,86 @@
         name="IPlayer"
         isAbstract="false"
         isLeaf="false">
+        <targetEnds>
+          <association
+            Id="9c295e2c-9da7-4ed6-bf7a-9fc670216c3d"
+            isDerived="false"
+            sourceEndRoleName="IPlayer"
+            targetEndRoleName="IRoom"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="31ee0d10-d417-4d73-98b0-d3b1e0378a34"
+              LastKnownName="IRoom"
+              LastKnownLocation="R-Type.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7b1a5fa8-321c-4166-9a32-3701f7d10108"
+                  name="IPlayer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f1e7a090-2a3d-4475-b963-adec22cad3e1"
+                  name="IRoom"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="6d82755f-5c69-46a6-8c0d-b37a40368378"
+            isDerived="false"
+            sourceEndRoleName="IPlayer"
+            targetEndRoleName="Hall"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="56d1db62-6c77-4232-84c3-c8d3acb94f9a"
+              LastKnownName="Hall"
+              LastKnownLocation="R-Type.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="07479cd9-38f9-4291-babc-3af62e0b235f"
+                  name="IPlayer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="58ce8b7d-938e-4471-b0ed-3912ec1a92f7"
+                  name="Hall"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedOperations>
           <operation
             Id="98af9d6b-f642-4997-aef1-e5f816c66e64"
@@ -1488,6 +1697,99 @@
         name="IAccount"
         isAbstract="false"
         isLeaf="false">
+        <targetEnds>
+          <association
+            Id="a97978f6-6440-4805-b66b-cd9e854807be"
+            isDerived="false"
+            sourceEndRoleName="IAccount"
+            targetEndRoleName="RegisterManager"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="9ca3427a-882f-40d2-a33a-88962d6a1ccd"
+              LastKnownName="RegisterManager"
+              LastKnownLocation="R-Type.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d289a95b-c596-40ce-8e56-36c881a75aee"
+                  name="IAccount"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="6590e6c8-be3d-4d0b-89ca-2b0019920a55"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="db1ea694-3f0c-4d7e-a3d1-53374a9be533"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7554ea9b-8c45-429a-981b-ba4f1cd35240"
+                  name="RegisterManager"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="a9158f39-e8f1-41e0-8263-da71728e9562"
+            isDerived="false"
+            sourceEndRoleName="IAccount"
+            targetEndRoleName="IPlayer"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="2b8e6d0b-052f-4676-aa54-4389f724c9b5"
+              LastKnownName="IPlayer"
+              LastKnownLocation="R-Type.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8f024dc2-aa84-4e6e-adc3-06d5646d40f2"
+                  name="IAccount"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="62b154d9-95dd-45c0-bdb1-d13ccec218f5"
+                  name="IPlayer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedOperations>
           <operation
             Id="8a9c7afa-0541-494c-9a58-b17502e378c7"
@@ -1523,6 +1825,47 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="5755bebf-5d94-4154-834c-fad5c6bb02c5"
+            isDerived="false"
+            sourceEndRoleName="Scenario"
+            targetEndRoleName="Room"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="28344fd5-3579-4fd0-8473-2c5d11ec5a78"
+              LastKnownName="Room"
+              LastKnownLocation="R-Type.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0230a7b9-686b-4f14-9c5b-398dc8827cde"
+                  name="Scenario"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a4478ca7-6c95-424a-9268-90db520e49ca"
+                  name="Room"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="ebe28343-4815-4cd6-a038-446927e8ccea"
@@ -1585,10 +1928,10 @@
         isActiveClass="false">
         <targetEnds>
           <association
-            Id="4050f480-d3bb-4eda-9022-c0f78632494f"
+            Id="a9b7d012-6c28-4a63-98b4-c5764dac5bd0"
             isDerived="false"
-            sourceEndRoleName=""
-            targetEndRoleName=""
+            sourceEndRoleName="TimePoint"
+            targetEndRoleName="Scenario"
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -1598,24 +1941,25 @@
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="9d3423cb-e7ea-4c78-807c-cb01b79c76ab"
+                  Id="7fb115d4-b3b7-49d3-baf3-b92803bb226f"
+                  name="TimePoint"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
-                  aggregation="None"
+                  aggregation="Composite"
                   isComposite="false"
                   isNavigableOwned="false">
                   <lowerValueInternal>
                     <literalString
-                      Id="9ed62aeb-7670-46aa-9357-3483c6d667bc"
+                      Id="42fe672b-8bc7-41a2-a9f6-bc664de03313"
                       name="Lower"
                       value="*" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
-                      Id="59fc5908-997b-4ab0-80ff-a220b1b658a1"
+                      Id="5a311a26-7650-4437-832f-0f43a94a8c01"
                       name="Upper"
                       value="*" />
                   </upperValueInternal>
@@ -1623,14 +1967,15 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="572dbbec-57b6-4ae9-8b98-e4a375f56693"
+                  Id="ce9376d3-0c39-41c7-a6c9-32846798de79"
+                  name="Scenario"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
                   aggregation="None"
-                  isComposite="false" />
+                  isComposite="true" />
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -1688,76 +2033,41 @@
         isActiveClass="false">
         <targetEnds>
           <association
-            Id="9075335e-4b93-4757-9262-4b527093a298"
+            Id="ea50fa1d-28a0-44e0-9fd4-2bd5fbb7ebd5"
             isDerived="false"
-            sourceEndRoleName=""
-            targetEndRoleName=""
+            sourceEndRoleName="GameplayEngine"
+            targetEndRoleName="Room"
             isLeaf="false"
             isAbstract="false">
             <classMoniker
-              Id="c6740702-f2df-4241-9b7f-16553e7b36d2"
-              LastKnownName="QuadTree"
+              Id="28344fd5-3579-4fd0-8473-2c5d11ec5a78"
+              LastKnownName="Room"
               LastKnownLocation="R-Type.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="ef15231b-ac24-472a-81bd-1240b2b2d6ce"
+                  Id="63f11edc-6661-47e5-93eb-c4ac9bd9f879"
+                  name="GameplayEngine"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
-                  aggregation="None"
+                  aggregation="Composite"
                   isComposite="false"
                   isNavigableOwned="false" />
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="245a50e2-0775-4509-bd97-eea40644d506"
+                  Id="eac15761-3117-439c-9f48-fdcf560935cb"
+                  name="Room"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
                   aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="c3261fcf-5acb-4696-b910-396602c026b3"
-            isDerived="false"
-            sourceEndRoleName=""
-            targetEndRoleName=""
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="ced58770-5444-4564-b14d-3bac135563d3"
-              LastKnownName="Collider"
-              LastKnownLocation="R-Type.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="b0cba1da-296a-445b-80ea-530cd519af31"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="7a2714d7-39d4-4d30-ba02-145d83649e04"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
+                  isComposite="true" />
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -1842,6 +2152,47 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="4f262cb8-2ab9-4180-8beb-4fca392314b8"
+            isDerived="false"
+            sourceEndRoleName="QuadTree"
+            targetEndRoleName="GameplayEngine"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="dce1b75c-4784-464d-99ff-e9d9484fd6a5"
+              LastKnownName="GameplayEngine"
+              LastKnownLocation="R-Type.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6383daa5-ebf4-4d6c-8e3b-4fe38609e135"
+                  name="QuadTree"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7b21d4e0-5843-4555-9ef4-b0d5e8d42027"
+                  name="GameplayEngine"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedOperationsInternal>
           <operation
             Id="a39991af-bfe8-4899-8138-27598592751a"
@@ -1878,6 +2229,47 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="86f8cf0d-90f4-442b-90bb-47365fdf93cb"
+            isDerived="false"
+            sourceEndRoleName="Collider"
+            targetEndRoleName="GameplayEngine"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="dce1b75c-4784-464d-99ff-e9d9484fd6a5"
+              LastKnownName="GameplayEngine"
+              LastKnownLocation="R-Type.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0ec5526a-9050-4262-8f43-5017208bf944"
+                  name="Collider"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6da3bfc1-55cc-4088-8b0c-81711cb6112f"
+                  name="GameplayEngine"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedOperationsInternal>
           <operation
             Id="8aa1e373-8048-4461-81c3-8b2acb87cbd4"
@@ -1927,6 +2319,47 @@
         name="IGameMod"
         isAbstract="false"
         isLeaf="false">
+        <targetEnds>
+          <association
+            Id="ece6d881-c7c0-4bb0-8a8f-8694283443d5"
+            isDerived="false"
+            sourceEndRoleName="IGameMod"
+            targetEndRoleName="GameplayEngine"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="dce1b75c-4784-464d-99ff-e9d9484fd6a5"
+              LastKnownName="GameplayEngine"
+              LastKnownLocation="R-Type.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="912b9257-ac52-465c-81e3-72f26fad5bfa"
+                  name="IGameMod"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="33a6aaf3-54a7-419f-b277-7a024d68304b"
+                  name="GameplayEngine"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedOperations>
           <operation
             Id="a4c488d7-0b78-4e91-a892-6d5c0bea1130"

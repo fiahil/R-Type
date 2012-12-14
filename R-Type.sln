@@ -1,18 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "R-Type", "R-Type\R-Type.vcxproj", "{694A86BC-5DB2-4C2B-9A87-80B78504B30B}"
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "R-Type", "R-Type\R-Type.modelproj", "{72F54AAF-79A6-4424-97FE-B3F3FA6FFF83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Win32 = Debug|Win32
-		Release|Win32 = Release|Win32
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{694A86BC-5DB2-4C2B-9A87-80B78504B30B}.Debug|Win32.ActiveCfg = Debug|Win32
-		{694A86BC-5DB2-4C2B-9A87-80B78504B30B}.Debug|Win32.Build.0 = Debug|Win32
-		{694A86BC-5DB2-4C2B-9A87-80B78504B30B}.Release|Win32.ActiveCfg = Release|Win32
-		{694A86BC-5DB2-4C2B-9A87-80B78504B30B}.Release|Win32.Build.0 = Release|Win32
+		{72F54AAF-79A6-4424-97FE-B3F3FA6FFF83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72F54AAF-79A6-4424-97FE-B3F3FA6FFF83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72F54AAF-79A6-4424-97FE-B3F3FA6FFF83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72F54AAF-79A6-4424-97FE-B3F3FA6FFF83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

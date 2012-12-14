@@ -29,6 +29,13 @@
       <SubType>Content</SubType>
       <DependentUpon>Server.classdiagram</DependentUpon>
     </Content>
+    <Content Include="Server.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Server.sequencediagram</DependentUpon>
+    </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="ModelDefinition\R-Type.uml">
       <SubType>Content</SubType>

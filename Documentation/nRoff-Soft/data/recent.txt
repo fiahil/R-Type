@@ -1,4 +1,0 @@
-C:\Users\magere_n\Desktop\RType\Documentation\RTCP.nroff
-C:\Users\magere_n\Desktop\RType\Documentation\RTCP-old.nroff
-C:\Users\magere_n\Desktop\RType\Documentation\BCCP.nroff
-C:\Users\magere_n\Desktop\BCCP.txt.txt

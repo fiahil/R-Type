@@ -25,6 +25,13 @@
       <SubType>Content</SubType>
       <DependentUpon>Client.classdiagram</DependentUpon>
     </Content>
+    <Content Include="GameClient.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="GameClient.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>GameClient.sequencediagram</DependentUpon>
+    </Content>
     <Content Include="ModelDefinition\ClientRType.uml">
       <SubType>Content</SubType>
     </Content>

@@ -29,12 +29,19 @@
       <SubType>Content</SubType>
       <DependentUpon>Server.classdiagram</DependentUpon>
     </Content>
-    <Content Include="Server.sequencediagram">
+    <Content Include="ServerCommunications.sequencediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Server.sequencediagram.layout">
+    <Content Include="ServerCommunications.sequencediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Server.sequencediagram</DependentUpon>
+      <DependentUpon>ServerCommunications.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="ServerGame.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ServerGame.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>ServerGame.sequencediagram</DependentUpon>
     </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="ModelDefinition\R-Type.uml">

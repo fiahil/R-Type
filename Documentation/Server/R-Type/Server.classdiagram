@@ -1154,6 +1154,30 @@
           <operation Id="0bff78c5-d01a-45de-b802-4b8789ab1a61" name="onFire" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="64dc7fdb-facf-4f4c-ad59-d4fdda7e7172" />
           </operation>
+          <operation Id="63c97980-f10c-4d3c-8729-2b86099e2789" name="onUltimate" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="26cbe93d-4eb5-47e6-9899-8b2fb49026ea" />
+          </operation>
+          <operation Id="df962ff5-417a-48aa-ab84-a0218cf4280d" name="onPickUp" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="fbb78fce-0a77-4e3b-a493-62792b8452a8" />
+          </operation>
+          <operation Id="9b9ff06d-d2cc-46c7-8607-95046430f5e2" name="onScriptEnd" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="bb6bb023-17e1-42a9-807b-b3b51bce2e71" />
+          </operation>
+          <operation Id="d2825a2b-9d0c-44a2-9a81-f71f12538e0a" name="onScriptBegin" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="b795bf7e-86e7-4118-81e4-6aa5ab1b6f65" />
+          </operation>
+          <operation Id="08c5985b-78a9-484d-b382-bf0c83b12579" name="onLevelStart" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="bb3185c5-7a5e-4e30-b6a1-16047cc17520" />
+          </operation>
+          <operation Id="f6ba36b1-4443-4c08-b27a-0dac596534fd" name="onModulePlug" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="2de37036-a568-4b60-b342-b8e5018e275d" />
+          </operation>
+          <operation Id="9d4fe1f7-d296-4338-b48d-fbe397f69bd0" name="onModuleUnplug" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="5374050d-4f65-41ed-9b5d-b4ac5357c553" />
+          </operation>
+          <operation Id="e7c11e3c-f55b-47e4-a2f0-6e2362eb778a" name="onLevelEnd" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="153f534e-3718-4de2-af52-2e910ea60ff8" />
+          </operation>
         </ownedOperations>
       </Interface>
     </logicalClassDesignerModelHasTypes>

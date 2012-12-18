@@ -6,9 +6,9 @@
 .nr LT 7.2i
 .ds LF Epitech 
 .ds RF FORMFEED[Page %]
-.ds LH RFC 12345
+.ds LH RFC 42123
 .ds RH December 14, 2012
-.ds CH Babel Communication Protocol 
+.ds CH R-Type Communication Protocol 
 .ds CF Expires May 20, 2013
 .hy 0
 .nh
@@ -16,7 +16,7 @@
 .in 0
 
 .nf
-.tl 'RFC 4242''Nicolas MAGERE, Quentin LEFFRAY'
+.tl 'RFC 42123''Nicolas MAGERE, Quentin LEFFRAY, Matthieu OSSATO-BOURGEON'
 .tl 'Intended Status: Experimental''Epitech'
 .tl 'Expires: May 20, 2013''December 14, 2012'
 .fi
@@ -46,7 +46,7 @@ This protocol is used for designing a "Shoot Them Up" game, based on server-clie
 
 The server's aim is to interpret all incoming requests from clients to manage at both several games and all connections.
 
-Client for its is to contact the server on the one hand to give his EP (End Point) to connect to it, and on the other hand to send regularly datas to continue the game.
+Client for its is to contact the server on the one hand to give his EP (End Point) to connect to it, and on the other hand to send regularly data to continue the game.
 The following document describes server-client interactions.
 
 .ti 0
@@ -80,38 +80,42 @@ Table of Contents
      1.1  Terminology . . . . . . . . . . . . . . . . . . . . . . . .  4
    2. Terms definition  . . . . . . . . . . . . . . . . . . . . . . .  4
    3. Concept of RTCP protocol  . . . . . . . . . . . . . . . . . . .  4
-     3.1 Communication between client and server  . . . . . . . . . .  4
-   4. Standard packet format for data transfer  . . . . . . . . . . .  5
-     4.1 UDP packet format  . . . . . . . . . . . . . . . . . . . . .  5
-       4.1.1 Scheme of an UDP packet  . . . . . . . . . . . . . . . .  5
-       4.1.2 Structure of an UDP packet . . . . . . . . . . . . . . .  5
+     3.1 Concept of client-server and server-client interactions  . .  4
+   4. Standard packet format for data transfer  . . . . . . . . . . .  6
+     4.1 Scheme of an UDP packet  . . . . . . . . . . . . . . . . . .  6
+       4.1.2 Structure of an UDP packet . . . . . . . . . . . . . . .  6
      4.2 TCP packet format  . . . . . . . . . . . . . . . . . . . . .  6
        4.2.1 Scheme of a TCP packet . . . . . . . . . . . . . . . . .  6
-       4.2.2 Structure of a TCP packet  . . . . . . . . . . . . . . .  6
-   5. errors identifiers  . . . . . . . . . . . . . . . . . . . . . .  6
-     5.1 1xx : success  . . . . . . . . . . . . . . . . . . . . . . .  6
-     5.2 2xx : client error . . . . . . . . . . . . . . . . . . . . .  6
-     5.3 3xx : server error . . . . . . . . . . . . . . . . . . . . .  6
-     5.4 4xx : global error . . . . . . . . . . . . . . . . . . . . .  7
+       4.2.2 Structure of a TCP packet  . . . . . . . . . . . . . . .  7
+   5. Errors identifiers  . . . . . . . . . . . . . . . . . . . . . .  7
+     5.1 1xx : Success  . . . . . . . . . . . . . . . . . . . . . . .  7
+     5.2 2xx : Client errors  . . . . . . . . . . . . . . . . . . . .  7
+     5.3 3xx : Server errors  . . . . . . . . . . . . . . . . . . . .  7
+     5.4 4xx : Global errors  . . . . . . . . . . . . . . . . . . . .  7
    6.  Commands . . . . . . . . . . . . . . . . . . . . . . . . . . .  7
-       6.1.1 CONNECT  . . . . . . . . . . . . . . . . . . . . . . . .  7
-       6.1.2 CREATE_ROOM  . . . . . . . . . . . . . . . . . . . . . .  7
-       6.1.3 LEAVE_ROOM . . . . . . . . . . . . . . . . . . . . . . .  7
-       6.1.4 JOIN_ROOM  . . . . . . . . . . . . . . . . . . . . . . .  8
-       6.1.5 INVITE_PLAYER  . . . . . . . . . . . . . . . . . . . . .  8
-       6.1.6 SET_GAME_PARAM . . . . . . . . . . . . . . . . . . . . .  9
-       6.2.7 LAUNCH_GAME  . . . . . . . . . . . . . . . . . . . . . .  9
-       6.2.8 PING . . . . . . . . . . . . . . . . . . . . . . . . . .  9
-     6.2 Commands from a server to a client . . . . . . . . . . . . . 10
-       6.2.1 ANSWER_CREATE_ROOM . . . . . . . . . . . . . . . . . . . 10
-       6.2.2 START_DATA_STREAM  . . . . . . . . . . . . . . . . . . . 10
-       6.2.3 STREAM . . . . . . . . . . . . . . . . . . . . . . . . . 10
-       6.2.4 STOP_DATA_STREAM . . . . . . . . . . . . . . . . . . . . 11
-       6.2.5 CLIENT_INVITED . . . . . . . . . . . . . . . . . . . . . 11
-   7.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 11
-     7.1  Normative References  . . . . . . . . . . . . . . . . . . . 11
-     7.2  Informative References  . . . . . . . . . . . . . . . . . . 12
-   Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 12
+     6.1 Room definition  . . . . . . . . . . . . . . . . . . . . . .  7
+     6.2 Commands from a client to a server . . . . . . . . . . . . .  8
+       6.2.1 CONNECT  . . . . . . . . . . . . . . . . . . . . . . . .  8
+       6.2.2 CREATE_ROOM  . . . . . . . . . . . . . . . . . . . . . .  8
+       6.2.3 LEAVE_ROOM . . . . . . . . . . . . . . . . . . . . . . .  8
+       6.2.4 JOIN_ROOM  . . . . . . . . . . . . . . . . . . . . . . .  9
+       6.2.5 INVITE_PLAYER  . . . . . . . . . . . . . . . . . . . . .  9
+       6.2.6 SET_GAME_PARAM . . . . . . . . . . . . . . . . . . . . .  9
+       6.2.7 LAUNCH_GAME  . . . . . . . . . . . . . . . . . . . . . . 10
+       6.2.8 PING . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+       6.2.9 READY  . . . . . . . . . . . . . . . . . . . . . . . . . 10
+     6.3 Commands from a server to a client . . . . . . . . . . . . . 11
+       6.3.1 ANSWER_CREATE_ROOM . . . . . . . . . . . . . . . . . . . 11
+       6.3.2 START_DATA_STREAM  . . . . . . . . . . . . . . . . . . . 11
+       6.3.3 STREAM . . . . . . . . . . . . . . . . . . . . . . . . . 12
+       6.3.4 STOP_DATA_STREAM . . . . . . . . . . . . . . . . . . . . 12
+       6.3.5 CLIENT_INVITED . . . . . . . . . . . . . . . . . . . . . 12
+       6.3.6 ACK  . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+       6.3.7 GAME_LAUNCHED  . . . . . . . . . . . . . . . . . . . . . 13
+   7.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+     7.1  Normative References  . . . . . . . . . . . . . . . . . . . 14
+     7.2  Informative References  . . . . . . . . . . . . . . . . . . 14
+   Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 14
 .fi
 .in 3
 
@@ -121,13 +125,15 @@ Table of Contents
 .ti 0
 1.  Introduction
 
-As said before, the RTCP (R-Type Communication Protocol) protocol has been designed for creating a "Shoot Them Up" game, based on server-client (in both ways) relation.
+The RTCP (R-Type Communication Protocol) has been designed for creating a "Shoot Them Up" game, based on server-client relation.
+The game is specifically designed to host a party up to 4 players.
 
-The RTCP has been developed on systems using the TCP and UDP network protocol.
+There is a server, which hosts all games created.
+It manages all game physics and rules.
 
-The TCP network is used when a client launches a game : every important data, (such as map, textures, etc) will be transmitted on this way, to avoid data perdition.
+From there, several clients connects to the server to play the game.
+They are used to receive data from server, and to interact with the player (input and graphics).
 
-The UDP protocol is used for all in-game transmitted datas (like each client coordinates).
 
 .ti 0
 1.1  Terminology
@@ -138,57 +144,85 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 .ti 0
 2. Terms definition
 
-- Endpoint : define a couple of service, ip address and port.
+- Endpoint : defines a service, designed by his IP-address.
+.fi
+- Fallback mode : defines the mode of the server that owns predefined ports, on which it attempts to connect until success or no more ports are available.
 
 
 .ti 0
 3. Concept of RTCP protocol
 
-The RTCP protocol is a binary one, based on only one interaction : client-server (in both ways).
+The RTCP protocol has been developed on systems using the TCP and UDP network protocol.
+.fi
+It is a binary one, and is based on client-server interactions.
+
+The TCP network is used for all data which are not related with the in-game itself, but all the previous important information to create it. Like this, every important data, (such as map, textures, etc) will be transmitted without data loss.
+.fi
+
+The UDP protocol is used for all in-game transmitted data (like each client coordinates).
+.fi
+The UDP is used for performances : it is important the data transfers quickly, because there will be many packet transfers, and the loss is negligible.
+
 
 .ti 0
-3.1 Communication between client and server
+3.1 Concept of client-server and server-client interactions
 
-This part has been developed to manage exchanges between servers and clients; based on TCP and UDP network protocols.
+	There is a list of commands for the client-server interaction :
+
+Each client has to CONNECT to the server before trying any other command.
 .fi
-As said before, the server is the central point of every client which connects to.
-
-The TCP network is used when a client is not playing the game (is in a waiting room, creating one), or is just launching it : every important data, (such as map, textures, etc) will be transmitted as this, to avoid data perdition.
-.fi
-
-The UDP protocol is used for all in-game transmitted datas (like each client coordinates).
-
-
-Let's see the implementation of the client-server communication (TCP level).
-.fi
-Notice that each command's description is available below (see part 6-Commands).
-
-.ti 8
-*from Client to Server
-
-First, each client has to CONNECT to the server.
-.fi
-After that, he can CREATE_ROOM, LEAVE_ROOM, JOIN_ROOM, INVITE_PLAYER, be INVITED, SET_GAME_PARAM, PING, and LAUNCH_GAME.
+After that, he can CREATE_ROOM, JOIN_ROOM, or LEAVE_ROOM (see part 6.1 Room definition).
 .fi
 
+CREATE_ROOM tells the server the client wants to make a room to play a game.
+.fi
+JOIN_ROOM asks the server to enter in a room already created, to play a game with other clients.
+.fi
+LEAVE_ROOM tells the server the client quits a room and can no longer play with the other clients which still are in the room.
+.fi
 
-.ti 8
-*from Server to Client
+The client can also INVITE_PLAYER. He tells a second client to JOIN_ROOM the room where the first one is, by sending the INVITE_PLAYER command through the server (no client-client dialogue).
+.fi
+After the second client has received the command INVITED by the server, he can JOIN_ROOM or just no respond.
+.fi
 
-When a client emits a CONNECT, the server responds to it with ANSWER_CREATE_ROOM.
-The server can also transfer information to client through START_STREAM, STREAM, STOP_STREAM commands.
+SET_GAME_PARAM is used by the creator of the room, to set the rules of the game before the next play.
+.fi
+
+LAUNCH_GAME is used by the creator of the room to start the game.
+.fi
+
+PING is a command sent by the client to the server, to verify the connection between them is still valid.
+.fi
+
+ACK is the success code or the error code sent to the client.
+.fi
 
 
-.ti 0	
+	There is a list of commands for the server-client interaction :
+
+The server responds to a client CREATE_ROOM's command by an ANSWER_CREATE_ROOM, to give him some information about the room he created.
+.fi
+
+The server MAY upload the game data to client through:
+.fi
+START_STREAM, which begins the transfer process with the client.
+.fi
+STREAM, which represents the data being upload to the client.
+.fi
+STOP_STREAM, which means the end of transfer processing.
+
+
+
+
+
+
+
+.ti 0
 4. Standard packet format for data transfer
 
 .ti 0
-4.1 UDP packet format
-
-The UDP protocol is used for communication between client and server.
-
-.ti 0
-4.1.1 Scheme of an UDP packet
+4.1 Scheme of an UDP packet
 
 +---------------+--------------------------+
 .fi
@@ -208,27 +242,28 @@ The UDP protocol is used for communication between client and server.
 .fi
 +------------------------------------------+
 
+
 .ti 0
 4.1.2 Structure of an UDP packet
 
-Remember that UDP is used for in-game packet transfer.
 An UDP packet is structured with 5 different fields :
 
 .fi
-- The first one ("Len") represents the total length of the packet.
+- Len represents the total length of the packet.
 .fi
-- The second one ("Player's token") is an identifying number which differs for each client, in order to distinguish any of them.
+- Player's token is an identifying number which differs for each client, in order to distinguish all of them.
 .fi
-- The third one ("Input / Output Type") represents the type of the packet, sent for INPUT (client to server transmission), or OUTPUT (server to client transmission).
+- Input Type / Output Type represents the type of the packet, sent for INPUT (client to server transmission), or OUTPUT (server to client transmission).
 .fi
-- The fourth one ("Game's clock") contains the game's time of the packet before being sent.
+- Game's clock contains the server game's clock, for the packet before being sent.
+This is used to synchronize players' clocks.
 .fi
-- The last field ("Value of Input/Output") represents the data itself in the case of data transfer.
+- Value of Input/Output represents the data itself in the case of data transfer.
+
 
 .ti 0
 4.2 TCP packet format
 
-The TCP protocol is used for communication server-client and server-server.
 
 .ti 0
 4.2.1 Scheme of a TCP packet
@@ -243,73 +278,93 @@ The TCP protocol is used for communication server-client and server-server.
 .fi
 +------------------------------------------+
 
+
+
+
+
+
+
 .ti 0
 4.2.2 Structure of a TCP packet
 
-Remember that TCP is used for all non in-game packet transfer.
 A TCP packet is structured with 3 different field :
 .fi
 
-- The first one ("Len") represents the total length of the packet.
+- Len represents the total length of the packet.
 .fi
-- The second one ("Type") contains the request or the command type.
+- Type contains the request or command type.
 .fi
-- The last field ("Data") represents the arguments.
+- Data represents the arguments of the command.
 
 
 .ti 0
-5. errors identifiers
+5. Errors identifiers
 
 .ti 0
-5.1 1xx : success
+5.1 1xx : Success
 
-- 101 : success
+- 101 : Success.
 
-.ti 0
-5.2 2xx : client error
-
-- 201 : user refused
-.fi
-- 202 : user did not respond
-.fi
-- 203 : client failed to connect
-.fi
-- 204 : client understands request but refused to process it
 
 .ti 0
-5.3 3xx : server error
+5.2 2xx : Client errors
 
-- 301 : server failed to transfer request
+- 201 : User refused.
 .fi
-- 302 : server failed to process request
+- 202 : User did not respond.
 .fi
-- 303 : server refused this command
+- 203 : Client failed to connect.
 .fi
-- 304 : server understands request but refused to process it
-.fi
-- 305 : insufficient privileges
-.fi
-- 306 : transferred user not found
+- 204 : Client understands request but refused to process it.
+
 
 .ti 0
-5.4 4xx : global error
+5.3 3xx : Server errors
 
-- 401 : invalid request
+- 301 : Server failed to transfer request.
 .fi
-- 402 : incomplete request
+- 302 : Server failed to process request.
 .fi
-- 403 : forbidden request
+- 303 : Server refused this command.
 .fi
-- 404 : request not found
+- 304 : Server understands request but refused to process it.
+.fi
+- 305 : Insufficient privileges.
+.fi
+- 306 : Transferred user not found.
+
+
+.ti 0
+5.4 4xx : Global errors
+
+- 401 : Invalid request.
+.fi
+- 402 : Incomplete request.
+.fi
+- 403 : Forbidden request.
+.fi
+- 404 : Request not found.
 
 
 .ti 0
 6.  Commands
 
-6.1 Commands from a client to a server
+.ti 0
+6.1 Room definition
+
+A room is a virtual space where clients can be together in groups from 1 to 4 in order to start a game.
+.fi
+By default when clients connect to the server, they arrive in a special room called "Hall", a kind of waiting-area.
+.fi
+From there, each client can create a game, which means that they leave the "Hall" room to go to the room they created.
+In case of leaving a room, each client is redirected to the "Hall" room again.
+
 
 .ti 0
-6.1.1 CONNECT
+6.2 Commands from a client to a server
+
+.ti 0
+6.2.1 CONNECT
 
 Command :
 .fi
@@ -319,20 +374,20 @@ Parameters : <username>:<password>
 
 Description :
 .fi
-This command allow users to register on the network.
-It is used for the creation of 'user account' on that network.
+This command allow users to register on the server.
+It is used for the creation of the 'user account' on that game server.
 
 The parameters are the following:
 .fi
-- Username : name of the user
+- Username : name of the user.
 .fi
-- Password : the password chosen by user
+- Password : the password chosen by user.
 
 Notice that this command MUST be implemented.
 
 
 .ti 0
-6.1.2 CREATE_ROOM
+6.2.2 CREATE_ROOM
 
 Command :
 .fi
@@ -342,14 +397,15 @@ Parameters : Nothing
 
 Description :
 .fi
-This command is used by a user to create a room in the network. The room's role is to host a game.
+This command is sent by a user that wants to create a room on the server.
+Notify that the client JOIN_ROOM automatically after this command.
 .fi
 
 Notice that this command MUST be implemented.
 
 
 .ti 0
-6.1.3 LEAVE_ROOM
+6.2.3 LEAVE_ROOM
 
 Command :
 .fi
@@ -359,17 +415,17 @@ Parameters : <RoomId>
 
 Description:
 .fi
-This command is used by a user who wants to leave a room he has created before.
+This command is used by a user who wants to leave a room he has created or joined before.
 
 The parameters are the following:
 .fi
-- RoomId : id of the room to join
+- RoomId : id of the room to leave.
 
 Notice that this command MUST be implemented.
 
 
 .ti 0
-6.1.4 JOIN_ROOM
+6.2.4 JOIN_ROOM
 
 Command :
 .fi
@@ -389,7 +445,7 @@ Notice that this command MUST be implemented.
 
 
 .ti 0
-6.1.5 INVITE_PLAYER
+6.2.5 INVITE_PLAYER
 
 Command :
 .fi
@@ -403,13 +459,13 @@ This command is used when a user wants to invite another one in a room he has cr
 
 The parameters are the following:
 .fi
-- Username : name of user to be invited
+- Username : name of user to be invited.
 
 Notice that this command SHOULD be implemented.
 
 
 .ti 0
-6.1.6 SET_GAME_PARAM
+6.2.6 SET_GAME_PARAM
 
 Command :
 .fi
@@ -457,45 +513,65 @@ Parameters : nothing
 
 Description :
 .fi
-This command is used regularly by a client (a user) to inform the server that he is still connected.
-Without telling the server he is, the server will erase the client that seems to be disconnected from his client's list.
+This command is used every second by a client (a user) to inform the server that he is still connected.
+Without telling the server he is, the server will erase the client that seems to be disconnected after X seconds (like 10 for example) from his client's list.
 
 Notice that this command MUST be implemented.
 
-
 .ti 0
-6.2 Commands from a server to a client
-
-.ti 0
-6.2.1 ANSWER_CREATE_ROOM
+6.2.9 READY
 
 Command :
 .fi
-ANSWER_CREATE_ROOM = 1209
+READY = 1209
 
-Parameters: nothing
+Parameters: <Endpoint>
 
 Description:
 .fi
-This command is used by the server to notify the client that his CREATE_ROOM's request has been accepted, and returns him the <RoomId> he needs.
+This command is used by the client to notify the server (which has already sent him the command GAME_LAUNCHED) that he is ready for the game.
+.fi
+
+The parameters are:
+.fi
+- EndPoint : the Endpoint of the ready client.
+
+Notice that this command MUST be implemented.
+
+
+.ti 0
+6.3 Commands from a server to a client
+
+.ti 0
+6.3.1 ANSWER_CREATE_ROOM
+
+Command :
+.fi
+ANSWER_CREATE_ROOM = 1301
+
+Parameters: <RoomId>
+
+Description:
+.fi
+This command is used by the server to notify the client that his CREATE_ROOM's request has been accepted, and returns him the RoomId he needs.
 .fi
 
 Notice that this command MUST be implemented.
 
 
 .ti 0
-6.2.2 START_DATA_STREAM
+6.3.2 START_DATA_STREAM
 
 Command :
 .fi
-START_DATA_STREAM = 1210
+START_DATA_STREAM = 1302
 
 Parameters: <fileName>
 
 Description:
 .fi
-This command is used to notify a client that the server is going to transfer him the file <fileName>.
-It is useful for in-game work : to transfer properly and safely files to clients, like textures.
+This command is used to notify a client that the server is going to transfer him the file "fileName".
+It is useful for out-game work : to transfer properly and safely files to clients, like downloading textures.
 
 The parameters are:
 .fi
@@ -508,54 +584,65 @@ STREAM and STOP_DATA_STREAM MUST be implemented.
 
 
 .ti 0
-6.2.3 STREAM
+6.3.3 STREAM
 
 Command :
 .fi
-STREAM = 1211
+STREAM = 1303
 
-Parameters: <fileName>
+Parameters: <fileName>:<data>
 
 Description:
 .fi
-This command is used to transfer datas from a file designed by <fileName> to a client.
+This command is used to transfer data from a file designed by "fileName" to a client.
 This command have to be called after the command START_DATA_STREAM.
 
 The parameters are:
 .fi
 - FileName : name of the file to be transferred
+.fi
+- Data : data which are sent. Notice that data chunks must be formatted to 1024 bytes.
+In case of the chunk contains less than 1024 bytes, you MUST use command STOP_DATA_STREAM instead of STREAM.
 
 Notice that this command MAY be implemented.
 In case of this command is implemented, the following commands
 START_DATA_STREAM and STOP_STREAM MUST be implemented.
 
+
 .ti 0
-6.2.4 STOP_DATA_STREAM
+6.3.4 STOP_DATA_STREAM
 
 Command :
 .fi
-STOP_DATA_STREAM = 1212
+STOP_DATA_STREAM = 1304
 
-Parameters: <fileName>
+Parameters: <fileName>:<lastData>:<dataLen>:<hash>
 
 Description:
 .fi
-This command is used to notify a client that the server stops transferring him the file <fileName>.
+This command is used to notify a client that the server stops transferring him the file "fileName".
 
 The parameters are:
 .fi
 - FileName : name of the file on which the transfer is stopped.
+.fi
+- LastData : the last data available from the file to be stored.
+.fi
+- DataLen : Length in bytes of the "lastData".
+.fi
+- Hash : a MD5 hash that corresponds to "fileName".
 
 Notice that this command MAY be implemented.
 In case of this command is implemented, the following commands
 START_DATA_STREAM and STREAM MUST be implemented.
 
+
 .ti 0
-6.2.5 CLIENT_INVITED
+6.3.5 CLIENT_INVITED
 
 Command :
 .fi
-CLIENT_INVITED = 1213
+CLIENT_INVITED = 1305
 
 Parameters: <usernameFrom>:<RoomId>
 
@@ -567,9 +654,53 @@ This command is used by the server to notify a client that he has been invited b
 The parameters are:
 .fi
 - UserName : name of the user that invited the client.
+.fi
 - RoomId : the room's id from where the client which invited you id.
 
 Notice that this command SHOULD be implemented.
+
+.ti 0
+6.3.6 ACK
+
+Command :
+.fi
+ACK = 1306
+
+Parameters: <error/successCode>
+
+Description:
+.fi
+This command is used by the server to notify a client that a request has been treated with success or that an error occurred.
+.fi
+
+The parameters are:
+.fi
+- Error/Success Code : A code corresponding to a request sent by the client to the server.
+
+Notice that this command MUST be implemented.
+
+
+.ti 0
+6.3.7 GAME_LAUNCHED
+
+Command :
+.fi
+GAME_LAUNCHED = 1307
+
+Parameters: <timestamp>:<gameclock>
+
+Description:
+.fi
+This command is used by the server to notify a client that the game has been launched and it should switch to the UDP socket to get the in-game stream data.
+.fi
+
+The parameters are:
+.fi
+- Timestamp : Timestamp used by the server to make the the game's clock corresponds to a certain time (to avoid data loss or bad ordered packets).
+.fi
+- GameClock : Game's clock, MUST be initialized to 0 (the game is just beginning). 
+
+Notice that this command MUST be implemented.
 
 
 .ti 0
@@ -623,11 +754,13 @@ Authors' Addresses
 .nf
 Nicolas MAGERE - magere_n
 Quentin LEFFRAY - leffra_q
+Matthieu OSSATO-BOURGEON - ossato_m
 
 Epitech students
 
-Email: magere_n@epitech.eu
-       leffra_q@epitech.eu
+Email:	magere_n@epitech.eu
+      	leffra_q@epitech.eu
+		ossato_m@epitech.eu
 .sp
 .fi
 

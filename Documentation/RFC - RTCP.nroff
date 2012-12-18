@@ -16,7 +16,7 @@
 .in 0
 
 .nf
-.tl 'RFC 4242''Quentin LEFFRAY, Nicolas MAGERE'
+.tl 'RFC 4242''Nicolas MAGERE, Quentin LEFFRAY'
 .tl 'Intended Status: Experimental''Epitech'
 .tl 'Expires: May 20, 2013''December 14, 2012'
 .fi
@@ -76,51 +76,42 @@ Copyright (c) 2012 IETF Trust and the persons identified as the document authors
 Table of Contents
 
 .nf
-   1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  5
-     1.1  Terminology . . . . . . . . . . . . . . . . . . . . . . . .  5
-   2. Terms definition  . . . . . . . . . . . . . . . . . . . . . . .  5
-   3. Concept of RTCP protocol  . . . . . . . . . . . . . . . . . . .  5
-     3.1 Communication between client and server  . . . . . . . . . .  5
-   4. Standard packet format for data transfer  . . . . . . . . . . .  6
-     4.1 UDP packet format  . . . . . . . . . . . . . . . . . . . . .  6
-       4.1.1 Scheme of an UDP packet  . . . . . . . . . . . . . . . .  6
-       4.1.2 Structure of an UDP packet . . . . . . . . . . . . . . .  6
-     4.2 TCP packet format  . . . . . . . . . . . . . . . . . . . . .  7
-       4.2.1 Scheme of a TCP packet . . . . . . . . . . . . . . . . .  7
-       4.2.2 Structure of a TCP packet  . . . . . . . . . . . . . . .  7
-   5. errors identifiers  . . . . . . . . . . . . . . . . . . . . . .  7
-     5.1 1xx : success  . . . . . . . . . . . . . . . . . . . . . . .  7
-     5.2 2xx : client error . . . . . . . . . . . . . . . . . . . . .  7
-     5.3 3xx : server error . . . . . . . . . . . . . . . . . . . . .  7
-     5.4 4xx : global error . . . . . . . . . . . . . . . . . . . . .  8
-   6.  Commands . . . . . . . . . . . . . . . . . . . . . . . . . . .  8
-     6.1 Communication between several clients  . . . . . . . . . . .  8
-       6.1.1 Testing connection between clients . . . . . . . . . . .  8
-       6.1.2 Set the quality of the transmission  . . . . . . . . . .  8
-       6.1.3 Notify a client disconnection  . . . . . . . . . . . . .  8
-       6.1.4 Send data by type  . . . . . . . . . . . . . . . . . . .  9
-         6.1.4.1 Send voice data  . . . . . . . . . . . . . . . . . .  9
-         6.1.4.2 Send video data  . . . . . . . . . . . . . . . . . .  9
-         6.1.4.3 Send text data . . . . . . . . . . . . . . . . . . .  9
-         6.1.4.4 Send file  . . . . . . . . . . . . . . . . . . . . .  9
-         6.1.4.5 Send unspecified data  . . . . . . . . . . . . . . .  9
-     6.2 Commands from a client to a server . . . . . . . . . . . . . 10
-       6.2.1 GLOBAL_REGISTER  . . . . . . . . . . . . . . . . . . . . 10
-       6.2.2 GLOBAL_LOG . . . . . . . . . . . . . . . . . . . . . . . 10
-       6.2.3 GLOBAL_LOGOUT  . . . . . . . . . . . . . . . . . . . . . 10
-       6.2.4 CLIENT_INVITE  . . . . . . . . . . . . . . . . . . . . . 10
-       6.2.5 CLIENT_ACCEPT  . . . . . . . . . . . . . . . . . . . . . 11
-       6.2.6 CLIENT_SHARED  . . . . . . . . . . . . . . . . . . . . . 11
-       6.2.7 CONTACT_WATCH  . . . . . . . . . . . . . . . . . . . . . 11
-     6.3 Commands from a server to a client . . . . . . . . . . . . . 11
-       6.3.1 GLOBAL_NOTIFY  . . . . . . . . . . . . . . . . . . . . . 11
-       6.3.2 CLIENT_INCOMING  . . . . . . . . . . . . . . . . . . . . 12
-       6.3.3 CLIENT_ALLOW . . . . . . . . . . . . . . . . . . . . . . 12
-       6.3.4 CLIENT_SUMMON  . . . . . . . . . . . . . . . . . . . . . 13
-   7.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 13
-     7.1  Normative References  . . . . . . . . . . . . . . . . . . . 13
-     7.2  Informative References  . . . . . . . . . . . . . . . . . . 13
-   Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 13
+   1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  4
+     1.1  Terminology . . . . . . . . . . . . . . . . . . . . . . . .  4
+   2. Terms definition  . . . . . . . . . . . . . . . . . . . . . . .  4
+   3. Concept of RTCP protocol  . . . . . . . . . . . . . . . . . . .  4
+     3.1 Communication between client and server  . . . . . . . . . .  4
+   4. Standard packet format for data transfer  . . . . . . . . . . .  5
+     4.1 UDP packet format  . . . . . . . . . . . . . . . . . . . . .  5
+       4.1.1 Scheme of an UDP packet  . . . . . . . . . . . . . . . .  5
+       4.1.2 Structure of an UDP packet . . . . . . . . . . . . . . .  5
+     4.2 TCP packet format  . . . . . . . . . . . . . . . . . . . . .  6
+       4.2.1 Scheme of a TCP packet . . . . . . . . . . . . . . . . .  6
+       4.2.2 Structure of a TCP packet  . . . . . . . . . . . . . . .  6
+   5. errors identifiers  . . . . . . . . . . . . . . . . . . . . . .  6
+     5.1 1xx : success  . . . . . . . . . . . . . . . . . . . . . . .  6
+     5.2 2xx : client error . . . . . . . . . . . . . . . . . . . . .  6
+     5.3 3xx : server error . . . . . . . . . . . . . . . . . . . . .  6
+     5.4 4xx : global error . . . . . . . . . . . . . . . . . . . . .  7
+   6.  Commands . . . . . . . . . . . . . . . . . . . . . . . . . . .  7
+       6.1.1 CONNECT  . . . . . . . . . . . . . . . . . . . . . . . .  7
+       6.1.2 CREATE_ROOM  . . . . . . . . . . . . . . . . . . . . . .  7
+       6.1.3 LEAVE_ROOM . . . . . . . . . . . . . . . . . . . . . . .  7
+       6.1.4 JOIN_ROOM  . . . . . . . . . . . . . . . . . . . . . . .  8
+       6.1.5 INVITE_PLAYER  . . . . . . . . . . . . . . . . . . . . .  8
+       6.1.6 SET_GAME_PARAM . . . . . . . . . . . . . . . . . . . . .  9
+       6.2.7 LAUNCH_GAME  . . . . . . . . . . . . . . . . . . . . . .  9
+       6.2.8 PING . . . . . . . . . . . . . . . . . . . . . . . . . .  9
+     6.2 Commands from a server to a client . . . . . . . . . . . . . 10
+       6.2.1 ANSWER_CREATE_ROOM . . . . . . . . . . . . . . . . . . . 10
+       6.2.2 START_DATA_STREAM  . . . . . . . . . . . . . . . . . . . 10
+       6.2.3 STREAM . . . . . . . . . . . . . . . . . . . . . . . . . 10
+       6.2.4 STOP_DATA_STREAM . . . . . . . . . . . . . . . . . . . . 11
+       6.2.5 CLIENT_INVITED . . . . . . . . . . . . . . . . . . . . . 11
+   7.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+     7.1  Normative References  . . . . . . . . . . . . . . . . . . . 11
+     7.2  Informative References  . . . . . . . . . . . . . . . . . . 12
+   Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 12
 .fi
 .in 3
 
@@ -153,18 +144,19 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 .ti 0
 3. Concept of RTCP protocol
 
-The RTCP protocol is a binary one, based on one main interaction : client-server (in both ways).
+The RTCP protocol is a binary one, based on only one interaction : client-server (in both ways).
 
 .ti 0
 3.1 Communication between client and server
 
-This part has been developed to manage exchanges between servers and clients, it's based on TCP and UDP network protocols.
+This part has been developed to manage exchanges between servers and clients; based on TCP and UDP network protocols.
 .fi
 As said before, the server is the central point of every client which connects to.
 
 The TCP network is used when a client is not playing the game (is in a waiting room, creating one), or is just launching it : every important data, (such as map, textures, etc) will be transmitted as this, to avoid data perdition.
 .fi
-The UDP protocol is used for all others transmitted datas (like each client coordinates).
+
+The UDP protocol is used for all in-game transmitted datas (like each client coordinates).
 
 
 Let's see the implementation of the client-server communication (TCP level).
@@ -176,15 +168,15 @@ Notice that each command's description is available below (see part 6-Commands).
 
 First, each client has to CONNECT to the server.
 .fi
-After that, it can CREATE_ROOM, LEAVE_ROOM, JOIN_ROOM, INVITE_PLAYER, be INVITED, SET_GAME_PARAM, PING, and LAUNCH_GAME.
+After that, he can CREATE_ROOM, LEAVE_ROOM, JOIN_ROOM, INVITE_PLAYER, be INVITED, SET_GAME_PARAM, PING, and LAUNCH_GAME.
 .fi
 
 
 .ti 8
 *from Server to Client
 
-When a client emits a CONNECT, the server responds to it with ACK_CREATE_ROOM.
-The server can also transfer information to client through BEGIN_STREAM, STREAM, END_STREAM commands.
+When a client emits a CONNECT, the server responds to it with ANSWER_CREATE_ROOM.
+The server can also transfer information to client through START_STREAM, STREAM, STOP_STREAM commands.
 
 
 .ti 0	
@@ -293,7 +285,7 @@ A TCP packet is structured with 3 different field :
 .fi
 - 303 : server refused this command
 .fi
-- 304 : server understands request but refusedk to process it
+- 304 : server understands request but refused to process it
 .fi
 - 305 : insufficient privileges
 .fi
@@ -314,320 +306,271 @@ A TCP packet is structured with 3 different field :
 .ti 0
 6.  Commands
 
-.ti 0
-6.1 Communication between several clients
-
-The client-client communication are made through some commands inside the CALL section.
+6.1 Commands from a client to a server
 
 .ti 0
-6.1.1 Testing connection between clients
-
-Commands :
-.fi
-CALL_PING = 1101
-.fi
-CALL_PONG = 1102
-
-Description :
-.fi
-Those commands MUST be used to test the connection between two clients. The first one send a CALL_PING as the frame request. The client target will answer with a CALL_PONG if he had successfully receive the CALL_PING.  
-
-.ti 0
-6.1.2 Set the quality of the transmission
-
-Commands :
-.fi
-CALL_INCREASE_QUALITY = 1103
-.fi
-CALL_DECREASE_QUALITY = 1104
-
-Description :
-.fi
-Those commands MAY be used to set the quality of the transmission from another client. They can be useful to adapt the quality of the transmission based on the latency.
-
-.ti 0
-6.1.3 Notify a client disconnection
+6.1.1 CONNECT
 
 Command :
 .fi
-CALL_DISCONNECTION = 1105
+CONNECT = 1201
 
-Description :
-This command SHOULD be used as the frame request to notify the disconnection to others clients.
-
-.ti 0
-6.1.4 Send data by type
-
-The following request can be used to transfer data to another client.
-
-.ti 0	
-6.1.4.1 Send voice data
-
-Command :
-.fi
-CALL_VOICE_PACKET = 1106
+Parameters : <username>:<password>
 
 Description :
 .fi
-This command MUST be used as the frame request to send voice data. The data MUST be stored in the data section of the frame.
-
-.ti 0
-6.1.4.2 Send video data
-
-Command :
-.fi
-CALL_VIDEO_PACKET = 1107
-
-Description :
-.fi
-This command MAY be used as the frame request to send video data. The data MUST be stored in the data section of the frame.
-
-.ti 0
-6.1.4.3 Send text data
-
-Command :
-.fi
-CALL_TEXT_PACKET = 1108
-
-Description :
-.fi
-This command MAY be used as the frame request to send text data. The data MUST be stored in the data section of the frame.
-
-.ti 0
-6.1.4.4 Send file
-
-Command :
-.fi
-CALL_FILE_PACKET = 1109
-
-Description :
-.fi
-This command MAY be used as the frame request to send file data. The data MUST be stored in the data section of the frame.
-
-.ti 0
-6.1.4.5 Send unspecified data
-
-Command :
-.fi
-CALL_UNSPECIFIED_PACKET = 1110
-
-Description :
-.fi
-This command MAY be used as the frame request to send unspecified data. The data MUST be stored in the data section of the frame.
-
-.ti 0
-6.2 Commands from a client to a server
-
-.ti 0
-6.2.1 GLOBAL_REGISTER
-	
-Command :
-.fi
-GLOBAL_REGISTER = 1201
-
-Parameters : <username>:<hash>
-	
-Description :
-.fi
-This command allow users to register on the network. It is used for the creation of 'user account' on that network.
+This command allow users to register on the network.
+It is used for the creation of 'user account' on that network.
 
 The parameters are the following:
 .fi
 - Username : name of the user
 .fi
-- Hash : A md5 hash compose as <username>'/'<password>
+- Password : the password chosen by user
+
+Notice that this command MUST be implemented.
+
 
 .ti 0
-6.2.2 GLOBAL_LOG
+6.1.2 CREATE_ROOM
 
 Command :
 .fi
-GLOBAL_LOG = 1202
+CREATE_ROOM = 1202
 
-Parameters : <hash>
+Parameters : Nothing
 
 Description :
 .fi
-This command inform the servers' network that the user is 'online'. After a successful log, the user is allow to send or receive calls.
-The parameter hash is the same as for GLOBAL_REGISTER.
+This command is used by a user to create a room in the network. The room's role is to host a game.
+.fi
+
+Notice that this command MUST be implemented.
+
 
 .ti 0
-6.2.3 GLOBAL_LOGOUT
+6.1.3 LEAVE_ROOM
 
 Command :
 .fi
-GLOBAL_LOGOUT = 1203
+LEAVE_ROOM = 1203
+
+Parameters : <RoomId>
 
 Description:
 .fi
-This command inform the servers' network the user is offline. After logout, the user MUST NOT receive or send calls.
+This command is used by a user who wants to leave a room he has created before.
+
+The parameters are the following:
+.fi
+- RoomId : id of the room to join
+
+Notice that this command MUST be implemented.
+
 
 .ti 0
-6.2.4 CLIENT_INVITE
+6.1.4 JOIN_ROOM
 
 Command :
 .fi
-CLIENT_INVITE = 1301
+JOIN_ROOM = 1204
 
-Parameters : <endpoint>:<target>
+Parameters : <RoomId>
 
 Description :
 .fi
-This command initiate a dialog between to clients. 
+This command is used by a user who wants to join a created room.
 
 The parameters are the following:
 .fi
-- endpoint : it is the network endpoint the sender will use to communicate with the target.
-.fi
-- target : a URI referring to a contact of the user.
+- RoomId : id of the room to join
+
+Notice that this command MUST be implemented.
+
 
 .ti 0
-6.2.5 CLIENT_ACCEPT
+6.1.5 INVITE_PLAYER
 
 Command :
 .fi
-CLIENT_ACCEPT = 1302
+INVITE_PLAYER = 1205
 
-Parameters : <endpoint>:<target>:<response Yes = 1 | No = 0>
+Parameters : <username>
 
 Description:
 .fi
-This command is used, after receiving a CLIENT_INVITE, to accept the call or not.
+This command is used when a user wants to invite another one in a room he has created.
+
 The parameters are the following:
 .fi
-- from : it is the user who sent the request.
-.fi
-- endpoint : it is the network endpoint the sender will use to communicate with the target.
-.fi
-- response : user's response to the call.
+- Username : name of user to be invited
+
+Notice that this command SHOULD be implemented.
+
 
 .ti 0
-6.2.6 CLIENT_SHARED
+6.1.6 SET_GAME_PARAM
 
 Command :
 .fi
-CLIENT_SHARED = 1303
+SET_GAME_PARAM = 1206
 
-Parameters : <user_1>:<user_2>
+Parameters : <key>:<value>
 
 Description:
-.fi
-This command is use by a user who has successfully invite another contact in a progressing call.It informs user_1 that user_2 is include in that call.
+This command is used by a user to change in-game parameters (like players lives number for example)
 
-Both parameters are URI referring to clients as describe above.
+The parameters are the following:
+.fi
+- Key : Parameter's id to be changed
+.fi
+- Value : New value of the parameter to change
+
+Notice that this command SHOULD be implemented.
+
 
 .ti 0
-6.2.7 CONTACT_WATCH
+6.2.7 LAUNCH_GAME
 
 Command :
 .fi
-CONTACT_WATCH = 1401
+LAUNCH_GAME = 1207
 
-Parameters : <user>
+Parameters : nothing
 
 Description:
 .fi
-This command is used to inform the server the client want notifications on status' changing about the user.
+This command is used to launch a game created.
+Note that a room has to be previously created (see CREATE_ROOM command) by a user before he launches the game.
+
+Notice that this command MUST be implemented.
+
 
 .ti 0
-6.3 Commands from a server to a client
-
-.ti 0
-6.3.1 GLOBAL_NOTIFY
+6.2.8 PING
 
 Command :
 .fi
-GLOBAL_NOTIFY = 1204
+PING = 1208
 
-Parameters: <user>:<state>
+Parameters : nothing
 
-Description:
+Description :
 .fi
-This command is used to notify the client that the user has changed his status.
-.fi
+This command is used regularly by a client (a user) to inform the server that he is still connected.
+Without telling the server he is, the server will erase the client that seems to be disconnected from his client's list.
 
-The status MUST be one of the following:
-.fi
-- CONNECTED	(0)
-.fi
-- DISCONNECTED	(1)
-.fi
-
-The status MAY be:
-.fi
-- BUSY		(2)
-.fi
-- AWAY		(3)
-.fi
-- LOCK		(4)
+Notice that this command MUST be implemented.
 
 
 .ti 0
-6.3.2 CLIENT_INCOMING
+6.2 Commands from a server to a client
+
+.ti 0
+6.2.1 ANSWER_CREATE_ROOM
 
 Command :
 .fi
-CLIENT_INCOMING = 1304
+ANSWER_CREATE_ROOM = 1209
 
-Parameters: <user>:<ep1>:<ep2>:<ep3>:<ep4>:<ep5>
+Parameters: nothing
 
 Description:
 .fi
-This command is used to inform a client that another client is attempting a connection on him.
+This command is used by the server to notify the client that his CREATE_ROOM's request has been accepted, and returns him the <RoomId> he needs.
 .fi
+
+Notice that this command MUST be implemented.
+
+
+.ti 0
+6.2.2 START_DATA_STREAM
+
+Command :
+.fi
+START_DATA_STREAM = 1210
+
+Parameters: <fileName>
+
+Description:
+.fi
+This command is used to notify a client that the server is going to transfer him the file <fileName>.
+It is useful for in-game work : to transfer properly and safely files to clients, like textures.
+
 The parameters are:
 .fi
-- user :
-.fi
-	the user attempting a connection
-.fi
-- ep1 :
-.fi
-	the network endpoint the caller will use to stream audio data.
-.fi
-- ep2 :
-.fi
-	the network endpoint the caller will use to stream video data.
-.fi
-- ep3 :
-.fi
-	the network endpoint the caller will use to stream text for chat.
-.fi
-- ep4 :
-.fi
-	the network endpoint the caller will use to transfer file.
-.fi
-- ep5 :
-.fi
-	the network endpoint the caller will use for emergency communications.
+- FileName : name of the file to be transferred
 
-The endpoint from 2 to 5 are OPTIONAL so, if you don't use one of them, you MUST set it to 0.
+Notice that this command MAY be implemented.
+.fi
+In case of this command is implemented, the following commands
+STREAM and STOP_DATA_STREAM MUST be implemented.
+
 
 .ti 0
-6.3.3 CLIENT_ALLOW
+6.2.3 STREAM
 
 Command :
 .fi
-CLIENT_ALLOW = 1305
+STREAM = 1211
 
-Parameters: <user>:<ep1>:<ep2>:<ep3>:<ep4>:<ep5>
+Parameters: <fileName>
 
 Description:
 .fi
-This command is used to inform a client that his correspondent has accepted is call. It also give the client the Endpoints his correspondent will use in same order as in CLIENT_INCOMING command (see above).
+This command is used to transfer datas from a file designed by <fileName> to a client.
+This command have to be called after the command START_DATA_STREAM.
+
+The parameters are:
+.fi
+- FileName : name of the file to be transferred
+
+Notice that this command MAY be implemented.
+In case of this command is implemented, the following commands
+START_DATA_STREAM and STOP_STREAM MUST be implemented.
 
 .ti 0
-6.3.4 CLIENT_SUMMON
+6.2.4 STOP_DATA_STREAM
 
 Command :
-CLIENT_SUMMON = 1306
+.fi
+STOP_DATA_STREAM = 1212
 
-Parameters : <user>
+Parameters: <fileName>
 
 Description:
 .fi
-This command is used to encourage the client to invite the specified user.
-If CLIENT_SHARED is implemented, you MUST also implement CLIENT_SUMMON.
+This command is used to notify a client that the server stops transferring him the file <fileName>.
+
+The parameters are:
+.fi
+- FileName : name of the file on which the transfer is stopped.
+
+Notice that this command MAY be implemented.
+In case of this command is implemented, the following commands
+START_DATA_STREAM and STREAM MUST be implemented.
+
+.ti 0
+6.2.5 CLIENT_INVITED
+
+Command :
+.fi
+CLIENT_INVITED = 1213
+
+Parameters: <usernameFrom>:<RoomId>
+
+Description:
+.fi
+This command is used by the server to notify a client that he has been invited by another one, by a previous call to INVITE_PLAYER.
+.fi
+
+The parameters are:
+.fi
+- UserName : name of the user that invited the client.
+- RoomId : the room's id from where the client which invited you id.
+
+Notice that this command SHOULD be implemented.
+
 
 .ti 0
 7.  References
@@ -678,14 +621,12 @@ Authors' Addresses
 
 .sp
 .nf
-Benjamin BUSINARO - busina_b
-Pierre MARTIN - mart_i
+Nicolas MAGERE - magere_n
 Quentin LEFFRAY - leffra_q
 
 Epitech students
 
-EMail: busina_b@epitech.eu
-       mart_i@epitech.eu
+Email: magere_n@epitech.eu
        leffra_q@epitech.eu
 .sp
 .fi

@@ -2852,22 +2852,22 @@
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="a0857f40-b93b-48d8-a8a6-367c14d760be"
-            name="MessageOccurrenceSpecification7">
-            <covered>
-              <lifelineMoniker
-                Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
-                LastKnownLocation="R-Type.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
             Id="e9cd5e22-5a63-4ccd-9cf9-d3e4c9660179"
             name="MessageOccurrenceSpecification8">
             <covered>
               <lifelineMoniker
                 Id="4f8dbd2f-72ab-4650-89c1-09c691aee5f2"
                 LastKnownName="IRequest"
+                LastKnownLocation="R-Type.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="a0857f40-b93b-48d8-a8a6-367c14d760be"
+            name="MessageOccurrenceSpecification7">
+            <covered>
+              <lifelineMoniker
+                Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
+                LastKnownName="IService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -4336,24 +4336,6 @@
             </nestedOccurrences>
           </behaviorExecutionSpecification>
           <executionOccurrenceSpecification
-            Id="403f4795-a250-4526-99e4-ca4ccac13f3c"
-            name="ExecutionOccurrenceSpecification57">
-            <event>
-              <executionOccurrenceSpecificationReferencesEvent>
-                <executionEventMoniker
-                  Id="9e3821c2-fb20-4dfa-88ac-77d9d984d431"
-                  LastKnownName="ExecutionEvent"
-                  LastKnownLocation="R-Type.uml" />
-              </executionOccurrenceSpecificationReferencesEvent>
-            </event>
-            <covered>
-              <lifelineMoniker
-                Id="4f8dbd2f-72ab-4650-89c1-09c691aee5f2"
-                LastKnownName="IRequest"
-                LastKnownLocation="R-Type.uml" />
-            </covered>
-          </executionOccurrenceSpecification>
-          <executionOccurrenceSpecification
             Id="5f88a907-e261-4f6e-89c1-e3b72ee45a7e"
             name="ExecutionOccurrenceSpecification66">
             <event>
@@ -4368,6 +4350,24 @@
               <lifelineMoniker
                 Id="6c78e1d5-f866-45d6-8cc2-f97d7752eff0"
                 LastKnownName="ISocket"
+                LastKnownLocation="R-Type.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="403f4795-a250-4526-99e4-ca4ccac13f3c"
+            name="ExecutionOccurrenceSpecification57">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="9e3821c2-fb20-4dfa-88ac-77d9d984d431"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="R-Type.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="4f8dbd2f-72ab-4650-89c1-09c691aee5f2"
+                LastKnownName="IRequest"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -4832,22 +4832,22 @@
             </covered>
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="d5bbd257-492c-477a-8506-9885bf226c29"
-            name="MessageOccurrenceSpecification82">
-            <covered>
-              <lifelineMoniker
-                Id="4636bf8f-fb2c-459c-8406-a85545eeffbc"
-                LastKnownName="Client"
-                LastKnownLocation="R-Type.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
             Id="971d75cf-532f-4fb4-8277-1b65c572bb9e"
             name="MessageOccurrenceSpecification81">
             <covered>
               <lifelineMoniker
                 Id="6c78e1d5-f866-45d6-8cc2-f97d7752eff0"
                 LastKnownName="ISocket"
+                LastKnownLocation="R-Type.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="d5bbd257-492c-477a-8506-9885bf226c29"
+            name="MessageOccurrenceSpecification82">
+            <covered>
+              <lifelineMoniker
+                Id="4636bf8f-fb2c-459c-8406-a85545eeffbc"
+                LastKnownName="Client"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -5096,22 +5096,22 @@
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="a9351b09-fc7a-4956-b96c-c5aa645a2300"
-            name="MessageOccurrenceSpecification89">
-            <covered>
-              <lifelineMoniker
-                Id="28972a40-60e8-4091-a006-eb5ac4ee0b93"
-                LastKnownName="RoomManager"
-                LastKnownLocation="R-Type.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
             Id="8035ba5e-29ed-4f72-bc4d-813de334bc2d"
             name="MessageOccurrenceSpecification90">
             <covered>
               <lifelineMoniker
                 Id="01e0a644-5279-485d-9e05-91eeec60d68c"
                 LastKnownName="IRoom"
+                LastKnownLocation="R-Type.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="a9351b09-fc7a-4956-b96c-c5aa645a2300"
+            name="MessageOccurrenceSpecification89">
+            <covered>
+              <lifelineMoniker
+                Id="28972a40-60e8-4091-a006-eb5ac4ee0b93"
+                LastKnownName="RoomManager"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -5368,22 +5368,22 @@
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="d3d2b856-fa95-4c60-8448-620b41b23385"
-            name="MessageOccurrenceSpecification97">
-            <covered>
-              <lifelineMoniker
-                Id="6c78e1d5-f866-45d6-8cc2-f97d7752eff0"
-                LastKnownName="ISocket"
-                LastKnownLocation="R-Type.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
             Id="5267def8-8887-4a85-b97a-15baff1fc2b2"
             name="MessageOccurrenceSpecification98">
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
                 LastKnownName="IService"
+                LastKnownLocation="R-Type.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="d3d2b856-fa95-4c60-8448-620b41b23385"
+            name="MessageOccurrenceSpecification97">
+            <covered>
+              <lifelineMoniker
+                Id="6c78e1d5-f866-45d6-8cc2-f97d7752eff0"
+                LastKnownName="ISocket"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -5630,22 +5630,22 @@
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="7e872fd5-9a06-4c9d-899e-388958d83af6"
-            name="MessageOccurrenceSpecification141">
-            <covered>
-              <lifelineMoniker
-                Id="01e0a644-5279-485d-9e05-91eeec60d68c"
-                LastKnownName="IRoom"
-                LastKnownLocation="R-Type.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
             Id="81d03a3f-7b5b-4eaa-9966-9039af758e96"
             name="MessageOccurrenceSpecification142">
             <covered>
               <lifelineMoniker
                 Id="4f8dbd2f-72ab-4650-89c1-09c691aee5f2"
                 LastKnownName="IRequest"
+                LastKnownLocation="R-Type.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="7e872fd5-9a06-4c9d-899e-388958d83af6"
+            name="MessageOccurrenceSpecification141">
+            <covered>
+              <lifelineMoniker
+                Id="01e0a644-5279-485d-9e05-91eeec60d68c"
+                LastKnownName="IRoom"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -5874,22 +5874,22 @@
             </covered>
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="4b30b9cd-d1bd-4be4-aa78-0ccc3a9145e0"
-            name="MessageOccurrenceSpecification114">
-            <covered>
-              <lifelineMoniker
-                Id="01e0a644-5279-485d-9e05-91eeec60d68c"
-                LastKnownName="IRoom"
-                LastKnownLocation="R-Type.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
             Id="f5254207-1b67-4c67-8e37-8be117702b2c"
             name="MessageOccurrenceSpecification113">
             <covered>
               <lifelineMoniker
                 Id="e7adac1d-6c04-4bf6-83a2-6f6a753672b6"
                 LastKnownName="Scenario"
+                LastKnownLocation="R-Type.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="4b30b9cd-d1bd-4be4-aa78-0ccc3a9145e0"
+            name="MessageOccurrenceSpecification114">
+            <covered>
+              <lifelineMoniker
+                Id="01e0a644-5279-485d-9e05-91eeec60d68c"
+                LastKnownName="IRoom"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -6334,22 +6334,22 @@
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="8f77091f-feee-491d-b2ca-72a5418dd782"
-            name="MessageOccurrenceSpecification152">
-            <covered>
-              <lifelineMoniker
-                Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
-                LastKnownLocation="R-Type.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
             Id="920e86cf-0649-4c33-acb1-f7e1eab04990"
             name="MessageOccurrenceSpecification151">
             <covered>
               <lifelineMoniker
                 Id="6c78e1d5-f866-45d6-8cc2-f97d7752eff0"
                 LastKnownName="ISocket"
+                LastKnownLocation="R-Type.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="8f77091f-feee-491d-b2ca-72a5418dd782"
+            name="MessageOccurrenceSpecification152">
+            <covered>
+              <lifelineMoniker
+                Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
+                LastKnownName="IService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -8721,6 +8721,166 @@
       <executionEvent
         Id="e8f6ff5c-615f-410b-a5b8-442b4f0c14f3"
         name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <interaction
+        Id="ff7fbcf0-7c4c-47bc-87c4-085e71ccd4c1"
+        name="ServerGame"
+        collapseFragmentsFlag="false"
+        isActiveClass="false"
+        isAbstract="false"
+        isLeaf="false"
+        isReentrant="false">
+        <lifelines>
+          <lifeline
+            Id="fd4ac222-aede-4c4c-973a-61af0cd2f868"
+            name="Player"
+            isActor="false"
+            lifelineDisplayName="Player">
+            <represents>
+              <propertyMoniker
+                Id="fce05fbd-687f-4363-81e0-7b616c6c79c8"
+                LastKnownLocation="R-Type.uml" />
+            </represents>
+          </lifeline>
+          <lifeline
+            Id="22bde58c-d2ea-4644-96d3-5eeb83d924e5"
+            name="Client"
+            isActor="false"
+            lifelineDisplayName="Client" />
+          <lifeline
+            Id="9c0a2971-c149-47d3-b096-7819a8a57966"
+            name="Server"
+            isActor="false"
+            lifelineDisplayName="Server" />
+          <lifeline
+            Id="44e6b278-eee1-4bb8-a388-93d413b67f47"
+            name="IRoom"
+            isActor="false"
+            lifelineDisplayName="IRoom">
+            <represents>
+              <propertyMoniker
+                Id="96dc9c44-60ab-4eb9-9506-ffcdac94e7ea"
+                LastKnownLocation="R-Type.uml" />
+            </represents>
+          </lifeline>
+          <lifeline
+            Id="fcfe591e-c1ae-40ca-871a-5a985077d8a9"
+            name="Scenario"
+            isActor="false"
+            lifelineDisplayName="Scenario">
+            <represents>
+              <propertyMoniker
+                Id="33bcccd7-8815-4ac2-8bb8-baa7b665b145"
+                LastKnownLocation="R-Type.uml" />
+            </represents>
+          </lifeline>
+          <lifeline
+            Id="4cb511c8-8360-4ef6-811a-1be6691a688a"
+            name="GameplayEngine"
+            isActor="false"
+            lifelineDisplayName="GameplayEngine">
+            <represents>
+              <propertyMoniker
+                Id="eabbed17-e7ec-47c6-b002-7b1e5c8d53aa"
+                LastKnownLocation="R-Type.uml" />
+            </represents>
+          </lifeline>
+          <lifeline
+            Id="35bfd982-fa30-4da3-877c-6fd9207fb74a"
+            name="IGameMod"
+            isActor="false"
+            lifelineDisplayName="IGameMod">
+            <represents>
+              <propertyMoniker
+                Id="4eab0333-47f9-4bef-9efd-6cd1a617d0e7"
+                LastKnownLocation="R-Type.uml" />
+            </represents>
+          </lifeline>
+        </lifelines>
+        <ownedAttributesInternal>
+          <property
+            Id="fce05fbd-687f-4363-81e0-7b616c6c79c8"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="070de6b6-6b1a-4203-b4c6-287aac7acf02"
+                LastKnownName="Player"
+                LastKnownLocation="R-Type.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="96dc9c44-60ab-4eb9-9506-ffcdac94e7ea"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="31ee0d10-d417-4d73-98b0-d3b1e0378a34"
+                LastKnownName="IRoom"
+                LastKnownLocation="R-Type.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="eabbed17-e7ec-47c6-b002-7b1e5c8d53aa"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="dce1b75c-4784-464d-99ff-e9d9484fd6a5"
+                LastKnownName="GameplayEngine"
+                LastKnownLocation="R-Type.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="4eab0333-47f9-4bef-9efd-6cd1a617d0e7"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="4f05d3bf-1038-4815-ac0b-4a1f6a98f40e"
+                LastKnownName="IGameMod"
+                LastKnownLocation="R-Type.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="33bcccd7-8815-4ac2-8bb8-baa7b665b145"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="5bd138fd-31a1-452d-89e1-2102a1b6d790"
+                LastKnownName="Scenario"
+                LastKnownLocation="R-Type.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </interaction>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

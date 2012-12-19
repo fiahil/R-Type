@@ -1,8 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
   dslVersion="1.0.0.0"
   Id="d629cead-8a8d-49ff-86cf-2bd37e6a4a1d"
   name="ClientRType" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="03eda4bd-652b-471a-819a-b79673f84cbd">
+      <body>getLastInput retourne une valeur ente 0 et 100
+isPressed retourne un booleen
+
+- Cas de la souris sur les directions
+  | vérifie la présence d'une composante y négative sur le vecteur de déplacement
+  | =&gt; ie : si tu bouge ta souris vers le bas, ça renvoie true.
+
+- Cas du clavier sur les valeurs
+  | renvoie la valeur maximale ou minimale. Pas d'intermédiaire.</body>
+    </comment>
+  </ownedCommentsInternal>
   <profileInstances>
     <packageHasProfileInstances
       Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
@@ -21,34 +35,36 @@
     <packageHasNamedElement>
       <Interface
         Id="f6cdbdc3-0d36-4b63-ba9c-a1ea2c10c7bf"
-        name="IGame"
+        name="IStage"
         isAbstract="false"
         isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="930c6dd4-a641-4c6b-bc18-92f4eab96018"
+            isSubstitutable="false">
+            <interfaceMoniker
+              Id="831496a0-85a2-4108-b26e-dbeace6d2ed5"
+              LastKnownName="IComponent"
+              LastKnownLocation="ClientRType.uml" />
+          </generalization>
+          <generalization
+            Id="2c19e7b8-2e7c-4ba5-93ac-de38b63cba87"
+            isSubstitutable="false">
+            <interfaceMoniker
+              Id="9bc8ffd2-3abf-4bb8-a455-7ae895d4af4f"
+              LastKnownName="IUpdateable"
+              LastKnownLocation="ClientRType.uml" />
+          </generalization>
+          <generalization
+            Id="ddb2db29-eac5-4bef-8707-5dd295036158"
+            isSubstitutable="false">
+            <interfaceMoniker
+              Id="9886a386-31e1-4454-a2ce-5401cc2f2738"
+              LastKnownName="IDrawable"
+              LastKnownLocation="ClientRType.uml" />
+          </generalization>
+        </generalsInternal>
         <ownedOperations>
-          <operation
-            Id="ba044ded-a55a-4755-bd02-1e027699e998"
-            name="run"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="true"
-            concurrency="Sequential"
-            isQuery="false" />
-          <operation
-            Id="6ba56f4c-ba8b-48eb-924b-3c76dacd3bf0"
-            name="draw"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="true"
-            concurrency="Sequential"
-            isQuery="false" />
-          <operation
-            Id="75f9bb45-196f-4f7a-97b6-fb52040c202f"
-            name="initialize"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="true"
-            concurrency="Sequential"
-            isQuery="false" />
           <operation
             Id="a3f7055c-be91-4856-a6e5-f7985a1d559f"
             name="release"
@@ -58,26 +74,8 @@
             concurrency="Sequential"
             isQuery="false" />
           <operation
-            Id="eea96e37-7f4b-479e-ae12-f3a8a39de1ad"
-            name="update"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="true"
-            concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="9ed37a92-81b4-4294-b5ae-bad9380daa0f"
-                  name="float deltaTime"
-                  direction="In"
-                  isUnique="false" />
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="3509649c-f3c7-436b-85f7-f9dc8de2887a"
-            name="exit"
+            Id="5fb4a3cc-7325-4124-9366-2075deab8961"
+            name="LoadComponent"
             isLeaf="false"
             isStatic="false"
             isAbstract="true"
@@ -89,18 +87,11 @@
     <packageHasNamedElement>
       <class
         Id="c719534d-7aac-4f28-89be-2dc36e6d824c"
-        name="Game"
+        name="Stage"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
-          <interfaceRealization
-            Id="5d9fb1f2-92a2-4db5-9793-f7e63c2808c0">
-            <interfaceMoniker
-              Id="f6cdbdc3-0d36-4b63-ba9c-a1ea2c10c7bf"
-              LastKnownName="IGame"
-              LastKnownLocation="ClientRType.uml" />
-          </interfaceRealization>
           <interfaceRealization
             Id="991bcbcd-fe60-4eb6-9a9a-50750ffee151">
             <interfaceMoniker
@@ -108,33 +99,111 @@
               LastKnownName="IObject"
               LastKnownLocation="ClientRType.uml" />
           </interfaceRealization>
+          <interfaceRealization
+            Id="60ab02fb-2ddd-4f27-9a34-9392f19fa1fb">
+            <interfaceMoniker
+              Id="f6cdbdc3-0d36-4b63-ba9c-a1ea2c10c7bf"
+              LastKnownName="IStage"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
         </suppliersInternal>
+        <targetEnds>
+          <association
+            Id="7d6ecd64-ae26-4719-86d7-c923818c1ee5"
+            isDerived="false"
+            sourceEndRoleName="Game"
+            targetEndRoleName="IGameManager"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="76f3819b-50cc-4650-b6d5-2a28782a8a72"
+              LastKnownName="IGameManager"
+              LastKnownLocation="ClientRType.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fa0e9cb0-cde6-4d9b-9549-6537831449f2"
+                  name="Game"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6e381ad5-2515-43d7-a862-a00e4912d46f"
+                  name="IGameManager"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="8b61c9e3-9cad-43ec-8a76-b4bfbb2677ea"
+            isDerived="false"
+            sourceEndRoleName="Game"
+            targetEndRoleName="GameManager"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="d93e8f15-2682-4a96-a6af-e7200253413f"
+              LastKnownName="GameManager"
+              LastKnownLocation="ClientRType.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="dc621006-6588-4c42-b8c5-d3a1ed6be608"
+                  name="Game"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="44db35ea-6556-4a90-a14e-e04d5dbb0e78"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="296b0df2-411a-433d-874a-36c5e0b5b321"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fb9aa062-2f4e-46df-8945-a100afa4a624"
+                  name="GameManager"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
-            Id="b0c00898-9d4b-4c46-a028-c9e7dffdad75"
-            name="IGameManager* GM"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
-            Id="ddbf05fc-fb33-45d7-a1be-7864ca3c05d2"
-            name="IGameWindow * window"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
             Id="e564d86b-ba6c-492f-b03d-6798b2528052"
-            name="std::list&lt;GameComponent&gt;"
+            name="list&lt;GameComponent&gt;"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -144,19 +213,8 @@
             aggregation="None"
             isComposite="false" />
           <property
-            Id="a27b9d0e-41e7-49fe-a792-588e4825ec26"
-            name="bool isActive"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
-            Id="311320ef-aec0-4442-902c-56f29ef737e4"
-            name="IInput input"
+            Id="f8664b83-0dbc-48d6-a43c-933f10244c62"
+            name="GameManager*"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -168,8 +226,40 @@
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
-            Id="8846772f-b4b7-4c50-8ecc-3ff229b454ad"
-            name="exit"
+            Id="a43a0d14-3558-4eaf-b1a6-b901d5f49cca"
+            name="release"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="7d53c6bc-b66d-4c10-8eda-0321403af122"
+            name="LoadComponent"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="b3fa382c-1ee6-4864-8641-ecda2c683269"
+            name="initialize"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="516518ca-9fce-4e03-aa31-e9f98df21db8"
+            name="update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="8100c330-e07a-407c-bc4d-c7c36ac79cfe"
+            name="draw"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -197,7 +287,29 @@
         <ownedAttributesInternal>
           <property
             Id="8c33e05d-c296-45d3-93f1-e4315eba7eab"
-            name="std::stack&lt;GameState&gt;"
+            name="stack&lt;Game&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="d684f5be-a1bb-4f7c-bf1d-743c3f6e1ae7"
+            name="IInput"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="138d74ac-9767-45fd-9b53-435c18a478ae"
+            name="IGameWindow"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -207,6 +319,40 @@
             aggregation="None"
             isComposite="false" />
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="7037885b-c20e-4cb5-8c11-1aa759fb5f2a"
+            name="getCurrentState"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="897f9ca9-7132-4992-b3ca-00c4e7f157a0"
+            name="popState"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="3c77d397-a977-4a1a-8c83-7f258106807a"
+            name="pushState"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="a28cb7ae-93f7-4951-b616-4f7b2f96951b"
+            name="run"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -215,47 +361,6 @@
         name="IGameManager"
         isAbstract="false"
         isLeaf="false">
-        <targetEnds>
-          <association
-            Id="b9b6903f-aaf3-4967-a9ba-882aa1a8a194"
-            isDerived="false"
-            sourceEndRoleName="IGameManager"
-            targetEndRoleName="Game"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="c719534d-7aac-4f28-89be-2dc36e6d824c"
-              LastKnownName="Game"
-              LastKnownLocation="ClientRType.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="f2336ac5-d078-4cb6-90b5-87c110c5868e"
-                  name="IGameManager"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="Shared"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="30dc3f4e-47b3-4eb7-b730-28f5d4273d7a"
-                  name="Game"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
         <ownedOperations>
           <operation
             Id="d0a82c5b-9638-41b1-bf7a-ba291fd188e6"
@@ -281,42 +386,17 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false" />
-          <operation
-            Id="646999e5-3a9c-41b8-b8de-c7f0bb2ccdf5"
-            name="SetState"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="true"
-            concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="e82f3e68-d615-4e5a-8d06-20bec6f66776"
-                  name="GameState&amp;"
-                  direction="In"
-                  isUnique="false" />
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
         </ownedOperations>
       </Interface>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
         Id="db67bbd6-c43e-428b-925d-ae766de0ab61"
-        name="GameComponent"
+        name="UpdatableGameComponent"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
-          <interfaceRealization
-            Id="8f1e45a3-6970-4b4f-be2d-91b6309418ce">
-            <interfaceMoniker
-              Id="9bc8ffd2-3abf-4bb8-a455-7ae895d4af4f"
-              LastKnownName="IUpdateable"
-              LastKnownLocation="ClientRType.uml" />
-          </interfaceRealization>
           <interfaceRealization
             Id="08ae2ffb-4a76-43c0-8082-e5974e2cd2ca">
             <interfaceMoniker
@@ -325,74 +405,38 @@
               LastKnownLocation="ClientRType.uml" />
           </interfaceRealization>
           <interfaceRealization
-            Id="5bf21097-1edb-4cc1-b5bb-2755008451a5">
+            Id="abd01f34-b465-45bd-b1e2-32849dc120b4">
+            <interfaceMoniker
+              Id="9bc8ffd2-3abf-4bb8-a455-7ae895d4af4f"
+              LastKnownName="IUpdateable"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="df5249b6-7df1-4bf5-84ab-2d8e09908480">
             <interfaceMoniker
               Id="831496a0-85a2-4108-b26e-dbeace6d2ed5"
               LastKnownName="IComponent"
               LastKnownLocation="ClientRType.uml" />
           </interfaceRealization>
-          <interfaceRealization
-            Id="2ce3c02f-b062-4c35-b899-1b61276beff5">
-            <interfaceMoniker
-              Id="9886a386-31e1-4454-a2ce-5401cc2f2738"
-              LastKnownName="IDrawable"
-              LastKnownLocation="ClientRType.uml" />
-          </interfaceRealization>
         </suppliersInternal>
-        <targetEnds>
-          <association
-            Id="23551f6b-b192-4119-9b7d-e57110469291"
-            isDerived="false"
-            sourceEndRoleName="GameComponent"
-            targetEndRoleName="Game"
+        <ownedOperationsInternal>
+          <operation
+            Id="61a759e4-75ac-4264-98cf-e9fa505c3ac3"
+            name="update"
             isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="c719534d-7aac-4f28-89be-2dc36e6d824c"
-              LastKnownName="Game"
-              LastKnownLocation="ClientRType.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="74e6281e-e456-46f9-ab9a-d8a79d8b8f2d"
-                  name="GameComponent"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="Shared"
-                  isComposite="false"
-                  isNavigableOwned="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="7a6568b1-0e36-40e8-a9ec-9a023873ee8b"
-                      name="Lower"
-                      value="n" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="94dc4351-4b57-4bc9-9942-b1e71c9d3fa8"
-                      name="Upper"
-                      value="n" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="a8e3522e-edac-492a-8ee7-12d4378c642f"
-                  name="Game"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="bed6be3e-8cb8-413a-9a42-c6ae86a02568"
+            name="initialize"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -408,7 +452,7 @@
             isSubstitutable="false">
             <classMoniker
               Id="c719534d-7aac-4f28-89be-2dc36e6d824c"
-              LastKnownName="Game"
+              LastKnownName="Stage"
               LastKnownLocation="ClientRType.uml" />
           </generalization>
         </generalsInternal>
@@ -526,34 +570,34 @@
         isLeaf="false">
         <targetEnds>
           <association
-            Id="8d809e2e-142b-42a4-8604-ac896d019bdf"
+            Id="63dbd7e6-3510-4380-9694-707a12c5931f"
             isDerived="false"
             sourceEndRoleName="IGameWindow"
-            targetEndRoleName="Game"
+            targetEndRoleName="GameManager"
             isLeaf="false"
             isAbstract="false">
             <classMoniker
-              Id="c719534d-7aac-4f28-89be-2dc36e6d824c"
-              LastKnownName="Game"
+              Id="d93e8f15-2682-4a96-a6af-e7200253413f"
+              LastKnownName="GameManager"
               LastKnownLocation="ClientRType.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="bc9b7dd0-482e-4044-951c-2b6e784f7ee0"
+                  Id="3a410b7c-d387-4dec-ba2a-24dc139bc7a9"
                   name="IGameWindow"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
-                  aggregation="Shared"
+                  aggregation="None"
                   isComposite="false"
                   isNavigableOwned="false" />
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="df2f967c-32d3-42fe-829b-90091e0c041b"
-                  name="Game"
+                  Id="24a6f6b2-b4c6-40e1-b016-05460c1826ce"
+                  name="GameManager"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -612,7 +656,7 @@
     <packageHasNamedElement>
       <class
         Id="d8acc1e9-1758-4c2a-a856-6e4c36bbf860"
-        name="Window"
+        name="sfWindow"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -671,6 +715,48 @@
             aggregation="None"
             isComposite="false" />
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="bad5cf9f-0311-4757-accd-b4516bfff267"
+            name="getWindowHeight"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="bf5bb28e-195d-4dc8-9e46-19afc7ab571e"
+            name="getWindowWidth"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="ac1271bc-5e6e-4a54-a744-435bca630fc5"
+            name="onActivated"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="38924802-4497-499d-99d7-f71d6910eee1"
+            name="onDeactivated"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="ff27d955-fcc6-4d2e-a05e-41859847e16c"
+            name="setTitle"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -709,7 +795,7 @@
     <packageHasNamedElement>
       <Interface
         Id="c351bd7b-76ec-4a65-b33c-500579ac4723"
-        name="IMouseState"
+        name="IMouse"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
@@ -719,6 +805,2393 @@
         name="IKeyboardState"
         isAbstract="false"
         isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="77923a55-bcc3-4b99-a69d-da38ea3b0088"
+        name="IInput"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedOperations>
+          <operation
+            Id="d73286d0-be01-463b-a00a-42a1607f15c9"
+            name="getInput"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="49e37f50-761e-4c35-a0cc-16833b0d7d03"
+        name="Input"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="ea8b53f6-f168-454e-a647-2ad0419776d1">
+            <interfaceMoniker
+              Id="77923a55-bcc3-4b99-a69d-da38ea3b0088"
+              LastKnownName="IInput"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="09f14f55-00b6-4bea-9246-597a40fadb4a"
+            name="IController* control"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="b1f2e4be-07ca-40d6-8184-cf770f1f05f8"
+            name="IMouse* mouse"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="da605a18-9e2c-4266-82ba-02834e62e216"
+            name="getInput"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="ac2e5f77-3f18-4468-9304-9832bc3049f8"
+        name="IController"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="79e53d08-f736-44fc-ba83-48c0952add90"
+            isDerived="false"
+            sourceEndRoleName="IController"
+            targetEndRoleName="Input"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="49e37f50-761e-4c35-a0cc-16833b0d7d03"
+              LastKnownName="Input"
+              LastKnownLocation="ClientRType.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="79919883-e9df-4990-b6e3-3f092a6506ee"
+                  name="IController"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="37c003e9-9f5c-4e23-b55a-defea55ecf1d"
+                  name="Input"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="5301ee54-5e96-45cb-892f-9bfddbdd5d90"
+        name="IMouse"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="ae0a481d-615d-40ea-b95a-a5b0fe78b176"
+            isDerived="false"
+            sourceEndRoleName="IMouse"
+            targetEndRoleName="Input"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="49e37f50-761e-4c35-a0cc-16833b0d7d03"
+              LastKnownName="Input"
+              LastKnownLocation="ClientRType.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a79b2263-d561-4533-9b73-01949bd018e8"
+                  name="IMouse"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="382c44b6-7052-412d-b642-f96e432fdd61"
+                  name="Input"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="186691f8-fae7-49e2-a400-8d8b90d27a83"
+        name="sfGamePad"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="d7e227a5-c572-4586-9c6a-9750d5076f25">
+            <interfaceMoniker
+              Id="ac2e5f77-3f18-4468-9304-9832bc3049f8"
+              LastKnownName="IController"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="00875258-e678-4057-9304-32dec4e460dd">
+            <interfaceMoniker
+              Id="1ac07c6e-6307-4b42-aa00-f009ad21c960"
+              LastKnownName="IInput"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="9532441c-bfee-4aa9-9eab-3dba7bf03d0c"
+            name="Window&amp;"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="88105ac7-7518-4aef-ab48-004d1cc94091"
+            name="isPressed"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="93f6ff47-60ac-4ff1-9d15-900d484e9d24"
+                  name="GameKey"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="07b492c9-1517-415b-ab88-7f7e7f5856c5"
+            name="getLastInput"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="99d01dd8-5968-4b63-b54f-5578a6ede10a"
+                  name="GameInputType"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f4dfaedd-3be0-4497-9241-9ac75d2120c0"
+            name="Bind"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9a293747-f80b-4c5a-9626-62c05203be97"
+                  name="GameInputKey"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="c4b531b0-5a4b-4e82-94e9-fcbecae6cb44"
+        name="sfKeyboard"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="8405ee0a-4214-409a-91b1-589f0531176f">
+            <interfaceMoniker
+              Id="ac2e5f77-3f18-4468-9304-9832bc3049f8"
+              LastKnownName="IController"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="d90f7d7f-706e-401c-88ac-64857b112c87">
+            <interfaceMoniker
+              Id="1ac07c6e-6307-4b42-aa00-f009ad21c960"
+              LastKnownName="IInput"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="4102bda5-18e6-45cc-978e-fad8693b0666"
+            name="Window&amp;"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="aaea231c-5a9a-449d-8ad3-7a7335bb8b69"
+            name="isPressed"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="302de9fb-1539-4836-a92a-67680e74deb7"
+                  name="GameKey"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0b9319e7-3312-4e86-a0ec-40ddc1275c38"
+            name="getLastInput"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a3dc2c20-dfc5-4775-bfcd-c541ea6c09c5"
+                  name="GameInputType"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="d6778b19-6950-4c41-b691-e05ab59ac3a7"
+            name="Bind"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="81b9992b-917c-4628-b833-dbf1f7ef7c26"
+                  name="GameInputKey"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="c06ed3d6-d861-4ca6-98ab-1624a2c6e472"
+        name="sfMouse"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="22bb094b-dc3c-4e8a-a6f8-87dfef0574c3">
+            <interfaceMoniker
+              Id="5301ee54-5e96-45cb-892f-9bfddbdd5d90"
+              LastKnownName="IMouse"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="9b066384-523f-4199-a84b-ce099f242e3e">
+            <interfaceMoniker
+              Id="1ac07c6e-6307-4b42-aa00-f009ad21c960"
+              LastKnownName="IInput"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="87cb177f-e548-4ee7-8df9-fe83fbe30660"
+            name="Window&amp;"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="6510029a-2e2d-4276-b130-9b3a38d71e61"
+            name="isPressed"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="32b26130-ac0f-4b86-9262-938eb19ed584"
+                  name="GameKey"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="db117206-0bd6-47f8-a28c-041c2e5e47e3"
+            name="getLastInput"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b50b32a4-ba55-4368-a87c-e5f2e4f4ff83"
+                  name="GameInputType"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a1bcc6a5-5b04-4489-acdb-1f2f0ce337ef"
+            name="Bind"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="57f61e33-c666-4053-8b3e-0d62475b7a17"
+                  name="GameInputKey"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="0821e25d-05c7-4a56-a924-939765c738a0"
+        name="IRenderer"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedOperations>
+          <operation
+            Id="3345fa13-a80b-4283-b79a-234e4d0be005"
+            name="draw"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="850aa22d-3d76-4e69-a138-f9cf9d4606f0"
+        name="INetworkManager"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="20f06d28-4cbd-4723-bcce-627617de3276"
+            isDerived="false"
+            sourceEndRoleName="INetworkManager"
+            targetEndRoleName="GameManager"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="d93e8f15-2682-4a96-a6af-e7200253413f"
+              LastKnownName="GameManager"
+              LastKnownLocation="ClientRType.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2392e87c-42c7-4082-a282-73b225f3d327"
+                  name="INetworkManager"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d19c1ac5-5e9c-4a69-aae3-50891caa05d2"
+                  name="GameManager"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedOperations>
+          <operation
+            Id="41736910-ea88-40ec-8002-9972a3886adc"
+            name="accept"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="84888077-054f-41e3-a6ad-aebc215eb0ab"
+            name="run"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="f7fd25e6-4256-4b4a-b7af-3ba137a2a83a"
+        name="NetworkManager"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="6c529ebf-adfc-4be4-9c96-c1e73d14ff5e">
+            <interfaceMoniker
+              Id="850aa22d-3d76-4e69-a138-f9cf9d4606f0"
+              LastKnownName="INetworkManager"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="a43f0658-de2d-4645-9419-98da0140ef26"
+            name="asio::io_service ios;"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="4d757907-c1ca-49e0-af1e-09f14b559206"
+            name="asio::socket socket;"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="3729c244-fd71-4300-898a-9ba57f91ed62"
+            name="EndPoint ep;"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="48b692e7-6c6c-4e72-b7a2-87199ba231ed"
+            name="asio::ip::tcp::acceptor accept;"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="d11684ae-154a-49ef-b0ff-df9da80ad28d"
+            name="IProtocole p"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="a6ee0a9e-4507-4429-9b15-6e35e1cb2143"
+            name="run"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="8726e43b-c93c-4326-81e7-8ceb479e0019"
+            name="accept"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="9572146a-afc4-4223-8d2f-429b5a5c2f90"
+        name="IPackman"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="32341125-3857-4061-b7ee-7f02a1ef8954"
+            isDerived="false"
+            sourceEndRoleName="IPackman"
+            targetEndRoleName="NetworkManager"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="f7fd25e6-4256-4b4a-b7af-3ba137a2a83a"
+              LastKnownName="NetworkManager"
+              LastKnownLocation="ClientRType.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0ea17552-56a8-43b4-a929-2a00383713b9"
+                  name="IPackman"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="34bf9d13-a638-4b7c-8784-dd94f3aab388"
+                  name="NetworkManager"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedOperations>
+          <operation
+            Id="f8d234b2-579f-4ab0-bbe0-1fb4b665775e"
+            name="pack"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="49e8d4ca-eedc-49cf-9dbf-7c56df798260"
+                  name="Datas"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="77a28c36-0cd4-48e0-8280-61d3438240fa"
+            name="unpack"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2829a9a8-d1b6-4808-9101-6d16e2b0a5d1"
+                  name="Package"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="aeeb9423-9c9c-45ae-9fd8-03cec3f3087d"
+        name="Packman"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="f372b545-c299-4420-a57c-d3e5118b54ab">
+            <interfaceMoniker
+              Id="9572146a-afc4-4223-8d2f-429b5a5c2f90"
+              LastKnownName="IPackman"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <targetEnds>
+          <association
+            Id="76740027-1189-4343-8840-1c79e3ec3cc5"
+            isDerived="false"
+            sourceEndRoleName="Packman"
+            targetEndRoleName="NetworkManager"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="f7fd25e6-4256-4b4a-b7af-3ba137a2a83a"
+              LastKnownName="NetworkManager"
+              LastKnownLocation="ClientRType.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="40aa7b81-5fac-4c68-a4a3-90e9b8990237"
+                  name="Packman"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="75caa1e5-9526-4b02-b00e-49fbae1c8da7"
+                  name="NetworkManager"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedOperationsInternal>
+          <operation
+            Id="07f2ce8d-05f9-4189-b71a-54582116c7f0"
+            name="pack"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fa022057-2d68-416a-b18a-7636b5311303"
+                  name="IRequest"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="13f16746-9221-48e3-aef3-6f8a54622f0e"
+            name="unpack"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d7045b75-2215-4a1b-98f1-1564de50736f"
+        name="CommunicationService"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="a98db4f6-06ae-456c-9105-b1d26c2b21ab">
+            <interfaceMoniker
+              Id="5a8bc350-920a-4d2a-9191-1892b7653790"
+              LastKnownName="IService"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="cff43c19-add6-4f5b-b1da-3af421f09667"
+            name="configure"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fab34ec9-dcef-481c-81ea-66807e31cac3"
+                  name="eServiceFlag flag"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="2f145921-4e32-4539-a59d-9f1441afa8cb"
+            name="sendData"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="99fe3d5a-6148-459f-88fb-2c0cb1cb88a4"
+            name="recvData"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="5a8bc350-920a-4d2a-9191-1892b7653790"
+        name="IService"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="655f9d64-5125-4e67-8789-c5804953c8a8"
+            isDerived="false"
+            sourceEndRoleName="IServer"
+            targetEndRoleName="NetworkManager"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="f7fd25e6-4256-4b4a-b7af-3ba137a2a83a"
+              LastKnownName="NetworkManager"
+              LastKnownLocation="ClientRType.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4e03a35d-07f6-4d04-b276-417d34d3fccf"
+                  name="IServer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="daf72102-976e-44a1-b7be-bff82bf7b72b"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="f3446a02-fba5-468e-83f2-030649af0045"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="91c0d6bb-9c8d-41ca-b6f6-178ae395706a"
+                  name="NetworkManager"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedOperations>
+          <operation
+            Id="fcf09a5e-2ea7-41e4-a038-1e79442bc0ae"
+            name="configure"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="98200f45-6630-4cc0-b3f6-671142974b67"
+                  name="eServiceFlag flag"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="3702b8e4-23e4-488d-9d4c-0c4b2426bfd7"
+            name="sendData"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="d118b579-e377-48e3-bb17-5212f0e2b3af"
+            name="recvData"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ae963953-af80-47ee-8e38-c1fe08c9be82"
+        name="Renderer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="59b3464f-8703-4055-aef8-37397fb7ef38">
+            <interfaceMoniker
+              Id="0821e25d-05c7-4a56-a924-939765c738a0"
+              LastKnownName="IRenderer"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="dbfb5e74-5756-4c6b-a426-5e64f12dd94e"
+            name="std::list&lt;GameComponent&gt;&amp; GC"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="d631a33f-8548-4129-8244-1fed26b2ca49"
+            name="IGameWindow*&amp; window"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="4e26dd2e-66de-4fbb-9375-2596b44d9e7e"
+            name="draw"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="6b134ac0-be5e-46b1-81dd-3a9ef26260a9"
+        name="Sprite"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="b79743cb-082b-4d2c-9229-6d985b6573e7"
+            isDerived="false"
+            sourceEndRoleName="Sprite"
+            targetEndRoleName="UpdatableGameComponent"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="db67bbd6-c43e-428b-925d-ae766de0ab61"
+              LastKnownName="UpdatableGameComponent"
+              LastKnownLocation="ClientRType.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="df856e09-02b1-47a6-acd8-954463a6a32e"
+                  name="Sprite"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="539b3968-f419-4e69-994b-e1aefea2ef3a"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="056ec5b0-9e16-414f-a2a2-cd4f0109dd62"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3e260d1b-b3d1-4e57-8a76-48e243f12b37"
+                  name="UpdatableGameComponent"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="2327529b-2234-4487-b29c-32bdc66846ea"
+            isDerived="false"
+            sourceEndRoleName="Sprite"
+            targetEndRoleName="DrawableGameComponent"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="00dbf285-d126-4c0f-9705-0ee49abda06b"
+              LastKnownName="DrawableGameComponent"
+              LastKnownLocation="ClientRType.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="34317e1f-dcf1-4c2c-8b41-a93fa6abb497"
+                  name="Sprite"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="945cbd9f-99ca-407b-8e15-b8c22cc2aa69"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="48b8da80-e6ef-4f99-961c-4a2bce280d4e"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f1f2cb9d-a861-4c09-9908-851df1349cb4"
+                  name="DrawableGameComponent"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="48287679-607d-47bb-80ae-6b793c48f367"
+            name="sfTexture _text"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="00dbf285-d126-4c0f-9705-0ee49abda06b"
+        name="DrawableGameComponent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="f8b834b5-f030-4286-b0d7-78d0d11d38b0">
+            <interfaceMoniker
+              Id="9886a386-31e1-4454-a2ce-5401cc2f2738"
+              LastKnownName="IDrawable"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="a7ad6dd5-bdf9-4439-933e-1760a1170879">
+            <interfaceMoniker
+              Id="831496a0-85a2-4108-b26e-dbeace6d2ed5"
+              LastKnownName="IComponent"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="cd213d0f-46cf-49da-8180-eb11a7b7cd7b"
+            name="draw"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="29a9daff-79c8-43aa-ae21-b2d30364425b"
+            name="initialize"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="c99b8c07-1950-4468-a042-bd97be3952d4"
+        name="GameComponent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="5aa84f3d-bbd1-4c56-8930-8a5b69f69e77"
+            isDerived="false"
+            sourceEndRoleName="GameComponent"
+            targetEndRoleName="UpdatableGameComponent"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="db67bbd6-c43e-428b-925d-ae766de0ab61"
+              LastKnownName="UpdatableGameComponent"
+              LastKnownLocation="ClientRType.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="78f743b8-0d62-480e-a5a1-b11914ca11d4"
+                  name="GameComponent"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="bcff3f05-887b-43b4-9d1b-8ab2196f247c"
+                  name="UpdatableGameComponent"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="b9483967-a65c-4762-8619-6b89defbd563"
+            isDerived="false"
+            sourceEndRoleName="GameComponent"
+            targetEndRoleName="DrawableGameComponent"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="00dbf285-d126-4c0f-9705-0ee49abda06b"
+              LastKnownName="DrawableGameComponent"
+              LastKnownLocation="ClientRType.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="477866c5-2a62-4ee1-9e07-6d04f796ea6c"
+                  name="GameComponent"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="af41c377-5b2a-4eee-bfdd-d3a70f03eb8e"
+                  name="DrawableGameComponent"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="1ac07c6e-6307-4b42-aa00-f009ad21c960"
+        name="IInput"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="1b398263-e85a-48bd-98db-850c28bcb496"
+            isDerived="false"
+            sourceEndRoleName="IInput"
+            targetEndRoleName="GameManager"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="d93e8f15-2682-4a96-a6af-e7200253413f"
+              LastKnownName="GameManager"
+              LastKnownLocation="ClientRType.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9bf414a4-f800-4701-8a66-c3edfb3cd692"
+                  name="IInput"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7edc189c-2a4d-4fa4-b69c-16d29d8f06c4"
+                  name="GameManager"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedOperations>
+          <operation
+            Id="02786715-530a-4e5e-b5cf-54841621ae69"
+            name="isPressed"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fdc27ba3-5b5f-4b5d-adeb-29c66c31f869"
+                  name="GameInputKey"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="dee78664-95bc-43a5-a828-ec7842fa8ad8"
+            name="getLastInput"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9a6c7cf6-b26d-48b1-8313-e79a958a95b8"
+                  name="GameInputKey"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="afd1ee69-ccd4-421d-9a64-9c03cfc2b947"
+            name="Bind"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d50a1f3f-cc1b-42ae-8b13-52c25572448a"
+                  name="GameInputKey"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="55f367ff-beba-4f1f-a0ac-c485b00060cc"
+        name="I"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="22d657ee-cd0d-4602-b625-2c455b3de665"
+        name="GameInputType"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="542a9d8e-d84a-4c2f-9ab9-0777253060b2"
+            name="Literal1" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="4d72aa4b-4322-4ac2-a9df-92d7803f0d56"
+        name="GameInputKey"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="e99fdd75-f564-4cfa-9cd8-f71573e08910"
+            name="FireKey" />
+          <enumerationLiteral
+            Id="2ab1098e-4115-4fcf-a2a9-25c21bd8946b"
+            name="UpKey" />
+          <enumerationLiteral
+            Id="b695735d-6aad-440c-af9d-9b0d0d1dcb9f"
+            name="DownKey" />
+          <enumerationLiteral
+            Id="129332a9-4961-436b-9d07-4efe605404e2"
+            name="LeftKey" />
+          <enumerationLiteral
+            Id="99d14357-bf91-4f97-bd32-6bfc73f2c3c5"
+            name="RightKey" />
+          <enumerationLiteral
+            Id="4b4160ec-d173-4079-acd8-9c73c2fd519e"
+            name="UltimateKey" />
+          <enumerationLiteral
+            Id="769a2ebe-9a76-44df-8cf4-3bf10a88e67c"
+            name="AuxDownKey" />
+          <enumerationLiteral
+            Id="2ddc06a8-6832-4857-8d09-24f3d0977ef8"
+            name="AuxLeftKey" />
+          <enumerationLiteral
+            Id="d04e2ac6-1cfd-4830-93e0-5dfdf81f338a"
+            name="AuxRightKey" />
+          <enumerationLiteral
+            Id="c02db28d-7bf6-4e0a-9238-f9138a2684f4"
+            name="AuxUpKey" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8d98d797-2736-4295-9417-75e11d5f2fa9"
+        name="GameService"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="015ac1ae-2576-43c5-a13f-e20786d7dbe1">
+            <interfaceMoniker
+              Id="5a8bc350-920a-4d2a-9191-1892b7653790"
+              LastKnownName="IService"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="ed3f372e-c567-4617-a4d6-5d7bad8bdaaa"
+            name="configure"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="04698bcf-6323-4ab6-ae52-648ffe9ac195"
+                  name="eServiceFlag flag"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="e4e2725d-06be-4f91-86b7-a0946f956b55"
+            name="sendData"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="bc4e232e-5214-45b0-822d-ba29d4939cc0"
+            name="recvData"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="d625d051-8acd-412d-9db5-01998a9a1563"
+        name="IRequest"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="cc7bd7e7-7f01-4a23-9cbc-6df4d5b6cb1c"
+            isDerived="false"
+            sourceEndRoleName="IRequest"
+            targetEndRoleName="Packman"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="aeeb9423-9c9c-45ae-9fd8-03cec3f3087d"
+              LastKnownName="Packman"
+              LastKnownLocation="ClientRType.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="27f588af-5ca1-40e9-82e4-cd1764ce7c85"
+                  name="IRequest"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2fb16910-6296-4d5b-b896-ca7e5015ecfe"
+                  name="Packman"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedOperations>
+          <operation
+            Id="ac6bb583-ebc4-4ad6-932f-248185caaa39"
+            name="toString"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="15350785-25e2-45aa-adb8-3b90cade5eb1"
+            name="Managerequest"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="2efbb2c1-7ee0-48db-a13d-47b03c3e5342"
+        name="ConnectRequest"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="59bdb4d2-9a80-4706-9637-f21a3f7d44c8">
+            <interfaceMoniker
+              Id="d625d051-8acd-412d-9db5-01998a9a1563"
+              LastKnownName="IRequest"
+              LastKnownLocation="ClientRType.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="66849ea0-dca4-4bd5-9f4e-8b1ceb63a950"
+            name="toString"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="06955139-1fbb-49f5-9805-f557a5b699f0"
+            name="Managerequest"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <interaction
+        Id="a8ca073f-190e-414b-8ee9-3d4914df9b46"
+        name="GameClient"
+        collapseFragmentsFlag="false"
+        isActiveClass="false"
+        isAbstract="false"
+        isLeaf="false"
+        isReentrant="false">
+        <fragments>
+          <behaviorExecutionSpecification
+            Id="5b2bfd2b-20e5-4dd0-9e7f-953957d10e5d"
+            name="BehaviorExecutionSpecification1">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="a9d11df8-3203-4706-af9e-1bc6dbdf698c"
+                LastKnownName="Client"
+                LastKnownLocation="ClientRType.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="b646aa3e-d17c-4bcf-bc4b-c8b14f6ac5af"
+                LastKnownName="ExecutionOccurrenceSpecification2"
+                LastKnownLocation="ClientRType.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="2e2e9633-54cd-438e-88da-ea0a1d765ff0"
+                LastKnownName="ExecutionOccurrenceSpecification1"
+                LastKnownLocation="ClientRType.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="a7b15c2d-cbd8-4822-ace0-5239697ae637"
+                LastKnownName="MessageOccurrenceSpecification2"
+                LastKnownLocation="ClientRType.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="7a15f58c-fe74-4ba7-ba30-ffc976667f60"
+                LastKnownName="MessageOccurrenceSpecification4"
+                LastKnownLocation="ClientRType.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="2e2e9633-54cd-438e-88da-ea0a1d765ff0"
+            name="ExecutionOccurrenceSpecification1">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="2b470f9b-60ac-460e-89b5-1261b1af7c86"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="ClientRType.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="a9d11df8-3203-4706-af9e-1bc6dbdf698c"
+                LastKnownName="Client"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="1c5cb312-94cc-4028-ba8a-f1be1971d0aa"
+            name="MessageOccurrenceSpecification1">
+            <covered>
+              <lifelineMoniker
+                Id="29fc3889-db40-4ce5-a089-121ec64b4dad"
+                LastKnownName="Player"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="a7b15c2d-cbd8-4822-ace0-5239697ae637"
+            name="MessageOccurrenceSpecification2">
+            <covered>
+              <lifelineMoniker
+                Id="a9d11df8-3203-4706-af9e-1bc6dbdf698c"
+                LastKnownName="Client"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="c284ca86-e096-4b2a-9918-0afa33454da9"
+            name="BehaviorExecutionSpecification2">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="fa241657-d2ee-4666-a1cd-cdc8ddfb3af3"
+                LastKnownName="Server"
+                LastKnownLocation="ClientRType.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="8d9fda16-732d-4900-acf0-e2582d33b63b"
+                LastKnownName="ExecutionOccurrenceSpecification4"
+                LastKnownLocation="ClientRType.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="24c2eb1f-d5b4-4162-99f2-78e8e495d891"
+                LastKnownName="ExecutionOccurrenceSpecification3"
+                LastKnownLocation="ClientRType.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="578bad4f-45a7-4f1f-9994-529257e994dc"
+                LastKnownName="MessageOccurrenceSpecification5"
+                LastKnownLocation="ClientRType.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="4edc0890-cf30-421f-9bd7-bcafc02df16a"
+                LastKnownName="MessageOccurrenceSpecification7"
+                LastKnownLocation="ClientRType.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="24c2eb1f-d5b4-4162-99f2-78e8e495d891"
+            name="ExecutionOccurrenceSpecification3">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="f145dbaf-649d-4be2-9275-a57e8b503f86"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="ClientRType.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="fa241657-d2ee-4666-a1cd-cdc8ddfb3af3"
+                LastKnownName="Server"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="7a15f58c-fe74-4ba7-ba30-ffc976667f60"
+            name="MessageOccurrenceSpecification4">
+            <covered>
+              <lifelineMoniker
+                Id="a9d11df8-3203-4706-af9e-1bc6dbdf698c"
+                LastKnownName="Client"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="578bad4f-45a7-4f1f-9994-529257e994dc"
+            name="MessageOccurrenceSpecification5">
+            <covered>
+              <lifelineMoniker
+                Id="fa241657-d2ee-4666-a1cd-cdc8ddfb3af3"
+                LastKnownName="Server"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="4eed07c7-5b21-4237-b2eb-cb595add8ce5"
+            name="BehaviorExecutionSpecification3">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="1b365f7f-6eb4-4bab-8819-dd3d232dc82e"
+                LastKnownName="ServerProcess"
+                LastKnownLocation="ClientRType.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="9447aca1-c8cf-4fbb-be18-97419e29898f"
+                LastKnownName="ExecutionOccurrenceSpecification6"
+                LastKnownLocation="ClientRType.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="b560bee5-e9fc-4110-a1ae-cac6fc6d8367"
+                LastKnownName="ExecutionOccurrenceSpecification5"
+                LastKnownLocation="ClientRType.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="5893e8ee-90f4-4e08-a651-fc5987c15f6b"
+                LastKnownName="MessageOccurrenceSpecification8"
+                LastKnownLocation="ClientRType.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="5742ad37-f330-45ed-abb7-d5654291dc1b"
+                LastKnownName="MessageOccurrenceSpecification9"
+                LastKnownLocation="ClientRType.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="b560bee5-e9fc-4110-a1ae-cac6fc6d8367"
+            name="ExecutionOccurrenceSpecification5">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="5cbc8865-c88a-4755-a209-f37924eb1665"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="ClientRType.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="1b365f7f-6eb4-4bab-8819-dd3d232dc82e"
+                LastKnownName="ServerProcess"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="b646aa3e-d17c-4bcf-bc4b-c8b14f6ac5af"
+            name="ExecutionOccurrenceSpecification2">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="f5b47993-0192-481b-8557-8492cc11efd9"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="ClientRType.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="a9d11df8-3203-4706-af9e-1bc6dbdf698c"
+                LastKnownName="Client"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="5893e8ee-90f4-4e08-a651-fc5987c15f6b"
+            name="MessageOccurrenceSpecification8">
+            <covered>
+              <lifelineMoniker
+                Id="1b365f7f-6eb4-4bab-8819-dd3d232dc82e"
+                LastKnownName="ServerProcess"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="4edc0890-cf30-421f-9bd7-bcafc02df16a"
+            name="MessageOccurrenceSpecification7">
+            <covered>
+              <lifelineMoniker
+                Id="fa241657-d2ee-4666-a1cd-cdc8ddfb3af3"
+                LastKnownName="Server"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="8d9fda16-732d-4900-acf0-e2582d33b63b"
+            name="ExecutionOccurrenceSpecification4">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="294bac5b-7a20-4a08-9e67-d1481b17e38b"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="ClientRType.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="fa241657-d2ee-4666-a1cd-cdc8ddfb3af3"
+                LastKnownName="Server"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="3b03dce7-c18e-4562-9658-634759143405"
+            name="BehaviorExecutionSpecification4">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="fa241657-d2ee-4666-a1cd-cdc8ddfb3af3"
+                LastKnownName="Server"
+                LastKnownLocation="ClientRType.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="2b306851-20af-4d1e-8982-ad5ffaa55b04"
+                LastKnownName="ExecutionOccurrenceSpecification8"
+                LastKnownLocation="ClientRType.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="14cc6165-7f71-4523-a08f-f42af6676c72"
+                LastKnownName="ExecutionOccurrenceSpecification7"
+                LastKnownLocation="ClientRType.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="3b8dd672-bfdc-455d-9bb6-15aab804e682"
+                LastKnownName="MessageOccurrenceSpecification10"
+                LastKnownLocation="ClientRType.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="458e5360-411b-44d1-ab0c-a04304495ba2"
+                LastKnownName="MessageOccurrenceSpecification11"
+                LastKnownLocation="ClientRType.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="14cc6165-7f71-4523-a08f-f42af6676c72"
+            name="ExecutionOccurrenceSpecification7">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="ca8185ba-2af6-4ac8-9fa2-853ff3a2a2a1"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="ClientRType.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="fa241657-d2ee-4666-a1cd-cdc8ddfb3af3"
+                LastKnownName="Server"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="5742ad37-f330-45ed-abb7-d5654291dc1b"
+            name="MessageOccurrenceSpecification9">
+            <covered>
+              <lifelineMoniker
+                Id="1b365f7f-6eb4-4bab-8819-dd3d232dc82e"
+                LastKnownName="ServerProcess"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="3b8dd672-bfdc-455d-9bb6-15aab804e682"
+            name="MessageOccurrenceSpecification10">
+            <covered>
+              <lifelineMoniker
+                Id="fa241657-d2ee-4666-a1cd-cdc8ddfb3af3"
+                LastKnownName="Server"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="9447aca1-c8cf-4fbb-be18-97419e29898f"
+            name="ExecutionOccurrenceSpecification6">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="4f97a4c0-9b03-4482-b00f-27c13654b28c"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="ClientRType.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="1b365f7f-6eb4-4bab-8819-dd3d232dc82e"
+                LastKnownName="ServerProcess"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="13605902-44f3-475e-b7d1-4ac5ddc541ed"
+            name="BehaviorExecutionSpecification5">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="a9d11df8-3203-4706-af9e-1bc6dbdf698c"
+                LastKnownName="Client"
+                LastKnownLocation="ClientRType.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="6afd36e5-60f9-4e19-a6a9-bbf0329020ea"
+                LastKnownName="ExecutionOccurrenceSpecification10"
+                LastKnownLocation="ClientRType.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="f4e5936f-2254-4c80-a075-22f4ad2bcc05"
+                LastKnownName="ExecutionOccurrenceSpecification9"
+                LastKnownLocation="ClientRType.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="25962e59-1d3b-4b02-8c82-041d7c4c13c9"
+                LastKnownName="MessageOccurrenceSpecification12"
+                LastKnownLocation="ClientRType.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="9c5e7697-b1ef-4d1e-a40d-04a3ab518c10"
+                LastKnownName="MessageOccurrenceSpecification13"
+                LastKnownLocation="ClientRType.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="f4e5936f-2254-4c80-a075-22f4ad2bcc05"
+            name="ExecutionOccurrenceSpecification9">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="d8781316-b6f8-4628-be37-b4ab4f9531f3"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="ClientRType.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="a9d11df8-3203-4706-af9e-1bc6dbdf698c"
+                LastKnownName="Client"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="458e5360-411b-44d1-ab0c-a04304495ba2"
+            name="MessageOccurrenceSpecification11">
+            <covered>
+              <lifelineMoniker
+                Id="fa241657-d2ee-4666-a1cd-cdc8ddfb3af3"
+                LastKnownName="Server"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="25962e59-1d3b-4b02-8c82-041d7c4c13c9"
+            name="MessageOccurrenceSpecification12">
+            <covered>
+              <lifelineMoniker
+                Id="a9d11df8-3203-4706-af9e-1bc6dbdf698c"
+                LastKnownName="Client"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="e60d47b4-114e-435a-a0cc-b35fe012aad3"
+            name="BehaviorExecutionSpecification6">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="29fc3889-db40-4ce5-a089-121ec64b4dad"
+                LastKnownName="Player"
+                LastKnownLocation="ClientRType.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="39b4614c-38e6-4ae9-bee9-fa1d04ec418b"
+                LastKnownName="ExecutionOccurrenceSpecification12"
+                LastKnownLocation="ClientRType.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="aba1037e-cb53-411c-8f5a-54cb15a9b8f1"
+                LastKnownName="ExecutionOccurrenceSpecification11"
+                LastKnownLocation="ClientRType.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="b9586cb7-6d0f-4ac5-b6d4-fdac7920ed39"
+                LastKnownName="MessageOccurrenceSpecification14"
+                LastKnownLocation="ClientRType.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="2b306851-20af-4d1e-8982-ad5ffaa55b04"
+            name="ExecutionOccurrenceSpecification8">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="6c2dcc98-8377-4ed7-9b4e-7020879891c2"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="ClientRType.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="fa241657-d2ee-4666-a1cd-cdc8ddfb3af3"
+                LastKnownName="Server"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="aba1037e-cb53-411c-8f5a-54cb15a9b8f1"
+            name="ExecutionOccurrenceSpecification11">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="bfd311c0-bf45-4bcb-a26e-30fc513869de"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="ClientRType.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="29fc3889-db40-4ce5-a089-121ec64b4dad"
+                LastKnownName="Player"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="9c5e7697-b1ef-4d1e-a40d-04a3ab518c10"
+            name="MessageOccurrenceSpecification13">
+            <covered>
+              <lifelineMoniker
+                Id="a9d11df8-3203-4706-af9e-1bc6dbdf698c"
+                LastKnownName="Client"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="b9586cb7-6d0f-4ac5-b6d4-fdac7920ed39"
+            name="MessageOccurrenceSpecification14">
+            <covered>
+              <lifelineMoniker
+                Id="29fc3889-db40-4ce5-a089-121ec64b4dad"
+                LastKnownName="Player"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="6afd36e5-60f9-4e19-a6a9-bbf0329020ea"
+            name="ExecutionOccurrenceSpecification10">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="59d8d15c-86fa-4172-81d8-1dd5af9b1847"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="ClientRType.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="a9d11df8-3203-4706-af9e-1bc6dbdf698c"
+                LastKnownName="Client"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="39b4614c-38e6-4ae9-bee9-fa1d04ec418b"
+            name="ExecutionOccurrenceSpecification12">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="2eba8233-c717-465f-a952-458eeaa24758"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="ClientRType.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="29fc3889-db40-4ce5-a089-121ec64b4dad"
+                LastKnownName="Player"
+                LastKnownLocation="ClientRType.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline
+            Id="29fc3889-db40-4ce5-a089-121ec64b4dad"
+            name="Player"
+            isActor="false"
+            lifelineDisplayName="Player">
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="1c5cb312-94cc-4028-ba8a-f1be1971d0aa"
+                LastKnownName="MessageOccurrenceSpecification1"
+                LastKnownLocation="ClientRType.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="aba1037e-cb53-411c-8f5a-54cb15a9b8f1"
+                LastKnownName="ExecutionOccurrenceSpecification11"
+                LastKnownLocation="ClientRType.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="39b4614c-38e6-4ae9-bee9-fa1d04ec418b"
+                LastKnownName="ExecutionOccurrenceSpecification12"
+                LastKnownLocation="ClientRType.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="a9d11df8-3203-4706-af9e-1bc6dbdf698c"
+            name="Client"
+            isActor="false"
+            lifelineDisplayName="Client">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="2e2e9633-54cd-438e-88da-ea0a1d765ff0"
+                LastKnownName="ExecutionOccurrenceSpecification1"
+                LastKnownLocation="ClientRType.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="b646aa3e-d17c-4bcf-bc4b-c8b14f6ac5af"
+                LastKnownName="ExecutionOccurrenceSpecification2"
+                LastKnownLocation="ClientRType.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="f4e5936f-2254-4c80-a075-22f4ad2bcc05"
+                LastKnownName="ExecutionOccurrenceSpecification9"
+                LastKnownLocation="ClientRType.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="6afd36e5-60f9-4e19-a6a9-bbf0329020ea"
+                LastKnownName="ExecutionOccurrenceSpecification10"
+                LastKnownLocation="ClientRType.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="fa241657-d2ee-4666-a1cd-cdc8ddfb3af3"
+            name="Server"
+            isActor="false"
+            lifelineDisplayName="Server">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="24c2eb1f-d5b4-4162-99f2-78e8e495d891"
+                LastKnownName="ExecutionOccurrenceSpecification3"
+                LastKnownLocation="ClientRType.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="8d9fda16-732d-4900-acf0-e2582d33b63b"
+                LastKnownName="ExecutionOccurrenceSpecification4"
+                LastKnownLocation="ClientRType.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="14cc6165-7f71-4523-a08f-f42af6676c72"
+                LastKnownName="ExecutionOccurrenceSpecification7"
+                LastKnownLocation="ClientRType.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="2b306851-20af-4d1e-8982-ad5ffaa55b04"
+                LastKnownName="ExecutionOccurrenceSpecification8"
+                LastKnownLocation="ClientRType.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="1b365f7f-6eb4-4bab-8819-dd3d232dc82e"
+            name="ServerProcess"
+            isActor="false"
+            lifelineDisplayName="ServerProcess">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="b560bee5-e9fc-4110-a1ae-cac6fc6d8367"
+                LastKnownName="ExecutionOccurrenceSpecification5"
+                LastKnownLocation="ClientRType.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="9447aca1-c8cf-4fbb-be18-97419e29898f"
+                LastKnownName="ExecutionOccurrenceSpecification6"
+                LastKnownLocation="ClientRType.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message
+            Id="0860baf8-cf1a-41af-bc75-9de62eab8236"
+            name="InGame Input"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="1c5cb312-94cc-4028-ba8a-f1be1971d0aa"
+                LastKnownName="MessageOccurrenceSpecification1"
+                LastKnownLocation="ClientRType.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="a7b15c2d-cbd8-4822-ace0-5239697ae637"
+                LastKnownName="MessageOccurrenceSpecification2"
+                LastKnownLocation="ClientRType.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="f9a04eaf-fb0d-4ab3-99e2-8df2262c8389"
+            name="SendAction"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="7a15f58c-fe74-4ba7-ba30-ffc976667f60"
+                LastKnownName="MessageOccurrenceSpecification4"
+                LastKnownLocation="ClientRType.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="578bad4f-45a7-4f1f-9994-529257e994dc"
+                LastKnownName="MessageOccurrenceSpecification5"
+                LastKnownLocation="ClientRType.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="5bfc3f19-8451-411a-808e-2c4b2efcafc5"
+            name="CheckValidity"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="4edc0890-cf30-421f-9bd7-bcafc02df16a"
+                LastKnownName="MessageOccurrenceSpecification7"
+                LastKnownLocation="ClientRType.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="5893e8ee-90f4-4e08-a651-fc5987c15f6b"
+                LastKnownName="MessageOccurrenceSpecification8"
+                LastKnownLocation="ClientRType.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="b2e0e14d-3e9c-47fb-ae84-04e820d6061e"
+            name="ComputeNewLap"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="5742ad37-f330-45ed-abb7-d5654291dc1b"
+                LastKnownName="MessageOccurrenceSpecification9"
+                LastKnownLocation="ClientRType.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="3b8dd672-bfdc-455d-9bb6-15aab804e682"
+                LastKnownName="MessageOccurrenceSpecification10"
+                LastKnownLocation="ClientRType.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="66ee3919-b96a-4285-8332-e4ec60f185d7"
+            name="[All] SendComputedResult"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="458e5360-411b-44d1-ab0c-a04304495ba2"
+                LastKnownName="MessageOccurrenceSpecification11"
+                LastKnownLocation="ClientRType.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="25962e59-1d3b-4b02-8c82-041d7c4c13c9"
+                LastKnownName="MessageOccurrenceSpecification12"
+                LastKnownLocation="ClientRType.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="3f68cfd4-54e6-430b-9de1-b33390fab9c4"
+            name="AdjustMonitor"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="9c5e7697-b1ef-4d1e-a40d-04a3ab518c10"
+                LastKnownName="MessageOccurrenceSpecification13"
+                LastKnownLocation="ClientRType.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="b9586cb7-6d0f-4ac5-b6d4-fdac7920ed39"
+                LastKnownName="MessageOccurrenceSpecification14"
+                LastKnownLocation="ClientRType.uml" />
+            </receiveEvent>
+          </message>
+        </messages>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="2b470f9b-60ac-460e-89b5-1261b1af7c86"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="f5b47993-0192-481b-8557-8492cc11efd9"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="f145dbaf-649d-4be2-9275-a57e8b503f86"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="294bac5b-7a20-4a08-9e67-d1481b17e38b"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="5cbc8865-c88a-4755-a209-f37924eb1665"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="4f97a4c0-9b03-4482-b00f-27c13654b28c"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="ca8185ba-2af6-4ac8-9fa2-853ff3a2a2a1"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="6c2dcc98-8377-4ed7-9b4e-7020879891c2"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="d8781316-b6f8-4628-be37-b4ab4f9531f3"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="59d8d15c-86fa-4172-81d8-1dd5af9b1847"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="bfd311c0-bf45-4bcb-a26e-30fc513869de"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="2eba8233-c717-465f-a952-458eeaa24758"
+        name="ExecutionEvent" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="b9ecbb39-30bd-418f-87b5-a35f531d5d04" name="Server" linkedPackageId="c6453290-f4a9-4a71-9882-909b8c613e5c" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="b9ecbb39-30bd-418f-87b5-a35f531d5d04" name="Server" linkedPackageId="c6453290-f4a9-4a71-9882-909b8c613e5c" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <ownedCommentsInternal>
     <comment Id="74d87838-67f9-47a5-ba9a-f3c956d9b3ff">
       <elementDefinition Id="f1a0ee1c-c5bb-4612-a92a-6b5010447d0f" />
@@ -1025,8 +1025,8 @@
             <elementDefinition Id="892ed9f8-9260-4f58-9a68-1427fef89e24" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="1a5891a3-d8a4-4fd5-870f-aeafc095f9a3" name="IEvent*" direction="In" isUnique="false">
-                  <elementDefinition Id="305eb50b-3d76-42ea-ae91-7f82dcf51dbb" />
+                <parameter Id="0cd21f1d-9ddc-4cf7-b86a-c68440b594ac" name="Event" direction="In" isUnique="false">
+                  <elementDefinition Id="048e132b-2e81-44d3-8050-bce90e0e1a77" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -1177,6 +1177,12 @@
           </operation>
           <operation Id="e7c11e3c-f55b-47e4-a2f0-6e2362eb778a" name="onLevelEnd" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="153f534e-3718-4de2-af52-2e910ea60ff8" />
+          </operation>
+          <operation Id="0485c6ae-d22b-49a3-a76c-fb0b1a4dfeee" name="onScreenIn" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="2d6da3bd-f8c0-4b8c-ab54-4dd1bd5902db" />
+          </operation>
+          <operation Id="660b2f14-1da0-4e7f-8467-f65da185ca5e" name="onScreenOut" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="24c73d1c-ce60-4e0b-afbb-f61f2cd98d14" />
           </operation>
         </ownedOperations>
       </Interface>

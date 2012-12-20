@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="b06264ad-bb45-461c-808b-3e6b68ae476c"
   name="R-Type" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -2119,8 +2119,8 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="305eb50b-3d76-42ea-ae91-7f82dcf51dbb"
-                  name="IEvent*"
+                  Id="048e132b-2e81-44d3-8050-bce90e0e1a77"
+                  name="Event"
                   direction="In"
                   isUnique="false" />
               </operationHasOwnedParameters>
@@ -2452,6 +2452,22 @@
           <operation
             Id="153f534e-3718-4de2-af52-2e910ea60ff8"
             name="onLevelEnd"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="2d6da3bd-f8c0-4b8c-ab54-4dd1bd5902db"
+            name="onScreenIn"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="24c73d1c-ce60-4e0b-afbb-f61f2cd98d14"
+            name="onScreenOut"
             isLeaf="false"
             isStatic="false"
             isAbstract="true"

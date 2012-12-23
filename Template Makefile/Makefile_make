@@ -1,0 +1,28 @@
+##
+## Makefile
+##
+## Autor : Mister Jignles
+##
+
+MAKE	=	make --no-print-directory
+
+#		Appeler tous les makefiles dans les sections suivantes
+all:
+		$(MAKE) all -C ./path_du_makefile
+
+debug:
+		$(MAKE) debug -C ./path_du_makefile
+
+release:
+		$(MAKE) release -C ./path_du_makefile
+
+clean:
+		$(MAKE) clean -C ./path_du_makefile
+
+fclean:
+		$(MAKE) fclean -C ./path_du_makefile
+
+re:		fclean all
+
+.PHONY:		all debug release clean fclean re
+

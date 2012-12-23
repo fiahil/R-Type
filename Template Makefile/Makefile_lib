@@ -1,0 +1,67 @@
+##
+## Makefile
+##
+## Autor : Mister Jingles
+##
+
+#		Donner un nom à l'executable
+NAME	=	libnom_de_lalib.so
+
+#		Indiquer les fixhiers à compiler
+SRC	=	$(DIRSRC)fichier.cpp	\
+		$(DIRSRC)autre.cpp
+
+OBJ	=	$(patsubst $(DIRSRC)%.cpp, $(DIROBJ)%.o, $(SRC))
+
+INC	=	-I $(DIRINC)
+
+#		Indiquer les dossiers de compilation
+DIRBIN	=	bin/
+
+DIRSRC	=	src/
+
+DIRINC	=	inc/
+
+DIROBJ	=	src/obj/
+
+GXX	=	g++
+
+RM	=	rm -rf
+
+CXXFLAGS=	-Wall -Wextra -Werror -fPIC -O3 $(INC)
+
+#		Indiquer les librairies à linker
+LDFLAGS	=	-lnom_de_la_lib
+
+all:		$(NAME)
+
+debug:		CXXFLAGS += -DDEBUG -g3
+debug:		$(NAME)
+
+release:	$(NAME)
+		strip -s $(DIRBIN)$(NAME)
+
+dir_bin:
+		@mkdir -p $(DIRBIN)
+
+dir_obj:
+		@mkdir -p $(DIROBJ)
+
+$(OBJ):		$(DIROBJ)%.o : $(DIRSRC)%.cpp
+		$(GXX) -o $@ -c $< $(CXXFLAGS)
+
+$(NAME):	dir_bin dir_obj $(OBJ)
+		$(GXX) -shared -o $(DIRBIN)$(NAME) $(OBJ) $(LDFLAGS)
+
+clean:
+		@$(RM) $(DIROBJ)$(OBJ)
+		@$(RM) $(DIROBJ)
+		@$(RM) *~
+
+fclean:		clean
+		@$(RM) $(DIRBIN)$(NAME)
+		@$(RM) $(DIRBIN)
+
+re:		fclean all
+
+.PHONY:		all debug release clean fclean re

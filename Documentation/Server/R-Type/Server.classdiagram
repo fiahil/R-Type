@@ -5,10 +5,6 @@
       <elementDefinition Id="f1a0ee1c-c5bb-4612-a92a-6b5010447d0f" />
       <body>La methode update du quadtree va chercher tous les montres, va créer les entitées (les balles) et les fait bouger.</body>
     </comment>
-    <comment Id="2ff3bcba-31e4-48a4-985e-ffb252ecb98b">
-      <elementDefinition Id="8df68312-c970-45d5-a832-6b475f6868a2" />
-      <body>TODO : Voir quadtree sur wikipedia</body>
-    </comment>
   </ownedCommentsInternal>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>

@@ -395,7 +395,7 @@
         <classShapeMoniker Id="0d5d3a8e-64ff-4cf7-bbe8-b4c6bef1bf8e" />
       </nodes>
     </associationConnector>
-    <commentShape Id="58f4e3ec-b32f-4b50-936e-43e76982ac68" absoluteBounds="11.5, 17.625, 1.875, 1" customColor="251, 247, 200">
+    <commentShape Id="58f4e3ec-b32f-4b50-936e-43e76982ac68" absoluteBounds="11.5, 17.625, 1.875, 0.625" customColor="251, 247, 200">
       <commentMoniker Id="74d87838-67f9-47a5-ba9a-f3c956d9b3ff" />
       <relativeChildShapes />
     </commentShape>
@@ -414,10 +414,6 @@
         <classShapeMoniker Id="0d5d3a8e-64ff-4cf7-bbe8-b4c6bef1bf8e" />
       </nodes>
     </associationConnector>
-    <commentShape Id="57186818-7960-4c18-86e6-823321f9c59a" absoluteBounds="11.5, 18.25, 1.875, 0.375" customColor="251, 247, 200">
-      <commentMoniker Id="2ff3bcba-31e4-48a4-985e-ffb252ecb98b" />
-      <relativeChildShapes />
-    </commentShape>
     <interfaceShape Id="88977b80-e547-4cd8-ad3c-baebbbd7a178" absoluteBounds="2.625, 13.875, 1.5, 1.0624999801317854" hideQualifiedName="false" increaseHeight="0" customColor="207, 223, 191">
       <interfaceMoniker Id="c6f7c4be-7a3f-4129-9495-3669cff727c6" LastKnownName="IDrawable" />
       <nestedChildShapes>

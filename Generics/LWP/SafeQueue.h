@@ -1,8 +1,9 @@
+
 #pragma once
 
 #include <queue>
-#include "LWPIMutex.h"
-#include "LWPScopedLock.h"
+#include "IMutex.h"
+#include "ScopedLock.h"
 
 namespace LWP
 {

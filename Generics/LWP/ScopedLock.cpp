@@ -1,5 +1,5 @@
 
-#include "LWPScopedLock.h"
+#include "ScopedLock.h"
 
 namespace LWP
 {

@@ -1,6 +1,7 @@
 
 #pragma once
-#include "LWPIMutex.h"
+
+#include "IMutex.h"
 
 namespace LWP
 {

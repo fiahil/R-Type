@@ -1,5 +1,6 @@
 
 #pragma once
+#include <queue>
 
 namespace PC
 {
@@ -37,6 +38,18 @@ namespace PC
 		size_t		size() const
 		{
 			return this->container_.size();
+		}
+	};
+
+	template <class T>
+	class basicQueue : public std::queue<T>
+	{
+	public:
+		T		pop()
+		{
+			T data = this->front();
+			std::queue<T>::pop();
+			return data;
 		}
 	};
 }

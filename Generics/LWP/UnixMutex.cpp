@@ -6,6 +6,7 @@ namespace	LWP
 
 Mutex::Mutex(void)
 {
+  pthread_mutex_init(&this->m_, 0);
 }
 
 Mutex::~Mutex(void)

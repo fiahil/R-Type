@@ -40,12 +40,12 @@ public:
 
   virtual void launch(void)
   {
-    this->_id = pthread_create(&this->_thread, 0, &Thread::threadProc, 0);
+    this->id_ = pthread_create(&this->t_, 0, &Thread::threadProc, 0);
   }
 
   virtual void join(void)
   {
-    pthread_join(this->_thread, 0);
+    pthread_join(this->t_, 0);
   }
 };
 

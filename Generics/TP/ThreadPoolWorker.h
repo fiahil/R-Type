@@ -9,11 +9,15 @@
 	#include "UnixThread.h"
 #endif
 
+#define THREADPOOLWORKER__H
+
 #include "IPoolSystemElement.h"
 #include "ThreadPoolQueue.h"
+#include "ThreadPool.h"
 
 namespace TP
 {
+
 	template <class Task>
 	class ThreadPoolWorker :
 		public PC::Consumer<Task, PC::Storage<Task, ThreadPoolQueue<Task>, LWP::CondVar> >,
@@ -24,11 +28,11 @@ namespace TP
 
 	public:
 		ThreadPoolWorker()
-			: PC::Consumer<Task, PC::Storage<Task, ThreadPoolQueue<Task>, LWP::CondVar> >(*ThreadPool<Task>::getInstance(0)),
+			: PC::Consumer<Task, PC::Storage<Task, ThreadPoolQueue<Task>, LWP::CondVar> >(ThreadPool<Task>::getInstance(0)),
 			used_(new bool(false))
 		{
 			this->thread_ = new LWP::Thread<ThreadPoolWorker>(*this);
-			this->thread_->launch();
+//			this->thread_->launch();
 		}
 
 		bool	isUsed() const

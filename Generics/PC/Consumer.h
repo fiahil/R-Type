@@ -10,22 +10,22 @@ namespace PC
 	template <class Packet, class Storage>
 	class Consumer
 	{
-		Storage&	storage_;
+		Storage*	storage_;
 
 	public:
-		Consumer(Storage& s)
+		Consumer(Storage* s)
 			: storage_(s)
 		{
 		}
 
 		Packet*	consume()
 		{
-			return this->storage_.grab();
+			return this->storage_->grab();
 		}
 
 		void	wait()
 		{
-			this->storage_.wait();
+			this->storage_->wait();
 		}
 	};
 }

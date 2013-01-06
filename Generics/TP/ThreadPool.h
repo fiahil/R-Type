@@ -13,11 +13,11 @@
 
 #include "PoolSystem.h"
 
-#include "ThreadPoolWorker.h"
 #include "ThreadPoolQueue.h"
 
 namespace TP
 {
+  template<typename T> class ThreadPoolWorker;
 	/*
 	** Task MUST implement :
 	** - void operator()(void)
@@ -57,3 +57,7 @@ namespace TP
 	template <class Task>
 	ThreadPool<Task>* ThreadPool<Task>::Instance = 0;
 }
+
+#ifndef THREADPOOLWORKER__H
+# include "ThreadPoolWorker.h"
+#endif

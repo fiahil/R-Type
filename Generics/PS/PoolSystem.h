@@ -26,7 +26,9 @@ namespace PS
 		{
 			for (size_t i = 0; i < this->chunkSize_; ++i)
 			{
-				this->elements_.push_back(new T());
+				T* pse = new T();
+				pse->initialize();
+				this->elements_.push_back(pse);
 			}
 		}
 

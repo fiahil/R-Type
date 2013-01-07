@@ -21,10 +21,6 @@ namespace PC
 		Container	container_;
 
 	public:
-		Storage()
-		{
-		}
-
 		void		store(Packet* p)
 		{
 			this->container_.push(p);

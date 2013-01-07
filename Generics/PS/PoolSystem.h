@@ -20,7 +20,6 @@ namespace PS
 		PoolSystem(size_t chunkSize)
 			: chunkSize_(chunkSize)
 		{
-			allocate();
 		}
 
 		void	allocate()

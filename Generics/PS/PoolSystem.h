@@ -73,7 +73,7 @@ namespace PS
 					}) == this->elements_.size());
 		}
 
-		size_t	size() const
+		size_t	poolSize() const
 		{
 			return this->elements_.size();
 		}

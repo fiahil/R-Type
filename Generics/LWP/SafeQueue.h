@@ -10,17 +10,17 @@ namespace LWP
 	template<class T>
 	class SafeQueue
 	{
-	private :
+	private:
 		std::queue<T>	queue_;
 		IMutex*			mutex_;
 
-	public :
+	public:
 		SafeQueue(IMutex* mutex)
 			: mutex_(mutex)
 		{
 		}
 
-		~SafeQueue()
+		virtual ~SafeQueue()
 		{
 			delete this->mutex_;
 		}

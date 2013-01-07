@@ -11,10 +11,10 @@ namespace PC
 	template <class Packet, class Storage>
 	class Producer
 	{
-		Storage&	storage_;
+		Storage*	storage_;
 
 	public:
-		Producer(Storage& s)
+		Producer(Storage* s)
 			: storage_(s)
 		{
 		}
@@ -23,15 +23,15 @@ namespace PC
 		{
 			for (size_t i = 0; i < n; i++)
 			{
-				this->storage_.store(new Packet());
+				this->storage_->store(new Packet());
 			}
-			this->storage_.notify();
+			this->storage_->notify();
 		}
 
 		void	produce(Packet* packet)
 		{
-			this->storage_.store(packet);
-			this->storage_.notify();
+			this->storage_->store(packet);
+			this->storage_->notify();
 		}
 	};
 }

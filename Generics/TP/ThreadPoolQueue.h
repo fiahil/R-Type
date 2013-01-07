@@ -11,27 +11,19 @@
 namespace TP
 {
 	template <class T>
-	class ThreadPoolQueue
+	class ThreadPoolQueue : public LWP::SafeQueue<T*>
 	{
-		IMutex*				mutex_;
-		LWP::SafeQueue<T*>	queue_;
-
 	public:
 		ThreadPoolQueue()
-			: mutex_(new LWP::Mutex()), queue_(mutex_)
+			: LWP::SafeQueue<T*>(new LWP::Mutex())
 		{
-		}
-
-		~ThreadPoolQueue()
-		{
-			delete this->mutex_;
 		}
 
 		T*	pop()
 		{
 			T*	data = 0;
 
-			this->queue_.tryPop(data);
+			this->tryPop(data);
 			return data;
 		}
 	};

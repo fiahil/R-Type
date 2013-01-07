@@ -17,10 +17,12 @@ CondVar::~CondVar(void)
 
 void	CondVar::wait(void)
 {
+	EnterCriticalSection(&this->cs_);
 	SleepConditionVariableCS(&this->cv_, &this->cs_, INFINITE);
+	LeaveCriticalSection(&this->cs_);
 }
 
-void	CondVar::signal(void)
+void	CondVar::notify(void)
 {
 	WakeConditionVariable(&this->cv_);
 }

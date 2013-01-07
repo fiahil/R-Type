@@ -10,29 +10,30 @@
 #endif
 
 #include "IPoolSystemElement.h"
+#include "ThreadPoolQueue.h"
 
 namespace TP
 {
 	template <class Task>
 	class ThreadPoolWorker :
-		public PC::Consumer<Task, PC::Storage<Task, ThreadPoolQueue<Task> > >,
+		public PC::Consumer<Task, PC::Storage<Task, ThreadPoolQueue<Task>, LWP::CondVar> >,
 		public PS::IPoolSystemElement
 	{
+		volatile bool*	used_;
 		LWP::IThread*	thread_;
-		bool			used_;
 
 	public:
 		ThreadPoolWorker()
-			: PC::Consumer<Task, PC::Storage<Task, ThreadPoolQueue<Task> > >(*ThreadPool<Task>::getInstance(0)),
-			thread_(new Thread(this)),
-			used_(false)
+			: PC::Consumer<Task, PC::Storage<Task, ThreadPoolQueue<Task>, LWP::CondVar> >(*ThreadPool<Task>::getInstance(0)),
+			used_(new bool(false))
 		{
+			this->thread_ = new LWP::Thread<ThreadPoolWorker>(*this);
 			this->thread_->launch();
 		}
 
 		bool	isUsed() const
 		{
-			return this->used_;
+			return *this->used_;
 		}
 
 		void	operator()()
@@ -41,12 +42,12 @@ namespace TP
 			{
 				this->wait();
 				
-				Task*	t = this->consume();
-				if (t != 0)
+				Task* t = 0;
+				while ((t = this->consume()) != 0)
 				{
-					this->used_ = true;
+					*this->used_ = true;
 					(*t)();
-					this->used_ = false;
+					*this->used_ = false;
 				}
 			}
 		}

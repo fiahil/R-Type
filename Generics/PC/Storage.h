@@ -18,9 +18,16 @@ namespace PC
 	template <class Packet, class Container, class Notifier>
 	class Storage : public Notifier
 	{
+	protected:
 		Container	container_;
 
 	public:
+		Storage()
+			: Notifier(),
+			container_()
+		{
+		}
+	
 		void		store(Packet* p)
 		{
 			this->container_.push(p);
@@ -31,7 +38,7 @@ namespace PC
 			return this->container_.pop();
 		}
 
-		size_t		size() const
+		size_t		storageSize() const
 		{
 			return this->container_.size();
 		}

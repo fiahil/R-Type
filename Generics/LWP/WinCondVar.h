@@ -18,7 +18,7 @@ public:
 	CondVar(void);
 	virtual ~CondVar(void);
 	virtual void	wait(void);
-	virtual void	signal(void);
+	virtual void	notify(void);
 	virtual void	broadcast(void);
 };
 

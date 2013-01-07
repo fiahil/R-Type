@@ -24,18 +24,17 @@ namespace TP
 	*/
 	template <class Task>
 	class ThreadPool :
-		public PC::Storage<Task, ThreadPoolQueue<Task>, LWP::ICondVar>,
-		public PC::Producer<Task, PC::Storage<Task, ThreadPoolQueue<Task>, LWP::ICondVar> >,
-		public PS::PoolSystem<ThreadPoolWorker<Task> >
+		virtual public PC::Storage<Task, ThreadPoolQueue<Task>, LWP::CondVar>,
+		virtual public PC::Producer<Task, PC::Storage<Task, ThreadPoolQueue<Task>, LWP::CondVar> >,
+		virtual public PS::PoolSystem<ThreadPoolWorker<Task> >
 	{
 		static ThreadPool<Task>*	Instance;
 
 		ThreadPool(size_t n)
-			: PC::Storage<Task, ThreadPoolQueue<Task>, LWP::ICondVar>(),
-			PC::Producer<Task, PC::Storage<Task, ThreadPoolQueue<Task>, LWP::ICondVar> >(this),
+			: PC::Storage<Task, ThreadPoolQueue<Task>, LWP::CondVar>(),
+			PC::Producer<Task, PC::Storage<Task, ThreadPoolQueue<Task>, LWP::CondVar> >(this),
 			PS::PoolSystem<ThreadPoolWorker<Task> >(n)
 		{
-			ThreadPool<Task>::Instance = this;
 		}
 
 	public:
@@ -51,7 +50,7 @@ namespace TP
 
 		void	push(Task* t)
 		{
-			PC::Producer<Task, PC::Storage<Task, ThreadPoolQueue<Task>, LWP::ICondVar> >::produce(t);
+			this->produce(t);
 		}
 	};
 

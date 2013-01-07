@@ -32,7 +32,11 @@ namespace TP
 			used_(new bool(false))
 		{
 			this->thread_ = new LWP::Thread<ThreadPoolWorker>(*this);
-//			this->thread_->launch();
+		}
+
+		void	initialize()
+		{
+			this->thread_->launch();
 		}
 
 		bool	isUsed() const

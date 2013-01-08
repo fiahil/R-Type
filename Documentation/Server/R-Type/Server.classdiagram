@@ -10,6 +10,24 @@
     <logicalClassDesignerModelHasTypes>
       <Interface Id="dfe784a8-0d60-4559-b1e5-0b9c8f8ed685" name="ISocket" isAbstract="false" isLeaf="false">
         <elementDefinition Id="aee05202-b0f6-402c-959e-3c83e75e1254" />
+        <targetEnds>
+          <association Id="5e36b4ef-470a-4def-9a01-e56bcd275c70" isDerived="false" sourceEndRoleName="ISocket" targetEndRoleName="IClientService" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="0c9f7710-6d4a-457c-a978-c67ba759a5c1" LastKnownName="IClientService" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a9516d99-86bf-46fb-a981-3d4f1fa23189" name="ISocket" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4df89867-f5e1-44c8-977e-e93faf3df656" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b50b0d63-ac29-4fcd-bb50-9dd2ff8c649a" name="IClientService" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="a5e1013f-d87a-486b-b24b-255865ff1510" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f538f828-bdbb-4791-9a17-1cf6615dfea0" />
+          </association>
+        </targetEnds>
         <ownedOperations>
           <operation Id="967be856-3cdb-4d18-b441-dc3142bc402b" name="Connect" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="7db76531-e988-406b-90f0-035a9215f2c6" />
@@ -287,7 +305,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <Interface Id="0c9f7710-6d4a-457c-a978-c67ba759a5c1" name="IService" isAbstract="false" isLeaf="false">
+      <Interface Id="0c9f7710-6d4a-457c-a978-c67ba759a5c1" name="IClientService" isAbstract="false" isLeaf="false">
         <elementDefinition Id="0ab7a2e9-beab-41d4-b87d-992fff3b77ed" />
         <targetEnds>
           <association Id="7ecce4ac-120f-4632-aad7-0c0c6d930346" isDerived="false" sourceEndRoleName="IService" targetEndRoleName="IPlayer" isLeaf="false" isAbstract="false">
@@ -332,7 +350,7 @@
         <elementDefinition Id="8b9c0899-7a8e-4c53-afd0-e30b19ebbc02" />
         <suppliersInternal>
           <interfaceRealization Id="a765b576-26ac-40b1-ac04-77d49e0eb5b6">
-            <interfaceMoniker Id="0c9f7710-6d4a-457c-a978-c67ba759a5c1" LastKnownName="IService" />
+            <interfaceMoniker Id="0c9f7710-6d4a-457c-a978-c67ba759a5c1" LastKnownName="IClientService" />
             <elementDefinition Id="ce2841a8-1ac3-4fbb-b7bd-24a15be30010" />
           </interfaceRealization>
         </suppliersInternal>
@@ -361,7 +379,7 @@
         <elementDefinition Id="81a13498-4383-4e34-a148-3c5fe0c68529" />
         <suppliersInternal>
           <interfaceRealization Id="875421d8-c1a3-4537-871d-53cf57e0566b">
-            <interfaceMoniker Id="0c9f7710-6d4a-457c-a978-c67ba759a5c1" LastKnownName="IService" />
+            <interfaceMoniker Id="0c9f7710-6d4a-457c-a978-c67ba759a5c1" LastKnownName="IClientService" />
             <elementDefinition Id="cb23dbef-a3f8-4360-8c72-b302d12f7999" />
           </interfaceRealization>
         </suppliersInternal>
@@ -390,7 +408,7 @@
         <elementDefinition Id="291f179c-6206-476f-92f7-d421d6f278f3" />
         <targetEnds>
           <association Id="bc98eac3-b32a-401f-a5ae-481c4c4a0dfb" isDerived="false" sourceEndRoleName="IRequest" targetEndRoleName="IService" isLeaf="false" isAbstract="false">
-            <interfaceMoniker Id="0c9f7710-6d4a-457c-a978-c67ba759a5c1" LastKnownName="IService" />
+            <interfaceMoniker Id="0c9f7710-6d4a-457c-a978-c67ba759a5c1" LastKnownName="IClientService" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="671a1c7c-f4c0-4648-be7e-cdf442db41f1" name="IRequest" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -467,7 +485,7 @@
             <elementDefinition Id="24fc41fb-3473-4b37-bc5c-4950cc499770" />
           </association>
           <association Id="c5b63bf5-52e8-4623-84a4-b75b61516e9c" isDerived="false" sourceEndRoleName="EndPoint" targetEndRoleName="IService" isLeaf="false" isAbstract="false">
-            <interfaceMoniker Id="0c9f7710-6d4a-457c-a978-c67ba759a5c1" LastKnownName="IService" />
+            <interfaceMoniker Id="0c9f7710-6d4a-457c-a978-c67ba759a5c1" LastKnownName="IClientService" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="39e3e905-5e71-4dc9-b27c-318b566adec5" name="EndPoint" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">

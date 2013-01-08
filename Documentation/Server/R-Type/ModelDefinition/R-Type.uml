@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="b06264ad-bb45-461c-808b-3e6b68ae476c"
   name="R-Type" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -30,6 +30,47 @@
         name="ISocket"
         isAbstract="false"
         isLeaf="false">
+        <targetEnds>
+          <association
+            Id="f538f828-bdbb-4791-9a17-1cf6615dfea0"
+            isDerived="false"
+            sourceEndRoleName="ISocket"
+            targetEndRoleName="IClientService"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="0ab7a2e9-beab-41d4-b87d-992fff3b77ed"
+              LastKnownName="IClientService"
+              LastKnownLocation="R-Type.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4df89867-f5e1-44c8-977e-e93faf3df656"
+                  name="ISocket"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a5e1013f-d87a-486b-b24b-255865ff1510"
+                  name="IClientService"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedOperations>
           <operation
             Id="7db76531-e988-406b-90f0-035a9215f2c6"
@@ -518,7 +559,7 @@
     <packageHasNamedElement>
       <Interface
         Id="0ab7a2e9-beab-41d4-b87d-992fff3b77ed"
-        name="IService"
+        name="IClientService"
         isAbstract="false"
         isLeaf="false">
         <targetEnds>
@@ -612,7 +653,7 @@
             Id="ce2841a8-1ac3-4fbb-b7bd-24a15be30010">
             <interfaceMoniker
               Id="0ab7a2e9-beab-41d4-b87d-992fff3b77ed"
-              LastKnownName="IService"
+              LastKnownName="IClientService"
               LastKnownLocation="R-Type.uml" />
           </interfaceRealization>
         </suppliersInternal>
@@ -666,7 +707,7 @@
             Id="cb23dbef-a3f8-4360-8c72-b302d12f7999">
             <interfaceMoniker
               Id="0ab7a2e9-beab-41d4-b87d-992fff3b77ed"
-              LastKnownName="IService"
+              LastKnownName="IClientService"
               LastKnownLocation="R-Type.uml" />
           </interfaceRealization>
         </suppliersInternal>
@@ -724,7 +765,7 @@
             isAbstract="false">
             <interfaceMoniker
               Id="0ab7a2e9-beab-41d4-b87d-992fff3b77ed"
-              LastKnownName="IService"
+              LastKnownName="IClientService"
               LastKnownLocation="R-Type.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -903,7 +944,7 @@
             isAbstract="false">
             <interfaceMoniker
               Id="0ab7a2e9-beab-41d4-b87d-992fff3b77ed"
-              LastKnownName="IService"
+              LastKnownName="IClientService"
               LastKnownLocation="R-Type.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -2711,7 +2752,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </coveredLifelines>
             <finish>
@@ -2751,7 +2792,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -2771,7 +2812,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2879,7 +2920,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2937,7 +2978,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -3295,7 +3336,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </coveredLifelines>
             <finish>
@@ -3335,7 +3376,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -3345,7 +3386,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -3433,7 +3474,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -3533,7 +3574,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -3721,7 +3762,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </coveredLifelines>
             <finish>
@@ -3761,7 +3802,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -3781,7 +3822,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -3925,7 +3966,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -3989,7 +4030,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -4231,7 +4272,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </coveredLifelines>
             <finish>
@@ -4271,7 +4312,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -4291,7 +4332,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -4389,7 +4430,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -4467,7 +4508,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -4779,7 +4820,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </coveredLifelines>
             <finish>
@@ -4819,7 +4860,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -4839,7 +4880,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -4937,7 +4978,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -4997,7 +5038,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -5335,7 +5376,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </coveredLifelines>
             <finish>
@@ -5375,7 +5416,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -5385,7 +5426,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -5465,7 +5506,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -5483,7 +5524,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -5737,7 +5778,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </coveredLifelines>
             <finish>
@@ -5777,7 +5818,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -5797,7 +5838,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -5871,7 +5912,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -5937,7 +5978,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -6301,7 +6342,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </coveredLifelines>
             <finish>
@@ -6341,7 +6382,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -6361,7 +6402,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -6469,7 +6510,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -6505,7 +6546,7 @@
             <covered>
               <lifelineMoniker
                 Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -6732,9 +6773,9 @@
           </lifeline>
           <lifeline
             Id="c6835582-f0a9-442c-bf7e-2bb439a99c73"
-            name="IService"
+            name="IClientService"
             isActor="false"
-            lifelineDisplayName="IService">
+            lifelineDisplayName="IClientService">
             <represents>
               <propertyMoniker
                 Id="46effd42-372b-415c-9952-029aff12e2f5"
@@ -8163,7 +8204,7 @@
             <type_NamedElement>
               <interfaceMoniker
                 Id="0ab7a2e9-beab-41d4-b87d-992fff3b77ed"
-                LastKnownName="IService"
+                LastKnownName="IClientService"
                 LastKnownLocation="R-Type.uml" />
             </type_NamedElement>
           </property>

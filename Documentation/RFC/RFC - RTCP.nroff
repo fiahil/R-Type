@@ -85,37 +85,37 @@ Table of Contents
      4.1 Scheme of an UDP packet  . . . . . . . . . . . . . . . . . .  6
        4.1.2 Structure of an UDP packet . . . . . . . . . . . . . . .  6
      4.2 TCP packet format  . . . . . . . . . . . . . . . . . . . . .  6
-       4.2.1 Scheme of a TCP packet . . . . . . . . . . . . . . . . .  6
+       4.2.1 Scheme of a TCP packet . . . . . . . . . . . . . . . . .  7
        4.2.2 Structure of a TCP packet  . . . . . . . . . . . . . . .  7
    5. Errors identifiers  . . . . . . . . . . . . . . . . . . . . . .  7
      5.1 1xx : Success  . . . . . . . . . . . . . . . . . . . . . . .  7
      5.2 2xx : Client errors  . . . . . . . . . . . . . . . . . . . .  7
      5.3 3xx : Server errors  . . . . . . . . . . . . . . . . . . . .  7
-     5.4 4xx : Global errors  . . . . . . . . . . . . . . . . . . . .  7
-   6.  Commands . . . . . . . . . . . . . . . . . . . . . . . . . . .  7
-     6.1 Room definition  . . . . . . . . . . . . . . . . . . . . . .  7
+     5.4 4xx : Global errors  . . . . . . . . . . . . . . . . . . . .  8
+   6.  Commands . . . . . . . . . . . . . . . . . . . . . . . . . . .  8
+     6.1 Room definition  . . . . . . . . . . . . . . . . . . . . . .  8
      6.2 Commands from a client to a server . . . . . . . . . . . . .  8
        6.2.1 CONNECT  . . . . . . . . . . . . . . . . . . . . . . . .  8
        6.2.2 CREATE_ROOM  . . . . . . . . . . . . . . . . . . . . . .  8
-       6.2.3 LEAVE_ROOM . . . . . . . . . . . . . . . . . . . . . . .  8
+       6.2.3 LEAVE_ROOM . . . . . . . . . . . . . . . . . . . . . . .  9
        6.2.4 JOIN_ROOM  . . . . . . . . . . . . . . . . . . . . . . .  9
        6.2.5 INVITE_PLAYER  . . . . . . . . . . . . . . . . . . . . .  9
-       6.2.6 SET_GAME_PARAM . . . . . . . . . . . . . . . . . . . . .  9
+       6.2.6 SET_GAME_PARAM . . . . . . . . . . . . . . . . . . . . . 10
        6.2.7 LAUNCH_GAME  . . . . . . . . . . . . . . . . . . . . . . 10
        6.2.8 PING . . . . . . . . . . . . . . . . . . . . . . . . . . 10
-       6.2.9 READY  . . . . . . . . . . . . . . . . . . . . . . . . . 10
+       6.2.9 READY  . . . . . . . . . . . . . . . . . . . . . . . . . 11
      6.3 Commands from a server to a client . . . . . . . . . . . . . 11
        6.3.1 ANSWER_CREATE_ROOM . . . . . . . . . . . . . . . . . . . 11
        6.3.2 START_DATA_STREAM  . . . . . . . . . . . . . . . . . . . 11
        6.3.3 STREAM . . . . . . . . . . . . . . . . . . . . . . . . . 12
        6.3.4 STOP_DATA_STREAM . . . . . . . . . . . . . . . . . . . . 12
-       6.3.5 CLIENT_INVITED . . . . . . . . . . . . . . . . . . . . . 12
+       6.3.5 CLIENT_INVITED . . . . . . . . . . . . . . . . . . . . . 13
        6.3.6 ACK  . . . . . . . . . . . . . . . . . . . . . . . . . . 13
-       6.3.7 GAME_LAUNCHED  . . . . . . . . . . . . . . . . . . . . . 13
+       6.3.7 GAME_LAUNCHED  . . . . . . . . . . . . . . . . . . . . . 14
    7.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 14
      7.1  Normative References  . . . . . . . . . . . . . . . . . . . 14
      7.2  Informative References  . . . . . . . . . . . . . . . . . . 14
-   Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 14
+   Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 15
 .fi
 .in 3
 
@@ -254,6 +254,34 @@ An UDP packet is structured with 5 different fields :
 - Player's token is an identifying number which differs for each client, in order to distinguish all of them.
 .fi
 - Input Type / Output Type represents the type of the packet, sent for INPUT (client to server transmission), or OUTPUT (server to client transmission).
+
+	The different types for INPUT are the following :
+.fi
+-> Move
+.fi
+-> Fire
+.fi
+-> Esc
+.fi
+-> Skill
+.fi
+
+	The different types for OUTPUT are the following :
+.fi
+-> Monster_Spawn
+.fi
+-> Monster_BSpawn
+.fi
+-> Monster_Die
+.fi
+-> Monster_BDie
+.fi
+-> Monster_Fire
+.fi
+-> Monster_BFire
+.fi
+
+
 .fi
 - Game's clock contains the server game's clock, for the packet before being sent.
 This is used to synchronize players' clocks.

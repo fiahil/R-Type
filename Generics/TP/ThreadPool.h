@@ -25,8 +25,8 @@ namespace TP
 	template <class Task>
 	class ThreadPool :
 		virtual public PC::Storage<Task, ThreadPoolQueue<Task>, LWP::CondVar>,
-		virtual public PC::Producer<Task, PC::Storage<Task, ThreadPoolQueue<Task>, LWP::CondVar> >,
-		virtual public PS::PoolSystem<ThreadPoolWorker<Task> >
+		virtual private PC::Producer<Task, PC::Storage<Task, ThreadPoolQueue<Task>, LWP::CondVar> >,
+		virtual private PS::PoolSystem<ThreadPoolWorker<Task> >
 	{
 		static ThreadPool<Task>*	Instance;
 
@@ -52,6 +52,16 @@ namespace TP
 		{
 			this->produce(t);
 		}
+
+		operator PC::Storage<Task, ThreadPoolQueue<Task>, LWP::CondVar> ()
+		{
+			return this;
+		}
+
+		using PS::PoolSystem<ThreadPoolWorker<Task> >::poolSize;
+		using PS::PoolSystem<ThreadPoolWorker<Task> >::isSaturated;
+		using PS::PoolSystem<ThreadPoolWorker<Task> >::clean;
+		using PS::PoolSystem<ThreadPoolWorker<Task> >::allocate;
 	};
 
 	template <class Task>

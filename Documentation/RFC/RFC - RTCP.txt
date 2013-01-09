@@ -125,37 +125,37 @@ Table of Contents
      4.1 Scheme of an UDP packet  . . . . . . . . . . . . . . . . . .  6
        4.1.2 Structure of an UDP packet . . . . . . . . . . . . . . .  6
      4.2 TCP packet format  . . . . . . . . . . . . . . . . . . . . .  6
-       4.2.1 Scheme of a TCP packet . . . . . . . . . . . . . . . . .  6
+       4.2.1 Scheme of a TCP packet . . . . . . . . . . . . . . . . .  7
        4.2.2 Structure of a TCP packet  . . . . . . . . . . . . . . .  7
    5. Errors identifiers  . . . . . . . . . . . . . . . . . . . . . .  7
      5.1 1xx : Success  . . . . . . . . . . . . . . . . . . . . . . .  7
      5.2 2xx : Client errors  . . . . . . . . . . . . . . . . . . . .  7
      5.3 3xx : Server errors  . . . . . . . . . . . . . . . . . . . .  7
-     5.4 4xx : Global errors  . . . . . . . . . . . . . . . . . . . .  7
-   6.  Commands . . . . . . . . . . . . . . . . . . . . . . . . . . .  7
-     6.1 Room definition  . . . . . . . . . . . . . . . . . . . . . .  7
+     5.4 4xx : Global errors  . . . . . . . . . . . . . . . . . . . .  8
+   6.  Commands . . . . . . . . . . . . . . . . . . . . . . . . . . .  8
+     6.1 Room definition  . . . . . . . . . . . . . . . . . . . . . .  8
      6.2 Commands from a client to a server . . . . . . . . . . . . .  8
        6.2.1 CONNECT  . . . . . . . . . . . . . . . . . . . . . . . .  8
        6.2.2 CREATE_ROOM  . . . . . . . . . . . . . . . . . . . . . .  8
-       6.2.3 LEAVE_ROOM . . . . . . . . . . . . . . . . . . . . . . .  8
+       6.2.3 LEAVE_ROOM . . . . . . . . . . . . . . . . . . . . . . .  9
        6.2.4 JOIN_ROOM  . . . . . . . . . . . . . . . . . . . . . . .  9
        6.2.5 INVITE_PLAYER  . . . . . . . . . . . . . . . . . . . . .  9
-       6.2.6 SET_GAME_PARAM . . . . . . . . . . . . . . . . . . . . .  9
+       6.2.6 SET_GAME_PARAM . . . . . . . . . . . . . . . . . . . . . 10
        6.2.7 LAUNCH_GAME  . . . . . . . . . . . . . . . . . . . . . . 10
        6.2.8 PING . . . . . . . . . . . . . . . . . . . . . . . . . . 10
-       6.2.9 READY  . . . . . . . . . . . . . . . . . . . . . . . . . 10
+       6.2.9 READY  . . . . . . . . . . . . . . . . . . . . . . . . . 11
      6.3 Commands from a server to a client . . . . . . . . . . . . . 11
        6.3.1 ANSWER_CREATE_ROOM . . . . . . . . . . . . . . . . . . . 11
        6.3.2 START_DATA_STREAM  . . . . . . . . . . . . . . . . . . . 11
        6.3.3 STREAM . . . . . . . . . . . . . . . . . . . . . . . . . 12
        6.3.4 STOP_DATA_STREAM . . . . . . . . . . . . . . . . . . . . 12
-       6.3.5 CLIENT_INVITED . . . . . . . . . . . . . . . . . . . . . 12
+       6.3.5 CLIENT_INVITED . . . . . . . . . . . . . . . . . . . . . 13
        6.3.6 ACK  . . . . . . . . . . . . . . . . . . . . . . . . . . 13
-       6.3.7 GAME_LAUNCHED  . . . . . . . . . . . . . . . . . . . . . 13
+       6.3.7 GAME_LAUNCHED  . . . . . . . . . . . . . . . . . . . . . 14
    7.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 14
      7.1  Normative References  . . . . . . . . . . . . . . . . . . . 14
      7.2  Informative References  . . . . . . . . . . . . . . . . . . 14
-   Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 14
+   Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 15
 
 
 
@@ -307,6 +307,22 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
    - Input Type / Output Type represents the type of the packet, sent
    for INPUT (client to server transmission), or OUTPUT (server to
    client transmission).
+
+   	The different types for INPUT are the following :
+   -> Move
+   -> Fire
+   -> Esc
+   -> Skill
+
+   	The different types for OUTPUT are the following :
+   -> Monster_Spawn
+   -> Monster_BSpawn
+   -> Monster_Die
+   -> Monster_BDie
+   -> Monster_Fire
+   -> Monster_BFire
+
+
    - Game's clock contains the server game's clock, for the packet
    before being sent. This is used to synchronize players' clocks.
    - Value of Input/Output represents the data itself in the case of
@@ -314,6 +330,12 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
 
 
 4.2 TCP packet format
+ 
+
+
+Epitech                   Expires May 20, 2013                  [Page 6]
+
+RFC 42123            R-Type Communication Protocol     December 14, 2012
 
 
 4.2.1 Scheme of a TCP packet
@@ -328,14 +350,6 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
 
 
 
-
-
- 
-
-
-Epitech                   Expires May 20, 2013                  [Page 6]
-
-RFC 42123            R-Type Communication Protocol     December 14, 2012
 
 
 4.2.2 Structure of a TCP packet
@@ -372,6 +386,14 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
    - 306 : Transferred user not found.
 
 
+ 
+
+
+Epitech                   Expires May 20, 2013                  [Page 7]
+
+RFC 42123            R-Type Communication Protocol     December 14, 2012
+
+
 5.4 4xx : Global errors
 
    - 401 : Invalid request.
@@ -386,14 +408,6 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
 
    A room is a virtual space where clients can be together in groups
    from 1 to 4 in order to start a game.
- 
-
-
-Epitech                   Expires May 20, 2013                  [Page 7]
-
-RFC 42123            R-Type Communication Protocol     December 14, 2012
-
-
    By default when clients connect to the server, they arrive in a
    special room called "Hall", a kind of waiting-area.
    From there, each client can create a game, which means that they
@@ -428,6 +442,14 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
 
    Parameters : Nothing
 
+ 
+
+
+Epitech                   Expires May 20, 2013                  [Page 8]
+
+RFC 42123            R-Type Communication Protocol     December 14, 2012
+
+
    Description :
    This command is sent by a user that wants to create a room on the
    server. Notify that the client JOIN_ROOM automatically after this
@@ -442,13 +464,6 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
    LEAVE_ROOM = 1203
 
    Parameters : <RoomId>
- 
-
-
-Epitech                   Expires May 20, 2013                  [Page 8]
-
-RFC 42123            R-Type Communication Protocol     December 14, 2012
-
 
    Description:
    This command is used by a user who wants to leave a room he has
@@ -483,6 +498,14 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
 
    Parameters : <username>
 
+ 
+
+
+Epitech                   Expires May 20, 2013                  [Page 9]
+
+RFC 42123            R-Type Communication Protocol     December 14, 2012
+
+
    Description:
    This command is used when a user wants to invite another one in a
    room he has created.
@@ -497,14 +520,6 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
 
    Command :
    SET_GAME_PARAM = 1206
-
- 
-
-
-Epitech                   Expires May 20, 2013                  [Page 9]
-
-RFC 42123            R-Type Communication Protocol     December 14, 2012
-
 
    Parameters : <key>:<value>
 
@@ -539,6 +554,13 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
    PING = 1208
 
    Parameters : nothing
+ 
+
+
+Epitech                   Expires May 20, 2013                 [Page 10]
+
+RFC 42123            R-Type Communication Protocol     December 14, 2012
+
 
    Description :
    This command is used every second by a client (a user) to inform the
@@ -554,13 +576,6 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
    READY = 1209
 
    Parameters: <Endpoint>
- 
-
-
-Epitech                   Expires May 20, 2013                 [Page 10]
-
-RFC 42123            R-Type Communication Protocol     December 14, 2012
-
 
    Description:
    This command is used by the client to notify the server (which has
@@ -595,6 +610,14 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
    Command :
    START_DATA_STREAM = 1302
 
+ 
+
+
+Epitech                   Expires May 20, 2013                 [Page 11]
+
+RFC 42123            R-Type Communication Protocol     December 14, 2012
+
+
    Parameters: <fileName>
 
    Description:
@@ -609,13 +632,6 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
    Notice that this command MAY be implemented.
    In case of this command is implemented, the following commands STREAM
    and STOP_DATA_STREAM MUST be implemented.
-
- 
-
-
-Epitech                   Expires May 20, 2013                 [Page 11]
-
-RFC 42123            R-Type Communication Protocol     December 14, 2012
 
 
 6.3.3 STREAM
@@ -650,6 +666,14 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
 
    Description:
    This command is used to notify a client that the server stops
+ 
+
+
+Epitech                   Expires May 20, 2013                 [Page 12]
+
+RFC 42123            R-Type Communication Protocol     December 14, 2012
+
+
    transferring him the file "fileName".
 
    The parameters are:
@@ -666,14 +690,6 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
 6.3.5 CLIENT_INVITED
 
    Command :
- 
-
-
-Epitech                   Expires May 20, 2013                 [Page 12]
-
-RFC 42123            R-Type Communication Protocol     December 14, 2012
-
-
    CLIENT_INVITED = 1305
 
    Parameters: <usernameFrom>:<RoomId>
@@ -706,6 +722,14 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
    Notice that this command MUST be implemented.
 
 
+ 
+
+
+Epitech                   Expires May 20, 2013                 [Page 13]
+
+RFC 42123            R-Type Communication Protocol     December 14, 2012
+
+
 6.3.7 GAME_LAUNCHED
 
    Command :
@@ -722,14 +746,6 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
    - Timestamp : Timestamp used by the server to make the the game's
    clock corresponds to a certain time (to avoid data loss or bad
    ordered packets).
- 
-
-
-Epitech                   Expires May 20, 2013                 [Page 13]
-
-RFC 42123            R-Type Communication Protocol     December 14, 2012
-
-
    - GameClock : Game's clock, MUST be initialized to 0 (the game is
    just beginning). 
 
@@ -762,6 +778,13 @@ RFC 42123            R-Type Communication Protocol     December 14, 2012
               2009.
 
 
+ 
+
+
+Epitech                   Expires May 20, 2013                 [Page 14]
+
+RFC 42123            R-Type Communication Protocol     December 14, 2012
+
 
 Authors' Addresses
 
@@ -781,4 +804,37 @@ Authors' Addresses
 
 
 
-Epitech                   Expires May 20, 2013                 [Page 14]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epitech                   Expires May 20, 2013                 [Page 15]

@@ -13,6 +13,16 @@ namespace PS
 	template <class T>
 	class PoolSystem
 	{
+		static bool		notUsed(IPoolSystemElement* e)
+		{
+			return !e->isUsed();
+		}
+
+		static bool		isUsed(IPoolSystemElement* e)
+		{
+			return e->isUsed();
+		}
+
 		size_t							chunkSize_;
 		std::list<IPoolSystemElement*>	elements_;
 
@@ -34,17 +44,13 @@ namespace PS
 
 		void	clean()
 		{
-			size_t	s = std::count_if(this->elements_.begin(), this->elements_.end(),
-				[] (IPoolSystemElement* e)
-					{
-						return !e->isUsed();
-					});
+			size_t	s = std::count_if(this->elements_.begin(), this->elements_.end(), &PoolSystem<T>::notUsed);
 
 			int eltnum = (s / this->chunkSize_) * this->chunkSize_;
 			
 			for (auto it = this->elements_.begin();
 				it != this->elements_.end() && eltnum > 0;
-				++it, --eltnum)
+				--eltnum)
 			{
 				if (!(*it)->isUsed())
 				{
@@ -52,15 +58,13 @@ namespace PS
 					*it = 0;
 					it = this->elements_.erase(it);
 				}
+				else
+					++it;
 			}
 			
 				while (s >= this->chunkSize_)
 			{
-				this->elements_.remove_if(
-					[] (IPoolSystemElement* e)
-						{
-							return !e->isUsed();
-						});
+				this->elements_.remove_if(&PoolSystem<T>::notUsed);
 
 				s -= this->chunkSize_;
 			}
@@ -68,11 +72,7 @@ namespace PS
 
 		bool	isSaturated() const
 		{
-			return (std::count_if(this->elements_.begin(), this->elements_.end(),
-				[] (IPoolSystemElement* e)
-					{
-						return e->isUsed();
-					}) == this->elements_.size());
+			return (std::count_if(this->elements_.begin(), this->elements_.end(), &PoolSystem<T>::isUsed) == this->elements_.size());
 		}
 
 		size_t	poolSize() const
@@ -82,11 +82,7 @@ namespace PS
 
 		T*		peek() const
 		{
-			auto it = std::find_if(this->elements_.begin(), this->elements_.end(),
-				[] (IPoolSystemElement* e)
-					{
-						return !e->isUsed();
-					});
+			auto it = std::find_if(this->elements_.begin(), this->elements_.end(), &PoolSystem<T>::notUsed);
 			if (it != this->elements_.end())
 				return dynamic_cast<T*>(*it);
 			return 0;

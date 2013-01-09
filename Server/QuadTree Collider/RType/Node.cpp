@@ -71,15 +71,15 @@ void	Node::autoSplit()
 		 ++it)
 	{
 		int x, y;
-		//*it.getPos(x, y);
+		(*it)->getPos(x, y);
 
-		if (x <= centerX_ && y <= centerY_)
+		if ((*it)->getXDown() <= centerX_ && (*it)->getYLeft() <= centerY_)
 			leaf_[0].addEntity(*it);
-		if (x <= centerX_ && y > centerY_)
+		if ((*it)->getXDown() <= centerX_ && (*it)->getYRight() > centerY_)
 			leaf_[1].addEntity(*it);
-		if (x > centerX_ && y <= centerY_)
+		if ((*it)->getXUp() > centerX_ && (*it)->getYLeft() <= centerY_)
 			leaf_[2].addEntity(*it);
-		if (x > centerX_ && y > centerY_)
+		if ((*it)->getXUp() > centerX_ && (*it)->getYRight() > centerY_)
 			leaf_[3].addEntity(*it);
 	} 
 }

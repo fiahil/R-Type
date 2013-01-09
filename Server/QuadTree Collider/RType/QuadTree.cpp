@@ -44,13 +44,13 @@ void	QuadTree::addShip(IEntity *ship)
 void	QuadTree::addEnnemy(IEntity *ennemy)
 {
 	ennemy_.push_back(ennemy);
-	if (ennemy->getXUp() < (x_ / 2) && ennemy->getYLeft() < (y_ / 2))
+	if (ennemy->getXDown() < (x_ / 2) && ennemy->getYLeft() < (y_ / 2))
 		tree_[0].addEntity(ennemy);
-	if (ennemy->getXUp() < (x_ / 2) && ennemy->getYLeft() >= (y_ / 2))
+	if (ennemy->getXDown() < (x_ / 2) && ennemy->getYRight() >= (y_ / 2))
 		tree_[1].addEntity(ennemy);
 	if (ennemy->getXUp() >= (x_ / 2) && ennemy->getYLeft() < (y_ / 2))
 		tree_[2].addEntity(ennemy);
-	if (ennemy->getXUp() >= (x_ / 2) && ennemy->getYLeft() >= (y_ / 2))
+	if (ennemy->getXUp() >= (x_ / 2) && ennemy->getYRight() >= (y_ / 2))
 		tree_[3].addEntity(ennemy);
 }
 

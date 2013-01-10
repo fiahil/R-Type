@@ -7,7 +7,7 @@
 namespace Net
 {
 
-SocketUdp::SocketUdp(void)
+SocketUdp::SocketUdp(SocketMode mode) : mode_(mode)
 {
 	WSAStartup(MAKEWORD(2,2), &this->wsa_);
 	this->Create_();
@@ -17,6 +17,16 @@ SocketUdp::~SocketUdp(void)
 {
 	this->Close_();
 	WSACleanup();
+}
+
+bool SocketUdp::isServerMode(void) const
+{
+	return (this->mode_ == SERVERMODE) ? (true) : (false);
+}
+
+bool SocketUdp::isClientMode(void) const
+{
+	return (this->mode_ == CLIENTMODE) ? (true) : (false);
 }
 
 void SocketUdp::Create_(void)
@@ -46,6 +56,12 @@ void SocketUdp::Bind(const EndPoint& ep)
 	WSAHtons(this->socket_, ep.getPort(), &sin.sin_port);
 	if ((bind(this->socket_, reinterpret_cast<SOCKADDR*>(&sin), sizeof sin)) == SOCKET_ERROR)
 		throw ErrorInit("Cannot bind the socket");
+}
+
+ISocket* SocketUdp::Accept()
+{
+	assert(1);
+	return (0);
 }
 
 void SocketUdp::Send(const std::string& packet)

@@ -1,5 +1,6 @@
 
 #include	<iostream>
+#include	<cassert>
 
 #include	"UnixSocketUdp.h"
 #include	"exceptionSocket.h"
@@ -17,6 +18,16 @@ namespace Net
     this->Close_();
   }
 
+  bool SocketUdp::isServerMode(void) const
+  {
+	return (this->mode_ == SERVERMODE) ? (true) : (false);
+  }
+
+  bool SocketUdp::isClientMode(void) const
+  {
+	return (this->mode_ == CLIENTMODE) ? (true) : (false);
+  }
+	
   void SocketUdp::Create_(void)
   {
     this->socket_ = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
@@ -46,6 +57,12 @@ namespace Net
       throw ErrorInit("Cannot bind the socket");
   }
 
+  ISocket* SocketUdp::Accept()
+  {
+	assert(1);
+	return (0);
+  }
+  
   void SocketUdp::Send(const std::string& packet)
   {
     sockaddr_in sin;

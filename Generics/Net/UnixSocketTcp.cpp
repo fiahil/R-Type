@@ -18,21 +18,29 @@ namespace Net
     this->Close_();
   }
 
+  bool SocketTcp::isServerMode(void) const
+  {
+	return (this->mode_ == SERVERMODE) ? (true) : (false);
+  }
+
+  bool SocketTcp::isClientMode(void) const
+  {
+	return (this->mode_ == CLIENTMODE) ? (true) : (false);
+  }
+ 
   void SocketTcp::Create_(void)
   {
-    this->listenSocket_ = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-    std::cout << "Id socket : " << this->listenSocket_ << std::endl;
+    this->socket_ = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
   }
 
   void SocketTcp::Close_(void)
   {
-    close(this->listenSocket_);
-    close(this->acceptSocket_);
+    close(this->socket_);
   }
 
   void SocketTcp::Listen_(void)
   {
-    listen(this->listenSocket_, 100);
+    listen(this->socket_, 100);
   }
 
   void SocketTcp::Connect(const EndPoint& ep)
@@ -43,10 +51,8 @@ namespace Net
     sin.sin_addr.s_addr = inet_addr(ep.getIpStr().c_str());
     sin.sin_family = AF_INET;
     sin.sin_port = htons(ep.getPort());
-    if ((connect(this->listenSocket_, reinterpret_cast<struct sockaddr*>(&sin), sizeof(sin))) != -1) {
+    if ((connect(this->socket_, reinterpret_cast<struct sockaddr*>(&sin), sizeof(sin))) != -1)
       this->connected_ = true;
-      this->acceptSocket_ = this->listenSocket_;
-    }
     else
       throw ErrorInit("Cannot connect to the server");
   }
@@ -61,24 +67,26 @@ namespace Net
       sin.sin_addr.s_addr = inet_addr(ep.getIpStr().c_str());
     sin.sin_family = AF_INET;
     sin.sin_port = htons(ep.getPort());
-    if ((bind(this->listenSocket_, reinterpret_cast<struct sockaddr*>(&sin), sizeof(sin))) == -1)
+    if ((bind(this->socket_, reinterpret_cast<struct sockaddr*>(&sin), sizeof(sin))) == -1)
       throw ErrorInit("Cannot bind the socket");
     this->Listen_();
   }
 
   void SocketTcp::Accept()
   {
+	SocketTcp* ret = new SocketTcp(SERVERMODE);
     sockaddr_in	sin;
     unsigned int sinlen = sizeof sin;
 
-    if ((this->acceptSocket_ = accept(this->listenSocket_, reinterpret_cast<struct sockaddr*>(&sin), &sinlen)) != -1)
-      this->connected_ = true;
+    if ((ret->socket_ = accept(this->socket_, reinterpret_cast<struct sockaddr*>(&sin), &sinlen)) != -1)
+      ret->connected_ = true;
+	return (ret);
   }
 
   void SocketTcp::Send(const std::string& packet)
   {
     if (this->connected_)
-      if (send(this->acceptSocket_, packet.c_str(), packet.size(), 0) == -1)
+      if (send(this->socket_, packet.c_str(), packet.size(), 0) == -1)
 	throw ErrorInOut("Cannot send data");
   }
 
@@ -88,7 +96,7 @@ namespace Net
       char buff[4096] = {0};
 
       int ret;
-      if ((ret = recv(this->acceptSocket_, buff, 4095, 0)) == -1)
+      if ((ret = recv(this->socket_, buff, 4095, 0)) == -1)
 	throw ErrorInOut("Cannot receive data");
       buff[ret] = 0;
       return (std::string(buff));

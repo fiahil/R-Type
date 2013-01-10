@@ -19,8 +19,8 @@ namespace Net
   {
   private:
     bool connected_;
-    int listenSocket_;
-    int acceptSocket_;
+    int socket_;
+	SocketMode mode_;
 
     virtual void Create_(void);
     virtual void Close_(void);
@@ -30,13 +30,15 @@ namespace Net
     SocketTcp& operator=(const SocketTcp&);
 
   public:
-    SocketTcp(void);
+    SocketTcp(SocketMode);
     virtual ~SocketTcp(void);
+	virtual bool isServerMode(void) const;
+	virtual bool isClientMode(void) const;
     virtual void Connect(const EndPoint&);
     virtual void Bind(const EndPoint&);
     virtual void Send(const std::string&);
     virtual std::string Recv(void);
-    void Accept();
+    virtual ISocket* Accept();
   };
 
 }			// namespace Net

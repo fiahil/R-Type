@@ -7,8 +7,8 @@
 namespace Net
 {
 
-SocketTcp::SocketTcp(void)
-	: connected_(false)
+SocketTcp::SocketTcp(SocketMode mode)
+	: connected_(false), mode_(mode)
 {
 	WSAStartup(MAKEWORD(2,2), &this->wsa_);
 	this->Create_();
@@ -18,6 +18,16 @@ SocketTcp::~SocketTcp(void)
 {
 	this->Close_();
 	WSACleanup();
+}
+
+bool SocketTcp::isServerMode(void) const
+{
+	return (this->mode_ == SERVERMODE) ? (true) : (false);
+}
+
+bool SocketTcp::isClientMode(void) const
+{
+	return (this->mode_ == CLIENTMODE) ? (true) : (false);
 }
 
 void SocketTcp::Create_(void)
@@ -67,13 +77,15 @@ void SocketTcp::Bind(const EndPoint& ep)
 	this->Listen_();
 }
 
-void SocketTcp::Accept()
+ISocket* SocketTcp::Accept()
 {
+	ISocket* ret = new SocketTcp();
 	SOCKADDR_IN	sin;
 	int sinlen = sizeof sin;
 
 	if ((this->acceptSocket_ = WSAAccept(this->listenSocket_, reinterpret_cast<SOCKADDR*>(&sin), &sinlen, 0, 0)) != INVALID_SOCKET)
 		this->connected_ = true;
+	return 0; //tmp
 }
 
 void SocketTcp::Send(const std::string& packet)

@@ -17,20 +17,24 @@ private:
 	SOCKET socket_;
 	std::list<EndPoint*> client_;
 	WSADATA wsa_;
+	SocketMode mode_;
 
-	virtual void Create_(void);
-	virtual void Close_(void);
+	void Create_(void);
+	void Close_(void);
 
 	SocketUdp(const SocketUdp&);
 	SocketUdp& operator=(const SocketUdp&);
 
 public:
-	SocketUdp(void);
-	~SocketUdp(void);
+	SocketUdp(SocketMode);
+	virtual ~SocketUdp(void);
+	virtual bool isServerMode(void) const;
+	virtual bool isClientMode(void) const;
 	virtual void Connect(const EndPoint&);
 	virtual void Bind(const EndPoint&);
 	virtual void Send(const std::string&);
 	virtual std::string Recv(void);
+	virtual ISocket* Accept();
 };
 
 }			// namespace Net

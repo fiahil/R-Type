@@ -20,6 +20,8 @@ class SocketUdp : public ISocket
 private:
 	int socket_;
 	std::list<EndPoint*> client_;
+	SocketMode mode_;
+	
 
 	virtual void Create_(void);
 	virtual void Close_(void);
@@ -28,8 +30,10 @@ private:
 	SocketUdp& operator=(const SocketUdp&);
 
 public:
-	SocketUdp(void);
-	~SocketUdp(void);
+	SocketUdp(SocketMode);
+	virtual ~SocketUdp(void);
+	virtual bool isServerMode(void) const;
+	virtual bool isClientMode(void) const;
 	virtual void Connect(const EndPoint&);
 	virtual void Bind(const EndPoint&);
 	virtual void Send(const std::string&);

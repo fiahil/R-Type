@@ -10,7 +10,7 @@ RoomManager::RoomManager(void)
 		tp_(0)
 {
 	this->hall_ = new Hall();
-	//this->tp_ = TP::ThreadPool<IRoom>::getInstance(this->nbMaxGames_);
+	this->tp_ = TP::ThreadPool<IRoom>::getInstance(this->nbMaxGames_);
 	std::cout << "--Construction RoomManager" << std::endl;
 }
 
@@ -87,7 +87,7 @@ void		RoomManager::linkRoomToThreadPool(int idRoom)
 			return ;
 		}
 	// test saturated et allocate HERE (threadPool)
-	// this->tp_->push(fetch);
+	this->tp_->push(fetch);
 
 	std::cout << "[Ok] linkRoomToThreadPool" << std::endl;
 }

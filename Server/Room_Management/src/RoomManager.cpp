@@ -87,7 +87,7 @@ void		RoomManager::linkRoomToThreadPool(int idRoom)
 			return ;
 		}
 	// test saturated et allocate HERE (threadPool)
-	this->tp_->push(fetch);
+	// this->tp_->push(fetch);
 
 	std::cout << "[Ok] linkRoomToThreadPool" << std::endl;
 }

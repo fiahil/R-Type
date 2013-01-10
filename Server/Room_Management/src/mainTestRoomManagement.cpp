@@ -11,7 +11,7 @@ int		main()
 {
 	std::cout << "\n---- BEGIN ----\n" << std::endl;
 
-	IService * S; S++;
+	IService * S;
 	std::string	nico("Nico");
 	std::string	papa("Papa");
 	std::string	alex("Alex");

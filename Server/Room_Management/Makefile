@@ -10,20 +10,20 @@
 
 NAME		= R-Type
 
-PATH_SRC	= "Room\ Management/src/"
-PATH_INC	= "Room\ Management/includes"
+PATH_SRC	= Room_Management/src
+PATH_INC	= Room_Management/includes
 
-SRC		= $(PATH_SRC)mainTestRoomManagement.cpp \
-		  $(PATH_SRC)Account.cpp		\
-		  $(PATH_SRC)GameplayEngine.cpp		\
-		  $(PATH_SRC)Hall.cpp			\
-		  $(PATH_SRC)Player.cpp			\
-		  $(PATH_SRC)RegisterManager.cpp	\
-		  $(PATH_SRC)Room.cpp			\
-		  $(PATH_SRC)RoomManager.cpp		\
-		  $(PATH_SRC)Scenario.cpp		\
-		  $(PATH_SRC)Resources.cpp		\
-		  $(PATH_SRC)TimePoint.cpp
+SRC		= $(PATH_SRC)/mainTestRoomManagement.cpp	\
+		  $(PATH_SRC)/Account.cpp			\
+		  $(PATH_SRC)/GameplayEngine.cpp		\
+		  $(PATH_SRC)/Hall.cpp				\
+		  $(PATH_SRC)/Player.cpp			\
+		  $(PATH_SRC)/RegisterManager.cpp		\
+		  $(PATH_SRC)/Room.cpp				\
+		  $(PATH_SRC)/RoomManager.cpp			\
+		  $(PATH_SRC)/Scenario.cpp			\
+		  $(PATH_SRC)/Resources.cpp			\
+		  $(PATH_SRC)/TimePoint.cpp
 
 OBJ		= $(SRC:.cpp=.o)
 

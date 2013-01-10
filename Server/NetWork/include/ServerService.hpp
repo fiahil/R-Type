@@ -10,11 +10,18 @@
 
 #pragma once
 
+#include "IServerService.h"
+
 class		ServerService : public IServerService
 {
 private:
-  ISocket*	sock;
+  //  ISocket*	sock;
 
-private:
-  
+public:
+  ServerService();
+  ~ServerService();
+
+
+  virtual TCPPacket	pull();
+  virtual void		push(TCPPacket);
 };

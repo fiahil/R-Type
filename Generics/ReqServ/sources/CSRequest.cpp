@@ -24,8 +24,9 @@ Connect::~Connect() {}
 bool		Connect::isValid()
 {
   RoomManager&	RM = Resources::RM;
-  
-  if (RM.getPlayerFromName(parameters.username) == NULL)
+  std::string	username(parameters.username);
+
+  if (RM.getPlayerFromName(username) == NULL)
     return true;
   return false;
 }
@@ -38,8 +39,10 @@ void		Connect::doOp()
 void		Connect::doOp(IService*S)
 {
   RoomManager&	RM = Resources::RM;
+  std::string	username(parameters.username);
+  std::string	password(parameters.passwd);
 
-  RM.addPlayerToHall(parameters.username, parameters.passwd, S);
+  RM.addPlayerToHall(username, password, S);
 }
 
 void		Connect::finalize(IService *)
@@ -142,7 +145,7 @@ void		LeaveRoom::doOp(IService *S)
   RoomManager&	RM = Resources::RM;
 
   RM.removePlayerFromRoom(this->P->getId(), parameters.roomId);
-  RM.addPlayerToHall(this->P->getName(), this->getHash(), S);  
+  RM.addPlayerToHall(this->P->getName(), this->P->getHash(), S);
 }
 
 void		LeaveRoom::finalize(IService*)
@@ -160,7 +163,7 @@ bool		LeaveRoom::manageRequest(IService *S)
   if (this->isValid())
     this->doOp();
   else
-    this->G_invalid_request;
+    this->ec = G_invalid_request;
   this->finalize(S);
   return (true);
 }
@@ -189,7 +192,8 @@ JoinRoom::~JoinRoom() {}
 bool		JoinRoom::isValid()
 {
   RoomManager&	RM = Resources::RM;
-  if (RM.getRoomFromId(parameters.roomId) == NULL)
+
+  if (RM.getRoomById(parameters.roomId) == NULL)
     return false;
   return true;
 }
@@ -198,7 +202,7 @@ void		JoinRoom::doOp()
 {
   RoomManager&	RM = Resources::RM;
 
-  RM.clonePlayerFromHallToRoom(parameters.roomId, this->P.getId());
+  RM.clonePlayerFromHallToRoom(parameters.roomId, this->P->getId());
 }
 
 void		JoinRoom::finalize(IService*)
@@ -245,8 +249,9 @@ InvitePlayer::~InvitePlayer() {}
 bool		InvitePlayer::isValid()
 {
   RoomManager&	RM = Resources::RM;
-  
-  if ((this->P = RM.getPlayerFromName(parameters.username)) == NULL)
+  std::string	username(parameters.username);
+
+  if ((this->P = RM.getPlayerFromName(username)) == NULL)
     return false;
   return true;
 }
@@ -428,7 +433,7 @@ bool		Ping::manageRequest(IService *S)
   if (this->isValid())
     this->doOp();
   else
-    this->ec = S_process_failed;
+    this->ec = S_process_fail;
   this->finalize(S);
   return (true);
 }
@@ -446,7 +451,7 @@ eRequestType	Ping::getType()
 Ready::Ready(char *ep) :
   ec(Success)
 {
-  parameters.endpoint = ep;
+  this->parameters.endpoint = ep;
 }
 
 Ready::~Ready() {}

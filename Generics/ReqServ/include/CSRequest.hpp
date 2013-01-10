@@ -184,6 +184,7 @@ private:
     int		roomId;
   };
 
+  parameters	parameters;
   errorCode	ec;
 
 private:
@@ -239,8 +240,11 @@ private:
   virtual void		doOp();
   virtual void		finalize(IService*);
 
-public:
+private:
   Ready();
+
+public:
+  Ready(char *ep);
   ~Ready();
 
 public:

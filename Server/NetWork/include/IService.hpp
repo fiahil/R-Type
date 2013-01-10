@@ -14,6 +14,7 @@
 
 class IService
 {
+public:
   virtual ~IService() {}
   virtual TCPPacket	pull() = 0;
   virtual void		push(TCPPacket) = 0;

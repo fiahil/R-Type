@@ -7,7 +7,10 @@
 int Room::currentId_ = 0;
 
 Room::Room(void)
-	:	id_(currentId_++)
+	:	id_(currentId_++),
+		isPlaying_(false),
+		engine_(0),
+		scenario_(0)
 {
 	std::cout << "--Construction Room" << std::endl;
 }
@@ -19,15 +22,31 @@ Room::~Room(void)
 }
 
 
-/* Returns an IPlayer* if the function worked, or 0 if it failed */
-IPlayer *	Room::operator()(IPlayer *p)
+/* Returns the IPlayer that matches the IService [s]; overwize returns 0 */
+IPlayer *	Room::operator()(IService *s) const
+{
+	if (!s) return 0;
+
+	for (std::deque<IPlayer *>::const_iterator it = this->players_.begin() ;
+		it != this->players_.end() ; ++it)
+	{
+		IPlayer *tmp = *it;
+
+		if (tmp && tmp->getService() == s)
+			return tmp;
+	}
+	return 0;
+}
+
+
+/* Returns the IPlayer that matches the IPlayer* [p]; overwize returns 0 */
+IPlayer *	Room::operator()(IPlayer *p) const
 {
 	if (!p) return 0;
 
-	/* checks if any player in deque has the same id as [p] */
 	int idTest = p->getId();
 
-	for (std::deque<IPlayer *>::iterator it = this->players_.begin() ;
+	for (std::deque<IPlayer *>::const_iterator it = this->players_.begin() ;
 		it != this->players_.end() ; ++it)
 	{
 		IPlayer *tmp = *it;
@@ -38,17 +57,16 @@ IPlayer *	Room::operator()(IPlayer *p)
 }
 
 /* Returns the position of the IPlayer that matches the id [idTest]; overwize returns -1 */
-int		Room::operator()(int idTest)
+int		Room::operator()(int idTest) const
 {
 	int pos = 0;
 
-	for (std::deque<IPlayer *>::iterator it = this->players_.begin() ;
+	for (std::deque<IPlayer *>::const_iterator it = this->players_.begin() ;
 		it != this->players_.end() ;
 		++it, ++pos)
 	{
 		IPlayer *tmp = *it;
 
-		/* checks if any player in deque has the same id as [idTest] */
 		if (tmp && tmp->getId() == idTest)
 			return pos;
 	}
@@ -115,6 +133,17 @@ void	Room::removePlayer(int idPlayer)
 }
 
 
+IPlayer *	Room::getPlayerByService(IService *s) const
+{
+	return (*this)(s);
+}
+
+
+void		Room::setStatus(bool status)
+{
+	this->isPlaying_ = status;
+}
+
 bool	Room::isEmpty() const
 {
 	return this->players_.empty();
@@ -124,4 +153,10 @@ bool	Room::isEmpty() const
 bool	Room::isFull() const
 {
 	return (this->players_.size() >= 4);
+}
+
+
+const std::deque<IPlayer *> & Room::getAllPlayers() const
+{
+	return this->players_;
 }

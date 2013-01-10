@@ -5,8 +5,12 @@
 #include <iostream> // remove
 
 RoomManager::RoomManager(void)
-	: nbMaxGames(4)
+	:	hall_(0),
+		nbMaxGames_(10),
+		tp_(0)
 {
+	this->hall_ = new Hall();
+	//this->tp_ = TP::ThreadPool<IRoom>::getInstance(this->nbMaxGames_);
 	std::cout << "--Construction RoomManager" << std::endl;
 }
 
@@ -18,27 +22,43 @@ RoomManager::~RoomManager(void)
 
 
 /* Returns the position of the IRoom that matches the id [idTest]; overwize returns -1 */
-int		RoomManager::operator()(int idTest)
+int		RoomManager::operator()(int idTest) const
 {
 	int pos = 0;
 
-	for (std::deque<IRoom *>::iterator it = this->rooms_.begin() ;
+	for (std::deque<IRoom *>::const_iterator it = this->rooms_.begin() ;
 		it != this->rooms_.end() ;
 		++it, ++pos)
 	{
 		IRoom *tmp = *it;
 
-		/* Checks if any IRoom in deque has the same id as [idTest] */
 		if (tmp && tmp->getId() == idTest)
 			return pos;
 	}
 	return -1;
 }
 
+/* Returns the IPlayer that matches the IService [s]; overwize returns 0 */
+IPlayer *		RoomManager::operator()(IService * s) const
+{
+
+	std::deque<IPlayer *> players = this->hall_->getAllPlayers();
+
+	for (std::deque<IPlayer *>::const_iterator it = players.begin() ;
+		it != players.end() ; ++it)
+	{
+		IPlayer *tmp = *it;
+
+		if (tmp && tmp->getService() == s)
+			return tmp;
+	}
+	return 0;
+}
+
 
 bool		RoomManager::isFull()
 {
-	return (this->rooms_.size() >= this->nbMaxGames);
+	return (this->rooms_.size() >= this->nbMaxGames_);
 }
 
 
@@ -48,10 +68,28 @@ void		RoomManager::setNbGames(int nbr)
 	if (nbr > 0)
 	{
 		std::cout << "[Ok] setNbGames : [" << nbr << "]" << std::endl;
-		this->nbMaxGames = nbr;
+		this->nbMaxGames_ = nbr;
 	}
 	else
 		std::cerr << "[Error] : Bad Nbr" << std::endl;
+}
+
+
+void		RoomManager::linkRoomToThreadPool(int idRoom)
+{
+	std::cout << "\n{RoomManager::linkRoomToThreadPool}..." << std::endl;
+
+	IRoom *fetch = this->rooms_.at(idRoom);
+
+	if (!fetch)
+		{
+			std::cerr << "[Error] : IRoom NULL" << std::endl;
+			return ;
+		}
+	// test saturated et allocate HERE (threadPool)
+	this->tp_->push(fetch);
+
+	std::cout << "[Ok] linkRoomToThreadPool" << std::endl;
 }
 
 
@@ -86,7 +124,7 @@ void	RoomManager::removeRoom(int idRoom)
 		std::cerr << "[Error] : No Room corresponds to ID ["  << idRoom << "]" << std::endl;
 		return;
 	}
-	
+
 	/* Remove fetched room from [rooms_]'s deque */
 	std::deque<IRoom *>::iterator itFetchedRoom = this->rooms_.begin() + pos;
 	this->rooms_.erase(itFetchedRoom);
@@ -104,7 +142,7 @@ void	RoomManager::removePlayerFromRoom(int idRoom, int idPlayer)
 
 	/* checks if any Room in [rooms_]'s deque has the same id as [idRoom] using operator() */
 	int pos = (*this)(idRoom);
-	
+
 	if (pos == -1)
 	{
 		std::cerr << "[Error] : No Room corresponds to ID ["  << idRoom << "]" << std::endl;
@@ -129,7 +167,7 @@ void	RoomManager::clonePlayerFromHallToRoom(int idRoom, int idPlayer)
 	std::cout << "\n{RoomManager::clonePlayerFromHallToRoom}..." << std::endl;
 
 	/* Clones a IPlayer from Hall */
-	IPlayer * clone = this->hall_.clonePlayer(idPlayer);
+	IPlayer * clone = this->hall_->clonePlayer(idPlayer);
 	if (!clone) { std::cerr << "[Error] : Cloned IPlayer is NULL" << std::endl; return ; }
 
 
@@ -148,35 +186,77 @@ void	RoomManager::clonePlayerFromHallToRoom(int idRoom, int idPlayer)
 }
 
 
-void	RoomManager::addPlayerToHall(IPlayer *p)
+void	RoomManager::addPlayerToHall(const std::string &name, const std::string &hash, IService *playerService)
 {
-	this->hall_.addPlayer(p);
+	this->hall_->addPlayer(name, hash, playerService);
 }
 
 
 void	RoomManager::removePlayerFromHall(int idPlayer)
 {
-	this->hall_.removePlayer(idPlayer);
+	this->hall_->removePlayer(idPlayer);
 }
 
 
-// test method : remove it
-void		RoomManager::roomSpeach()
+IPlayer *	RoomManager::getPlayerFromName(std::string & name) const
 {
-	std::cout << "\n[ROOM SPEACH]" << std::endl;
-	for (std::deque<IRoom *>::iterator it = this->rooms_.begin() ;
-		it != this->rooms_.end() ; ++it)
+	std::string empty;
+
+	return (*this->hall_)(name, empty, false);
+}
+
+
+IPlayer *	RoomManager::getPlayerFromHall(IService * playerService) const
+{
+	return (*this->hall_)(playerService);
+}
+
+
+IPlayer *	RoomManager::getPlayerFromRoom(IService * playerService, int roomId) const
+{
+	int roomPos = (*this)(roomId);
+
+	if (roomPos > 0)
 	{
-		IRoom *tmp = *it;
+		IRoom * tmp = this->rooms_.at(roomPos);
 
-		std::cout << "Room : id = [" << tmp->getId() << "]" << std::endl;
+		if (tmp)
+			return tmp->getPlayerByService(playerService);
 	}
-	std::cout << "Total rooms : " << this->rooms_.size() << "\n" << std::endl;
+	return 0;
 }
 
 
-// test method : remove it
-void		RoomManager::hallSpeach()
+IRoom *		RoomManager::getRoomById(int idRoom) const
 {
-	this->hall_.speach();
+	int roomPos = (*this)(idRoom);
+
+	if (roomPos > 0)
+		return this->rooms_.at(roomPos);
+	return 0;
+}
+
+
+void		RoomManager::setRoomStatus(int idRoom, bool status)
+{
+	int roomPos = (*this)(idRoom);
+
+	if (roomPos > 0)
+	{
+		IRoom * tmp = this->rooms_.at(roomPos);
+
+		if (tmp)
+			tmp->setStatus(status);
+	}
+}
+
+
+const std::deque<IPlayer *> &	RoomManager::getPlayersFromRoom(int roomId) const
+{
+	// verification room pos : thow if <= 0
+
+	int roomPos = (*this)(roomId);
+	IRoom * tmp = this->rooms_.at(roomPos);
+
+	return tmp->getAllPlayers();
 }

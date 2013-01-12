@@ -289,12 +289,6 @@
     <ClCompile Include="Room\sources\RoomManager.cpp">
       <Filter>Source Files\Room</Filter>
     </ClCompile>
-    <ClCompile Include="Room\sources\Scenario.cpp">
-      <Filter>Source Files\Room</Filter>
-    </ClCompile>
-    <ClCompile Include="Room\sources\TimePoint.cpp">
-      <Filter>Source Files\Room</Filter>
-    </ClCompile>
     <ClCompile Include="Room\sources\Account.cpp">
       <Filter>Source Files\Room</Filter>
     </ClCompile>

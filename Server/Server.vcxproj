@@ -162,8 +162,6 @@
     <ClCompile Include="Room\sources\Resources.cpp" />
     <ClCompile Include="Room\sources\Room.cpp" />
     <ClCompile Include="Room\sources\RoomManager.cpp" />
-    <ClCompile Include="Room\sources\Scenario.cpp" />
-    <ClCompile Include="Room\sources\TimePoint.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

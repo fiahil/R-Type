@@ -32,5 +32,5 @@ void		ServerService::push(IRequest* )
 
 IClientService*	ServerService::accept()
 {
-  
+  return 0;
 }

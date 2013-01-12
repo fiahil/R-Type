@@ -9,8 +9,8 @@ class Logger
 public:
 	Logger(std::ostream&, std::string const&);
 	~Logger();
-	template <class T> operator<<(Logger&, T o);
-
+	std::ostream&	getStream();
+	std::string		getLabel() const;
 };
 
 Logger::Logger(std::ostream& stream, std::string const& label) : oss_(stream), label_(label)
@@ -22,8 +22,19 @@ Logger::~Logger()
 {
 }
 
-template <class T>
-Logger::operator<<(Logger& logger, T o)
+std::ostream&	Logger::getStream()
 {
-	this->oss_ << this->label_ << " " << o << std::endl;
+	return this->oss_;
+}
+
+std::string		Logger::getLabel() const
+{
+	return this->label_;
+}
+
+template <class T>
+std::ostream& operator<<(Logger& logger, T o)
+{
+	logger.getStream() << logger.getLabel() << " " << o;
+	return logger.getStream();
 }

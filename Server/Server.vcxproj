@@ -41,7 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\Server\Quadtree\include;..\Server\Network\include;..\Server\Room\include;..\Generics\TP;..\Server\Entities\include;..\Generics\Net;..\Generics\PC;..\Generics\LWP;..\Generics\PS;..\Generics\ReqServ\include;..\Generics\ReqCl;$(IncludePath)</IncludePath>
+    <IncludePath>..\Server\Quadtree\include;..\Server\Network\include;..\Server\Room\include;..\Generics\TP;..\Server\Entities\include;..\Generics\Net;..\Generics\PC;..\Generics\LWP;..\Generics\PS;..\Generics\ReqServ\include;..\Generics\ReqCl;..\Generics\Logger;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -141,6 +141,7 @@
     <ClInclude Include="Room\include\RoomManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Generics\Logger\logger.cpp" />
     <ClCompile Include="..\Generics\LWP\ScopedLock.cpp" />
     <ClCompile Include="..\Generics\LWP\WinCondVar.cpp" />
     <ClCompile Include="..\Generics\LWP\WinMutex.cpp" />
@@ -150,7 +151,6 @@
     <ClCompile Include="..\Generics\ReqCl\SCRequest.cpp" />
     <ClCompile Include="..\Generics\ReqServ\sources\CSRequest.cpp" />
     <ClCompile Include="Entities\sources\Scenario.cpp" />
-    <ClCompile Include="logger.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Network\sources\ClientService.cpp" />
     <ClCompile Include="Network\sources\NetworkManager.cpp" />

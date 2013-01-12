@@ -9,9 +9,297 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Header Files\Generics">
+      <UniqueIdentifier>{34c08354-1f45-4c81-a95a-121e719037ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Generics\Dl">
+      <UniqueIdentifier>{febabdeb-ae18-430e-9ab3-9323920ccc53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generics\PS">
+      <UniqueIdentifier>{1ac32b6c-514b-4bad-aabc-e4cfec248040}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generics\PC">
+      <UniqueIdentifier>{43a4262f-fc6b-48e7-afc0-83196bb01a05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generics\TP">
+      <UniqueIdentifier>{f18c600b-08c5-4d9b-aeb3-9ffba1e8d508}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generics\LWP">
+      <UniqueIdentifier>{1749304b-4ed9-413a-b678-2f39d2730a0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generics\Net">
+      <UniqueIdentifier>{f9e9d633-30dd-4acd-9db7-dec7501d9ada}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generics\Req">
+      <UniqueIdentifier>{4c587402-4b25-4811-b8d3-fd0fd6edf758}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Generics">
+      <UniqueIdentifier>{b4e6efd1-d434-426f-930f-67f2362ef815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Generics\LWP">
+      <UniqueIdentifier>{d92247f4-8612-4da4-9b87-13a67037141f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Generics\Net">
+      <UniqueIdentifier>{0765cf39-4b1c-43c9-a6a5-197b97acff36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Generics\Req">
+      <UniqueIdentifier>{5a035441-612b-4788-97ed-2b3278e0ed5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Room">
+      <UniqueIdentifier>{b21779f2-4cd4-433b-875a-9806453336cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Room">
+      <UniqueIdentifier>{0c6481bd-38fb-4a01-927c-1e25b4abe916}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Network">
+      <UniqueIdentifier>{bc447cde-bdc0-4452-97ed-63138163514d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Network">
+      <UniqueIdentifier>{da0063be-9e9c-40d3-ac2c-ec7ad9f69e09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Quadtree">
+      <UniqueIdentifier>{874f9780-223c-4ace-b244-054da44ab31a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Quadtree">
+      <UniqueIdentifier>{e5b5f770-cff6-4a34-9e08-065ae1f249a1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Generics\Dl\DlExceptions.h">
+      <Filter>Header Files\Generics\Dl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\Dl\DlManager.h">
+      <Filter>Header Files\Generics\Dl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\Dl\IDlLoader.h">
+      <Filter>Header Files\Generics\Dl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\Dl\IDlPlugin.h">
+      <Filter>Header Files\Generics\Dl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\Dl\WinDlLoader.h">
+      <Filter>Header Files\Generics\Dl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\LWP\ScopedLock.h">
+      <Filter>Header Files\Generics\LWP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\LWP\WinCondVar.h">
+      <Filter>Header Files\Generics\LWP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\LWP\WinMutex.h">
+      <Filter>Header Files\Generics\LWP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\LWP\WinThread.h">
+      <Filter>Header Files\Generics\LWP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\LWP\ICondVar.h">
+      <Filter>Header Files\Generics\LWP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\LWP\IMutex.h">
+      <Filter>Header Files\Generics\LWP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\LWP\IThread.h">
+      <Filter>Header Files\Generics\LWP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\LWP\SafeQueue.h">
+      <Filter>Header Files\Generics\LWP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\Net\ISocket.h">
+      <Filter>Header Files\Generics\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\Net\WinSocketTcp.h">
+      <Filter>Header Files\Generics\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\Net\WinSocketUdp.h">
+      <Filter>Header Files\Generics\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\Net\EndPoint.h">
+      <Filter>Header Files\Generics\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\Net\exceptionSocket.h">
+      <Filter>Header Files\Generics\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\PC\Producer.h">
+      <Filter>Header Files\Generics\PC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\PC\Storage.h">
+      <Filter>Header Files\Generics\PC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\PC\Consumer.h">
+      <Filter>Header Files\Generics\PC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\PS\IPoolSystemElement.h">
+      <Filter>Header Files\Generics\PS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\PS\PoolSystem.h">
+      <Filter>Header Files\Generics\PS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\TP\ThreadPool.h">
+      <Filter>Header Files\Generics\TP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\TP\ThreadPoolQueue.h">
+      <Filter>Header Files\Generics\TP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\TP\ThreadPoolWorker.h">
+      <Filter>Header Files\Generics\TP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\ReqServ\include\IRequest.hpp">
+      <Filter>Header Files\Generics\Req</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\include\IServerService.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\IPlayer.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\IRoom.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\Player.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\RegisterManager.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\Resources.hpp">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\Room.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\RoomManager.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\Scenario.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\TimePoint.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\Account.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\GameplayEngine.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\Hall.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\IAccount.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\IEntity.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Quadtree\include\Collider.h">
+      <Filter>Header Files\Quadtree</Filter>
+    </ClInclude>
+    <ClInclude Include="Quadtree\include\IEntity.h">
+      <Filter>Header Files\Quadtree</Filter>
+    </ClInclude>
+    <ClInclude Include="Quadtree\include\Node.h">
+      <Filter>Header Files\Quadtree</Filter>
+    </ClInclude>
+    <ClInclude Include="Quadtree\include\QuadTree.h">
+      <Filter>Header Files\Quadtree</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\include\NetworkManager.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\include\IClientService.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\include\IService.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\include\PackMan.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\include\ServerService.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\include\TCPPacket.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\ReqServ\include\CSRequest.h">
+      <Filter>Header Files\Generics\Req</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\ReqCl\SCRequest.h">
+      <Filter>Header Files\Generics\Req</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Generics\LWP\ScopedLock.cpp">
+      <Filter>Source Files\Generics\LWP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generics\LWP\WinCondVar.cpp">
+      <Filter>Source Files\Generics\LWP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generics\LWP\WinMutex.cpp">
+      <Filter>Source Files\Generics\LWP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generics\Net\WinSocketTcp.cpp">
+      <Filter>Source Files\Generics\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generics\Net\WinSocketUdp.cpp">
+      <Filter>Source Files\Generics\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generics\Net\EndPoint.cpp">
+      <Filter>Source Files\Generics\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generics\ReqServ\sources\CSRequest.cpp">
+      <Filter>Source Files\Generics\Req</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generics\ReqCl\SCRequest.cpp">
+      <Filter>Source Files\Generics\Req</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\sources\PackMan.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Room\sources\RegisterManager.cpp">
+      <Filter>Source Files\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="Room\sources\Resources.cpp">
+      <Filter>Source Files\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="Room\sources\Room.cpp">
+      <Filter>Source Files\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="Room\sources\RoomManager.cpp">
+      <Filter>Source Files\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="Room\sources\Scenario.cpp">
+      <Filter>Source Files\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="Room\sources\TimePoint.cpp">
+      <Filter>Source Files\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="Room\sources\Account.cpp">
+      <Filter>Source Files\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="Room\sources\GameplayEngine.cpp">
+      <Filter>Source Files\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="Room\sources\Hall.cpp">
+      <Filter>Source Files\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="Room\sources\Player.cpp">
+      <Filter>Source Files\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="Quadtree\sources\Node.cpp">
+      <Filter>Source Files\Quadtree</Filter>
+    </ClCompile>
+    <ClCompile Include="Quadtree\sources\QuadTree.cpp">
+      <Filter>Source Files\Quadtree</Filter>
+    </ClCompile>
+    <ClCompile Include="Quadtree\sources\Collider.cpp">
+      <Filter>Source Files\Quadtree</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\sources\NetworkManager.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

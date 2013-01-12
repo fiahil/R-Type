@@ -9,7 +9,7 @@
 //
 
 #include <utility>
-#include "PackMan.hpp"
+#include "PackMan.h"
 
 static std::map<eRequestType, IRequest* (*)(TCPPacket*)>	init_request_tab()
 {
@@ -28,4 +28,4 @@ static std::map<eRequestType, IRequest* (*)(TCPPacket*)>	init_request_tab()
 	return map;
 }
 
-std::map<eRequestType, IRequest* (*)(NetPacket*)>	PackMan::request_tab = init_request_tab();
+std::map<eRequestType, IRequest* (*)(TCPPacket*)>	PackMan::request_tab = init_request_tab();

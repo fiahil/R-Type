@@ -5,6 +5,8 @@
 #include	<ws2tcpip.h>
 #include	<Windows.h>
 
+#pragma comment(lib, "WS2_32")
+
 #include	<deque>
 
 #include	"ISocket.h"

@@ -1,5 +1,5 @@
 
-#include	<iostream>
+#include	<cassert>
 
 #include	"WinSocketUdp.h"
 #include	"exceptionSocket.h"
@@ -60,7 +60,7 @@ void SocketUdp::Bind(const EndPoint& ep)
 
 ISocket* SocketUdp::Accept()
 {
-	assert(1);
+	assert(0);
 	return (0);
 }
 

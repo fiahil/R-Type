@@ -10,7 +10,7 @@
 
 #include	<sstream>
 // #include	"PackMan.hpp"
-#include	"CSRequest.hpp"
+#include	"CSRequest.h"
 
 Connect::Connect(char *usr, char *passwd) :
   ec(Success)

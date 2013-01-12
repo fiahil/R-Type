@@ -79,13 +79,13 @@ void SocketTcp::Bind(const EndPoint& ep)
 
 ISocket* SocketTcp::Accept()
 {
-	ISocket* ret = new SocketTcp();
+	ISocket* ret = new SocketTcp(SocketMode::SERVERMODE);
 	SOCKADDR_IN	sin;
 	int sinlen = sizeof sin;
 
 	if ((this->acceptSocket_ = WSAAccept(this->listenSocket_, reinterpret_cast<SOCKADDR*>(&sin), &sinlen, 0, 0)) != INVALID_SOCKET)
 		this->connected_ = true;
-	return 0; //tmp
+	return 0; // TODO
 }
 
 void SocketTcp::Send(const std::string& packet)

@@ -9,7 +9,7 @@
 //
 
 #include <sstream>
-#include "SCRequest.hpp"
+#include "SCRequest.h"
 
 AnswerCreateRoom::AnswerCreateRoom(int roomId) :
   ec(Success)

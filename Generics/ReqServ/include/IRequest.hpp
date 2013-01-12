@@ -11,8 +11,8 @@
 #pragma once
 
 #include <string>
-#include "IService.hpp"
-#include "TCPPacket.hpp"
+#include "IService.h"
+#include "TCPPacket.h"
 
 enum			errorCode
   {
@@ -55,7 +55,7 @@ class			IRequest
 {
 private:
   virtual bool		isValid() = 0;
-  virtual void		doop() = 0;
+  virtual void		doOp() = 0;
   virtual void		finalize(IService*) = 0;
 
 public:

@@ -41,9 +41,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\Fiahil\Documents\GitHub\R-Type\Server\Room\include;C:\Users\Fiahil\Documents\GitHub\R-Type\Server\Quadtree\include;C:\Users\Fiahil\Documents\GitHub\R-Type\Server\Network\include;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\Dl;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\LWP;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\Net;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\PC;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\PS;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\ReqCl;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\ReqServ\include;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\TP;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Users\Fiahil\Documents\GitHub\R-Type\Server\Room\include;C:\Users\Fiahil\Documents\GitHub\R-Type\Server\Quadtree\include;C:\Users\Fiahil\Documents\GitHub\R-Type\Server\Network\include;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\Dl;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\LWP;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\Net;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\PC;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\PS;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\ReqCl;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\ReqServ\include;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\TP;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -76,6 +78,86 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Generics\Dl\DlExceptions.h" />
+    <ClInclude Include="..\Generics\Dl\DlManager.h" />
+    <ClInclude Include="..\Generics\Dl\IDlLoader.h" />
+    <ClInclude Include="..\Generics\Dl\IDlPlugin.h" />
+    <ClInclude Include="..\Generics\Dl\WinDlLoader.h" />
+    <ClInclude Include="..\Generics\LWP\ICondVar.h" />
+    <ClInclude Include="..\Generics\LWP\IMutex.h" />
+    <ClInclude Include="..\Generics\LWP\IThread.h" />
+    <ClInclude Include="..\Generics\LWP\SafeQueue.h" />
+    <ClInclude Include="..\Generics\LWP\ScopedLock.h" />
+    <ClInclude Include="..\Generics\LWP\WinCondVar.h" />
+    <ClInclude Include="..\Generics\LWP\WinMutex.h" />
+    <ClInclude Include="..\Generics\LWP\WinThread.h" />
+    <ClInclude Include="..\Generics\Net\EndPoint.h" />
+    <ClInclude Include="..\Generics\Net\exceptionSocket.h" />
+    <ClInclude Include="..\Generics\Net\ISocket.h" />
+    <ClInclude Include="..\Generics\Net\WinSocketTcp.h" />
+    <ClInclude Include="..\Generics\Net\WinSocketUdp.h" />
+    <ClInclude Include="..\Generics\PC\Consumer.h" />
+    <ClInclude Include="..\Generics\PC\Producer.h" />
+    <ClInclude Include="..\Generics\PC\Storage.h" />
+    <ClInclude Include="..\Generics\PS\IPoolSystemElement.h" />
+    <ClInclude Include="..\Generics\PS\PoolSystem.h" />
+    <ClInclude Include="..\Generics\ReqCl\SCRequest.h" />
+    <ClInclude Include="..\Generics\ReqServ\include\CSRequest.h" />
+    <ClInclude Include="..\Generics\ReqServ\include\IRequest.hpp" />
+    <ClInclude Include="..\Generics\TP\ThreadPool.h" />
+    <ClInclude Include="..\Generics\TP\ThreadPoolQueue.h" />
+    <ClInclude Include="..\Generics\TP\ThreadPoolWorker.h" />
+    <ClInclude Include="Network\include\IClientService.h" />
+    <ClInclude Include="Network\include\NetworkManager.h" />
+    <ClInclude Include="Network\include\IServerService.h" />
+    <ClInclude Include="Network\include\IService.h" />
+    <ClInclude Include="Network\include\PackMan.h" />
+    <ClInclude Include="Network\include\ServerService.h" />
+    <ClInclude Include="Network\include\TCPPacket.h" />
+    <ClInclude Include="Quadtree\include\Collider.h" />
+    <ClInclude Include="Quadtree\include\IEntity.h" />
+    <ClInclude Include="Quadtree\include\Node.h" />
+    <ClInclude Include="Quadtree\include\QuadTree.h" />
+    <ClInclude Include="Room\include\Account.h" />
+    <ClInclude Include="Room\include\GameplayEngine.h" />
+    <ClInclude Include="Room\include\Hall.h" />
+    <ClInclude Include="Room\include\IAccount.h" />
+    <ClInclude Include="Room\include\IEntity.h" />
+    <ClInclude Include="Room\include\IPlayer.h" />
+    <ClInclude Include="Room\include\IRoom.h" />
+    <ClInclude Include="Room\include\Player.h" />
+    <ClInclude Include="Room\include\RegisterManager.h" />
+    <ClInclude Include="Room\include\Resources.hpp" />
+    <ClInclude Include="Room\include\Room.h" />
+    <ClInclude Include="Room\include\RoomManager.h" />
+    <ClInclude Include="Room\include\Scenario.h" />
+    <ClInclude Include="Room\include\TimePoint.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Generics\LWP\ScopedLock.cpp" />
+    <ClCompile Include="..\Generics\LWP\WinCondVar.cpp" />
+    <ClCompile Include="..\Generics\LWP\WinMutex.cpp" />
+    <ClCompile Include="..\Generics\Net\EndPoint.cpp" />
+    <ClCompile Include="..\Generics\Net\WinSocketTcp.cpp" />
+    <ClCompile Include="..\Generics\Net\WinSocketUdp.cpp" />
+    <ClCompile Include="..\Generics\ReqCl\SCRequest.cpp" />
+    <ClCompile Include="..\Generics\ReqServ\sources\CSRequest.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Network\sources\NetworkManager.cpp" />
+    <ClCompile Include="Network\sources\PackMan.cpp" />
+    <ClCompile Include="Quadtree\sources\Collider.cpp" />
+    <ClCompile Include="Quadtree\sources\Node.cpp" />
+    <ClCompile Include="Quadtree\sources\QuadTree.cpp" />
+    <ClCompile Include="Room\sources\Account.cpp" />
+    <ClCompile Include="Room\sources\GameplayEngine.cpp" />
+    <ClCompile Include="Room\sources\Hall.cpp" />
+    <ClCompile Include="Room\sources\Player.cpp" />
+    <ClCompile Include="Room\sources\RegisterManager.cpp" />
+    <ClCompile Include="Room\sources\Resources.cpp" />
+    <ClCompile Include="Room\sources\Room.cpp" />
+    <ClCompile Include="Room\sources\RoomManager.cpp" />
+    <ClCompile Include="Room\sources\Scenario.cpp" />
+    <ClCompile Include="Room\sources\TimePoint.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

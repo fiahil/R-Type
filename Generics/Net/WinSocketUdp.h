@@ -4,6 +4,8 @@
 #include	<winsock2.h>
 #include	<Windows.h>
 
+#pragma comment(lib, "WS2_32")
+
 #include	<list>
 
 #include	"ISocket.h"

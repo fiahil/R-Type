@@ -11,12 +11,12 @@
 #pragma once
 
 #include	"ISocket.h"
+#include	"IService.h"
+#include	"IClientService.h"
 
 class		IServerService : public IService
 {
 public:
   virtual ~IServerService() {}
-  //  virtual ISocket* accept();
-  virtual TCPPacket	pull() = 0;
-  virtual void		push(TCPPacket) = 0;
+  virtual IClientService*		accept();
 };

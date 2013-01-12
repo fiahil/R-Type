@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics.h>
+/* #include <SFML/Graphics.h> */
 
 class IDrawable
 {

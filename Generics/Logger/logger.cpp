@@ -19,3 +19,7 @@ std::string		Logger::getLabel() const
 {
 	return this->label_;
 }
+
+Logger	DEBUG(std::cout, "[Debug]");
+Logger	LOG(std::cerr, "[Log]");
+

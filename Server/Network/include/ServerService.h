@@ -1,12 +1,3 @@
-//
-// ServerService.h for R-Type in /home/teisse_a//Documents/Tek3/RType/R-Type/Server/NetWork/include
-// 
-// Made by alexandre teisseire
-// Login   <teisse_a@epitech.net>
-// 
-// Started on  Wed Jan  9 11:36:32 2013 alexandre teisseire
-// Last update Sat Jan 12 22:28:46 2013 alexandre teisseire
-//
 
 #pragma once
 
@@ -30,5 +21,5 @@ public:
   
   virtual IRequest*			pull();
   virtual void				push(IRequest*);
-  virtual IClientService*		accept();
+  virtual IClientService*	accept();
 };

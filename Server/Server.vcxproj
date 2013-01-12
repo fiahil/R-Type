@@ -83,6 +83,7 @@
     <ClInclude Include="..\Generics\Dl\IDlLoader.h" />
     <ClInclude Include="..\Generics\Dl\IDlPlugin.h" />
     <ClInclude Include="..\Generics\Dl\WinDlLoader.h" />
+    <ClInclude Include="..\Generics\Logger\logger.h" />
     <ClInclude Include="..\Generics\LWP\ICondVar.h" />
     <ClInclude Include="..\Generics\LWP\IMutex.h" />
     <ClInclude Include="..\Generics\LWP\IThread.h" />
@@ -116,7 +117,6 @@
     <ClInclude Include="Entities\include\IPlayable.h" />
     <ClInclude Include="Entities\include\IScriptable.h" />
     <ClInclude Include="Entities\include\Scenario.h" />
-    <ClInclude Include="logger.h" />
     <ClInclude Include="Network\include\ClientService.h" />
     <ClInclude Include="Network\include\IClientService.h" />
     <ClInclude Include="Network\include\NetworkManager.h" />

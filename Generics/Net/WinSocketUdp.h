@@ -1,10 +1,13 @@
 
 #pragma once
 
-#include	<winsock2.h>
-#include	<Windows.h>
+#ifndef WIN32_LEAN_AND_MEAN_HEADER_PROTECTION
+# define WIN32_LEAN_AND_MEAN_HEADER_PROTECTION
+# define WIN32_LEAN_AND_MEAN
 
-#pragma comment(lib, "WS2_32")
+# include	<winsock2.h>
+
+#endif
 
 #include	<list>
 

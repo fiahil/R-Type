@@ -257,7 +257,7 @@
     <ClInclude Include="Network\include\ClientService.h">
       <Filter>Header Files\Network</Filter>
     </ClInclude>
-    <ClInclude Include="logger.h">
+    <ClInclude Include="..\Generics\Logger\logger.h">
       <Filter>Header Files\Generics\Logger</Filter>
     </ClInclude>
   </ItemGroup>

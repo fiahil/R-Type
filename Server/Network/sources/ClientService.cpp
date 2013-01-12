@@ -1,13 +1,13 @@
 
+#include "logger.h"
+#include "ClientService.h"
+#include "IRequest.h"
+
 #ifdef WIN32
 # include "WinSocketTcp.h"
 #else
 # include "UnixSocketTcp.h"
 #endif
-
-#include "logger.h"
-#include "ClientService.h"
-#include "IRequest.h"
 
 ClientService::ClientService(Net::ISocket* s)
 	: sock_(s)

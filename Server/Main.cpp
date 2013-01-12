@@ -5,6 +5,10 @@
 #include "NetworkManager.h"
 #include "logger.h"
 
+#ifdef WIN32
+# pragma comment(lib, "WS2_32")
+#endif
+
 int		main(int ac, char *av[])
 {
 	std::string		port("42666");

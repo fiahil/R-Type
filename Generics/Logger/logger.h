@@ -2,7 +2,7 @@
 #pragma once
 
 #include <iostream>
-#include <time.h>
+#include <ctime>
 
 class Logger
 {
@@ -16,20 +16,24 @@ public:
 	std::string		getLabel() const;
 };
 
-//Logger	DEBUG(std::cout, "[Debug]");
-//Logger	LOG(std::cerr, "[Log]");
+extern Logger	DEBUG;
+extern Logger	LOG;
 
 template <class T>
 std::ostream& operator<<(Logger& logger, T o)
 {
+#ifndef NDEBUG
+	/*
 	time_t rawtime;
-	struct tm * timeinfo;
+	tm timeinfo;
+	char timer[4096];
 
-	time ( &rawtime );
-	timeinfo = localtime ( &rawtime );
+	time(&rawtime);
+	localtime_s(&timeinfo, &rawtime);
+	asctime_s(timer, &timeinfo);
+	*/
 
-#ifndef NODEBBUG
-	logger.getStream() << logger.getLabel() << asctime (timeinfo) << o;
+	logger.getStream() << logger.getLabel() << "\t" << o;
 #endif
 	return logger.getStream();
 }

@@ -149,9 +149,6 @@
     <ClInclude Include="..\Generics\TP\ThreadPoolWorker.h">
       <Filter>Header Files\Generics\TP</Filter>
     </ClInclude>
-    <ClInclude Include="..\Generics\ReqServ\include\IRequest.hpp">
-      <Filter>Header Files\Generics\Req</Filter>
-    </ClInclude>
     <ClInclude Include="Network\include\IServerService.h">
       <Filter>Header Files\Network</Filter>
     </ClInclude>
@@ -247,6 +244,12 @@
     </ClInclude>
     <ClInclude Include="Room\include\Resources.h">
       <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\ReqServ\include\IRequest.h">
+      <Filter>Header Files\Generics\Req</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\include\ClientService.h">
+      <Filter>Header Files\Network</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

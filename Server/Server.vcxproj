@@ -103,7 +103,7 @@
     <ClInclude Include="..\Generics\PS\PoolSystem.h" />
     <ClInclude Include="..\Generics\ReqCl\SCRequest.h" />
     <ClInclude Include="..\Generics\ReqServ\include\CSRequest.h" />
-    <ClInclude Include="..\Generics\ReqServ\include\IRequest.hpp" />
+    <ClInclude Include="..\Generics\ReqServ\include\IRequest.h" />
     <ClInclude Include="..\Generics\TP\ThreadPool.h" />
     <ClInclude Include="..\Generics\TP\ThreadPoolQueue.h" />
     <ClInclude Include="..\Generics\TP\ThreadPoolWorker.h" />
@@ -116,6 +116,7 @@
     <ClInclude Include="Entities\include\IPlayable.h" />
     <ClInclude Include="Entities\include\IScriptable.h" />
     <ClInclude Include="Entities\include\Scenario.h" />
+    <ClInclude Include="Network\include\ClientService.h" />
     <ClInclude Include="Network\include\IClientService.h" />
     <ClInclude Include="Network\include\NetworkManager.h" />
     <ClInclude Include="Network\include\IServerService.h" />

@@ -9,7 +9,7 @@
 //
 
 #include	<sstream>
-// #include	"PackMan.hpp"
+// #include	"PackMan.h"
 #include	"CSRequest.h"
 
 Connect::Connect(char *usr, char *passwd) :

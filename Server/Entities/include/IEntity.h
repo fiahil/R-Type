@@ -1,10 +1,10 @@
 #pragma once
 
-struct	Position
+typedef struct	s_Point
 {
 	int	x_;
 	int	y_;
-};
+} Point;
 
 class IEntity
 {
@@ -12,5 +12,5 @@ public:
 	virtual ~IEntity(void) {}
 
 public:
-	virtual const Position & getPos() const = 0;
+	virtual const Point & getPos() const = 0;
 };

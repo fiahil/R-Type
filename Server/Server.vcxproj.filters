@@ -63,6 +63,12 @@
     <Filter Include="Source Files\Quadtree">
       <UniqueIdentifier>{e5b5f770-cff6-4a34-9e08-065ae1f249a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Entity">
+      <UniqueIdentifier>{6a69ac19-5260-4c28-81b1-2887d6aafd33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity">
+      <UniqueIdentifier>{b3101f13-aa51-4e76-ba52-953b69ffd54b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Generics\Dl\DlExceptions.h">
@@ -170,12 +176,6 @@
     <ClInclude Include="Room\include\RoomManager.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
-    <ClInclude Include="Room\include\Scenario.h">
-      <Filter>Header Files\Room</Filter>
-    </ClInclude>
-    <ClInclude Include="Room\include\TimePoint.h">
-      <Filter>Header Files\Room</Filter>
-    </ClInclude>
     <ClInclude Include="Room\include\Account.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
@@ -188,13 +188,7 @@
     <ClInclude Include="Room\include\IAccount.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
-    <ClInclude Include="Room\include\IEntity.h">
-      <Filter>Header Files\Room</Filter>
-    </ClInclude>
     <ClInclude Include="Quadtree\include\Collider.h">
-      <Filter>Header Files\Quadtree</Filter>
-    </ClInclude>
-    <ClInclude Include="Quadtree\include\IEntity.h">
       <Filter>Header Files\Quadtree</Filter>
     </ClInclude>
     <ClInclude Include="Quadtree\include\Node.h">
@@ -226,6 +220,33 @@
     </ClInclude>
     <ClInclude Include="..\Generics\ReqCl\SCRequest.h">
       <Filter>Header Files\Generics\Req</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\include\IEntity.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\include\IDrawable.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\include\IDestroyable.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\include\ICollidable.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\include\IArmable.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\include\Scenario.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\include\IScriptable.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\include\IPlayable.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\include\IMoveable.h">
+      <Filter>Header Files\Entity</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -300,6 +321,9 @@
     </ClCompile>
     <ClCompile Include="Network\sources\NetworkManager.cpp">
       <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\sources\Scenario.cpp">
+      <Filter>Source Files\Entity</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

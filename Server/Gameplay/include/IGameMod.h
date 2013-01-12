@@ -2,7 +2,7 @@
 
 #include "IEntity.h"
 
-class IGameMod {
+class IGameMod /*: public DL:: */ {
 public:
   virtual void onCollision(IEntity*,IEntity*) = 0;
   virtual void onEntityDestruction(IEntity*) = 0;

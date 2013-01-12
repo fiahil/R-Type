@@ -1,5 +1,5 @@
 //
-// NetPacket.hpp for RType in /home/teisse_a//Documents/Tek3/RType/Requests
+// NetPacket.h for RType in /home/teisse_a//Documents/Tek3/RType/Requests
 // 
 // Made by alexandre teisseire
 // Login   <teisse_a@epitech.net>

@@ -69,6 +69,12 @@
     <Filter Include="Source Files\Entity">
       <UniqueIdentifier>{b3101f13-aa51-4e76-ba52-953b69ffd54b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Generics\Logger">
+      <UniqueIdentifier>{9c915712-a583-48e5-971d-764a8d7f8b6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generics\Logger">
+      <UniqueIdentifier>{f1a57ab6-93b3-465b-beb0-55d1dd467775}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Generics\Dl\DlExceptions.h">
@@ -251,6 +257,9 @@
     <ClInclude Include="Network\include\ClientService.h">
       <Filter>Header Files\Network</Filter>
     </ClInclude>
+    <ClInclude Include="logger.h">
+      <Filter>Header Files\Generics\Logger</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Generics\LWP\ScopedLock.cpp">
@@ -321,6 +330,9 @@
     </ClCompile>
     <ClCompile Include="Entities\sources\Scenario.cpp">
       <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="logger.cpp">
+      <Filter>Source Files\Generics\Logger</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,5 +1,5 @@
 //
-// Resources.hpp for Resources in /home/teisse_a//Documents/Tek3/RType/Requests
+// Resources.h for Resources in /home/teisse_a//Documents/Tek3/RType/Requests
 // 
 // Made by alexandre teisseire
 // Login   <teisse_a@epitech.net>

@@ -1,5 +1,5 @@
 //
-// INetworkManager.hpp for R-Type in /home/teisse_a//Documents/Tek3/RType/R-Type/Server/NetWork/include
+// INetworkManager.h for R-Type in /home/teisse_a//Documents/Tek3/RType/R-Type/Server/NetWork/include
 // 
 // Made by alexandre teisseire
 // Login   <teisse_a@epitech.net>

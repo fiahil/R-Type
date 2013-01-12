@@ -41,7 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Fiahil\Documents\GitHub\R-Type\Server\Room\include;C:\Users\Fiahil\Documents\GitHub\R-Type\Server\Quadtree\include;C:\Users\Fiahil\Documents\GitHub\R-Type\Server\Network\include;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\Dl;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\LWP;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\Net;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\PC;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\PS;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\ReqCl;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\ReqServ\include;C:\Users\Fiahil\Documents\GitHub\R-Type\Generics\TP;C:\Users\Fiahil\Documents\GitHub\R-Type\Server\Entities\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\Server\Quadtree\include;..\Server\Network\include;..\Server\Room\include;..\Generics\TP;..\Server\Entities\include;..\Generics\Net;..\Generics\PC;..\Generics\LWP;..\Generics\PS;..\Generics\ReqServ\include;..\Generics\ReqCl;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -116,6 +116,7 @@
     <ClInclude Include="Entities\include\IPlayable.h" />
     <ClInclude Include="Entities\include\IScriptable.h" />
     <ClInclude Include="Entities\include\Scenario.h" />
+    <ClInclude Include="logger.h" />
     <ClInclude Include="Network\include\ClientService.h" />
     <ClInclude Include="Network\include\IClientService.h" />
     <ClInclude Include="Network\include\NetworkManager.h" />
@@ -149,6 +150,7 @@
     <ClCompile Include="..\Generics\ReqCl\SCRequest.cpp" />
     <ClCompile Include="..\Generics\ReqServ\sources\CSRequest.cpp" />
     <ClCompile Include="Entities\sources\Scenario.cpp" />
+    <ClCompile Include="logger.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Network\sources\NetworkManager.cpp" />
     <ClCompile Include="Network\sources\PackMan.cpp" />

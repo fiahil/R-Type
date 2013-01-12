@@ -334,5 +334,11 @@
     <ClCompile Include="logger.cpp">
       <Filter>Source Files\Generics\Logger</Filter>
     </ClCompile>
+    <ClCompile Include="Network\sources\ServerService.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\sources\ClientService.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

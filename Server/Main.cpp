@@ -3,6 +3,7 @@
 #include <sstream>
 
 #include "NetworkManager.h"
+#include "logger.h"
 
 int		main(int ac, char *av[])
 {

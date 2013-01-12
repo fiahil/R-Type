@@ -1,5 +1,8 @@
 
+#pragma once
+
 #include <iostream>
+#include <time.h>
 
 class Logger
 {
@@ -9,21 +12,24 @@ class Logger
 public:
 	Logger(std::ostream&, std::string const&);
 	~Logger();
-	template <class T> operator<<(Logger&, T o);
-
+	std::ostream&	getStream();
+	std::string		getLabel() const;
 };
 
-Logger::Logger(std::ostream& stream, std::string const& label) : oss_(stream), label_(label)
-{
-		
-}
-
-Logger::~Logger()
-{
-}
+//Logger	DEBUG(std::cout, "[Debug]");
+//Logger	LOG(std::cerr, "[Log]");
 
 template <class T>
-Logger::operator<<(Logger& logger, T o)
+std::ostream& operator<<(Logger& logger, T o)
 {
-	this->oss_ << this->label_ << " " << o << std::endl;
+	time_t rawtime;
+	struct tm * timeinfo;
+
+	time ( &rawtime );
+	timeinfo = localtime ( &rawtime );
+
+#ifndef NODEBBUG
+	logger.getStream() << logger.getLabel() << asctime (timeinfo) << o;
+#endif
+	return logger.getStream();
 }

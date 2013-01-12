@@ -1,32 +1,48 @@
-//
-// ClientService.cpp for R-Type in /home/teisse_a//Documents/Tek3/RType/R-Type/Server/Network
-// 
-// Made by alexandre teisseire
-// Login   <teisse_a@epitech.net>
-// 
-// Started on  Sat Jan 12 18:27:56 2013 alexandre teisseire
-// Last update Sat Jan 12 18:56:30 2013 alexandre teisseire
-//
 
+#ifdef WIN32
+# include "WinSocketTcp.h"
+#else
+# include "UnixSocketTcp.h"
+#endif
+
+#include "logger.h"
 #include "ClientService.h"
+#include "IRequest.h"
 
-ClientService::ClientService(Net::EndPoint const&)
+ClientService::ClientService(Net::ISocket* s)
+	: sock_(s)
 {
-
 }
 
-ClientService::~ClientService() {}
-
-void		ClientService::operator()()
+ClientService::~ClientService()
 {
+	delete this->sock_;
+}
+
+void		ClientService::operator()(void)
+{
+	DEBUG << "ClientService functor" << std::endl;
 }
 
 IRequest*	ClientService::pull()
 {
-  return (NULL);
+	DEBUG << "ClientService pull <TODO> fetch from socket" << std::endl;
+	/*
+	** THIS IZ LAPIN
+	** () ()
+	** (o.O)
+	** (u u)
+	*/
+	return 0;
 }
 
-void		ClientService::push(IRequest*)
+void		ClientService::push(IRequest* r)
 {
-
+	DEBUG << "Sending request" << std::endl;
+	/*
+	** THIS IZ LAPIN
+	** () ()
+	** (o.O)
+	** (u u)
+	*/
 }

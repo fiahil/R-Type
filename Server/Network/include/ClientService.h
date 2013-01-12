@@ -11,7 +11,7 @@ private:
 	Net::ISocket*	sock_;
 
 public:
-	ClientService(Net::EndPoint const&);
+	ClientService(Net::ISocket*);
 	~ClientService();
 
 	void		operator()(void);

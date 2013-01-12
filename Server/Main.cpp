@@ -1,5 +1,5 @@
 
-#include <iostream>
+#include "logger.h"
 #include <sstream>
 
 #include "NetworkManager.h"
@@ -17,6 +17,8 @@ int		main(int ac, char *av[])
 	std::stringstream ss(port);
 	unsigned short s;
 	ss >> s;
+
+	LOG << "Launching server on port " << port << std::endl;
 
 	NetworkManager	nm(s);
 

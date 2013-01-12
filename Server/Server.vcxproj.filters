@@ -167,9 +167,6 @@
     <ClInclude Include="Room\include\RegisterManager.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
-    <ClInclude Include="Room\include\Resources.hpp">
-      <Filter>Header Files\Room</Filter>
-    </ClInclude>
     <ClInclude Include="Room\include\Room.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
@@ -247,6 +244,9 @@
     </ClInclude>
     <ClInclude Include="Entities\include\IMoveable.h">
       <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\Resources.h">
+      <Filter>Header Files\Room</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

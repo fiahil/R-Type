@@ -8,6 +8,6 @@
 // Last update Wed Jan  9 10:08:19 2013 alexandre teisseire
 //
 
-#include "Resources.hpp"
+#include "Resources.h"
 
 RoomManager	Resources::RM;

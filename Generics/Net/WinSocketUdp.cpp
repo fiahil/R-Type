@@ -7,7 +7,8 @@
 namespace Net
 {
 
-SocketUdp::SocketUdp(SocketMode mode) : mode_(mode)
+SocketUdp::SocketUdp(SocketMode mode)
+	: mode_(mode)
 {
 	WSAStartup(MAKEWORD(2,2), &this->wsa_);
 	this->Create_();

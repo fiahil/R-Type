@@ -13,10 +13,13 @@
 #include "IServerService.h"
 #include "IClientService.h"
 
+#include "ServerService.h"
+#include "ClientService.h"
+
 class		NetworkManager
 {
 private:
-  IServerService	*SS;
+  IServerService	*SS_;
 
   //
   // Thread Pool de Services

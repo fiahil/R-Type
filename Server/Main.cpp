@@ -1,11 +1,15 @@
 
 #include <iostream>
 
+#include "NetworkManager.h"
+
 int		main()
 {
 	std::cout << "R-Type server V1.0" << std::endl;
 
-	// Launching Network manager.
+	NetworkManager	nm;
+
+	nm.run();
 
 	return 0;
 }

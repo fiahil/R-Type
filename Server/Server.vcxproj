@@ -134,7 +134,7 @@
     <ClInclude Include="Room\include\IRoom.h" />
     <ClInclude Include="Room\include\Player.h" />
     <ClInclude Include="Room\include\RegisterManager.h" />
-    <ClInclude Include="Room\include\Resources.hpp" />
+    <ClInclude Include="Room\include\Resources.h" />
     <ClInclude Include="Room\include\Room.h" />
     <ClInclude Include="Room\include\RoomManager.h" />
   </ItemGroup>

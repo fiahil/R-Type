@@ -2,6 +2,8 @@
 #pragma once
 
 #include "IClientService.h"
+#include "IRequest.h"
+#include "ISocket.h"
 
 class ClientService : public IClientService
 {

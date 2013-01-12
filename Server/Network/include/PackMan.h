@@ -1,13 +1,3 @@
-//
-// PackMan.h for RType in /home/teisse_a//Documents/Tek3/RType/Requests
-// 
-// Made by alexandre teisseire
-// Login   <teisse_a@epitech.net>
-// 
-// Started on  Fri Jan  4 17:31:36 2013 alexandre teisseire
-// Last update Fri Jan  4 17:56:31 2013 alexandre teisseire
-//
-
 #ifndef	_PACKMAN_HPP_
 #define _PACKMAN_HPP_
 
@@ -63,8 +53,8 @@ public:
   template <class T>
   static IRequest*	unpack_T(TCPPacket *pack)
   {
-	  std::cout << pack->Body << std::endl;
-	  std::cout << pack->H.len << std::endl;
+	  std::cout << pack->B << std::endl;
+	  std::cout << pack->H.size << std::endl;
 	  //return new T(std::string(pack->Body, pack->H.len - sizeof(TCPPacket::Header))); // TODO Missing ctor.
 	  return 0; // TODO Missing Ctor
   }

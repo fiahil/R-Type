@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Wed Jan  9 11:36:32 2013 alexandre teisseire
-// Last update Sat Jan 12 18:21:46 2013 alexandre teisseire
+// Last update Sat Jan 12 18:53:08 2013 alexandre teisseire
 //
 
 #pragma once
@@ -13,6 +13,7 @@
 #include "IServerService.h"
 #include "ISocket.h"
 #include "TCPPacket.h"
+#include "IRequest.h"
 
 class		ServerService : public IServerService
 {

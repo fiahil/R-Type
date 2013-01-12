@@ -38,6 +38,7 @@ public:
 	virtual void Bind(const EndPoint&);
 	virtual void Send(const std::string&);
 	virtual std::string Recv(void);
+	ISocket* Accept();
 };
 
 }			// namespace Net

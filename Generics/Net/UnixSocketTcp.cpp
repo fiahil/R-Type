@@ -7,7 +7,7 @@
 namespace Net
 {
 
-  SocketTcp::SocketTcp(void)
+  SocketTcp::SocketTcp(SocketMode)
     : connected_(false)
   {
     this->Create_();
@@ -72,7 +72,7 @@ namespace Net
     this->Listen_();
   }
 
-  void SocketTcp::Accept()
+  ISocket* SocketTcp::Accept()
   {
 	SocketTcp* ret = new SocketTcp(SERVERMODE);
     sockaddr_in	sin;
@@ -80,7 +80,7 @@ namespace Net
 
     if ((ret->socket_ = accept(this->socket_, reinterpret_cast<struct sockaddr*>(&sin), &sinlen)) != -1)
       ret->connected_ = true;
-	return (ret);
+	return (0);
   }
 
   void SocketTcp::Send(const std::string& packet)

@@ -8,7 +8,7 @@
 namespace Net
 {
 
-  SocketUdp::SocketUdp(void)
+  SocketUdp::SocketUdp(SocketMode)
   {
     this->Create_();
   }
@@ -59,8 +59,8 @@ namespace Net
 
   ISocket* SocketUdp::Accept()
   {
-	assert(1);
-	return (0);
+	assert(0);
+	return 0;
   }
   
   void SocketUdp::Send(const std::string& packet)

@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Sat Jan 12 18:15:05 2013 alexandre teisseire
-// Last update Sat Jan 12 18:29:57 2013 alexandre teisseire
+// Last update Sat Jan 12 19:09:30 2013 alexandre teisseire
 //
 
 #include "ServerService.h"
@@ -22,6 +22,7 @@ IRequest*	ServerService::pull()
 {
   // TCPPacket	P;
   // IRequest*	R = unpack();
+  return NULL;
 }
 
 void		ServerService::push(IRequest* )
@@ -29,7 +30,7 @@ void		ServerService::push(IRequest* )
 
 }
 
-IClientService	ServerService::accept()
+IClientService*	ServerService::accept()
 {
   
 }

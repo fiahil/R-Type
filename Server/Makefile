@@ -5,7 +5,7 @@
 ## Login   <teisse_a@epitech.net>
 ## 
 ## Started on  Wed Jan  9 09:55:44 2013 alexandre teisseire
-## Last update Sat Jan 12 19:19:34 2013 alexandre teisseire
+## Last update Sat Jan 12 21:36:51 2013 alexandre teisseire
 ##
 
 NAME		= R-Type
@@ -81,7 +81,7 @@ INCLUDES	= -I$(PATH_INC) 	\
 
 CXX		= g++
 
-CXXFLAGS	= -Wall -Wextra -O3 -DNDEBUG $(INCLUDES) -std=c++0x
+CXXFLAGS	= -Wall -Wextra -O3 -DNDEBUG $(INCLUDES) -std=c++0x -g3
 
 LDFLAGS		= -lpthread
 
@@ -107,7 +107,7 @@ $(NAME):	$(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET
 		$(CXX) -o $(NAME) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(LDFLAGS)
 
 clean:
-		$(RM) $(OBJ) $(DUST)
+		$(RM) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(DUST)
 
 fclean:		clean
 		$(RM) $(NAME)

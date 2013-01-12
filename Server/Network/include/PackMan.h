@@ -37,13 +37,12 @@ public:
 
   static std::map<eRequestType, IRequest* (*)(TCPPacket*)>	request_tab;
 
-  template<typename T>
-  static TCPPacket*	pack(T* a, eRequestType type)
+  static TCPPacket*	pack(IRequest* a)
   {
     TCPPacket*	pack = new TCPPacket();
     std::string	val = a->toString();
     
-    pack->H.type = type;
+    pack->H.type = a->getType();
     PackMan::Memcpy(pack->B, val.data(), val.size());
     pack->H.size = val.size() + (2 * sizeof(int16_t));
 

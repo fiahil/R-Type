@@ -152,8 +152,10 @@
     <ClCompile Include="Entities\sources\Scenario.cpp" />
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Network\sources\ClientService.cpp" />
     <ClCompile Include="Network\sources\NetworkManager.cpp" />
     <ClCompile Include="Network\sources\PackMan.cpp" />
+    <ClCompile Include="Network\sources\ServerService.cpp" />
     <ClCompile Include="Quadtree\sources\Collider.cpp" />
     <ClCompile Include="Quadtree\sources\Node.cpp" />
     <ClCompile Include="Quadtree\sources\QuadTree.cpp" />

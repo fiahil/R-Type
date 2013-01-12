@@ -10,7 +10,6 @@
 
 #pragma once
 
-#include	"ISocket.h"
 #include	"IService.h"
 #include	"IClientService.h"
 
@@ -18,5 +17,5 @@ class		IServerService : public IService
 {
 public:
   virtual ~IServerService() {}
-  virtual IClientService*		accept();
+  virtual IClientService*		accept() = 0;
 };

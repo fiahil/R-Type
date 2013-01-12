@@ -1,8 +1,8 @@
 
 #include "NetworkManager.h"
 
-NetworkManager::NetworkManager()
-	: SS_(new ServerService()), CS_(TP::ThreadPool<IClientService>::getInstance(5))
+NetworkManager::NetworkManager(Net::EndPoint const& ep)
+	: SS_(new ServerService(ep)), CS_(TP::ThreadPool<IClientService>::getInstance(5))
 {
 }
 

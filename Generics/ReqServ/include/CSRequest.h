@@ -10,9 +10,9 @@
 
 #pragma once
 
-#include	"Resources.hpp"
+#include	"Resources.h"
 #include	"RoomManager.h"
-#include	"IRequest.hpp"
+#include	"IRequest.h"
 #include	"IPlayer.h"
 
 class		Connect : protected IRequest

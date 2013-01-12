@@ -10,12 +10,12 @@
 
 #pragma once
 
-#include "TCPPacket.h"
+class IRequest;
 
 class IService
 {
 public:
   virtual ~IService() {}
-  virtual TCPPacket*	pull() = 0;
-  virtual void			push(TCPPacket*) = 0;
+  virtual IRequest*		pull() = 0;
+  virtual void			push(IRequest*) = 0;
 };

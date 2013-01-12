@@ -14,6 +14,7 @@
 
 class		IClientService : public IService
 {
+public:
   virtual ~IClientService() {}
-  virtual void	connectTo() = 0;
+  virtual void	operator()(void) = 0;
 };

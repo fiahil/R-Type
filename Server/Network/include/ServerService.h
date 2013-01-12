@@ -11,18 +11,19 @@
 #pragma once
 
 #include "IServerService.h"
+#include "ISocket.h"
 #include "TCPPacket.h"
 
 class		ServerService : public IServerService
 {
 private:
-  //  ISocket*	sock;
+	Net::ISocket*		sock_;
 
 public:
-  ServerService();
-  ~ServerService();
+	ServerService(Net::EndPoint const& ep);
+	~ServerService();
 
-
-  virtual TCPPacket*	pull();
-  virtual void			push(TCPPacket*);
+	virtual IRequest*			pull();
+	virtual void				push(IRequest*);
+	virtual IClientService*		accept();
 };

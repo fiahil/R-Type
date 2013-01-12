@@ -14,6 +14,7 @@
 #include "IClientService.h"
 
 #include "Threadpool.h"
+#include "Endpoint.h"
 
 #include "ServerService.h"
 #include "ClientService.h"
@@ -25,9 +26,9 @@ private:
   TP::ThreadPool<IClientService>*	CS_;
 
 public:
-  NetworkManager();
-  ~NetworkManager();
+	NetworkManager(Net::EndPoint const&);
+	~NetworkManager();
 
 public:
-  void			run();
+	void	run();
 };

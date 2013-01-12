@@ -1,13 +1,23 @@
 
 #include <iostream>
+#include <sstream>
 
 #include "NetworkManager.h"
 
-int		main()
+int		main(int ac, char *av[])
 {
-	std::cout << "R-Type server V1.0" << std::endl;
+	std::string		port("42666");
 
-	NetworkManager	nm;
+	if (ac > 1)
+	{
+		port = av[1];
+	}
+	
+	std::stringstream ss(port);
+	unsigned short s;
+	ss >> s;
+
+	NetworkManager	nm(s);
 
 	nm.run();
 

@@ -13,17 +13,16 @@
 #include "IServerService.h"
 #include "IClientService.h"
 
+#include "Threadpool.h"
+
 #include "ServerService.h"
 #include "ClientService.h"
 
 class		NetworkManager
 {
 private:
-  IServerService	*SS_;
-
-  //
-  // Thread Pool de Services
-  //  
+  IServerService*					SS_;
+  TP::ThreadPool<IClientService>*	CS_;
 
 public:
   NetworkManager();

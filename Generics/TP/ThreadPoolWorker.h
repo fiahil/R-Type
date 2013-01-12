@@ -48,8 +48,6 @@ namespace TP
 		{
 			while (true)
 			{
-				this->wait();
-				
 				Task* t = 0;
 				while ((t = this->consume()) != 0)
 				{
@@ -57,6 +55,7 @@ namespace TP
 					(*t)();
 					*this->used_ = false;
 				}
+				this->wait();
 			}
 		}
 	};

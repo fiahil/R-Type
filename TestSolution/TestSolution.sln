@@ -1,9 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server", "Server\Server.vcxproj", "{97359A51-A267-4458-9397-CB0B88432DAC}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestSolution", "TestSolution\TestSolution\TestSolution.vcxproj", "{92E80CAE-E6BC-424D-AA72-0332E9A5F86E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestSolution", "TestSolution\TestSolution.vcxproj", "{92E80CAE-E6BC-424D-AA72-0332E9A5F86E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +9,6 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{97359A51-A267-4458-9397-CB0B88432DAC}.Debug|Win32.ActiveCfg = Debug|Win32
-		{97359A51-A267-4458-9397-CB0B88432DAC}.Debug|Win32.Build.0 = Debug|Win32
-		{97359A51-A267-4458-9397-CB0B88432DAC}.Release|Win32.ActiveCfg = Release|Win32
-		{97359A51-A267-4458-9397-CB0B88432DAC}.Release|Win32.Build.0 = Release|Win32
 		{92E80CAE-E6BC-424D-AA72-0332E9A5F86E}.Debug|Win32.ActiveCfg = Debug|Win32
 		{92E80CAE-E6BC-424D-AA72-0332E9A5F86E}.Debug|Win32.Build.0 = Debug|Win32
 		{92E80CAE-E6BC-424D-AA72-0332E9A5F86E}.Release|Win32.ActiveCfg = Release|Win32

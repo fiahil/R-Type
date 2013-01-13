@@ -5,7 +5,7 @@
 ## Login   <teisse_a@epitech.net>
 ## 
 ## Started on  Wed Jan  9 09:55:44 2013 alexandre teisseire
-## Last update Sat Jan 12 21:36:51 2013 alexandre teisseire
+## Last update Sun Jan 13 00:27:57 2013 alexandre teisseire
 ##
 
 NAME		= R-Type
@@ -17,6 +17,7 @@ PATH_SRC_LWP	= ../Generics/LWP/
 PATH_SRC_NET	= ../Generics/Net/
 PATH_SRC_NETW	= Network/sources/
 PATH_SRC_ENT	= Entities/sources/
+PATH_SRC_LOG	= ../Generics/Logger/
 
 PATH_INC	= Room/include/
 PATH_INC_REQ	= ../Generics/ReqServ/include/
@@ -29,6 +30,7 @@ PATH_INC_PS	= ../Generics/PS/
 PATH_INC_TP	= ../Generics/TP/
 PATH_INC_NETW	= Network/include/
 PATH_INC_ENT	= Entities/include/
+PATH_INC_LOG	= ../Generics/Logger/
 
 SRC		= $(PATH_SRC)Account.cpp		\
 		  $(PATH_SRC)GameplayEngine.cpp		\
@@ -54,6 +56,8 @@ SRC_LWP		= $(PATH_SRC_LWP)ScopedLock.cpp		\
 SRC_ENT		= $(PATH_SRC_ENT)Scenario.cpp		\
 		  Main.cpp
 
+SRC_LOG		= $(PATH_SRC_LOG)logger.cpp
+
 SRC_NETW	= $(PATH_SRC_NETW)ClientService.cpp	\
 		  $(PATH_SRC_NETW)NetworkManager.cpp	\
 		  $(PATH_SRC_NETW)PackMan.cpp		\
@@ -65,6 +69,7 @@ OBJ_CL		= $(SRC_CL:.cpp=.o)
 OBJ_LWP		= $(SRC_LWP:.cpp=.o)
 OBJ_NETW	= $(SRC_NETW:.cpp=.o)
 OBJ_ENT		= $(SRC_ENT:.cpp=.o)
+OBJ_LOG		= $(SRC_LOG:.cpp=.o)
 OBJ_NET		= $(SRC_NET:.cpp=.o)
 
 INCLUDES	= -I$(PATH_INC) 	\
@@ -77,6 +82,7 @@ INCLUDES	= -I$(PATH_INC) 	\
 		  -I$(PATH_INC_PS)	\
 		  -I$(PATH_INC_TP)	\
 		  -I$(PATH_INC_ENT)	\
+		  -I$(PATH_INC_LOG)	\
 		  -I$(PATH_INC_NETW)
 
 CXX		= g++
@@ -100,11 +106,12 @@ DUST		= *~ 			\
 		  $(PATH_INC_PS)*~	\
 		  $(PATH_INC_TP)*~	\
 		  $(PATH_INC_NETW)*~	\
+		  $(PATH_INC_LOG)*~
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET)
-		$(CXX) -o $(NAME) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(LDFLAGS)
+$(NAME):	$(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG)
+		$(CXX) -o $(NAME) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG) $(LDFLAGS)
 
 clean:
 		$(RM) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(DUST)

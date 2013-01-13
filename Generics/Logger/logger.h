@@ -34,6 +34,8 @@ std::ostream& operator<<(Logger& logger, T o)
 	*/
 
 	logger.getStream() << logger.getLabel() << "\t" << o;
+#else
+	(void)o;
 #endif
 	return logger.getStream();
 }

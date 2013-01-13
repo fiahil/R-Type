@@ -72,7 +72,7 @@ namespace PS
 
 		bool	isSaturated() const
 		{
-			return (std::count_if(this->elements_.begin(), this->elements_.end(), &PoolSystem<T>::isUsed) == this->elements_.size());
+		  return (static_cast<size_t>(std::count_if(this->elements_.begin(), this->elements_.end(), &PoolSystem<T>::isUsed)) == this->elements_.size());
 		}
 
 		size_t	poolSize() const

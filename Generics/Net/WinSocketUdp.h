@@ -21,7 +21,8 @@ class SocketUdp : public ISocket
 private:
 	SOCKET socket_;
 	std::list<EndPoint*> client_;
-	WSADATA wsa_;
+	static WSADATA* wsa_;
+	static bool isWSAinit_;
 	SocketMode mode_;
 
 	void Create_(void);

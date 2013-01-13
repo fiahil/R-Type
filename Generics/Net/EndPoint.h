@@ -25,7 +25,6 @@ private:
 public:
 	EndPoint(unsigned int, unsigned short);
 	EndPoint(const std::string&, unsigned short);
-	EndPoint(unsigned short);
 	EndPoint(const EndPoint&);
 	EndPoint& operator=(const EndPoint&);
 	~EndPoint();

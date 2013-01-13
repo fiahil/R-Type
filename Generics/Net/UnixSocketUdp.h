@@ -21,10 +21,9 @@ private:
 	int socket_;
 	std::list<EndPoint*> client_;
 	SocketMode mode_;
-	
 
-	virtual void Create_(void);
-	virtual void Close_(void);
+	void Create_(void);
+	void Close_(void);
 
 	SocketUdp(const SocketUdp&);
 	SocketUdp& operator=(const SocketUdp&);

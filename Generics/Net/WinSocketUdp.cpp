@@ -1,4 +1,5 @@
 
+#include	<iostream>
 #include	<cassert>
 
 #include	"WinSocketUdp.h"
@@ -7,10 +8,16 @@
 namespace Net
 {
 
-SocketUdp::SocketUdp(SocketMode mode)
-	: mode_(mode)
+bool SocketUdp::isWSAinit_ = false;
+WSADATA* SocketUdp::wsa_ = 0;
+
+SocketUdp::SocketUdp(SocketMode mode) : mode_(mode)
 {
-	WSAStartup(MAKEWORD(2,2), &this->wsa_);
+	if (!SocketUdp::isWSAinit_) {
+		SocketUdp::wsa_ = new WSADATA;
+		WSAStartup(MAKEWORD(2,2), SocketUdp::wsa_);
+		SocketUdp::isWSAinit_ = true;
+	}
 	this->Create_();
 }
 

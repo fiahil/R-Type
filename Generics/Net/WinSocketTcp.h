@@ -9,6 +9,7 @@
 
 #endif
 
+
 #include	<deque>
 
 #include	"ISocket.h"
@@ -20,9 +21,9 @@ class SocketTcp : public ISocket
 {
 private:
 	bool connected_;
-	SOCKET listenSocket_;
-	SOCKET acceptSocket_;
-	WSADATA wsa_;
+	SOCKET socket_;
+	static WSADATA* wsa_;
+	static bool isWSAinit_;
 	SocketMode mode_;
 
 	void Create_(void);

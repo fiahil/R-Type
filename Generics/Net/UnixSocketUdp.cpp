@@ -8,7 +8,7 @@
 namespace Net
 {
 
-  SocketUdp::SocketUdp(SocketMode)
+  SocketUdp::SocketUdp(SocketMode mode) : mode_(mode)
   {
     this->Create_();
   }
@@ -20,14 +20,14 @@ namespace Net
 
   bool SocketUdp::isServerMode(void) const
   {
-	return (this->mode_ == SERVERMODE) ? (true) : (false);
+    return (this->mode_ == SERVERMODE);
   }
 
   bool SocketUdp::isClientMode(void) const
   {
-	return (this->mode_ == CLIENTMODE) ? (true) : (false);
+    return (this->mode_ == CLIENTMODE);
   }
-	
+
   void SocketUdp::Create_(void)
   {
     this->socket_ = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
@@ -59,10 +59,10 @@ namespace Net
 
   ISocket* SocketUdp::Accept()
   {
-	assert(0);
-	return 0;
+    assert(0);
+    return 0;
   }
-  
+
   void SocketUdp::Send(const std::string& packet)
   {
     sockaddr_in sin;

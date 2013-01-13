@@ -39,10 +39,14 @@ void		ServerService::push(IRequest*)
 IClientService*	ServerService::accept()
 {
 	Net::ISocket*	S = this->sock_->Accept();
+
 	if (S)
 	{
+		DEBUG << "ClientService created" << std::endl;
 		IClientService*	ICS = new ClientService(S);
 		return (ICS);
 	}
+
+	DEBUG << "Fail to create ClientService" << std::endl;
 	return 0;
 }

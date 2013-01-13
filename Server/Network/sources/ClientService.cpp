@@ -5,7 +5,12 @@
 #include "IRequest.h"
 
 #ifdef WIN32
-# include "WinSocketTcp.h"
+
+# ifndef WIN32_LEAN_AND_MEAN_HEADER_PROTECTION
+#  define WIN32_LEAN_AND_MEAN_HEADER_PROTECTION
+#  include "WinSocketTcp.h"
+# endif
+
 #else
 # include "UnixSocketTcp.h"
 #endif

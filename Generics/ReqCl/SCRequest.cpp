@@ -5,16 +5,23 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:45:41 2013 alexandre teisseire
-// Last update Wed Jan  9 09:35:44 2013 alexandre teisseire
+// Last update Sun Jan 13 05:08:55 2013 alexandre teisseire
 //
 
 #include <sstream>
+#include "PackMan.h"
 #include "SCRequest.h"
 
 AnswerCreateRoom::AnswerCreateRoom(int roomId) :
   ec(Success)
 {
   parameters.roomId = roomId;
+}
+
+AnswerCreateRoom::AnswerCreateRoom(std::string &data) :
+  ec(Success)
+{
+  PackMan::Memcpy(&(this->parameters), data.data(), data.size());
 }
 
 AnswerCreateRoom::~AnswerCreateRoom() {}
@@ -68,6 +75,12 @@ ClientInvited::ClientInvited(char *usernameFrom, int roomId) :
   parameters.roomId = roomId;  
 }
 
+ClientInvited::ClientInvited(std::string &data) :
+  ec(Success)
+{
+  PackMan::Memcpy(&(this->parameters), data.data(), data.size());
+}
+
 ClientInvited::~ClientInvited() {}
 
 bool		ClientInvited::isValid()
@@ -115,6 +128,11 @@ ACK::ACK(errorCode e)
   parameters.eCode = static_cast<int>(e);
 }
 
+ACK::ACK(std::string &data)
+{
+  PackMan::Memcpy(&(this->parameters), data.data(), data.size());
+}
+
 ACK::~ACK() {}
 
 bool		ACK::isValid()
@@ -160,6 +178,12 @@ GameLaunched::GameLaunched(int timeStamp, float clock) :
 {
   parameters.timestamp = timeStamp;
   parameters.clock = clock;  
+}
+
+GameLaunched::GameLaunched(std::string &data) :
+  ec(Success)
+{
+  PackMan::Memcpy(&(this->parameters), data.data(), data.size());
 }
 
 GameLaunched::~GameLaunched() {}

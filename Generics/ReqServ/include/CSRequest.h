@@ -1,13 +1,3 @@
-//
-// CSRequest.h for RType in /home/teisse_a//Documents/Tek3/RType/Requests
-// 
-// Made by alexandre teisseire
-// Login   <teisse_a@epitech.net>
-// 
-// Started on  Thu Jan  3 15:39:14 2013 alexandre teisseire
-// Last update Wed Jan  9 11:03:53 2013 alexandre teisseire
-//
-
 #pragma once
 
 #include	"Resources.h"
@@ -15,7 +5,7 @@
 #include	"IRequest.h"
 #include	"IPlayer.h"
 
-class		Connect : protected IRequest
+class		Connect : public IRequest
 {
 private:
   struct	parameters
@@ -26,7 +16,6 @@ private:
 
   parameters	parameters;
   errorCode	ec;
-
 private:
   virtual bool		isValid();
   virtual void		doOp();
@@ -37,6 +26,7 @@ private:
 
 public:
   Connect(char  *, char  *);
+  Connect(std::string &);
   ~Connect();
 
 public:
@@ -45,7 +35,7 @@ public:
   virtual eRequestType	getType();
 };
 
-class		CreateRoom : protected IRequest
+class		CreateRoom : public IRequest
 {
 private:
   errorCode	ec;
@@ -57,6 +47,7 @@ private:
 
 public:
   CreateRoom();
+  CreateRoom(std::string &);
   ~CreateRoom();
 
 public:
@@ -65,7 +56,7 @@ public:
   virtual eRequestType	getType();
 };
 
-class		LeaveRoom : protected IRequest
+class		LeaveRoom : public IRequest
 {
 private:
   struct	parameters
@@ -87,6 +78,7 @@ private:
 
 public:
   LeaveRoom(int);
+  LeaveRoom(std::string &);
   ~LeaveRoom();
 
 public:
@@ -95,7 +87,7 @@ public:
   virtual eRequestType	getType();
 };
 
-class		JoinRoom : protected IRequest
+class		JoinRoom : public IRequest
 {
 private:
   struct	parameters
@@ -114,6 +106,7 @@ private:
 
 public:
   JoinRoom(int);
+  JoinRoom(std::string &);
   ~JoinRoom();
 
 public:
@@ -122,7 +115,7 @@ public:
   virtual eRequestType	getType();
 };
 
-class		InvitePlayer : protected IRequest
+class		InvitePlayer : public IRequest
 {
 private:
   struct	parameters
@@ -141,6 +134,7 @@ private:
 
 public:
   InvitePlayer(char  *);
+  InvitePlayer(std::string &);
   ~InvitePlayer();
 
 public:
@@ -149,7 +143,7 @@ public:
   virtual eRequestType	getType();
 };
 
-class		SetGameParam : protected IRequest
+class		SetGameParam : public IRequest
 {
 private:
   struct	parameters
@@ -168,6 +162,7 @@ private:
 
 public:
   SetGameParam(int, int);
+  SetGameParam(std::string &);
   ~SetGameParam();
 
 public:
@@ -176,7 +171,7 @@ public:
   virtual eRequestType	getType();
 };
 
-class		LaunchGame : protected IRequest
+class		LaunchGame : public IRequest
 {
 private:
   struct	parameters
@@ -193,7 +188,8 @@ private:
   virtual void		finalize(IService*);
 
 public:
-  LaunchGame();
+  LaunchGame(int);
+  LaunchGame(std::string &);
   ~LaunchGame();
 
 public:
@@ -202,7 +198,7 @@ public:
   virtual eRequestType	getType();
 };
 
-class		Ping : protected IRequest
+class		Ping : public IRequest
 {
 private:
   errorCode	ec;
@@ -215,6 +211,7 @@ private:
 
 public:
   Ping();
+  Ping(std::string &);
   ~Ping();
 
 public:
@@ -223,7 +220,7 @@ public:
   virtual eRequestType	getType();
 };
 
-class		Ready : protected IRequest
+class		Ready : public IRequest
 {
 private:
   struct	parameters
@@ -245,6 +242,7 @@ private:
 
 public:
   Ready(char *ep);
+  Ready(std::string &);
   ~Ready();
 
 public:

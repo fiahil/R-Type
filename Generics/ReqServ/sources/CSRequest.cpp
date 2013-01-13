@@ -5,11 +5,11 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:32:43 2013 alexandre teisseire
-// Last update Wed Jan  9 11:05:25 2013 alexandre teisseire
+// Last update Sun Jan 13 10:00:33 2013 alexandre teisseire
 //
 
 #include	<sstream>
-// #include	"PackMan.h"
+#include	"PackMan.h"
 #include	"CSRequest.h"
 
 Connect::Connect(char *usr, char *passwd) :
@@ -17,6 +17,12 @@ Connect::Connect(char *usr, char *passwd) :
 {
   parameters.username = usr;
   parameters.passwd = passwd;
+}
+
+Connect::Connect(std::string &data)
+{
+  PackMan::Memcpy(&(this->parameters), data.data(), data.size());
+  ec = Success;
 }
 
 Connect::~Connect() {}
@@ -76,6 +82,10 @@ CreateRoom::CreateRoom() :
   ec(Success)
 {
 }
+CreateRoom::CreateRoom(std::string &)
+{
+  ec = Success;
+}
 
 CreateRoom::~CreateRoom() {}
 
@@ -126,6 +136,12 @@ LeaveRoom::LeaveRoom(int roomId) :
   ec(Success)
 {
   parameters.roomId = roomId;
+}
+
+LeaveRoom::LeaveRoom(std::string &data)
+{
+  PackMan::Memcpy(&(this->parameters), data.data(),  static_cast<size_t>(data.length()));
+  ec = Success;
 }
 
 LeaveRoom::~LeaveRoom() {}
@@ -187,6 +203,12 @@ JoinRoom::JoinRoom(int roomId) :
   parameters.roomId = roomId;
 }
 
+JoinRoom::JoinRoom(std::string &data)
+{
+  PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
+  ec = Success;
+}
+
 JoinRoom::~JoinRoom() {}
 
 bool		JoinRoom::isValid()
@@ -244,6 +266,12 @@ InvitePlayer::InvitePlayer(char *usr) :
   parameters.username = usr;
 }
 
+InvitePlayer::InvitePlayer(std::string &data)
+{
+  PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
+  ec = Success;
+}
+
 InvitePlayer::~InvitePlayer() {}
 
 bool		InvitePlayer::isValid()
@@ -295,6 +323,12 @@ SetGameParam::SetGameParam(int key, int value) :
   parameters.value = value;
 }
 
+SetGameParam::SetGameParam(std::string &data)
+{
+  PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
+  ec = Success;
+}
+
 SetGameParam::~SetGameParam() {}
 
 bool		SetGameParam::isValid()
@@ -344,10 +378,16 @@ eRequestType	SetGameParam::getType()
   return SET_GAME_PARAM;
 }
 
-LaunchGame::LaunchGame() : 
+LaunchGame::LaunchGame(int roomId) : 
   ec(Success)
 {
+  parameters.roomId = roomId;
+}
 
+LaunchGame::LaunchGame(std::string &data)
+{
+  PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
+  ec = Success;
 }
 
 LaunchGame::~LaunchGame() {}
@@ -402,6 +442,11 @@ Ping::Ping() :
 
 }
 
+Ping::Ping(std::string &)
+{
+  ec = Success;
+}
+
 Ping::~Ping() {}
 
 bool		Ping::isValid()
@@ -452,6 +497,12 @@ Ready::Ready(char *ep) :
   ec(Success)
 {
   this->parameters.endpoint = ep;
+}
+
+Ready::Ready(std::string &data)
+{
+  PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
+  ec = Success;
 }
 
 Ready::~Ready() {}

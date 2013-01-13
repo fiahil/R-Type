@@ -52,10 +52,11 @@ public:
   template <class T>
   static IRequest*	unpack_T(TCPPacket *pack)
   {
-	  std::cout << pack->B << std::endl;
-	  std::cout << pack->H.size << std::endl;
-	  //return new T(std::string(pack->Body, pack->H.len - sizeof(TCPPacket::Header))); // TODO Missing ctor.
-	  return 0; // TODO Missing Ctor
+    std::cout << pack->B << std::endl;
+    std::cout << pack->H.size << std::endl;
+    std::string s(pack->B, pack->H.size - sizeof(TCPPacket::Header));
+    IRequest*	IR = new T(s);
+    return IR;
   }
 
   static IRequest* unpack(TCPPacket *pack)
@@ -64,7 +65,10 @@ public:
 
 	  if (req_elt != PackMan::request_tab.end())
 	    return req_elt->second(pack);
-	  return 0;
+
+	  IRequest*	IR = new ACK(G_request_not_found);
+	  
+	  return IR;
   }
 };
 

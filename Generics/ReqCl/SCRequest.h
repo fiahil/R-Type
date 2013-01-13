@@ -1,18 +1,9 @@
-//
-// SCRequest.h for RType in /home/teisse_a//Documents/Tek3/RType/Requests
-// 
-// Made by alexandre teisseire
-// Login   <teisse_a@epitech.net>
-// 
-// Started on  Wed Jan  2 10:17:31 2013 alexandre teisseire
-// Last update Wed Jan  9 09:36:14 2013 alexandre teisseire
-//
 
 #pragma once
 
 #include	"IRequest.h"
 
-class		AnswerCreateRoom : protected IRequest
+class		AnswerCreateRoom : public IRequest
 {
 private:
   struct	parameters
@@ -32,6 +23,7 @@ private:
   void			doOp(IService*);
 public:
   AnswerCreateRoom(int);
+  AnswerCreateRoom(std::string &);
   ~AnswerCreateRoom();
 
 public:
@@ -40,7 +32,7 @@ public:
   virtual eRequestType	getType();
 };
 
-class		ClientInvited : protected IRequest
+class		ClientInvited : public IRequest
 {
 private:
   struct	parameters
@@ -59,6 +51,7 @@ private:
 
 public:
   ClientInvited(char *, int);
+  ClientInvited(std::string &);
   ~ClientInvited();
 
 public:
@@ -67,7 +60,7 @@ public:
   virtual eRequestType	getType();
 };
 
-class		ACK : protected IRequest
+class		ACK : public IRequest
 {
 private:
   struct	parameters
@@ -85,6 +78,7 @@ private:
 
 public:
   ACK(errorCode);
+  ACK(std::string &);
   ~ACK();
 
 public:
@@ -93,7 +87,7 @@ public:
   virtual eRequestType	getType();
 };
 
-class		StartDataStream : protected IRequest
+class		StartDataStream : public IRequest
 {
 private:
   struct	parameters
@@ -111,6 +105,7 @@ private:
 
 public:
   StartDataStream(char const *);
+  StartDataStream(std::string &);
   ~StartDataStream();
 
 public:
@@ -120,7 +115,7 @@ public:
 };
 
 
-class		Stream : protected IRequest
+class		Stream : public IRequest
 {
 private:
   struct	parameters
@@ -139,6 +134,7 @@ private:
 
 public:
   Stream(char const *, char const *);
+  Stream(std::string &);
   ~Stream();
 
 public:
@@ -148,7 +144,7 @@ public:
 };
 
 
-class		StopDataStream : protected IRequest
+class		StopDataStream : public IRequest
 {
 private:
   struct	parameters
@@ -169,6 +165,7 @@ private:
 
 public:
   StopDataStream(char const *, char const *, int, char const *);
+  StopDataStream(std::string &);
   ~StopDataStream();
 
 public:
@@ -177,7 +174,7 @@ public:
   virtual eRequestType	getType();
 };
 
-class		GameLaunched : protected IRequest
+class		GameLaunched : public IRequest
 {
 private:
   struct	parameters
@@ -196,6 +193,7 @@ private:
 
 public:
   GameLaunched(int, float);
+  GameLaunched(std::string &);
   ~GameLaunched();
 
 public:

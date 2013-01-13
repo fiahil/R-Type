@@ -30,12 +30,12 @@ SocketTcp::~SocketTcp(void)
 
 bool SocketTcp::isServerMode(void) const
 {
-	return (this->mode_ == SERVERMODE) ? (true) : (false);
+	return (this->mode_ == SERVERMODE);
 }
 
 bool SocketTcp::isClientMode(void) const
 {
-	return (this->mode_ == CLIENTMODE) ? (true) : (false);
+	return (this->mode_ == CLIENTMODE);
 }
 
 void SocketTcp::Create_(void)

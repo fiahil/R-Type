@@ -28,6 +28,7 @@ ClientService::~ClientService()
 void		ClientService::operator()(void)
 {
 	DEBUG << "ClientService functor" << std::endl;
+
 }
 
 IRequest*	ClientService::pull()

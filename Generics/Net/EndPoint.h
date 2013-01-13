@@ -26,6 +26,7 @@ public:
 	EndPoint(unsigned int, unsigned short);
 	EndPoint(const std::string&, unsigned short);
 	EndPoint(const EndPoint&);
+	EndPoint(unsigned short);
 	EndPoint& operator=(const EndPoint&);
 	~EndPoint();
 	unsigned int getIp() const;

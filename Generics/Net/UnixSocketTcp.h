@@ -19,10 +19,10 @@ namespace Net
   private:
     bool connected_;
     int socket_;
-	SocketMode mode_;
+    SocketMode mode_;
 
-    virtual void Create_(void);
-    virtual void Close_(void);
+    void Create_(void);
+    void Close_(void);
     void Listen_(void);
 
     SocketTcp(const SocketTcp&);
@@ -31,8 +31,8 @@ namespace Net
   public:
     SocketTcp(SocketMode);
     virtual ~SocketTcp(void);
-	virtual bool isServerMode(void) const;
-	virtual bool isClientMode(void) const;
+    virtual bool isServerMode(void) const;
+    virtual bool isClientMode(void) const;
     virtual void Connect(const EndPoint&);
     virtual void Bind(const EndPoint&);
     virtual void Send(const std::string&);

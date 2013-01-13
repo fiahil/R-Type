@@ -7,8 +7,8 @@
 namespace Net
 {
 
-  SocketTcp::SocketTcp(SocketMode)
-    : connected_(false)
+  SocketTcp::SocketTcp(SocketMode mode)
+    : connected_(false), mode_(mode)
   {
     this->Create_();
   }
@@ -20,14 +20,14 @@ namespace Net
 
   bool SocketTcp::isServerMode(void) const
   {
-	return (this->mode_ == SERVERMODE) ? (true) : (false);
+    return (this->mode_ == SERVERMODE);
   }
 
   bool SocketTcp::isClientMode(void) const
   {
-	return (this->mode_ == CLIENTMODE) ? (true) : (false);
+    return (this->mode_ == CLIENTMODE);
   }
- 
+
   void SocketTcp::Create_(void)
   {
     this->socket_ = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -74,13 +74,13 @@ namespace Net
 
   ISocket* SocketTcp::Accept()
   {
-	SocketTcp* ret = new SocketTcp(SERVERMODE);
+    SocketTcp* ret = new SocketTcp(SERVERMODE);
     sockaddr_in	sin;
     unsigned int sinlen = sizeof sin;
 
     if ((ret->socket_ = accept(this->socket_, reinterpret_cast<struct sockaddr*>(&sin), &sinlen)) != -1)
       ret->connected_ = true;
-	return (0);
+    return (0);
   }
 
   void SocketTcp::Send(const std::string& packet)

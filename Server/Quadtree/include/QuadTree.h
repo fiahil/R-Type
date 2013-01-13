@@ -17,7 +17,7 @@ class QuadTree
 	unsigned int			maxDepth_;
 
 public:
-	QuadTree(int, int, unsigned int, unsigned int);
+	QuadTree(int x, int y, unsigned int maxEPN, unsigned int maxDepth);
 	~QuadTree();
 	bool					checkCollision(IEntity *);
 	void					addEnnemy(IEntity *);

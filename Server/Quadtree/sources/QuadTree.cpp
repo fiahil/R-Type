@@ -1,12 +1,14 @@
 
 #include "QuadTree.h"
 
-QuadTree::QuadTree(int x, int y, unsigned int maxEPN, unsigned int maxDepth): x_(x), y_(y), maxEntityPerNode_(maxEPN), maxDepth_(maxDepth_)
+QuadTree::QuadTree(int x, int y, unsigned int maxEPN, unsigned int maxDepth): x_(x), y_(y), maxEntityPerNode_(maxEPN), maxDepth_(maxDepth)
 {
-	tree_[0].init(maxDepth, maxEPN, x / 4, y / 4, x / 2, y / 2, &collider_);
-	tree_[1].init(maxDepth, maxEPN, x / 4, (3 * y) / 4, x / 2, y / 2, &collider_);
-	tree_[2].init(maxDepth, maxEPN, (3 * x) / 4, y / 4, x / 2, y / 2, &collider_);
-	tree_[3].init(maxDepth, maxEPN, (3 * x) / 4, (3 * y) / 4, x / 2, y / 2, &collider_);
+	int x_opti1 = x >> 4, x_opti2 = (3 * x) >> 4, x_opti3 = x >> 2, y_opti1 = y >> 4, y_opti2 = (3 * y) >> 4, y_opti3 = y >> 2;
+
+	tree_[0].init(maxDepth, maxEPN, x_opti1, y_opti1, x_opti3, y_opti3, &collider_);
+	tree_[1].init(maxDepth, maxEPN, x_opti1, y_opti2, x_opti3, y_opti3, &collider_);
+	tree_[2].init(maxDepth, maxEPN, x_opti2, y_opti1, x_opti3, y_opti3, &collider_);
+	tree_[3].init(maxDepth, maxEPN, x_opti2, y_opti2, x_opti3, y_opti3, &collider_);
 	tree_[4].init(0, static_cast<unsigned int>(-1), 0, 0, 0, 0, &collider_);
 }
 

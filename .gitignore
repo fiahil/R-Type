@@ -26,4 +26,4 @@
 *.lastbuildstate
 
 # SFML
-./SFML-2.0-rc
+*.dll

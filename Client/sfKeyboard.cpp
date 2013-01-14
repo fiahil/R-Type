@@ -1,7 +1,6 @@
 
 #include "sfKeyboard.h"
 
-
 sfKeyboard::sfKeyboard()
 {
 }

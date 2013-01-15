@@ -10,8 +10,9 @@ class GameplayEngine {
   Collider coll_;
   QuadTree quad_;
   IGameMod * gm_;
+  Dl::DlManager<IGameMod> * manager;
 public:
-  GameplayEngine();
+  GameplayEngine(std::string);
   ~GameplayEngine();
   void handleEvent(Event);
   void plugEntity(IEntity *);

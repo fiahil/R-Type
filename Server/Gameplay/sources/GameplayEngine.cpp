@@ -1,8 +1,10 @@
 #include "GameplayEngine.h"
 
-GameplayEngine::GameplayEngine() {
+GameplayEngine::GameplayEngine(std::string path) {
   this->coll_ = new Collider();
   this->quad_ = new QuadTree();
+  this->manager = new Dl::DlManager<IGameMod>();
+  this->manager->load(path);
 }
 
 GameplayEngine::~GameplayEngine() {
@@ -15,7 +17,6 @@ void GameplayEngine::handleEvent(Event evt) {
 }
 
 void GameplayEngine::plugEntity(IEntity * tity) {
-
 }
 
 void GameplayEngine::update() {

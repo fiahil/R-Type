@@ -1,8 +1,9 @@
 #pragma once
 
 #include "IEntity.h"
+#include "DlManager.h "
 
-class IGameMod /*: public DL:: */ {
+class IGameMod : public DL::IDlPlugin {
 public:
   virtual void onCollision(IEntity*,IEntity*) = 0;
   virtual void onEntityDestruction(IEntity*) = 0;
@@ -18,4 +19,5 @@ public:
   virtual void onScriptBegin(IEntity*) = 0;
   virtual void onScriptEnd(IEntity*) = 0;
   virtual void onUltimate(IEntity*) = 0;
+  virtual std::string const& getId() const = 0;
 };

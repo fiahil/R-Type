@@ -4,12 +4,11 @@
 #include <SFML/Graphics.hpp>
 #include <map>
 #include "IInput.h"
-
-typedef	int Window;
+#include "sfWindow.h"
 
 class sfKeyboard : public IInput
 {
-	sf::Window									window_;
+	sfWindow&									window_;
 	std::map<GameInputKey, sf::Keyboard::Key>	binding_;
 	sf::Event									event_;
 

@@ -1,7 +1,7 @@
 
 #include "sfKeyboard.h"
 
-sfKeyboard::sfKeyboard()
+sfKeyboard::sfKeyboard() : window_(sfmlWin)
 {
 }
 

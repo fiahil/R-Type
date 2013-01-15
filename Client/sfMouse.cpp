@@ -1,8 +1,7 @@
 
-
 #include "sfMouse.h"
 
-sfMouse::sfMouse(void)
+sfMouse::sfMouse(void) : window_(sfmlWin)
 {
 	lastPos_.insert(std::pair<GameInputKey, int>(UpKey, 0));
 	lastPos_.insert(std::pair<GameInputKey, int>(DownKey, 0));

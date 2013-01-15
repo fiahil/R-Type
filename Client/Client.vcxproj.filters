@@ -15,30 +15,39 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="sfJoystick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sfWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="sfMouse.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sfKeyboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sfWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sfMouse.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sfKeyboard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IGameWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="sfJoystick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="sfWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sfMouse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sfKeyboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

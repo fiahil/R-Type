@@ -12,6 +12,6 @@ public:
 	virtual void	setTitle(std::string const&) = 0;
 	virtual void	setCursorVisible(bool) = 0;
 
-	IGameWindow(void);
-	virtual	~IGameWindow(void);
+	IGameWindow(void) {};
+	virtual	~IGameWindow(void) {};
 };

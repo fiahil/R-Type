@@ -1,6 +1,6 @@
 #include "sfWindow.h"
 
-static	sfWindow	sfmlWindow;
+sfWindow	sfmlWin;
 
 void	sfWindow::setTitle(std::string const& title)
 {
@@ -18,6 +18,11 @@ void	sfWindow::getWindowSize(int& x, int& y)
 void	sfWindow::setCursorVisible(bool on)
 {
 	window_.setMouseCursorVisible(on);
+}
+
+void	sfWindow::pollEvent(sf::Event& e)
+{
+	window_.pollEvent(e);
 }
 
 sfWindow::sfWindow(int x, int y)

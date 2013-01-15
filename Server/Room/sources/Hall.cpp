@@ -57,11 +57,8 @@ IPlayer *	Hall::operator()(const std::string &name, const std::string &hash, boo
 /* Returns the IPlayer that matches the Service [s]; overwize returns 0 */
 IPlayer *		Hall::operator()(IService *s) const
 {
-	int pos = 0;
-
 	for (std::deque<IPlayer *>::const_iterator it = this->players_.begin() ;
-		it != this->players_.end() ;
-		++it, ++pos)
+		it != this->players_.end() ; ++it)
 	{
 		IPlayer *tmp = *it;
 
@@ -76,7 +73,7 @@ void	Hall::addPlayer(const std::string &name, const std::string &hash, IService 
 {
 	std::cout << "\n{Hall::addPlayer}..." << std::endl;
 
-	if (name.empty() || hash.empty() || !playerService)
+	if (name.empty() || hash.empty() /*|| !playerService*/)
 		{ std::cerr << "[Error] : Bad parameter" << std::endl; return; }
 
 	/* checks if any player in deque has the same name_ / hash_ as [name / hash] using operator() */

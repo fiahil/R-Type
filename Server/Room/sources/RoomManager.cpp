@@ -1,6 +1,7 @@
-#include <algorithm>
 #include "RoomManager.h"
 #include "Room.h"
+#include "Hall.h"
+#include "deleteObj.h"
 
 #include <iostream> // remove
 
@@ -10,15 +11,16 @@ RoomManager::RoomManager(void)
 		tp_(0)
 {
 	this->hall_ = new Hall();
-	//this->tp_ = TP::ThreadPool<IRoom>::getInstance(this->nbMaxGames_); // TODO Missing commit
-	// TODO missing Commit
-	this->tp_ = 0;
+	this->tp_ = TP::ThreadPool<IRoom>::getInstance(this->nbMaxGames_);
 	std::cout << "--Construction RoomManager" << std::endl;
 }
 
 
 RoomManager::~RoomManager(void)
 {
+	deleteObject<Hall>(this->hall_);
+	// unlink toutes les room
+	// faire quelque chose avec la thread pool ?
 	std::cout << "--Destruction RoomManager" << std::endl;
 }
 
@@ -80,17 +82,19 @@ void		RoomManager::setNbGames(int nbr)
 void		RoomManager::linkRoomToThreadPool(int idRoom)
 {
 	std::cout << "\n{RoomManager::linkRoomToThreadPool}..." << std::endl;
+	std::cout << "Id to find = [" << idRoom << "]" << std::endl;
 
-	IRoom *fetch = this->rooms_.at(idRoom);
+	IRoom *fetch = this->getRoomById(idRoom);
 
 	if (!fetch)
 		{
 			std::cerr << "[Error] : IRoom NULL" << std::endl;
 			return ;
 		}
-	// test saturated et allocate HERE (threadPool)
-	this->tp_->push(fetch);
+	if (this->tp_->isSaturated())
+		this->tp_->allocate();
 
+	this->tp_->push(fetch);
 	std::cout << "[Ok] linkRoomToThreadPool" << std::endl;
 }
 
@@ -218,7 +222,7 @@ IPlayer *	RoomManager::getPlayerFromRoom(IService * playerService, int roomId) c
 {
 	int roomPos = (*this)(roomId);
 
-	if (roomPos > 0)
+	if (roomPos >= 0)
 	{
 		IRoom * tmp = this->rooms_.at(roomPos);
 
@@ -233,7 +237,7 @@ IRoom *		RoomManager::getRoomById(int idRoom) const
 {
 	int roomPos = (*this)(idRoom);
 
-	if (roomPos > 0)
+	if (roomPos >= 0)
 		return this->rooms_.at(roomPos);
 	return 0;
 }
@@ -255,10 +259,11 @@ void		RoomManager::setRoomStatus(int idRoom, bool status)
 
 const std::deque<IPlayer *> &	RoomManager::getPlayersFromRoom(int roomId) const
 {
-	// verification room pos : thow if <= 0
+	// verification room pos : thow if <= 0, car on renvoie une deque
 
 	int roomPos = (*this)(roomId);
 	IRoom * tmp = this->rooms_.at(roomPos);
 
+	// verification tmp : thow if == 0, car on renvoie une deque
 	return tmp->getAllPlayers();
 }

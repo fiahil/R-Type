@@ -1,6 +1,13 @@
 #include "Player.h"
+#include "deleteObj.h"
 
 #include <iostream> // remove
+
+#ifdef _WIN32 
+	#include "WinMutex.h"
+#else
+	#include "UnixMutex.h"
+#endif
 
 /* Used to always provide a unique value to [id_] */
 int Player::currentId_ = 0;
@@ -11,14 +18,19 @@ Player::Player(const std::string & name, const std::string & hash, IService * se
 		name_(name),
 		hash_(hash),
 		service_(service),
-		account_(0)
+		account_(0),
+		mutex_(0)	
 {
+	this->mutex_ = new LWP::Mutex();
+
 	std::cout << "--Construction Player" << std::endl;
 }
 
 
 Player::~Player(void)
 {
+	deleteObject<LWP::IMutex>(this->mutex_);	
+
 	std::cout << "--Destruction Player" << std::endl;
 }
 

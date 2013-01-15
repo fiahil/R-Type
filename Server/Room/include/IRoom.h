@@ -2,12 +2,13 @@
 
 #include <deque>
 #include "IPlayer.h"
-#include "IService.h"
+#include "IService.hpp"
 
 class IRoom
 {
 public:
 	virtual ~IRoom(void) {}
+	virtual void operator()(void) = 0;	/* Useful for ThreadPool */
 
 public:
 	virtual int			getId() const							= 0;

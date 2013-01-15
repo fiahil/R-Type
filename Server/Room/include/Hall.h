@@ -12,9 +12,11 @@ public:
 	Hall(void);
 	~Hall(void);
 
-	int			operator()(int idTest) const;		/* Useful for method removePlayer */
-	IPlayer *	operator()(IService *s) const;		/* Useful for RoomManager */
-	IPlayer *	operator()(const std::string &name, const std::string &hash, bool useHash) const;	/* Useful for method addPlayer */
+	int			operator()(int idTest) const;			/* Useful for method removePlayer */
+	IPlayer *	operator()(IService *s) const;			/* Useful for RoomManager */
+	IPlayer *	operator()(const std::string &name,
+							const std::string &hash,
+							bool useHash) const;		/* Useful for method addPlayer */
 
 public:
 	void		addPlayer(const std::string &name, const std::string &hash, IService *playerService);

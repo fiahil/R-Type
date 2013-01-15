@@ -23,9 +23,10 @@ public:
 	Room(void);
 	virtual ~Room(void);
 
-	IPlayer *	operator()(IService *s) const;		/* Useful for method getPlayerByService  */
-	IPlayer *	operator()(IPlayer *p) const;		/* Useful for method addPlayer */
-	int			operator()(int idTest) const;		/* Useful for method removePlayer */
+	virtual void	operator()(void);				/* Useful for ThreadPool */
+	IPlayer *		operator()(IService *s) const;	/* Useful for method getPlayerByService  */
+	IPlayer *		operator()(IPlayer *p) const;	/* Useful for method addPlayer */
+	int				operator()(int idTest) const;	/* Useful for method removePlayer */
 
 /* Methods herited from IRoom */
 public:

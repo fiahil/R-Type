@@ -22,6 +22,10 @@ Room::~Room(void)
 }
 
 
+/* Useful for ThreadPool */
+void		Room::operator()(void) {}
+
+
 /* Returns the IPlayer that matches the IService [s]; overwize returns 0 */
 IPlayer *	Room::operator()(IService *s) const
 {
@@ -50,6 +54,7 @@ IPlayer *	Room::operator()(IPlayer *p) const
 		it != this->players_.end() ; ++it)
 	{
 		IPlayer *tmp = *it;
+
 		if (tmp && tmp->getId() == idTest)
 			return tmp;
 	}

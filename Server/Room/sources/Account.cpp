@@ -12,12 +12,12 @@ Account::~Account(void)
 	std::cout << "--Destruction Account" << std::endl;
 }
 
-int					Account::getId() const
+int		Account::getId() const
 {
 	return this->id_;
 }
 
-int					Account::getAchScore() const
+int		Account::getAchScore() const
 {
 	return this->score_;
 }

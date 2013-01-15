@@ -2,7 +2,19 @@
 
 #include "IPlayer.h"
 #include "IAccount.h"
-#include "IService.h"
+#include "IService.hpp"
+#include "IMutex.h"
+#include "IEntity.h"
+
+struct	ShipInfo
+{
+	int				pv_;
+	int				dmg_;
+	int				score_;
+	float			speed_;
+	Position		pos_;
+	std::string		spritePath_;
+};
 
 class Player : public IPlayer
 {
@@ -14,6 +26,8 @@ private:
 	std::string		ep_;
 	IService *		service_;
 	IAccount *		account_;
+	LWP::IMutex *	mutex_;
+	ShipInfo		info_;
 
 /* Used to always provide a unique value to [id_] */
 private:
@@ -39,4 +53,3 @@ public:
 	virtual IAccount *			getAccount() const;
 	virtual void				setAccount(IAccount * account);
 };
-

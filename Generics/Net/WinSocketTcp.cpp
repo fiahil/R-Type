@@ -106,7 +106,7 @@ std::string SocketTcp::Recv(void)
 		char buff[4096] = {0};
 
 		int ret;
-		if ((ret = recv(this->socket_, buff, 4095, 0)) == SOCKET_ERROR)
+		if ((ret = recv(this->socket_, buff, 4095, 0)) == SOCKET_ERROR || ret == 0)
 			throw ErrorInOut("Cannot receive data");
 		buff[ret] = 0;
 		return (std::string(buff));

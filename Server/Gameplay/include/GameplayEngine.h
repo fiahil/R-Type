@@ -10,6 +10,7 @@ class GameplayEngine {
   QuadTree quad_;
   IGameMod * gm_;
   IScenario * sc_;
+  static DlManager<PackedPlugin> manager_;
 public:
   GameplayEngine(std::string);
   ~GameplayEngine();

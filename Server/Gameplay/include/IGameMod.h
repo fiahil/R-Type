@@ -1,9 +1,8 @@
 #pragma once
 
 #include "IEntity.h"
-#include "DlManager.h "
 
-class IGameMod : public DL::IDlPlugin {
+class IGameMod {
 public:
   virtual void onCollision(IEntity*,IEntity*) = 0;
   virtual void onEntityDestruction(IEntity*) = 0;

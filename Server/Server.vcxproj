@@ -118,6 +118,7 @@
     <ClInclude Include="Entities\include\IScriptable.h" />
     <ClInclude Include="Entities\include\Scenario.h" />
     <ClInclude Include="Network\include\ClientService.h" />
+    <ClInclude Include="Network\include\ClientServiceWorker.h" />
     <ClInclude Include="Network\include\IClientService.h" />
     <ClInclude Include="Network\include\NetworkManager.h" />
     <ClInclude Include="Network\include\IServerService.h" />
@@ -153,6 +154,7 @@
     <ClCompile Include="Entities\sources\Scenario.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Network\sources\ClientService.cpp" />
+    <ClCompile Include="Network\sources\ClientServiceWorker.cpp" />
     <ClCompile Include="Network\sources\NetworkManager.cpp" />
     <ClCompile Include="Network\sources\PackMan.cpp" />
     <ClCompile Include="Network\sources\ServerService.cpp" />

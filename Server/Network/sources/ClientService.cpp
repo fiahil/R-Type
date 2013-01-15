@@ -3,6 +3,7 @@
 #include "logger.h"
 #include "ClientService.h"
 #include "IRequest.h"
+#include "exceptionSocket.h"
 
 #ifdef WIN32
 
@@ -16,7 +17,13 @@
 #endif
 
 ClientService::ClientService(Net::ISocket* s)
-	: sock_(s)
+	: sock_(s),
+	inStorage_(),
+	outStorage_(),
+	outConsumer_(&outStorage_),
+	inConsumer_(&inStorage_),
+	outProducer_(&outStorage_),
+	worker_(inStorage_, s)
 {
 }
 
@@ -29,31 +36,59 @@ void		ClientService::operator()(void)
 {
 	DEBUG << "ClientService functor" << std::endl;
 
+	this->worker_.launch();
+
+	bool flag = true;
+
+	while (this->worker_.isOnline() && flag)
+	{
+		TCPPacket* packet = 0;
+		while ((packet = this->outConsumer_.consume()) != 0)
+		{
+			try
+			{
+			std::string buffer(reinterpret_cast<char const*>(packet), packet->H.size);
+			this->sock_->Send(buffer);
+			}
+			catch (Net::ErrorInOut&)
+			{
+				DEBUG << "Send fail" << std::endl;
+				flag = false;
+				break;
+			}
+			DEBUG << "Packet Sent" << std::endl;
+		}
+		if (flag)
+			this->outConsumer_.wait();
+	}
 }
 
 IRequest*	ClientService::pull()
 {
-  std::string	s = this->sock_->Recv();
-  TCPPacket*	TCPP = new TCPPacket();
+	TCPPacket*	 pack = this->inConsumer_.consume();
 
-  PackMan::Memcpy(&TCPP->H.size, s.substr(0, 2).data(), 2);
-  PackMan::Memcpy(&TCPP->H.type, s.substr(2, 4).data(), 2);
-  PackMan::Memcpy(TCPP->B, s.substr(4).data(), TCPP->H.size - 4);
+	if (pack)
+	{
+		DEBUG << "Packet Received" << std::endl;
+		return PackMan::unpack(pack);
+	}
 
-  DEBUG << "Packet Size : " << TCPP->H.size 
-   	<< " ; Pack Type : " << TCPP->H.type 
-  	<< " ; Pack Data : " << TCPP->B << std::endl;
-
-  IRequest* IR = PackMan::unpack(TCPP);
-  
-  return IR;
-  return 0;
+	DEBUG << "Null Packet received" << std::endl;
+	return 0;
 }
 
 void		ClientService::push(IRequest* r)
 {
   DEBUG << "Sending request" << std::endl;
+  
   TCPPacket* pack = PackMan::pack(r);
-  std::string s(reinterpret_cast<char*>(pack), pack->H.size);
-  this->sock_->Send(s);
+
+  if (pack)
+  DEBUG << "Packet Size : " << pack->H.size 
+   	<< " ; Pack Type : " << pack->H.type 
+  	<< " ; Pack Data : " << pack->B << std::endl;
+  else
+	  DEBUG << "Null Packet" << std::endl;
+
+  this->outProducer_.produce(pack);
 }

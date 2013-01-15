@@ -1,16 +1,9 @@
-#ifndef SCENARIO_HPP
-#define SCENARIO_HPP
+#ifndef SCENARIO_H
+#define SCENARIO_H
 
-#include <iostream>
-#include <deque>
-#include "IEntity.h"
+#include "IScenario.h"
 
-struct Timepoint {
-  float time_;
-  IEntity * spawn_;
-};
-
-class Scenario {
+class Scenario : public IScenario {
   std::deque<Timepoint> timeline_;
   float duration_;
 public:
@@ -21,4 +14,4 @@ public:
   bool isOver(float);
 };
 
-#endif
+#endif // SCENARIO_H

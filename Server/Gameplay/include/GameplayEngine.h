@@ -5,12 +5,11 @@
 #include "QuadTree.h"
 // Ajouter l'include de la class Event
 
-
 class GameplayEngine {
   Collider coll_;
   QuadTree quad_;
   IGameMod * gm_;
-  Dl::DlManager<IGameMod> * manager;
+  IScenario * sc_;
 public:
   GameplayEngine(std::string);
   ~GameplayEngine();

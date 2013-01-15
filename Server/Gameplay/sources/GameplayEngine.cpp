@@ -1,9 +1,9 @@
+
 #include "GameplayEngine.h"
 
 GameplayEngine::GameplayEngine(std::string path) {
   this->coll_ = new Collider();
   this->quad_ = new QuadTree();
-  this->manager = new Dl::DlManager<IGameMod>();
   this->manager->load(path);
 }
 

@@ -14,6 +14,10 @@ public:
 	void	setTitle(std::string const&);
 	void	setCursorVisible(bool);
 	void	pollEvent(sf::Event&);
+	void	draw(sf::Drawable const& drawable);
+	bool	isOpen();
+	void	clear();
+	void	display();
 
 	sfWindow(int x = 800, int y = 600);
 	~sfWindow();

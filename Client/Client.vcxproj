@@ -70,6 +70,7 @@
     <ClCompile Include="sfKeyboard.cpp" />
     <ClCompile Include="sfMouse.cpp" />
     <ClCompile Include="sfWindow.cpp" />
+    <ClCompile Include="sfSpriteSheet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IGameWindow.h" />
@@ -78,6 +79,7 @@
     <ClInclude Include="sfKeyboard.h" />
     <ClInclude Include="sfMouse.h" />
     <ClInclude Include="sfWindow.h" />
+    <ClInclude Include="sfSpriteSheet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

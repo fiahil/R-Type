@@ -41,7 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\Server\Quadtree\include;..\Server\Network\include;..\Server\Room\include;..\Generics\TP;..\Server\Entities\include;..\Generics\Net;..\Generics\PC;..\Generics\LWP;..\Generics\PS;..\Generics\ReqServ\include;..\Generics\ReqCl;..\Generics\Logger;$(IncludePath)</IncludePath>
+    <IncludePath>..\Server\Quadtree\include;..\Server\Network\include;..\Server\Room\include;..\Generics\TP;..\Server\Gameplay\include;..\Generics\Net;..\Generics\PC;..\Generics\LWP;..\Generics\PS;..\Generics\ReqServ\include;..\Generics\ReqCl;..\Generics\Logger;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -108,15 +108,18 @@
     <ClInclude Include="..\Generics\TP\ThreadPool.h" />
     <ClInclude Include="..\Generics\TP\ThreadPoolQueue.h" />
     <ClInclude Include="..\Generics\TP\ThreadPoolWorker.h" />
-    <ClInclude Include="Entities\include\IArmable.h" />
-    <ClInclude Include="Entities\include\ICollidable.h" />
-    <ClInclude Include="Entities\include\IDestroyable.h" />
-    <ClInclude Include="Entities\include\IDrawable.h" />
-    <ClInclude Include="Entities\include\IEntity.h" />
-    <ClInclude Include="Entities\include\IMoveable.h" />
-    <ClInclude Include="Entities\include\IPlayable.h" />
-    <ClInclude Include="Entities\include\IScriptable.h" />
-    <ClInclude Include="Entities\include\Scenario.h" />
+    <ClInclude Include="Gameplay\include\IArmable.h" />
+    <ClInclude Include="Gameplay\include\ICollidable.h" />
+    <ClInclude Include="Gameplay\include\IDestroyable.h" />
+    <ClInclude Include="Gameplay\include\IDrawable.h" />
+    <ClInclude Include="Gameplay\include\IEntity.h" />
+    <ClInclude Include="Gameplay\include\IGameMod.h" />
+    <ClInclude Include="Gameplay\include\IMoveable.h" />
+    <ClInclude Include="Gameplay\include\IPlayable.h" />
+    <ClInclude Include="Gameplay\include\IScenario.h" />
+    <ClInclude Include="Gameplay\include\IScriptable.h" />
+    <ClInclude Include="Gameplay\include\PackedPlugin.h" />
+    <ClInclude Include="Gameplay\include\Scenario.h" />
     <ClInclude Include="Network\include\ClientService.h" />
     <ClInclude Include="Network\include\ClientServiceWorker.h" />
     <ClInclude Include="Network\include\IClientService.h" />
@@ -151,7 +154,7 @@
     <ClCompile Include="..\Generics\Net\WinSocketUdp.cpp" />
     <ClCompile Include="..\Generics\ReqCl\SCRequest.cpp" />
     <ClCompile Include="..\Generics\ReqServ\sources\CSRequest.cpp" />
-    <ClCompile Include="Entities\sources\Scenario.cpp" />
+    <ClCompile Include="Gameplay\sources\Scenario.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Network\sources\ClientService.cpp" />
     <ClCompile Include="Network\sources\ClientServiceWorker.cpp" />

@@ -63,17 +63,17 @@
     <Filter Include="Source Files\Quadtree">
       <UniqueIdentifier>{e5b5f770-cff6-4a34-9e08-065ae1f249a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Entity">
-      <UniqueIdentifier>{6a69ac19-5260-4c28-81b1-2887d6aafd33}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entity">
-      <UniqueIdentifier>{b3101f13-aa51-4e76-ba52-953b69ffd54b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Generics\Logger">
       <UniqueIdentifier>{9c915712-a583-48e5-971d-764a8d7f8b6b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Generics\Logger">
       <UniqueIdentifier>{f1a57ab6-93b3-465b-beb0-55d1dd467775}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gameplay">
+      <UniqueIdentifier>{d0348090-e002-48cc-bf09-8224885db53b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gameplay">
+      <UniqueIdentifier>{72a6c83f-b90d-4970-828d-d6987b5f9ea4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -221,33 +221,6 @@
     <ClInclude Include="..\Generics\ReqCl\SCRequest.h">
       <Filter>Header Files\Generics\Req</Filter>
     </ClInclude>
-    <ClInclude Include="Entities\include\IEntity.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="Entities\include\IDrawable.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="Entities\include\IDestroyable.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="Entities\include\ICollidable.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="Entities\include\IArmable.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="Entities\include\Scenario.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="Entities\include\IScriptable.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="Entities\include\IPlayable.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="Entities\include\IMoveable.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
     <ClInclude Include="Room\include\Resources.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
@@ -262,6 +235,42 @@
     </ClInclude>
     <ClInclude Include="Network\include\ClientServiceWorker.h">
       <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\include\IEntity.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\include\IDrawable.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\include\IDestroyable.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\include\ICollidable.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\include\IArmable.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\include\Scenario.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\include\PackedPlugin.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\include\IScriptable.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\include\IScenario.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\include\IPlayable.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\include\IMoveable.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\include\IGameMod.h">
+      <Filter>Header Files\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -331,9 +340,6 @@
     <ClCompile Include="Network\sources\NetworkManager.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
-    <ClCompile Include="Entities\sources\Scenario.cpp">
-      <Filter>Source Files\Entity</Filter>
-    </ClCompile>
     <ClCompile Include="Network\sources\ServerService.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
@@ -345,6 +351,9 @@
     </ClCompile>
     <ClCompile Include="Network\sources\ClientServiceWorker.cpp">
       <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\sources\Scenario.cpp">
+      <Filter>Source Files\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

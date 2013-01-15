@@ -5,23 +5,22 @@
 ## Login   <teisse_a@epitech.net>
 ## 
 ## Started on  Wed Jan  9 09:55:44 2013 alexandre teisseire
-## Last update Sun Jan 13 00:27:57 2013 alexandre teisseire
+## Last update Tue Jan 15 23:43:14 2013 alexandre teisseire
 ##
 
 NAME		= R-Type
 
 PATH_SRC	= Room/sources/
 PATH_SRC_REQ	= ../Generics/ReqServ/sources/
-PATH_SRC_CL	= ../Generics/ReqCl/
 PATH_SRC_LWP	= ../Generics/LWP/
 PATH_SRC_NET	= ../Generics/Net/
 PATH_SRC_NETW	= Network/sources/
 PATH_SRC_ENT	= Entities/sources/
 PATH_SRC_LOG	= ../Generics/Logger/
+PATH_SRC_QTREE	= ./Quadtree/sources/
 
 PATH_INC	= Room/include/
 PATH_INC_REQ	= ../Generics/ReqServ/include/
-PATH_INC_CL	= ../Generics/ReqCl/
 PATH_INC_DL	= ../Generics/Dl/
 PATH_INC_LWP	= ../Generics/LWP/
 PATH_INC_NET	= ../Generics/Net/
@@ -31,6 +30,7 @@ PATH_INC_TP	= ../Generics/TP/
 PATH_INC_NETW	= Network/include/
 PATH_INC_ENT	= Entities/include/
 PATH_INC_LOG	= ../Generics/Logger/
+PATH_INC_QTREE	= Quadtree/include/
 
 SRC		= $(PATH_SRC)Account.cpp		\
 		  $(PATH_SRC)GameplayEngine.cpp		\
@@ -63,6 +63,11 @@ SRC_NETW	= $(PATH_SRC_NETW)ClientService.cpp	\
 		  $(PATH_SRC_NETW)PackMan.cpp		\
 		  $(PATH_SRC_NETW)ServerService.cpp
 
+SRC_QTREE	= $(PATH_SRC_QTREE)Collider.cpp		\
+		  $(PATH_SRC_QTREE)Node.cpp		\
+		  $(PATH_SRC_QTREE)QuadTree.cpp
+
+
 OBJ		= $(SRC:.cpp=.o)
 OBJ_REQ		= $(SRC_REQ:.cpp=.o)
 OBJ_CL		= $(SRC_CL:.cpp=.o)
@@ -71,6 +76,7 @@ OBJ_NETW	= $(SRC_NETW:.cpp=.o)
 OBJ_ENT		= $(SRC_ENT:.cpp=.o)
 OBJ_LOG		= $(SRC_LOG:.cpp=.o)
 OBJ_NET		= $(SRC_NET:.cpp=.o)
+OBJ_QTREE	= $(SRC_QTREE:.cpp=.o)
 
 INCLUDES	= -I$(PATH_INC) 	\
 		  -I$(PATH_INC_REQ) 	\
@@ -83,7 +89,8 @@ INCLUDES	= -I$(PATH_INC) 	\
 		  -I$(PATH_INC_TP)	\
 		  -I$(PATH_INC_ENT)	\
 		  -I$(PATH_INC_LOG)	\
-		  -I$(PATH_INC_NETW)
+		  -I$(PATH_INC_NETW)	\
+		  -I$(PATH_INC_QTREE)
 
 CXX		= g++
 
@@ -110,8 +117,8 @@ DUST		= *~ 			\
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG)
-		$(CXX) -o $(NAME) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG) $(LDFLAGS)
+$(NAME):	$(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE)
+		$(CXX) -o $(NAME) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(LDFLAGS)
 
 clean:
 		$(RM) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(DUST)

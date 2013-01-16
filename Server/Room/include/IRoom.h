@@ -2,7 +2,7 @@
 
 #include <deque>
 #include "IPlayer.h"
-#include "IService.hpp"
+#include "IService.h"
 
 class IRoom
 {

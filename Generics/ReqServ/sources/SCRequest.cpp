@@ -5,9 +5,10 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:45:41 2013 alexandre teisseire
-// Last update Wed Jan 16 00:26:14 2013 alexandre teisseire
+// Last update Wed Jan 16 00:26:31 2013 alexandre teisseire
 //
 
+#include <assert.h>
 #include <sstream>
 #include "PackMan.h"
 #include "SCRequest.h"
@@ -28,31 +29,24 @@ AnswerCreateRoom::~AnswerCreateRoom() {}
 
 bool		AnswerCreateRoom::isValid()
 {
+  assert(0);
   return true;
 }
 
 void		AnswerCreateRoom::doOp()
 {
-  //
-  // Client process his room id
-  //
+  assert(0);
 }
 
 void		AnswerCreateRoom::finalize(IService*)
 {
-  //
-  // ACK
-  //
+  assert(0);
 }
 
-bool		AnswerCreateRoom::manageRequest(IService *S)
+bool		AnswerCreateRoom::manageRequest(IService *)
 {
-  if (this->isValid())
-    this->doOp();
-  else
-    this->ec = C_connection_failed;
-  this->finalize(S);
-  return (true);
+  assert(0);
+  return true;
 }
 
 std::string	AnswerCreateRoom::toString()
@@ -85,28 +79,27 @@ ClientInvited::~ClientInvited() {}
 
 bool		ClientInvited::isValid()
 {
+  assert(0);
   return true;
 }
 
 void		ClientInvited::doOp()
 {
+  assert(0);
 }
 
 void		ClientInvited::finalize(IService*)
 {
+  assert(0);
   //
   // ACK
   //
 }
 
-bool		ClientInvited::manageRequest(IService *S)
+bool		ClientInvited::manageRequest(IService *)
 {
-  if (this->isValid())
-    this->doOp();
-  else
-    this->ec = C_client_refuse;
-  this->finalize(S);
-  return (true);
+  assert(0);
+  return true;
 }
 
 std::string	ClientInvited::toString()
@@ -190,31 +183,24 @@ GameLaunched::~GameLaunched() {}
 
 bool		GameLaunched::isValid()
 {
+  assert(0);
   return true;
 }
 
 void		GameLaunched::doOp()
 {
-  //
-  // start Load
-  //
+  assert(0);
 }
 
 void		GameLaunched::finalize(IService*)
 {
-  //
-  // ACK
-  //
+  assert(0);
 }
 
-bool		GameLaunched::manageRequest(IService *S)
+bool		GameLaunched::manageRequest(IService *)
 {
-  if (this->isValid())
-    this->doOp();
-  else
-    this->ec = C_connection_failed;
-  this->finalize(S);
-  return (true);
+  assert(0);
+  return true;
 }
 
 std::string	GameLaunched::toString()

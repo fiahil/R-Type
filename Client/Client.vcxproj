@@ -70,14 +70,18 @@
     <ClCompile Include="sfKeyboard.cpp" />
     <ClCompile Include="sfMouse.cpp" />
     <ClCompile Include="sfWindow.cpp" />
+    <ClCompile Include="sfSpriteSheet.cpp" />
+    <ClCompile Include="Ship.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ISpriteSheet.h" />
     <ClInclude Include="IGameWindow.h" />
     <ClInclude Include="IInput.h" />
     <ClInclude Include="sfJoystick.h" />
     <ClInclude Include="sfKeyboard.h" />
     <ClInclude Include="sfMouse.h" />
     <ClInclude Include="sfWindow.h" />
+    <ClInclude Include="sfSpriteSheet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

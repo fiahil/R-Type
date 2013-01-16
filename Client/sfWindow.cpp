@@ -25,10 +25,29 @@ void	sfWindow::pollEvent(sf::Event& e)
 	window_.pollEvent(e);
 }
 
+void	sfWindow::draw(sf::Drawable const& drawable)
+{
+	window_.draw(drawable);
+}
+
+bool	sfWindow::isOpen()
+{
+	return window_.isOpen();
+}
+
+void	sfWindow::clear()
+{
+	window_.clear();
+}
+
+void	sfWindow::display()
+{
+	window_.display();
+}
+
 sfWindow::sfWindow(int x, int y)
 {
 	window_.create(sf::VideoMode(x, y), "R-Type");
-	window_.setMouseCursorVisible(false);
 }
 
 sfWindow::~sfWindow()

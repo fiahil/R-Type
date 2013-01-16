@@ -65,6 +65,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameComponent.cpp" />
+    <ClCompile Include="IGameComponent.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="sfJoystick.cpp" />
     <ClCompile Include="sfKeyboard.cpp" />
@@ -74,6 +76,8 @@
     <ClCompile Include="Ship.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameComponent.h" />
+    <ClInclude Include="IGameComponent.h" />
     <ClInclude Include="ISpriteSheet.h" />
     <ClInclude Include="IGameWindow.h" />
     <ClInclude Include="IInput.h" />

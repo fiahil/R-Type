@@ -2,7 +2,7 @@
 
 #include "IPlayer.h"
 #include "IAccount.h"
-#include "IService.hpp"
+#include "IService.h"
 #include "IMutex.h"
 #include "IEntity.h"
 
@@ -12,7 +12,7 @@ struct	ShipInfo
 	int				dmg_;
 	int				score_;
 	float			speed_;
-	Position		pos_;
+	/* Position		pos_; */
 	std::string		spritePath_;
 };
 

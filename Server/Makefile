@@ -5,7 +5,7 @@
 ## Login   <teisse_a@epitech.net>
 ## 
 ## Started on  Wed Jan  9 09:55:44 2013 alexandre teisseire
-## Last update Tue Jan 15 23:43:14 2013 alexandre teisseire
+## Last update Wed Jan 16 00:27:32 2013 alexandre teisseire
 ##
 
 NAME		= R-Type
@@ -15,9 +15,9 @@ PATH_SRC_REQ	= ../Generics/ReqServ/sources/
 PATH_SRC_LWP	= ../Generics/LWP/
 PATH_SRC_NET	= ../Generics/Net/
 PATH_SRC_NETW	= Network/sources/
-PATH_SRC_ENT	= Entities/sources/
 PATH_SRC_LOG	= ../Generics/Logger/
 PATH_SRC_QTREE	= ./Quadtree/sources/
+PATH_SRC_GPLAY	= ./Gameplay/sources/
 
 PATH_INC	= Room/include/
 PATH_INC_REQ	= ../Generics/ReqServ/include/
@@ -31,6 +31,7 @@ PATH_INC_NETW	= Network/include/
 PATH_INC_ENT	= Entities/include/
 PATH_INC_LOG	= ../Generics/Logger/
 PATH_INC_QTREE	= Quadtree/include/
+PATH_INC_GPLAY	= Gameplay/include/
 
 SRC		= $(PATH_SRC)Account.cpp		\
 		  $(PATH_SRC)GameplayEngine.cpp		\
@@ -45,23 +46,24 @@ SRC_NET		= $(PATH_SRC_NET)EndPoint.cpp		\
 		  $(PATH_SRC_NET)UnixSocketTcp.cpp	\
 		  $(PATH_SRC_NET)UnixSocketUdp.cpp	
 
-SRC_REQ		= $(PATH_SRC_REQ)CSRequest.cpp
-
-SRC_CL		= $(PATH_SRC_CL)SCRequest.cpp
+SRC_REQ		= $(PATH_SRC_REQ)CSRequest.cpp		\
+		  $(PATH_SRC_REQ)SCRequest.cpp		
 
 SRC_LWP		= $(PATH_SRC_LWP)ScopedLock.cpp		\
 		  $(PATH_SRC_LWP)UnixCondVar.cpp	\
 		  $(PATH_SRC_LWP)UnixMutex.cpp
 
-SRC_ENT		= $(PATH_SRC_ENT)Scenario.cpp		\
-		  Main.cpp
-
 SRC_LOG		= $(PATH_SRC_LOG)logger.cpp
+
+SRC_GPLAY	= $(PATH_SRC_GPLAY)GameplayEngine.cpp	\
+		  $(PATH_SRC_GPLAY)PackedPlugin.cpp	\
+		  $(PATH_SRC_GPLAY) Scenario.cpp
 
 SRC_NETW	= $(PATH_SRC_NETW)ClientService.cpp	\
 		  $(PATH_SRC_NETW)NetworkManager.cpp	\
 		  $(PATH_SRC_NETW)PackMan.cpp		\
-		  $(PATH_SRC_NETW)ServerService.cpp
+		  $(PATH_SRC_NETW)ServerService.cpp	\
+		  $(PATH_SRC_NETW)ClientServiceWorker.cpp
 
 SRC_QTREE	= $(PATH_SRC_QTREE)Collider.cpp		\
 		  $(PATH_SRC_QTREE)Node.cpp		\
@@ -90,6 +92,7 @@ INCLUDES	= -I$(PATH_INC) 	\
 		  -I$(PATH_INC_ENT)	\
 		  -I$(PATH_INC_LOG)	\
 		  -I$(PATH_INC_NETW)	\
+		  -I$(PATH_INC_GPLAY)	\
 		  -I$(PATH_INC_QTREE)
 
 CXX		= g++
@@ -117,11 +120,11 @@ DUST		= *~ 			\
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE)
-		$(CXX) -o $(NAME) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(LDFLAGS)
+$(NAME):	$(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY)
+		$(CXX) -o $(NAME) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY) $(LDFLAGS)
 
 clean:
-		$(RM) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(DUST)
+		$(RM) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY) $(DUST)
 
 fclean:		clean
 		$(RM) $(NAME)

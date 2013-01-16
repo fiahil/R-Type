@@ -11,7 +11,7 @@ struct Timepoint {
 
 class IScenario {
 public:
-  virtual  ~IEntity(void) {}
+  virtual  ~IScenario(void) {}
   virtual IEntity * getNextEvent(float) = 0;
   virtual void addNewEvent(Timepoint) = 0;
   virtual bool isOver(float) = 0;

@@ -1,3 +1,3 @@
-#include "Resources.hpp"
+#include "Resources.h"
 
 //RoomManager	Resources::RM;

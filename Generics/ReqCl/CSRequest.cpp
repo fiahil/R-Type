@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:32:43 2013 alexandre teisseire
-// Last update Sun Jan 13 10:00:33 2013 alexandre teisseire
+// Last update Wed Jan 16 00:49:50 2013 alexandre teisseire
 //
 
 #include	<sstream>
@@ -29,42 +29,25 @@ Connect::~Connect() {}
 
 bool		Connect::isValid()
 {
-  RoomManager&	RM = Resources::RM;
-  std::string	username(parameters.username);
-
-  if (RM.getPlayerFromName(username) == NULL)
-    return true;
-  return false;
+  assert(0);
+  return true;
 }
 
 void		Connect::doOp()
 {
-
-}
-
-void		Connect::doOp(IService*S)
-{
-  RoomManager&	RM = Resources::RM;
-  std::string	username(parameters.username);
-  std::string	password(parameters.passwd);
-
-  RM.addPlayerToHall(username, password, S);
+  assert(0);
 }
 
 void		Connect::finalize(IService *)
 {
+  assert(0);
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		Connect::manageRequest(IService *S) 
+bool		Connect::manageRequest(IService *)
 {
-  if (this->isValid())
-    this->doOp(S);
-  else
-    this->ec = S_access_refused;
-  this->finalize(S);
-  return true;
+  assert(0);
 }
 
 std::string	Connect::toString()
@@ -91,16 +74,13 @@ CreateRoom::~CreateRoom() {}
 
 bool		CreateRoom::isValid()
 {
+  assert(0);
   return true;
 }
 
 void		CreateRoom::doOp()
 {
-  RoomManager&	RM = Resources::RM;
-  int		idRoom;
-
-  if((idRoom = RM.createRoom()) == -1)
-    this->ec = S_cmd_refused;
+  assert(0);
 
   //
   // envoi de la request au client -> SCRequest
@@ -108,18 +88,14 @@ void		CreateRoom::doOp()
 }
 void		CreateRoom::finalize(IService*)
 {
+  assert(0);
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		CreateRoom::manageRequest(IService *S)
+bool		CreateRoom::manageRequest(IService *)
 {
-  if (this->isValid())
-    this->doOp();
-  else
-    this->ec = G_invalid_request;
-  this->finalize(S);
-  return (true);
+  assert(0);
 }
 
 std::string	CreateRoom::toString()
@@ -148,6 +124,7 @@ LeaveRoom::~LeaveRoom() {}
 
 bool		LeaveRoom::isValid()
 {
+  assert(0);
   return true;
 }
 
@@ -156,12 +133,9 @@ void		LeaveRoom::doOp()
 
 }
 
-void		LeaveRoom::doOp(IService *S)
+void		LeaveRoom::doOp(IService *)
 {
-  RoomManager&	RM = Resources::RM;
-
-  RM.removePlayerFromRoom(this->P->getId(), parameters.roomId);
-  RM.addPlayerToHall(this->P->getName(), this->P->getHash(), S);
+  assert(0);
 }
 
 void		LeaveRoom::finalize(IService*)
@@ -172,16 +146,7 @@ void		LeaveRoom::finalize(IService*)
 
 bool		LeaveRoom::manageRequest(IService *S)
 {
-  RoomManager&	RM = Resources::RM;
-
-  this->P = RM.getPlayerFromRoom(S, parameters.roomId);
-
-  if (this->isValid())
-    this->doOp();
-  else
-    this->ec = G_invalid_request;
-  this->finalize(S);
-  return (true);
+  assert(0);
 }
 
 std::string	LeaveRoom::toString()
@@ -213,18 +178,13 @@ JoinRoom::~JoinRoom() {}
 
 bool		JoinRoom::isValid()
 {
-  RoomManager&	RM = Resources::RM;
-
-  if (RM.getRoomById(parameters.roomId) == NULL)
-    return false;
-  return true;
+  assert(0);
+  return 0;
 }
 
 void		JoinRoom::doOp()
 {
-  RoomManager&	RM = Resources::RM;
-
-  RM.clonePlayerFromHallToRoom(parameters.roomId, this->P->getId());
+  assert(0);
 }
 
 void		JoinRoom::finalize(IService*)
@@ -235,16 +195,8 @@ void		JoinRoom::finalize(IService*)
 
 bool		JoinRoom::manageRequest(IService *S)
 {
-  RoomManager&	RM = Resources::RM;
-  
-  this->P = RM.getPlayerFromHall(S);
-
-  if (this->isValid())
-    this->doOp();
-  else
-    this->ec = G_invalid_request;
-  this->finalize(S);
-  return (true);
+  assert(0);
+  return true;
 }
 
 std::string	JoinRoom::toString()
@@ -276,16 +228,13 @@ InvitePlayer::~InvitePlayer() {}
 
 bool		InvitePlayer::isValid()
 {
-  RoomManager&	RM = Resources::RM;
-  std::string	username(parameters.username);
-
-  if ((this->P = RM.getPlayerFromName(username)) == NULL)
-    return false;
+  assert(0);
   return true;
 }
 
 void		InvitePlayer::doOp()
 {
+  assert(0);
   //
   // faire suivre la requete d invitation au player correspondant
   //
@@ -293,17 +242,14 @@ void		InvitePlayer::doOp()
 
 void		InvitePlayer::finalize(IService*)
 {
+  assert(0);
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		InvitePlayer::manageRequest(IService *S)
+bool		InvitePlayer::manageRequest(IService *)
 {
-  if (this->isValid())
-    this->doOp();
-  else
-    this->ec = S_cmd_refused;
-  this->finalize(S);
+  assert(0);
   return (true);
 }
 
@@ -333,6 +279,7 @@ SetGameParam::~SetGameParam() {}
 
 bool		SetGameParam::isValid()
 {
+  assert(0);
   //
   // a definir
   //
@@ -341,6 +288,7 @@ bool		SetGameParam::isValid()
 
 void		SetGameParam::doOp()
 {
+  assert(0);
   //
   // a definir
   // 
@@ -348,17 +296,14 @@ void		SetGameParam::doOp()
 
 void		SetGameParam::finalize(IService*)
 {
+  assert(0);
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		SetGameParam::manageRequest(IService *S)
+bool		SetGameParam::manageRequest(IService *)
 {
-  if (this->isValid())
-    this->doOp();
-  else
-    this->ec = G_invalid_request;
-  this->finalize(S);
+  assert(0);
   return (true);
 }
 
@@ -394,16 +339,13 @@ LaunchGame::~LaunchGame() {}
 
 bool		LaunchGame::isValid()
 {
+  assert(0);
   return true;
 }
 
 void		LaunchGame::doOp()
 {
-  RoomManager&	RM = Resources::RM;
-  std::deque<IPlayer*> players = RM.getPlayersFromRoom(this->parameters.roomId);
-
-  RM.setRoomStatus(this->parameters.roomId, true);
-  RM.linkRoomToThreadPool(this->parameters.roomId);
+  assert(0);
 
   //
   // notifier les autres clients que le jeu est lancé
@@ -416,13 +358,9 @@ void		LaunchGame::finalize(IService*)
   // S.push(req);
 }
 
-bool		LaunchGame::manageRequest(IService *S)
+bool		LaunchGame::manageRequest(IService *)
 {
-  if (this->isValid())
-    this->doOp();
-  else
-    this->ec = S_process_fail;
-  this->finalize(S);
+  assert(0);
   return (true);
 }
 
@@ -469,17 +407,9 @@ void		Ping::finalize(IService*)
   // S.push(req);
 }
 
-bool		Ping::manageRequest(IService *S)
+bool		Ping::manageRequest(IService *)
 {
-  RoomManager&	RM = Resources::RM;
-
-  this->P = RM.getPlayerFromHall(S);
-
-  if (this->isValid())
-    this->doOp();
-  else
-    this->ec = S_process_fail;
-  this->finalize(S);
+  assert(0);
   return (true);
 }
 
@@ -509,14 +439,13 @@ Ready::~Ready() {}
 
 bool		Ready::isValid()
 {
+  assert(0);
   return true;
 }
 
 void		Ready::doOp()
 {
-  this->P->setStatus(true);
-  this->P->setEp(std::string(this->parameters.endpoint));
-
+  assert(0);
   //
   // are players ready for game ?
   //
@@ -524,21 +453,14 @@ void		Ready::doOp()
 
 void		Ready::finalize(IService*)
 {
+  assert(0);
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		Ready::manageRequest(IService *S)
+bool		Ready::manageRequest(IService *)
 {
-  RoomManager&	RM = Resources::RM;
-
-  this->P = RM.getPlayerFromHall(S);
-
-  if (this->isValid())
-    this->doOp();
-  else
-    this->ec = S_process_fail;
-  this->finalize(S);
+  assert(0);
   return (true);
 }
 std::string	Ready::toString()

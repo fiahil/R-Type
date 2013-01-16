@@ -1,9 +1,6 @@
 #pragma once
 
-#include	"Resources.h"
-#include	"RoomManager.h"
 #include	"IRequest.h"
-#include	"IPlayer.h"
 
 class		Connect : public IRequest
 {
@@ -65,7 +62,7 @@ private:
   };
 
   parameters	parameters;
-  IPlayer*	P;
+  // IPlayer*	P;
   errorCode	ec;
 
 private:
@@ -97,7 +94,7 @@ private:
 
   parameters	parameters;
   errorCode	ec;
-  IPlayer	*P;
+  // IPlayer	*P;
 
 private:
   virtual bool		isValid();
@@ -124,7 +121,7 @@ private:
   };
 
   parameters	parameters;
-  IPlayer*	P;
+  // IPlayer*	P;
   errorCode	ec;
 
 private:
@@ -202,7 +199,7 @@ class		Ping : public IRequest
 {
 private:
   errorCode	ec;
-  IPlayer*	P;
+  // IPlayer*	P;
 
 private:
   virtual bool		isValid();
@@ -230,7 +227,7 @@ private:
 
   parameters	parameters;
   errorCode	ec;
-  IPlayer*	P;
+  // IPlayer*	P;
 
 private:
   virtual bool		isValid();

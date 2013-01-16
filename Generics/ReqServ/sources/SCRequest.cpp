@@ -5,9 +5,10 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:45:41 2013 alexandre teisseire
-// Last update Tue Jan 15 23:32:33 2013 alexandre teisseire
+// Last update Wed Jan 16 00:26:31 2013 alexandre teisseire
 //
 
+#include <assert.h>
 #include <sstream>
 #include "PackMan.h"
 #include "SCRequest.h"
@@ -29,6 +30,7 @@ AnswerCreateRoom::~AnswerCreateRoom() {}
 bool		AnswerCreateRoom::isValid()
 {
   assert(0);
+  return true;
 }
 
 void		AnswerCreateRoom::doOp()
@@ -41,9 +43,10 @@ void		AnswerCreateRoom::finalize(IService*)
   assert(0);
 }
 
-bool		AnswerCreateRoom::manageRequest(IService *S)
+bool		AnswerCreateRoom::manageRequest(IService *)
 {
   assert(0);
+  return true;
 }
 
 std::string	AnswerCreateRoom::toString()
@@ -93,9 +96,10 @@ void		ClientInvited::finalize(IService*)
   //
 }
 
-bool		ClientInvited::manageRequest(IService *S)
+bool		ClientInvited::manageRequest(IService *)
 {
   assert(0);
+  return true;
 }
 
 std::string	ClientInvited::toString()
@@ -193,7 +197,21 @@ void		GameLaunched::finalize(IService*)
   assert(0);
 }
 
-bool		GameLaunched::manageRequest(IService *S)
+bool		GameLaunched::manageRequest(IService *)
 {
   assert(0);
+  return true;
+}
+
+std::string	GameLaunched::toString()
+{
+  std::stringstream	ss;
+
+  ss << this->parameters.timestamp << ":" << this->parameters.clock;
+  return (ss.str());
+}
+
+eRequestType	GameLaunched::getType()
+{
+  return GAME_LAUNCHED;
 }

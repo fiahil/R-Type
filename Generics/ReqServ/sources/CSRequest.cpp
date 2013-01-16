@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:32:43 2013 alexandre teisseire
-// Last update Sun Jan 13 10:00:33 2013 alexandre teisseire
+// Last update Wed Jan 16 00:08:41 2013 alexandre teisseire
 //
 
 #include	<sstream>
@@ -29,11 +29,11 @@ Connect::~Connect() {}
 
 bool		Connect::isValid()
 {
-  RoomManager&	RM = Resources::RM;
-  std::string	username(parameters.username);
+  // RoomManager&	RM = Resources::RM;
+  // std::string	username(parameters.username);
 
-  if (RM.getPlayerFromName(username) == NULL)
-    return true;
+  // if (RM.getPlayerFromName(username) == NULL)
+  //   return true;
   return false;
 }
 
@@ -42,13 +42,13 @@ void		Connect::doOp()
 
 }
 
-void		Connect::doOp(IService*S)
+void		Connect::doOp(IService*)
 {
-  RoomManager&	RM = Resources::RM;
-  std::string	username(parameters.username);
-  std::string	password(parameters.passwd);
+  // RoomManager&	RM = Resources::RM;
+  // std::string	username(parameters.username);
+  // std::string	password(parameters.passwd);
 
-  RM.addPlayerToHall(username, password, S);
+  // RM.addPlayerToHall(username, password, S);
 }
 
 void		Connect::finalize(IService *)
@@ -96,11 +96,11 @@ bool		CreateRoom::isValid()
 
 void		CreateRoom::doOp()
 {
-  RoomManager&	RM = Resources::RM;
-  int		idRoom;
+  // RoomManager&	RM = Resources::RM;
+  // int		idRoom;
 
-  if((idRoom = RM.createRoom()) == -1)
-    this->ec = S_cmd_refused;
+  // if((idRoom = RM.createRoom()) == -1)
+  //   this->ec = S_cmd_refused;
 
   //
   // envoi de la request au client -> SCRequest
@@ -156,12 +156,12 @@ void		LeaveRoom::doOp()
 
 }
 
-void		LeaveRoom::doOp(IService *S)
+void		LeaveRoom::doOp(IService *)
 {
-  RoomManager&	RM = Resources::RM;
+  // RoomManager&	RM = Resources::RM;
 
-  RM.removePlayerFromRoom(this->P->getId(), parameters.roomId);
-  RM.addPlayerToHall(this->P->getName(), this->P->getHash(), S);
+  // RM.removePlayerFromRoom(this->P->getId(), parameters.roomId);
+  // RM.addPlayerToHall(this->P->getName(), this->P->getHash(), S);
 }
 
 void		LeaveRoom::finalize(IService*)
@@ -172,9 +172,9 @@ void		LeaveRoom::finalize(IService*)
 
 bool		LeaveRoom::manageRequest(IService *S)
 {
-  RoomManager&	RM = Resources::RM;
+  // RoomManager&	RM = Resources::RM;
 
-  this->P = RM.getPlayerFromRoom(S, parameters.roomId);
+  // this->P = RM.getPlayerFromRoom(S, parameters.roomId);
 
   if (this->isValid())
     this->doOp();
@@ -213,18 +213,18 @@ JoinRoom::~JoinRoom() {}
 
 bool		JoinRoom::isValid()
 {
-  RoomManager&	RM = Resources::RM;
+  // RoomManager&	RM = Resources::RM;
 
-  if (RM.getRoomById(parameters.roomId) == NULL)
-    return false;
+  // if (RM.getRoomById(parameters.roomId) == NULL)
+  //   return false;
   return true;
 }
 
 void		JoinRoom::doOp()
 {
-  RoomManager&	RM = Resources::RM;
+  // RoomManager&	RM = Resources::RM;
 
-  RM.clonePlayerFromHallToRoom(parameters.roomId, this->P->getId());
+  // RM.clonePlayerFromHallToRoom(parameters.roomId, this->P->getId());
 }
 
 void		JoinRoom::finalize(IService*)
@@ -235,9 +235,9 @@ void		JoinRoom::finalize(IService*)
 
 bool		JoinRoom::manageRequest(IService *S)
 {
-  RoomManager&	RM = Resources::RM;
+  // RoomManager&	RM = Resources::RM;
   
-  this->P = RM.getPlayerFromHall(S);
+  // this->P = RM.getPlayerFromHall(S);
 
   if (this->isValid())
     this->doOp();
@@ -276,11 +276,11 @@ InvitePlayer::~InvitePlayer() {}
 
 bool		InvitePlayer::isValid()
 {
-  RoomManager&	RM = Resources::RM;
-  std::string	username(parameters.username);
+  // RoomManager&	RM = Resources::RM;
+  // std::string	username(parameters.username);
 
-  if ((this->P = RM.getPlayerFromName(username)) == NULL)
-    return false;
+  // if ((this->P = RM.getPlayerFromName(username)) == NULL)
+  //   return false;
   return true;
 }
 
@@ -399,11 +399,11 @@ bool		LaunchGame::isValid()
 
 void		LaunchGame::doOp()
 {
-  RoomManager&	RM = Resources::RM;
-  std::deque<IPlayer*> players = RM.getPlayersFromRoom(this->parameters.roomId);
+  // RoomManager&	RM = Resources::RM;
+  // std::deque<IPlayer*> players = RM.getPlayersFromRoom(this->parameters.roomId);
 
-  RM.setRoomStatus(this->parameters.roomId, true);
-  RM.linkRoomToThreadPool(this->parameters.roomId);
+  // RM.setRoomStatus(this->parameters.roomId, true);
+  // RM.linkRoomToThreadPool(this->parameters.roomId);
 
   //
   // notifier les autres clients que le jeu est lancé
@@ -471,9 +471,9 @@ void		Ping::finalize(IService*)
 
 bool		Ping::manageRequest(IService *S)
 {
-  RoomManager&	RM = Resources::RM;
+  // RoomManager&	RM = Resources::RM;
 
-  this->P = RM.getPlayerFromHall(S);
+  // this->P = RM.getPlayerFromHall(S);
 
   if (this->isValid())
     this->doOp();
@@ -530,9 +530,9 @@ void		Ready::finalize(IService*)
 
 bool		Ready::manageRequest(IService *S)
 {
-  RoomManager&	RM = Resources::RM;
+  // RoomManager&	RM = Resources::RM;
 
-  this->P = RM.getPlayerFromHall(S);
+  // this->P = RM.getPlayerFromHall(S);
 
   if (this->isValid())
     this->doOp();

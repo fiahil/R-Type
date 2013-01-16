@@ -5,23 +5,24 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:32:43 2013 alexandre teisseire
-// Last update Wed Jan 16 00:49:50 2013 alexandre teisseire
+// Last update Wed Jan 16 18:19:49 2013 alexandre teisseire
 //
 
+#include	<assert.h>
 #include	<sstream>
 #include	"PackMan.h"
 #include	"CSRequest.h"
 
-Connect::Connect(char *usr, char *passwd) :
+Connect::Connect(std::string usr, std::string passwd) :
   ec(Success)
 {
-  parameters.username = usr;
-  parameters.passwd = passwd;
+  PackMan::Memcpy(param.username, usr.data(), usr.size());
+  PackMan::Memcpy(param.passwd, passwd.data(), passwd.size());
 }
 
 Connect::Connect(std::string &data)
 {
-  PackMan::Memcpy(&(this->parameters), data.data(), data.size());
+  PackMan::Memcpy(&(this->param), data.data(), data.size());
   ec = Success;
 }
 
@@ -52,7 +53,7 @@ bool		Connect::manageRequest(IService *)
 
 std::string	Connect::toString()
 {
-  return (std::string(this->parameters.username) + ":" + std::string(this->parameters.passwd));
+  return (std::string(this->param.username) + ":" + std::string(this->param.passwd));
 }
 
 eRequestType	Connect::getType()
@@ -60,6 +61,10 @@ eRequestType	Connect::getType()
   return CONNECT;
 }
 
+Connect::parameters&	Connect::getParam()
+{
+  return this->param;
+}
 
 CreateRoom::CreateRoom() :
   ec(Success)
@@ -111,12 +116,12 @@ eRequestType	CreateRoom::getType()
 LeaveRoom::LeaveRoom(int roomId) :
   ec(Success)
 {
-  parameters.roomId = roomId;
+  param.roomId = roomId;
 }
 
 LeaveRoom::LeaveRoom(std::string &data)
 {
-  PackMan::Memcpy(&(this->parameters), data.data(),  static_cast<size_t>(data.length()));
+  PackMan::Memcpy(&(this->param), data.data(),  static_cast<size_t>(data.length()));
   ec = Success;
 }
 
@@ -144,16 +149,17 @@ void		LeaveRoom::finalize(IService*)
   // S.push(req);
 }
 
-bool		LeaveRoom::manageRequest(IService *S)
+bool		LeaveRoom::manageRequest(IService *)
 {
   assert(0);
+  return true;
 }
 
 std::string	LeaveRoom::toString()
 {
   std::stringstream ss;
 
-  ss << this->parameters.roomId;
+  ss << this->param.roomId;
   return (ss.str());
 }
 
@@ -162,15 +168,20 @@ eRequestType	LeaveRoom::getType()
   return LEAVE_ROOM;
 }
 
+LeaveRoom::parameters&	LeaveRoom::getParam()
+{
+  return this->param;
+}
+
 JoinRoom::JoinRoom(int roomId) :
   ec(Success)
 {
-  parameters.roomId = roomId;
+  param.roomId = roomId;
 }
 
 JoinRoom::JoinRoom(std::string &data)
 {
-  PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
+  PackMan::Memcpy(&(this->param), data.data(),  data.size());
   ec = Success;
 }
 
@@ -193,7 +204,7 @@ void		JoinRoom::finalize(IService*)
   // S.push(req);
 }
 
-bool		JoinRoom::manageRequest(IService *S)
+bool		JoinRoom::manageRequest(IService *)
 {
   assert(0);
   return true;
@@ -203,7 +214,7 @@ std::string	JoinRoom::toString()
 {
   std::stringstream ss;
 
-  ss << this->parameters.roomId;
+  ss << this->param.roomId;
   return (ss.str());
 }
 
@@ -212,15 +223,20 @@ eRequestType	JoinRoom::getType()
   return JOIN_ROOM;
 }
 
-InvitePlayer::InvitePlayer(char *usr) :
+JoinRoom::parameters&	JoinRoom::getParam()
+{
+  return this->param;
+}
+
+InvitePlayer::InvitePlayer(char *) :
   ec(Success)
 {
-  parameters.username = usr;
+  // param.username = usr;
 }
 
 InvitePlayer::InvitePlayer(std::string &data)
 {
-  PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
+  PackMan::Memcpy(&(this->param), data.data(),  data.size());
   ec = Success;
 }
 
@@ -255,23 +271,28 @@ bool		InvitePlayer::manageRequest(IService *)
 
 std::string	InvitePlayer::toString()
 {
-  return std::string(this->parameters.username);
+  return std::string(this->param.username);
 }
 eRequestType	InvitePlayer::getType()
 {
   return INVITE_PLAYER;
 }
 
+InvitePlayer::parameters&	InvitePlayer::getParam()
+{
+  return this->param;
+}
+
 SetGameParam::SetGameParam(int key, int value) :
   ec(Success)
 {
-  parameters.key = key;
-  parameters.value = value;
+  param.key = key;
+  param.value = value;
 }
 
 SetGameParam::SetGameParam(std::string &data)
 {
-  PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
+  PackMan::Memcpy(&(this->param), data.data(),  data.size());
   ec = Success;
 }
 
@@ -311,9 +332,9 @@ std::string	SetGameParam::toString()
 {
   std::stringstream ss;
 
-  ss << this->parameters.key;
+  ss << this->param.key;
   ss << ":";
-  ss << this->parameters.value;
+  ss << this->param.value;
 
   return (ss.str());
 }
@@ -323,15 +344,20 @@ eRequestType	SetGameParam::getType()
   return SET_GAME_PARAM;
 }
 
+SetGameParam::parameters&	SetGameParam::getParam()
+{
+  return this->param;
+}
+
 LaunchGame::LaunchGame(int roomId) : 
   ec(Success)
 {
-  parameters.roomId = roomId;
+  param.roomId = roomId;
 }
 
 LaunchGame::LaunchGame(std::string &data)
 {
-  PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
+  PackMan::Memcpy(&(this->param), data.data(),  data.size());
   ec = Success;
 }
 
@@ -372,6 +398,11 @@ std::string	LaunchGame::toString()
 eRequestType	LaunchGame::getType()
 {
   return LAUNCH_GAME;
+}
+
+LaunchGame::parameters&	LaunchGame::getParam()
+{
+  return this->param;
 }
 
 Ping::Ping() :
@@ -423,15 +454,15 @@ eRequestType	Ping::getType()
   return PING;
 }
 
-Ready::Ready(char *ep) :
+Ready::Ready(char *) :
   ec(Success)
 {
-  this->parameters.endpoint = ep;
+  // this->param.endpoint = ep;
 }
 
 Ready::Ready(std::string &data)
 {
-  PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
+  PackMan::Memcpy(&(this->param), data.data(),  data.size());
   ec = Success;
 }
 
@@ -465,9 +496,14 @@ bool		Ready::manageRequest(IService *)
 }
 std::string	Ready::toString()
 {
-  return std::string(this->parameters.endpoint);
+  return std::string(this->param.endpoint);
 }
 eRequestType	Ready::getType()
 {
   return READY;
+}
+
+Ready::parameters&	Ready::getParam()
+{
+  return this->param;
 }

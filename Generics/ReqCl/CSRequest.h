@@ -4,14 +4,15 @@
 
 class		Connect : public IRequest
 {
-private:
-  struct	parameters
+public:
+  typedef struct	parameter
   {
-    char	*username;
-    char	*passwd;
-  };
+    char	username[20];
+    char	passwd[20];
+  }		parameters;
 
-  parameters	parameters;
+private:
+  parameters	param;
   errorCode	ec;
 private:
   virtual bool		isValid();
@@ -22,7 +23,7 @@ private:
     void		doOp(IService*);
 
 public:
-  Connect(char  *, char  *);
+    Connect(std::string, std::string);
   Connect(std::string &);
   ~Connect();
 
@@ -30,6 +31,7 @@ public:
   virtual bool		manageRequest(IService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
+  parameters&	getParam();
 };
 
 class		CreateRoom : public IRequest
@@ -55,13 +57,14 @@ public:
 
 class		LeaveRoom : public IRequest
 {
-private:
-  struct	parameters
+public:
+  typedef struct	parameter
   {
     int		roomId;
-  };
+  }		parameters;
 
-  parameters	parameters;
+private:
+  parameters	param;
   // IPlayer*	P;
   errorCode	ec;
 
@@ -69,6 +72,7 @@ private:
   virtual bool		isValid();
   virtual void		doOp();
   virtual void		finalize(IService*);
+  parameters&		getParam();
 
 private:
     void		doOp(IService*);
@@ -86,13 +90,14 @@ public:
 
 class		JoinRoom : public IRequest
 {
-private:
-  struct	parameters
+public:
+  typedef struct	parameter
   {
     int		roomId;
-  };
+  }		parameters;
 
-  parameters	parameters;
+private:
+  parameters	param;
   errorCode	ec;
   // IPlayer	*P;
 
@@ -110,17 +115,19 @@ public:
   virtual bool		manageRequest(IService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
+  parameters&		getParam();
 };
 
 class		InvitePlayer : public IRequest
 {
-private:
-  struct	parameters
+public:
+  typedef struct	parameter
   {
-    char	*username;
-  };
+    char	username[20];
+  }		parameters;
 
-  parameters	parameters;
+private:
+  parameters	param;
   // IPlayer*	P;
   errorCode	ec;
 
@@ -138,18 +145,20 @@ public:
   virtual bool		manageRequest(IService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
+  parameters&		getParam();
 };
 
 class		SetGameParam : public IRequest
 {
-private:
-  struct	parameters
+public:
+  typedef struct	parameter
   {
     int		key;
     int  	value;
-  };
+  }		parameters;
 
-  parameters	parameters;
+private:
+  parameters	param;
   errorCode	ec;
 
 private:
@@ -166,17 +175,19 @@ public:
   virtual bool		manageRequest(IService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
+  parameters&		getParam();
 };
 
 class		LaunchGame : public IRequest
 {
-private:
-  struct	parameters
+public:
+  typedef struct	parameter
   {
     int		roomId;
-  };
+  }		parameters;
 
-  parameters	parameters;
+private:
+  parameters	param;
   errorCode	ec;
 
 private:
@@ -193,6 +204,7 @@ public:
   virtual bool		manageRequest(IService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
+  parameters&		getParam();
 };
 
 class		Ping : public IRequest
@@ -219,13 +231,14 @@ public:
 
 class		Ready : public IRequest
 {
-private:
-  struct	parameters
+public:
+  typedef struct	parameter
   {
-    char	*endpoint;
-  };
+    char	endpoint[25];
+  }		parameters;
 
-  parameters	parameters;
+private:
+  parameters	param;
   errorCode	ec;
   // IPlayer*	P;
 
@@ -233,6 +246,7 @@ private:
   virtual bool		isValid();
   virtual void		doOp();
   virtual void		finalize(IService*);
+  parameters&		getParam();
 
 private:
   Ready();

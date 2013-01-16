@@ -23,16 +23,27 @@ void	sfSpriteSheet::draw()
 	window_.draw(anim_);
 }
 
-void	sfSpriteSheet::playAnimation()
+void	sfSpriteSheet::playAnimation(int anim)
 {
 	++currentFrame_;
 	if (currentFrame_ == nbFrame_)
 		currentFrame_ = 0;
 	sub_.left = currentFrame_ * size_.x / nbFrame_;
+	sub_.top = anim * sub_.height;
 	anim_.setTextureRect(sub_);
 }
 
 sf::Sprite const&	sfSpriteSheet::getSprite()
 {
 	return anim_;
+}
+
+void	sfSpriteSheet::moveTo(int x, int y)
+{
+	anim_.setPosition(static_cast<float>(x), static_cast<float>(y));
+}
+
+void	sfSpriteSheet::moveFrom(int x, int y)
+{
+	anim_.move(static_cast<float>(x), static_cast<float>(y));
 }

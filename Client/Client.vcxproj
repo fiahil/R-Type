@@ -71,8 +71,10 @@
     <ClCompile Include="sfMouse.cpp" />
     <ClCompile Include="sfWindow.cpp" />
     <ClCompile Include="sfSpriteSheet.cpp" />
+    <ClCompile Include="Ship.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ISpriteSheet.h" />
     <ClInclude Include="IGameWindow.h" />
     <ClInclude Include="IInput.h" />
     <ClInclude Include="sfJoystick.h" />

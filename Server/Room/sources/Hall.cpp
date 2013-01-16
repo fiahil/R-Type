@@ -1,17 +1,17 @@
 #include "Hall.h"
 #include "Player.h"
 
-#include <iostream> // remove
+#include "logger.h"
 
 Hall::Hall(void)
 {
-	std::cout << "--Construction Hall" << std::endl;
+	DEBUG << "--Construction Hall" << std::endl;
 }
 
 
 Hall::~Hall(void)
 {
-	std::cout << "--Destruction Hall" << std::endl;
+	DEBUG << "--Destruction Hall" << std::endl;
 }
 
 
@@ -71,7 +71,7 @@ IPlayer *		Hall::operator()(IService *s) const
 
 void	Hall::addPlayer(const std::string &name, const std::string &hash, IService *playerService)
 {
-	std::cout << "\n{Hall::addPlayer}..." << std::endl;
+	DEBUG << "\n{Hall::addPlayer}..." << std::endl;
 
 	if (name.empty() || hash.empty() /*|| !playerService*/)
 		{ std::cerr << "[Error] : Bad parameter" << std::endl; return; }
@@ -90,13 +90,13 @@ void	Hall::addPlayer(const std::string &name, const std::string &hash, IService 
 	tmp = new Player(name, hash, playerService);
 	this->players_.push_back(tmp);
 
-	std::cout << "[Ok] addPlayer" << std::endl;
+	DEBUG << "[Ok] addPlayer" << std::endl;
 }
 
 void	Hall::removePlayer(int idPlayer)
 {
-	std::cout << "\n{Hall::removePlayer}..." << std::endl;	
-	std::cout << "-> Id to find player is [" << idPlayer << "]" << std::endl;
+	DEBUG << "\n{Hall::removePlayer}..." << std::endl;	
+	DEBUG << "-> Id to find player is [" << idPlayer << "]" << std::endl;
 
 	/* checks if any Player in deque has the same id as [idPlayer] using operator() */
 	int pos = (*this)(idPlayer);
@@ -111,14 +111,14 @@ void	Hall::removePlayer(int idPlayer)
 	std::deque<IPlayer *>::iterator itFetchedPlayer = this->players_.begin() + pos;
 	this->players_.erase(itFetchedPlayer);
 
-	std::cout << "[Ok] removePlayer" << std::endl;
+	DEBUG << "[Ok] removePlayer" << std::endl;
 }
 
 
 IPlayer *	Hall::clonePlayer(int idPlayer) const
 {
-	std::cout << "\n{Hall::clonePlayer}..." << std::endl;	
-	std::cout << "-> Id to find player is [" << idPlayer << "]" << std::endl;
+	DEBUG << "\n{Hall::clonePlayer}..." << std::endl;	
+	DEBUG << "-> Id to find player is [" << idPlayer << "]" << std::endl;
 
 	/* checks if any Player in deque has the same id as [idPlayer] using operator() */
 	int pos = (*this)(idPlayer);
@@ -131,7 +131,7 @@ IPlayer *	Hall::clonePlayer(int idPlayer) const
 
 	/* Remove fetched player from deque and returns it */
 
-	std::cout << "[Ok] clonePlayer" << std::endl;
+	DEBUG << "[Ok] clonePlayer" << std::endl;
 	return this->players_.at(pos);
 }
 

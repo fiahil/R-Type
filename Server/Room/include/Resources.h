@@ -7,7 +7,7 @@
 class	Resources
 {
 public:
-  // static RoomManager	RM;
+	static RoomManager	RM;
 };
 
 #endif

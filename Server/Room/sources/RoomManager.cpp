@@ -3,7 +3,7 @@
 #include "Hall.h"
 #include "deleteObj.h"
 
-#include <iostream> // remove
+#include "logger.h"
 
 RoomManager::RoomManager(void)
 	:	hall_(0),
@@ -12,7 +12,7 @@ RoomManager::RoomManager(void)
 {
 	this->hall_ = new Hall();
 	this->tp_ = TP::ThreadPool<IRoom>::getInstance(this->nbMaxGames_);
-	std::cout << "--Construction RoomManager" << std::endl;
+	DEBUG << "--Construction RoomManager" << std::endl;
 }
 
 
@@ -21,7 +21,7 @@ RoomManager::~RoomManager(void)
 	deleteObject<Hall>(this->hall_);
 	// unlink toutes les room
 	// faire quelque chose avec la thread pool ?
-	std::cout << "--Destruction RoomManager" << std::endl;
+	DEBUG << "--Destruction RoomManager" << std::endl;
 }
 
 
@@ -68,66 +68,66 @@ bool		RoomManager::isFull()
 
 void		RoomManager::setNbGames(int nbr)
 {
-	std::cout << "\n{RoomManager::setNbGames}..." << std::endl;
+	DEBUG << "\n{RoomManager::setNbGames}..." << std::endl;
 	if (nbr > 0)
 	{
-		std::cout << "[Ok] setNbGames : [" << nbr << "]" << std::endl;
+		DEBUG << "[Ok] setNbGames : [" << nbr << "]" << std::endl;
 		this->nbMaxGames_ = nbr;
 	}
 	else
-		std::cerr << "[Error] : Bad Nbr" << std::endl;
+		DEBUG << "[Error] : Bad Nbr" << std::endl;
 }
 
 
 void		RoomManager::linkRoomToThreadPool(int idRoom)
 {
-	std::cout << "\n{RoomManager::linkRoomToThreadPool}..." << std::endl;
-	std::cout << "Id to find = [" << idRoom << "]" << std::endl;
+	DEBUG << "\n{RoomManager::linkRoomToThreadPool}..." << std::endl;
+	DEBUG << "Id to find = [" << idRoom << "]" << std::endl;
 
 	IRoom *fetch = this->getRoomById(idRoom);
 
 	if (!fetch)
 		{
-			std::cerr << "[Error] : IRoom NULL" << std::endl;
+			DEBUG << "[Error] : IRoom NULL" << std::endl;
 			return ;
 		}
 	if (this->tp_->isSaturated())
 		this->tp_->allocate();
 
 	this->tp_->push(fetch);
-	std::cout << "[Ok] linkRoomToThreadPool" << std::endl;
+	DEBUG << "[Ok] linkRoomToThreadPool" << std::endl;
 }
 
 
 int		RoomManager::createRoom()
 {
-	std::cout << "\n{RoomManager::createRoom}..." << std::endl;
+	DEBUG << "\n{RoomManager::createRoom}..." << std::endl;
 
 	if (!this->isFull())
 	{
 		IRoom * toAdd = new Room();
 
-		std::cout << "[Ok] createRoom" << std::endl;
+		DEBUG << "[Ok] createRoom" << std::endl;
 		this->rooms_.push_back(toAdd);
 
 		return toAdd->getId();
 	}
-	std::cerr << "[Error] : Room Manager is FULL of rooms" << std::endl;
+	DEBUG << "[Error] : Room Manager is FULL of rooms" << std::endl;
 	return -1;
 }
 
 
 void	RoomManager::removeRoom(int idRoom)
 {
-	std::cout << "\n{RoomManager::removeRoom}..." << std::endl;
-	std::cout << "id to remove is [" << idRoom << "]" << std::endl;
+	DEBUG << "\n{RoomManager::removeRoom}..." << std::endl;
+	DEBUG << "id to remove is [" << idRoom << "]" << std::endl;
 
 	/* checks if any Room in [rooms_]'s deque has the same id as [idRoom] using operator() */
 	int pos = (*this)(idRoom);
 
 	if (pos == -1)
 	{
-		std::cerr << "[Error] : No Room corresponds to ID ["  << idRoom << "]" << std::endl;
+		DEBUG << "[Error] : No Room corresponds to ID ["  << idRoom << "]" << std::endl;
 		return;
 	}
 
@@ -135,23 +135,23 @@ void	RoomManager::removeRoom(int idRoom)
 	std::deque<IRoom *>::iterator itFetchedRoom = this->rooms_.begin() + pos;
 	this->rooms_.erase(itFetchedRoom);
 
-	std::cout << "[Ok] removeRoom" << std::endl;
+	DEBUG << "[Ok] removeRoom" << std::endl;
 }
 
 
 void	RoomManager::removePlayerFromRoom(int idRoom, int idPlayer)
 {
-	std::cout << "\n{RoomManager::removePlayerFromRoom}..." << std::endl;
+	DEBUG << "\n{RoomManager::removePlayerFromRoom}..." << std::endl;
 
-	std::cout << "Player's id [" << idPlayer << "]" << std::endl;
-	std::cout << "Room's id [" << idRoom << "]" << std::endl;
+	DEBUG << "Player's id [" << idPlayer << "]" << std::endl;
+	DEBUG << "Room's id [" << idRoom << "]" << std::endl;
 
 	/* checks if any Room in [rooms_]'s deque has the same id as [idRoom] using operator() */
 	int pos = (*this)(idRoom);
 
 	if (pos == -1)
 	{
-		std::cerr << "[Error] : No Room corresponds to ID ["  << idRoom << "]" << std::endl;
+		DEBUG << "[Error] : No Room corresponds to ID ["  << idRoom << "]" << std::endl;
 		return;
 	}
 
@@ -159,36 +159,36 @@ void	RoomManager::removePlayerFromRoom(int idRoom, int idPlayer)
 	IRoom *	fetchedRoom = this->rooms_.at(pos);
 	if (!fetchedRoom)
 	{
-		std::cerr << "[Error] : Akward error occured on fetching room" << std::endl;
+		DEBUG << "[Error] : Akward error occured on fetching room" << std::endl;
 		return;
 	}
 
 	fetchedRoom->removePlayer(idPlayer);
-	std::cout << "[Ok] removePlayerFromRoom" << std::endl;
+	DEBUG << "[Ok] removePlayerFromRoom" << std::endl;
 }
 
 
 void	RoomManager::clonePlayerFromHallToRoom(int idRoom, int idPlayer)
 {
-	std::cout << "\n{RoomManager::clonePlayerFromHallToRoom}..." << std::endl;
+	DEBUG << "\n{RoomManager::clonePlayerFromHallToRoom}..." << std::endl;
 
 	/* Clones a IPlayer from Hall */
 	IPlayer * clone = this->hall_->clonePlayer(idPlayer);
-	if (!clone) { std::cerr << "[Error] : Cloned IPlayer is NULL" << std::endl; return ; }
+	if (!clone) { DEBUG << "[Error] : Cloned IPlayer is NULL" << std::endl; return ; }
 
 
 	/* Checks if any IRoom in [rooms_]'s deque has the same id as [idRoom] using operator() */
 	int pos = (*this)(idRoom);
 	if (pos == -1)
 	{
-		std::cerr << "[Error] : No Room corresponds to ID ["  << idRoom << "]" << std::endl;
+		DEBUG << "[Error] : No Room corresponds to ID ["  << idRoom << "]" << std::endl;
 		return;
 	}
 
 	/* IRoom & IPlayer OK, adding player to fetched room */
 	IRoom *fetchedRoom = this->rooms_.at(pos);
 	fetchedRoom->addPlayer(clone);
-	std::cout << "[Ok] clonePlayerFromHallToRoom" << std::endl;
+	DEBUG << "[Ok] clonePlayerFromHallToRoom" << std::endl;
 }
 
 

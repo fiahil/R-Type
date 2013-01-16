@@ -9,22 +9,16 @@
 #include "PackMan.h"
 #include "logger.h"
 #include "exceptionSocket.h"
+#include "IClientService.h"
 
-ClientServiceWorker::ClientServiceWorker(storage& in, Net::ISocket* s)
-	: inProducer_(&in), thread_(0), sock_(s), online_(new bool(false)) 
+ClientServiceWorker::ClientServiceWorker(storage& in, Net::ISocket* s, IClientService* cs)
+	: service_(cs), inProducer_(&in), sock_(s), online_(new bool(true)) 
 {
-	this->thread_ = new LWP::Thread<ClientServiceWorker>(*this);
 }
 
 ClientServiceWorker::~ClientServiceWorker()
 {
-	delete this->thread_;
 	delete this->online_;
-}
-
-void	ClientServiceWorker::launch()
-{
-	this->thread_->launch();
 }
 
 void	ClientServiceWorker::operator()()
@@ -46,6 +40,14 @@ void	ClientServiceWorker::operator()()
 
 			this->inProducer_.produce(pack);
 			DEBUG << "Packet produced by worker" << std::endl;
+
+			IRequest* r = this->service_->pull();
+			
+			if (r)
+			{
+				DEBUG << "Manage Request" << std::endl;
+				r->manageRequest(this->service_);
+			}
 		}
 		catch (Net::ErrorInOut&)
 		{

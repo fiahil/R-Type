@@ -1,12 +1,3 @@
-//
-// PackMan.cpp for RType in /home/teisse_a//Documents/Tek3/RType/Requests
-// 
-// Made by alexandre teisseire
-// Login   <teisse_a@epitech.net>
-// 
-// Started on  Fri Jan  4 18:21:50 2013 alexandre teisseire
-// Last update Fri Jan  4 18:28:26 2013 alexandre teisseire
-//
 
 #include <utility>
 #include "PackMan.h"

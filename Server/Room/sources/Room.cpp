@@ -1,7 +1,7 @@
 
 #include "Room.h"
 
-#include <iostream> // remove
+#include "logger.h"
 
 /* Used to always provide a unique value to [id_] */
 int Room::currentId_ = 0;
@@ -12,13 +12,13 @@ Room::Room(void)
 		engine_(0),
 		scenario_(0)
 {
-	std::cout << "--Construction Room" << std::endl;
+	DEBUG << "--Construction Room" << std::endl;
 }
 
 
 Room::~Room(void)
 {
-	std::cout << "--Destruction Room" << std::endl;
+	DEBUG << "--Destruction Room" << std::endl;
 }
 
 
@@ -86,7 +86,7 @@ int		Room::getId() const
 
 void	Room::addPlayer(IPlayer *p)
 {
-	std::cout << "{Room::addPlayer}..." << std::endl;
+	DEBUG << "{Room::addPlayer}..." << std::endl;
 
 	if (!p) { std::cerr << "[Error] : player NULL" << std::endl; return; }
 
@@ -104,7 +104,7 @@ void	Room::addPlayer(IPlayer *p)
 	if (!this->isFull())
 		{
 			this->players_.push_back(p);
-			std::cout << "[Ok] addPlayer" << std::endl;
+			DEBUG << "[Ok] addPlayer" << std::endl;
 		}
 	else { std::cerr << "[Error] : Room and new player are OK, but Room is full" << std::endl; }
 }
@@ -112,8 +112,8 @@ void	Room::addPlayer(IPlayer *p)
 
 void	Room::removePlayer(int idPlayer)
 {
-	std::cout << "{Room::removePlayer}..." << std::endl;
-	std::cout << "-> Id to find player is [" << idPlayer << "]" << std::endl;
+	DEBUG << "{Room::removePlayer}..." << std::endl;
+	DEBUG << "-> Id to find player is [" << idPlayer << "]" << std::endl;
 
 	if (this->isEmpty())
 	{
@@ -134,7 +134,7 @@ void	Room::removePlayer(int idPlayer)
 	std::deque<IPlayer *>::iterator itFetchedPlayer = this->players_.begin() + pos;
 	this->players_.erase(itFetchedPlayer);
 
-	std::cout << "[Ok] removePlayer" << std::endl;
+	DEBUG << "[Ok] removePlayer" << std::endl;
 }
 
 

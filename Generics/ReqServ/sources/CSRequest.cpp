@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //
 // CSRequest.cpp for RType in /home/teisse_a//Documents/Tek3/RType/Requests
 // 
@@ -7,6 +8,8 @@
 // Started on  Thu Jan  3 18:32:43 2013 alexandre teisseire
 // Last update Wed Jan 16 00:08:41 2013 alexandre teisseire
 //
+=======
+>>>>>>> [Service] Patch
 
 #include	<sstream>
 #include	"PackMan.h"
@@ -51,10 +54,10 @@ void		Connect::doOp(IService*)
   // RM.addPlayerToHall(username, password, S);
 }
 
-void		Connect::finalize(IService *)
+void		Connect::finalize(IService *S)
 {
-  // IRequest	*req = new ACK(this->ec);
-  // S.push(req);
+  IRequest	*req = new ACK(this->ec);
+  S->push(req);
 }
 
 bool		Connect::manageRequest(IService *S) 
@@ -106,10 +109,10 @@ void		CreateRoom::doOp()
   // envoi de la request au client -> SCRequest
   //
 }
-void		CreateRoom::finalize(IService*)
+void		CreateRoom::finalize(IService* S)
 {
-  // IRequest	*req = new ACK(this->ec);
-  // S.push(req);
+  IRequest	*req = new ACK(this->ec);
+  S->push(req);
 }
 
 bool		CreateRoom::manageRequest(IService *S)
@@ -164,10 +167,10 @@ void		LeaveRoom::doOp(IService *)
   // RM.addPlayerToHall(this->P->getName(), this->P->getHash(), S);
 }
 
-void		LeaveRoom::finalize(IService*)
+void		LeaveRoom::finalize(IService* S)
 {
-  // IRequest	*req = new ACK(this->ec);
-  // S.push(req);
+  IRequest	*req = new ACK(this->ec);
+  S->push(req);
 }
 
 bool		LeaveRoom::manageRequest(IService *S)
@@ -227,10 +230,10 @@ void		JoinRoom::doOp()
   // RM.clonePlayerFromHallToRoom(parameters.roomId, this->P->getId());
 }
 
-void		JoinRoom::finalize(IService*)
+void		JoinRoom::finalize(IService* S)
 {
-  // IRequest	*req = new ACK(this->ec);
-  // S.push(req);
+  IRequest	*req = new ACK(this->ec);
+  S->push(req);
 }
 
 bool		JoinRoom::manageRequest(IService *S)
@@ -291,10 +294,10 @@ void		InvitePlayer::doOp()
   //
 }
 
-void		InvitePlayer::finalize(IService*)
+void		InvitePlayer::finalize(IService* S)
 {
-  // IRequest	*req = new ACK(this->ec);
-  // S.push(req);
+  IRequest	*req = new ACK(this->ec);
+  S->push(req);
 }
 
 bool		InvitePlayer::manageRequest(IService *S)
@@ -346,10 +349,10 @@ void		SetGameParam::doOp()
   // 
 }
 
-void		SetGameParam::finalize(IService*)
+void		SetGameParam::finalize(IService* S)
 {
-  // IRequest	*req = new ACK(this->ec);
-  // S.push(req);
+  IRequest	*req = new ACK(this->ec);
+  S->push(req);
 }
 
 bool		SetGameParam::manageRequest(IService *S)
@@ -410,10 +413,10 @@ void		LaunchGame::doOp()
   //
 }
 
-void		LaunchGame::finalize(IService*)
+void		LaunchGame::finalize(IService* S)
 {
-  // IRequest	*req = new ACK(this->ec);
-  // S.push(req);
+  IRequest	*req = new ACK(this->ec);
+  S->push(req);
 }
 
 bool		LaunchGame::manageRequest(IService *S)
@@ -463,10 +466,10 @@ void		Ping::doOp()
   // this->P->isAlive();
 }
 
-void		Ping::finalize(IService*)
+void		Ping::finalize(IService* S)
 {
-  // IRequest	*req = new ACK(this->ec);
-  // S.push(req);
+  IRequest	*req = new ACK(this->ec);
+  S->push(req);
 }
 
 bool		Ping::manageRequest(IService *S)
@@ -522,10 +525,10 @@ void		Ready::doOp()
   //
 }
 
-void		Ready::finalize(IService*)
+void		Ready::finalize(IService* S)
 {
-  // IRequest	*req = new ACK(this->ec);
-  // S.push(req);
+  IRequest	*req = new ACK(this->ec);
+  S->push(req);
 }
 
 bool		Ready::manageRequest(IService *S)

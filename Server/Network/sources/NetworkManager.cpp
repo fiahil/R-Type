@@ -3,7 +3,7 @@
 #include "logger.h"
 
 NetworkManager::NetworkManager(Net::EndPoint const& ep)
-	: SS_(new ServerService(ep)), CS_(TP::ThreadPool<IClientService>::getInstance(5))
+	: SS_(new ServerService(ep)), CS_(TP::ThreadPool<IClientService>::getInstance(10))
 {
 	DEBUG << "NetworkManager created" << std::endl;
 }

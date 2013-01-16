@@ -145,9 +145,9 @@ void		ACK::doOp()
   // treatError
 }
 
-void		ACK::finalize(IService*)
+void		ACK::finalize(IService* S)
 {
-  
+	S->push(this);
 }
 
 bool		ACK::manageRequest(IService *S)

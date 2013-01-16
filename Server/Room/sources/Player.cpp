@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "deleteObj.h"
 
-#include <iostream> // remove
+#include "logger.h"
 
 #ifdef _WIN32 
 	#include "WinMutex.h"
@@ -23,7 +23,7 @@ Player::Player(const std::string & name, const std::string & hash, IService * se
 {
 	this->mutex_ = new LWP::Mutex();
 
-	std::cout << "--Construction Player" << std::endl;
+	DEBUG << "--Construction Player" << std::endl;
 }
 
 
@@ -31,7 +31,7 @@ Player::~Player(void)
 {
 	deleteObject<LWP::IMutex>(this->mutex_);	
 
-	std::cout << "--Destruction Player" << std::endl;
+	DEBUG << "--Destruction Player" << std::endl;
 }
 
 

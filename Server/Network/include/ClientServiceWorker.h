@@ -6,8 +6,8 @@
 #include "Producer.h"
 #include "ThreadPoolQueue.h"
 #include "TCPPacket.h"
-#include "IThread.h"
 #include "ISocket.h"
+#include "IClientService.h"
 
 #ifdef WIN32
 # include "WinCondVar.h"
@@ -22,16 +22,15 @@ class ClientServiceWorker
 	typedef PC::Producer<TCPPacket, storage> producer;
 
 private:
+	IClientService*	service_;
 	producer		inProducer_;
-	LWP::IThread*	thread_;
 	Net::ISocket*	sock_;
 	volatile bool*	online_;
 
 public:
-	ClientServiceWorker(storage& in, Net::ISocket* s);
+	ClientServiceWorker(storage& in, Net::ISocket* s, IClientService* cs);
 	~ClientServiceWorker();
 
-	void	launch();
 	void	operator()();
 	bool	isOnline() const;
 };

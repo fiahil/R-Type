@@ -4,6 +4,8 @@
 #include "ClientService.h"
 #include "IRequest.h"
 #include "exceptionSocket.h"
+#include "ThreadPool.h"
+#include "ThreadPoolWorker.h"
 
 #ifdef WIN32
 
@@ -23,7 +25,7 @@ ClientService::ClientService(Net::ISocket* s)
 	outConsumer_(&outStorage_),
 	inConsumer_(&inStorage_),
 	outProducer_(&outStorage_),
-	worker_(inStorage_, s)
+	worker_(inStorage_, s, this)
 {
 }
 
@@ -36,7 +38,11 @@ void		ClientService::operator()(void)
 {
 	DEBUG << "ClientService functor" << std::endl;
 
-	this->worker_.launch();
+	TP::ThreadPool<ClientServiceWorker>*	tp = TP::ThreadPool<ClientServiceWorker>::getInstance(10);
+
+	tp->push(&this->worker_);
+	if (tp->isSaturated())
+		tp->allocate();
 
 	bool flag = true;
 

@@ -53,11 +53,6 @@ namespace TP
 			this->produce(t);
 		}
 
-		operator PC::Storage<Task, ThreadPoolQueue<Task>, LWP::CondVar> ()
-		{
-			return this;
-		}
-
 		using PS::PoolSystem<ThreadPoolWorker<Task> >::poolSize;
 		using PS::PoolSystem<ThreadPoolWorker<Task> >::isSaturated;
 		using PS::PoolSystem<ThreadPoolWorker<Task> >::clean;

@@ -1,15 +1,15 @@
 #include "Account.h"
 
-#include <iostream> // remove
+#include "logger.h"
 
 Account::Account(void)
 {
-	std::cout << "--Construction Account" << std::endl;
+	DEBUG << "--Construction Account" << std::endl;
 }
 
 Account::~Account(void)
 {
-	std::cout << "--Destruction Account" << std::endl;
+	DEBUG << "--Destruction Account" << std::endl;
 }
 
 int		Account::getId() const

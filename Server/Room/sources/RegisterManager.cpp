@@ -1,23 +1,23 @@
 #include "RegisterManager.h"
 
-#include <iostream> // remove
+#include "logger.h"
 
 RegisterManager::RegisterManager(void)
 {
-	std::cout << "--Construction RegisterManager" << std::endl;
+	DEBUG << "--Construction RegisterManager" << std::endl;
 }
 
 RegisterManager::~RegisterManager(void)
 {
-	std::cout << "--Destruction RegisterManager" << std::endl;
+	DEBUG << "--Destruction RegisterManager" << std::endl;
 }
 
 void	RegisterManager::addAccount(IAccount *)
 {
-	std::cout << "\n{RoomManager::addAccount}..." << std::endl;
+	DEBUG << "\n{RoomManager::addAccount}..." << std::endl;
 }
 
 void	RegisterManager::removeAccount(int)
 {
-	std::cout << "\n{RoomManager::removeAccount}..." << std::endl;
+	DEBUG << "\n{RoomManager::removeAccount}..." << std::endl;
 }

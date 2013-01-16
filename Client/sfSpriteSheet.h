@@ -2,11 +2,12 @@
 
 #include	<SFML\Graphics.hpp>
 #include	<string>
+#include	"ISpriteSheet.h"
 #include	"sfWindow.h"
 
 extern	sfWindow	sfmlWin;
 
-class sfSpriteSheet
+class sfSpriteSheet : public ISpriteSheet
 {
 	sfWindow&		window_;
 	sf::Texture		texture_;
@@ -20,8 +21,10 @@ class sfSpriteSheet
 public:
 	sfSpriteSheet(std::string const& path, int nbAnim, int nbFrame);
 	~sfSpriteSheet(void);
-	void	playAnimation();
+	void	playAnimation(int);
 	void	draw();
+	void	moveTo(int, int);
+	void	moveFrom(int, int);
 	sf::Sprite const&	getSprite();
 };
 

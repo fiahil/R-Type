@@ -5,7 +5,7 @@ Scenario::Scenario(float duration) {
     std::cerr << "Duration can't be inferior to 0." << std::endl;
   else
     this->duration_ = duration;
-}
+  }
 
 Scenario::~Scenario() {
 

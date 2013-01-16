@@ -76,7 +76,11 @@ IRequest*	ClientService::pull()
 	if (pack)
 	{
 		DEBUG << "Packet Received" << std::endl;
-		return PackMan::unpack(pack);
+		IRequest* r = PackMan::unpack(pack);
+
+		DEBUG << "Unpacked Request: " << r->toString() << std::endl;
+
+		return r;
 	}
 
 	DEBUG << "Null Packet received" << std::endl;

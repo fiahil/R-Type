@@ -1,7 +1,7 @@
 #ifndef	_PACKMAN_HPP_
 #define _PACKMAN_HPP_
 
-#include <iostream> // TODO
+#include "logger.h"
 
 #include <map>
 #include "SCRequest.h"
@@ -52,8 +52,9 @@ public:
   template <class T>
   static IRequest*	unpack_T(TCPPacket *pack)
   {
-    std::cout << pack->B << std::endl;
-    std::cout << pack->H.size << std::endl;
+	DEBUG << "Unpacking TCP Packet : " << std::endl;
+    DEBUG << " - " << pack->B << std::endl;
+    DEBUG << " - " << pack->H.size << std::endl;
     std::string s(pack->B, pack->H.size - sizeof(TCPPacket::Header));
     IRequest*	IR = new T(s);
     return IR;

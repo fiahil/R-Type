@@ -31,7 +31,7 @@ bool	QuadTree::checkCollision(IEntity *check)
 }
 
 void	QuadTree::addShip(IEntity *ship)
-{
+{/*
 	ship_.push_back(ship);
 	if (ship->getXUp() < (x_ / 2) && ship->getYLeft() < (y_ / 2))
 		tree_[0].addEntity(ship);
@@ -41,10 +41,12 @@ void	QuadTree::addShip(IEntity *ship)
 		tree_[2].addEntity(ship);
 	if (ship->getXUp() >= (x_ / 2) && ship->getYLeft() >= (y_ / 2))
 		tree_[3].addEntity(ship);
+		*/
 }
 
 void	QuadTree::addEnnemy(IEntity *ennemy)
 {
+	/*
 	ennemy_.push_back(ennemy);
 	if (ennemy->getXDown() < (x_ / 2) && ennemy->getYLeft() < (y_ / 2))
 		tree_[0].addEntity(ennemy);
@@ -54,6 +56,7 @@ void	QuadTree::addEnnemy(IEntity *ennemy)
 		tree_[2].addEntity(ennemy);
 	if (ennemy->getXUp() >= (x_ / 2) && ennemy->getYRight() >= (y_ / 2))
 		tree_[3].addEntity(ennemy);
+		*/
 }
 
 void	QuadTree::addBullet(IEntity *bullet)

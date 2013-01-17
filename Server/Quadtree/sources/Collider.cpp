@@ -16,7 +16,7 @@ bool	Collider::collide(std::list<IEntity *>& items, IEntity *object)
 
 	for (; it != items.end(); ++it)
 	{
-
+		/*
 		if ((*it)->getXUp() < object->getXUp() &&  (*it)->getXUp() > object->getXDown() &&
 			(*it)->getYLeft() > object->getYLeft() &&  (*it)->getYLeft() < object->getYRight())
 				{
@@ -66,6 +66,7 @@ bool	Collider::collide(std::list<IEntity *>& items, IEntity *object)
 					hasCollide = true;
 					continue ;
 				}
+				*/
 	}
 	return hasCollide;
 }

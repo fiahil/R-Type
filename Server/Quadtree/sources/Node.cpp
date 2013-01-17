@@ -71,6 +71,7 @@ void	Node::autoSplit()
 		 ++it)
 	{
 		int x, y;
+		/*
 		(*it)->getPos(x, y);
 
 		if ((*it)->getXDown() <= centerX_ && (*it)->getYLeft() <= centerY_)
@@ -81,6 +82,7 @@ void	Node::autoSplit()
 			leaf_[2].addEntity(*it);
 		if ((*it)->getXUp() > centerX_ && (*it)->getYRight() > centerY_)
 			leaf_[3].addEntity(*it);
+			*/
 	} 
 }
 

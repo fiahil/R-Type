@@ -43,6 +43,7 @@ public:
 	IPlayer	*	getPlayerFromService(IService * name) const;
 	IPlayer *	getPlayerFromHall(IService * playerService) const;
 	IPlayer *	getPlayerFromRoom(IService * playerService, int roomId) const;
+	int			getRoomIdFromPlayer(IPlayer* p) const;
 	IRoom *		getRoomById(int idRoom) const;
 	void		setRoomStatus(int idRoom, bool status);
 	const std::deque<IPlayer *> &	getPlayersFromRoom(int roomId) const;

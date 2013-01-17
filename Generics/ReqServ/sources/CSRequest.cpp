@@ -117,7 +117,7 @@ void		CreateRoom::finalize(IService* S)
 bool		CreateRoom::manageRequest(IService *S)
 {
   if (this->isValid())
-    this->doOp();
+    this->doOp(S);
   else
     this->ec = G_invalid_request;
   this->finalize(S);

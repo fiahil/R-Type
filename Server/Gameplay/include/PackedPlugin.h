@@ -5,10 +5,11 @@
 #include "IScenario.h"
 
 class PackedPlugin : public Dl::IDlPlugin {
+public:
   IGameMod * gm_;
   IScenario * sc_;
   std::string id_;
-public:
+
   PackedPlugin();
   ~PackedPlugin();
   IGameMod * getGM() const;

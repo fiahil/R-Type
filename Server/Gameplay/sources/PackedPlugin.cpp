@@ -8,17 +8,15 @@
 #include "Scenario.h"
 #include "GameMod.h"
 
-extern "C"
+extern "C" __declspec(dllexport) PackedPlugin * entryPoint()
 {
-  PackedPlugin * entryPoint()
-  {
     return new PackedPlugin();
-  }
 }
 
 PackedPlugin::PackedPlugin()
 {
-  this->gm_ = new GameMod();
+	this->id_ = "Test Loader";
+	this->gm_ = new GameMod();
   this->sc_ = new Scenario(50);
 }
 

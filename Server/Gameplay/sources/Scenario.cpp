@@ -5,7 +5,9 @@ Scenario::Scenario(float duration) {
     std::cerr << "Duration can't be inferior to 0." << std::endl;
   else
     this->duration_ = duration;
-  }
+  Timepoint tp1;
+  tp1.time_ = 1.f;
+}
 
 Scenario::~Scenario() {
 

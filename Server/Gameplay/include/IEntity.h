@@ -1,19 +1,41 @@
 
 #pragma once
 
-class IEntity
+struct	Point
+{
+	int	x_;
+	int	y_;
+
+	Point(int x, int y)
+		:	x_(x), y_(y) {}
+
+	Point(const Point& other)
+		:	x_(other.x_), y_(other.y_) {}
+};
+
+enum	eSkin
+{
+/* Lvl 1*/
+	Alien_1,		// small red
+	Alien_2,		// small glod
+	Alien_3,		// green
+	Alien_4,		// steel
+	Alien_5,		// orange 
+	Apu_1,			// orange
+	Apu_2,			// blue
+	Ball_1,			// white
+	Disc_1,			// grey-orange
+	Disc_2,			// blue-orange
+	Turret_1,		// small white-orange
+	BossLvl_1		// Boss lvl 1
+/* Others */
+};
+
+class	IEntity
 {
 public:
-	int		x;
-	int		y;
-	int		width;
-	int		heigth;
+	virtual ~IEntity() {}
 
 public:
-	IEntity(int q, int w, int e, int r) : x(q), y(w), width(e + q), heigth(r + w) {}
-	void	getPos(int& v, int& b) { v = x; b = y; }
-	int		getXDown() const {return x;}
-	int		getXUp() const {return heigth;}
-	int		getYRight() const {return width;}
-	int		getYLeft()	const {return y;}
+	virtual void		fetchLeftBorder(int& x, int& y) const	= 0;
 };

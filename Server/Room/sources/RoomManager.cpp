@@ -2,6 +2,7 @@
 #include "Room.h"
 #include "Hall.h"
 #include "deleteObj.h"
+#include "RoomException.h"
 
 #include <cassert>
 
@@ -278,20 +279,14 @@ void		RoomManager::setRoomStatus(int idRoom, bool status)
 	}
 }
 
-
 const std::deque<IPlayer *> &	RoomManager::getPlayersFromRoom(int roomId) const
 {
-	// verification room pos : thow if <= 0, car on renvoie une deque
-
 	int roomPos = (*this)(roomId);
 	if (roomPos >= 0)
 	{
 		IRoom * tmp = this->rooms_.at(roomPos);
 		return tmp->getAllPlayers();
 	}
-	else
-		DEBUG << "BAD Room Id" << std::endl;
-
-	return this->rooms_.at(0)->getAllPlayers();
-	// verification tmp : thow if == 0, car on renvoie une deque
+	
+	throw RoomNotFound();
 }

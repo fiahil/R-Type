@@ -1,6 +1,8 @@
 
 #pragma once
 
+#include <string>
+
 struct	Point
 {
 	int	x_;
@@ -27,8 +29,9 @@ enum	eSkin
 	Disc_1,			// grey-orange
 	Disc_2,			// blue-orange
 	Turret_1,		// small white-orange
-	BossLvl_1		// Boss lvl 1
+	BossLvl_1,		// Boss lvl 1
 /* Others */
+	ErrorSkin
 };
 
 class	IEntity

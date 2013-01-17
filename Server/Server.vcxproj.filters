@@ -218,9 +218,6 @@
     <ClInclude Include="..\Generics\ReqServ\include\CSRequest.h">
       <Filter>Header Files\Generics\Req</Filter>
     </ClInclude>
-    <ClInclude Include="..\Generics\ReqCl\SCRequest.h">
-      <Filter>Header Files\Generics\Req</Filter>
-    </ClInclude>
     <ClInclude Include="Room\include\Resources.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
@@ -272,6 +269,12 @@
     <ClInclude Include="Gameplay\include\IGameMod.h">
       <Filter>Header Files\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="..\Generics\ReqServ\include\SCRequest.h">
+      <Filter>Header Files\Generics\Req</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\RoomException.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Generics\LWP\ScopedLock.cpp">
@@ -293,9 +296,6 @@
       <Filter>Source Files\Generics\Net</Filter>
     </ClCompile>
     <ClCompile Include="..\Generics\ReqServ\sources\CSRequest.cpp">
-      <Filter>Source Files\Generics\Req</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Generics\ReqCl\SCRequest.cpp">
       <Filter>Source Files\Generics\Req</Filter>
     </ClCompile>
     <ClCompile Include="Network\sources\PackMan.cpp">
@@ -354,6 +354,9 @@
     </ClCompile>
     <ClCompile Include="Gameplay\sources\Scenario.cpp">
       <Filter>Source Files\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generics\ReqServ\sources\SCRequest.cpp">
+      <Filter>Source Files\Generics\Req</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

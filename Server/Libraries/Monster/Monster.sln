@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Monster", "Monster.vcxproj", "{B035ECB0-385C-41D4-A6EA-B763DD4A1E13}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestLoader", "..\TestLoader\TestLoader.vcxproj", "{016FE160-960C-4E0D-98D5-12A5569048F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B035ECB0-385C-41D4-A6EA-B763DD4A1E13}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B035ECB0-385C-41D4-A6EA-B763DD4A1E13}.Debug|Win32.Build.0 = Debug|Win32
+		{B035ECB0-385C-41D4-A6EA-B763DD4A1E13}.Release|Win32.ActiveCfg = Release|Win32
+		{B035ECB0-385C-41D4-A6EA-B763DD4A1E13}.Release|Win32.Build.0 = Release|Win32
+		{016FE160-960C-4E0D-98D5-12A5569048F8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{016FE160-960C-4E0D-98D5-12A5569048F8}.Debug|Win32.Build.0 = Debug|Win32
+		{016FE160-960C-4E0D-98D5-12A5569048F8}.Release|Win32.ActiveCfg = Release|Win32
+		{016FE160-960C-4E0D-98D5-12A5569048F8}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -79,7 +79,7 @@ namespace Dl
 
 		bool	isPluginLoaded(std::string const& id) const
 		{
-			return this->dlls_.find(this->dlls_.begin(), this->dlls_.end(), id) != this->dlls_.last();
+			return this->dlls_.find(id) != this->dlls_.end();
 		}
 	};
 }

@@ -5,7 +5,7 @@
 class GameMod : public IGameMod {
 public:
   GameMod();
-  ~IGameMod();
+  ~GameMod();
   void onCollision(IEntity*,IEntity*);
   void onEntityDestruction(IEntity*);
   void onFire(IEntity*);
@@ -20,5 +20,4 @@ public:
   void onScriptBegin(IEntity*);
   void onScriptEnd(IEntity*);
   void onUltimate(IEntity*);
-  std::string const& getId() const;
 };

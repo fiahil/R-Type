@@ -1,6 +1,7 @@
 
 #include	<cassert>
 #include	<sstream>
+#include	"RoomException.h"
 #include	"PackMan.h"
 #include	"CSRequest.h"
 
@@ -420,10 +421,17 @@ bool		LaunchGame::isValid()
 void		LaunchGame::doOp()
 {
   RoomManager&	RM = Resources::RM;
-  std::deque<IPlayer*> players = RM.getPlayersFromRoom(this->parameters.roomId);
+  try
+  {
+	std::deque<IPlayer*> players = RM.getPlayersFromRoom(this->parameters.roomId);
 
-  RM.setRoomStatus(this->parameters.roomId, true);
-  RM.linkRoomToThreadPool(this->parameters.roomId);
+	RM.setRoomStatus(this->parameters.roomId, true);
+	RM.linkRoomToThreadPool(this->parameters.roomId);
+  }
+  catch (RoomNotFound&)
+  {
+	  this->ec = S_process_fail;
+  }
 
   //
   // notifier les autres clients que le jeu est lancé

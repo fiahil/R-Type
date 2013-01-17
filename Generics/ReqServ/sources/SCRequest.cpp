@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:45:41 2013 alexandre teisseire
-// Last update Wed Jan 16 00:26:31 2013 alexandre teisseire
+// Last update Thu Jan 17 16:22:15 2013 alexandre teisseire
 //
 
 #include <assert.h>
@@ -62,10 +62,10 @@ eRequestType	AnswerCreateRoom::getType()
   return ANSWER_CREATE_ROOM;
 }
 
-ClientInvited::ClientInvited(char *usernameFrom, int roomId) :
+ClientInvited::ClientInvited(std::string const &usernameFrom, int roomId) :
   ec(Success)
 {
-  parameters.usernameFrom = usernameFrom;
+ PackMan::Memcpy(&(this->parameters), usernameFrom.data(), usernameFrom.size());
   parameters.roomId = roomId;  
 }
 

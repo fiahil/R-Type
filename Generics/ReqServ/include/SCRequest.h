@@ -50,7 +50,7 @@ private:
   virtual void		finalize(IService*);
 
 public:
-  ClientInvited(char *, int);
+  ClientInvited(std::string const &, int);
   ClientInvited(std::string &);
   ~ClientInvited();
 

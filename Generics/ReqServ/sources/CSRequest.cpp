@@ -309,8 +309,10 @@ void		InvitePlayer::doOp(IService* S)
 {
   RoomManager&	RM = Resources::RM;
   IPlayer*	P = RM.getPlayerFromService(S);
-  int		id = RM.getRoomFrom
-  IRequest	*req = new ClientInvited(P.getName(), );
+  int		id = RM.getRoomIdFromPlayer(P);
+  IRequest	*req = new ClientInvited(P->getName(), id);
+
+  S->push(req);
 }
 
 void		InvitePlayer::finalize(IService* S)

@@ -1,22 +1,18 @@
 #include "AMonster.h"
 
-#include <iostream> //remove
-
-AMonster::AMonster(const Point& pos, const Point& dir)
-	:	life_(100),
-		power_(100),
-		skin_(Alien_1),
-		speed_(0.5f),
-		pos_(pos),
-		dir_(dir),
+AMonster::AMonster(const Point&, const Point&)
+	:	life_(0),
+		power_(0),
+		skin_(ErrorSkin),
+		speed_(0.0f),
+		pos_(0, 0),
+		dir_(0, 0),
 		hb_(0, 0, 0, 0)
 {
-	std::cout << "-- Construction AMonster" << std::endl;
 }
 
 AMonster::~AMonster()
 {
-	std::cout << "-- Destruction AMonster" << std::endl;
 }
 
 
@@ -68,7 +64,8 @@ int				AMonster::getLife() const
 	return this->life_;
 }
 
-	void			AMonster::subLife(int dmg)
+
+void			AMonster::subLife(int dmg)
 {
 	this->life_ -= dmg;
 	if (this->life_ <= 0)

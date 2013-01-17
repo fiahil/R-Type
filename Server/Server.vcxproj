@@ -102,9 +102,9 @@
     <ClInclude Include="..\Generics\PC\Storage.h" />
     <ClInclude Include="..\Generics\PS\IPoolSystemElement.h" />
     <ClInclude Include="..\Generics\PS\PoolSystem.h" />
-    <ClInclude Include="..\Generics\ReqCl\SCRequest.h" />
     <ClInclude Include="..\Generics\ReqServ\include\CSRequest.h" />
     <ClInclude Include="..\Generics\ReqServ\include\IRequest.h" />
+    <ClInclude Include="..\Generics\ReqServ\include\SCRequest.h" />
     <ClInclude Include="..\Generics\TP\ThreadPool.h" />
     <ClInclude Include="..\Generics\TP\ThreadPoolQueue.h" />
     <ClInclude Include="..\Generics\TP\ThreadPoolWorker.h" />
@@ -142,6 +142,7 @@
     <ClInclude Include="Room\include\RegisterManager.h" />
     <ClInclude Include="Room\include\Resources.h" />
     <ClInclude Include="Room\include\Room.h" />
+    <ClInclude Include="Room\include\RoomException.h" />
     <ClInclude Include="Room\include\RoomManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -152,8 +153,8 @@
     <ClCompile Include="..\Generics\Net\EndPoint.cpp" />
     <ClCompile Include="..\Generics\Net\WinSocketTcp.cpp" />
     <ClCompile Include="..\Generics\Net\WinSocketUdp.cpp" />
-    <ClCompile Include="..\Generics\ReqCl\SCRequest.cpp" />
     <ClCompile Include="..\Generics\ReqServ\sources\CSRequest.cpp" />
+    <ClCompile Include="..\Generics\ReqServ\sources\SCRequest.cpp" />
     <ClCompile Include="Gameplay\sources\Scenario.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Network\sources\ClientService.cpp" />

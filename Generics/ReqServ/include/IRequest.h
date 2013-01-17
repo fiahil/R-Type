@@ -26,7 +26,7 @@ enum			errorCode
     S_cmd_refused = 303,
     S_access_refused = 304,
     G_invalid_request = 401,
-    G_incomplete_resquest = 402,
+    G_incomplete_request = 402,
     G_forbidden_request = 403,
     G_request_not_found = 404
   };

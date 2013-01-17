@@ -4,6 +4,7 @@
 
 class IGameMod {
 public:
+  virtual ~IGameMod() = 0;
   virtual void onCollision(IEntity*,IEntity*) = 0;
   virtual void onEntityDestruction(IEntity*) = 0;
   virtual void onFire(IEntity*) = 0;

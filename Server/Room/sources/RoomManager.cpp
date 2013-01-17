@@ -223,6 +223,22 @@ IPlayer *	RoomManager::getPlayerFromHall(IService * playerService) const
 	return (*this->hall_)(playerService);
 }
 
+int			RoomManager::getRoomIdFromPlayer(IPlayer* player) const
+{
+	for (std::deque<IRoom*>::const_iterator it = this->rooms_.begin();
+		it != this->rooms_.end();
+		++it)
+	{
+		for (std::deque<IPlayer*>::const_iterator iv = (*it)->getAllPlayers().begin();
+			iv != (*it)->getAllPlayers().end();
+			++iv)
+		{
+			if ((*iv)->getId() == player->getId())
+				return (*it)->getId();
+		}
+	}
+	return -1;
+}
 
 IPlayer *	RoomManager::getPlayerFromRoom(IService * playerService, int roomId) const
 {

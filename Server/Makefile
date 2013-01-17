@@ -5,7 +5,7 @@
 ## Login   <teisse_a@epitech.net>
 ## 
 ## Started on  Wed Jan  9 09:55:44 2013 alexandre teisseire
-## Last update Wed Jan 16 18:11:04 2013 alexandre teisseire
+## Last update Thu Jan 17 15:58:50 2013 alexandre teisseire
 ##
 
 NAME		= R-Type
@@ -102,21 +102,6 @@ CXXFLAGS	= -Wall -Wextra -O3 -DNDEBUG $(INCLUDES) -std=c++0x -g3
 LDFLAGS		= -lpthread
 
 RM		= rm -rf
-DUST		= *~ 			\
-		  $(PATH_SRC)*~ 	\
-		  $(PATH_SRC_REQ)*~	\
-		  $(PATH_SRC_LWP)*~	\
-		  $(PATH_SRC_NET)*~	\
-		  $(PATH_INC)*~		\
-		  $(PATH_INC_REQ)*~	\
-		  $(PATH_INC_DL)*~	\
-		  $(PATH_INC_LWP)*~	\
-		  $(PATH_INC_NET)*~	\
-		  $(PATH_INC_PC)*~	\
-		  $(PATH_INC_PS)*~	\
-		  $(PATH_INC_TP)*~	\
-		  $(PATH_INC_NETW)*~	\
-		  $(PATH_INC_LOG)*~
 
 all:		$(NAME)
 
@@ -124,7 +109,7 @@ $(NAME):	$(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET
 		$(CXX) -o $(NAME) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY) $(LDFLAGS)
 
 clean:
-		$(RM) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY) $(DUST)
+		$(RM) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY)
 
 fclean:		clean
 		$(RM) $(NAME)

@@ -71,7 +71,7 @@ eRequestType	Connect::getType()
 
 Connect::parameter&  Connect::getParam()
 {
-	return this->parameters;
+  return this->parameters;
 }
 
 CreateRoom::CreateRoom() :
@@ -92,15 +92,21 @@ bool		CreateRoom::isValid()
 
 void		CreateRoom::doOp()
 {
+
+}
+
+void		CreateRoom::doOp(IService* S)
+{
   RoomManager&	RM = Resources::RM;
   int		idRoom;
 
   if((idRoom = RM.createRoom()) == -1)
     this->ec = S_cmd_refused;
-
-  //
-  // envoi de la request au client -> SCRequest
-  //
+  else
+    {
+      IRequest*	req = new AnswerCreateRoom(idRoom);
+      S->push(req);
+    }
 }
 void		CreateRoom::finalize(IService* S)
 {
@@ -271,8 +277,8 @@ JoinRoom::parameter&  JoinRoom::getParam()
 InvitePlayer::InvitePlayer(char* u) :
   ec(Success), P(0)
 {
-	std::string usr(u);
-	PackMan::Memcpy(this->parameters.username, usr.data(), usr.size());
+  std::string usr(u);
+  PackMan::Memcpy(this->parameters.username, usr.data(), usr.size());
 }
 
 InvitePlayer::InvitePlayer(std::string &data)
@@ -296,9 +302,15 @@ bool		InvitePlayer::isValid()
 
 void		InvitePlayer::doOp()
 {
-  //
-  // faire suivre la requete d invitation au player correspondant
-  //
+  
+}
+
+void		InvitePlayer::doOp(IService* S)
+{
+  RoomManager&	RM = Resources::RM;
+  IPlayer*	P = RM.getPlayerFromService(S);
+  int		id = RM.getRoomFrom
+  IRequest	*req = new ClientInvited(P.getName(), );
 }
 
 void		InvitePlayer::finalize(IService* S)

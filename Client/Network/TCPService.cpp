@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 23:16:13 2013 alexandre teisseire
-// Last update Wed Jan 16 18:48:56 2013 alexandre teisseire
+// Last update Wed Jan 16 19:10:55 2013 alexandre teisseire
 //
 
 #include	<boost/bind.hpp>
@@ -78,7 +78,6 @@ void			TCPService::handleConnect(const boost::system::error_code& e, boost::asio
       std::cout << "His size is : " << TCPP->H.size << std::endl;
       std::cout << "and he contains : " << TCPP->B << std::endl;
  
-      this->sendData(TCPP);
       this->sendData(TCPP);
       this->recvData();
     }

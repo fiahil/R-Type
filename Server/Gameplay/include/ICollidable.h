@@ -2,12 +2,16 @@
 
 #include "IEntity.h"
 
-typedef struct s_HitBox {
+struct HitBox
+{
   int xmin_;
   int xmax_;
   int ymin_;
   int ymax_;
-} HitBox;
+
+  HitBox(int x1, int y1, int width, int heigh)
+    :	xmin_(x1), ymin_(y1), xmax_(x1 + width), ymax_(y1 + heigh) {}
+};
 
 class ICollidable
 {

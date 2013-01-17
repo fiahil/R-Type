@@ -41,7 +41,6 @@ int		RoomManager::operator()(int idTest) const
 		if (tmp && tmp->getId() == idTest)
 			return pos;
 	}
-	assert(0);
 	return -1;
 }
 
@@ -214,6 +213,10 @@ IPlayer *	RoomManager::getPlayerFromName(std::string & name) const
 	return (*this->hall_)(name, empty, false);
 }
 
+IPlayer *	RoomManager::getPlayerFromService(IService * S) const
+{
+	return (*this)(S);
+}
 
 IPlayer *	RoomManager::getPlayerFromHall(IService * playerService) const
 {
@@ -265,8 +268,14 @@ const std::deque<IPlayer *> &	RoomManager::getPlayersFromRoom(int roomId) const
 	// verification room pos : thow if <= 0, car on renvoie une deque
 
 	int roomPos = (*this)(roomId);
-	IRoom * tmp = this->rooms_.at(roomPos);
+	if (roomPos >= 0)
+	{
+		IRoom * tmp = this->rooms_.at(roomPos);
+		return tmp->getAllPlayers();
+	}
+	else
+		DEBUG << "BAD Room Id" << std::endl;
 
+	return this->rooms_.at(0)->getAllPlayers();
 	// verification tmp : thow if == 0, car on renvoie une deque
-	return tmp->getAllPlayers();
 }

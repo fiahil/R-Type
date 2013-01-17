@@ -40,6 +40,7 @@ public:
 
 	/* IServices dealing methods */
 	IPlayer *	getPlayerFromName(std::string & name) const;
+	IPlayer	*	getPlayerFromService(IService * name) const;
 	IPlayer *	getPlayerFromHall(IService * playerService) const;
 	IPlayer *	getPlayerFromRoom(IService * playerService, int roomId) const;
 	IRoom *		getRoomById(int idRoom) const;

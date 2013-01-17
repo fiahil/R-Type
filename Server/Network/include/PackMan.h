@@ -53,8 +53,9 @@ public:
   static IRequest*	unpack_T(TCPPacket *pack)
   {
 	DEBUG << "Unpacking TCP Packet : " << std::endl;
-    DEBUG << " - " << pack->B << std::endl;
-    DEBUG << " - " << pack->H.size << std::endl;
+	DEBUG << " type - " << pack->H.type << std::endl;
+    DEBUG << " size - " << pack->H.size << std::endl;
+    DEBUG << " body - " << pack->B << std::endl;
     std::string s(pack->B, pack->H.size - sizeof(TCPPacket::Header));
     IRequest*	IR = new T(s);
     return IR;

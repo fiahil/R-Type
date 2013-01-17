@@ -121,13 +121,15 @@ private:
     char			*pack = new char[NP->H.size + 1];
     
     PackMan::Memcpy(pack, NP, NP->H.size);
+    PackMan::Memcpy(pack, NP, NP->H.size);
+	std::string pack2((char const*)NP, NP->H.size);
     
     boost::asio::async_write(this->sock,
-			     boost::asio::buffer(pack, NP->H.size),
+			     boost::asio::buffer(pack2.data(), pack2.size()),
 			     boost::bind(&Client_S::handleSend, 
 					 this,
 					 boost::asio::placeholders::error,
-					 pack, NP));    
+					 pack, NP));
   }
 
   void			handleSend(const boost::system::error_code& error, char* request, TCPPacket *NP)

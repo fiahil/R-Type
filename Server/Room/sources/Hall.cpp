@@ -118,6 +118,7 @@ void	Hall::removePlayer(int idPlayer)
 IPlayer *	Hall::clonePlayer(int idPlayer) const
 {
 	DEBUG << "{Hall::clonePlayer}..." << std::endl;	
+
 	DEBUG << "-> Id to find player is [" << idPlayer << "]" << std::endl;
 
 	/* checks if any Player in deque has the same id as [idPlayer] using operator() */

@@ -154,8 +154,7 @@ class		SetGameParam : public IRequest
 private:
   struct	parameter
   {
-    int		key;
-    int  	value;
+    char	*param;
   };
 
   parameter	parameters;

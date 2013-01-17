@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Wed Jan 16 15:12:08 2013 alexandre teisseire
-// Last update Wed Jan 16 17:25:47 2013 alexandre teisseire
+// Last update Thu Jan 17 19:29:48 2013 alexandre teisseire
 //
 //
 
@@ -65,8 +65,9 @@ void			UDPService::handleConnect(const boost::system::error_code& e, boost::asio
   if (!e)
     {
       //
-      // Send la request de connexion.
+      // Send la request de connexion UDP.
       //
+      std::cout << "Receiving Datas from : " << ep << std::endl;
 
       this->recvData();
     }

@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:45:41 2013 alexandre teisseire
-// Last update Wed Jan 16 00:26:14 2013 alexandre teisseire
+// Last update Fri Jan 18 00:43:56 2013 alexandre teisseire
 //
 
 #include <sstream>
@@ -33,16 +33,13 @@ bool		AnswerCreateRoom::isValid()
 
 void		AnswerCreateRoom::doOp()
 {
-  //
-  // Client process his room id
-  //
+  std::cout << "I got my room Id : " << this->parameters.Id << std::endl;
 }
 
-void		AnswerCreateRoom::finalize(IService*)
+void		AnswerCreateRoom::finalize(IService *S)
 {
-  //
-  // ACK
-  //
+  IRequest*	IR = new ACK(this->ec);
+  S->push(IR);
 }
 
 bool		AnswerCreateRoom::manageRequest(IService *S)
@@ -142,12 +139,14 @@ bool		ACK::isValid()
 
 void		ACK::doOp()
 {
-  // treatError
+  //
+  //	- treat Error -
+  //
 }
 
 void		ACK::finalize(IService* S)
 {
-	S->push(this);
+  S->push(this);
 }
 
 bool		ACK::manageRequest(IService *S)

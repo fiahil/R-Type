@@ -5,13 +5,14 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 22:05:03 2013 alexandre teisseire
-// Last update Wed Jan 16 17:31:38 2013 alexandre teisseire
+// Last update Fri Jan 18 00:02:39 2013 alexandre teisseire
 //
 
 #include	<iostream>
 #include	<sstream>
 #include	"NetworkManager.hpp"
 #include	"TCPService.hpp"
+#include	"UDPService.hpp"
 
 NetworkManager::NetworkManager(char**av)
 {
@@ -19,17 +20,18 @@ NetworkManager::NetworkManager(char**av)
   ss << av[2];
   ss >> this->port;
 
-  boost::asio::ip::tcp::endpoint e(boost::asio::ip::address::from_string(std::string(av[1])),
-				   this->port);
-  this->ep = e;
+  boost::asio::ip::tcp::endpoint etcp(boost::asio::ip::address::from_string(std::string(av[1])), this->port);
+  boost::asio::ip::udp::endpoint eudp(boost::asio::ip::address::from_string(std::string(av[1])), this->port);
+  this->etcp = etcp;
+  this->eudp = eudp;
 }
 
 void		NetworkManager::run()
 {
   try
     {
-      TCPService	TCPS(this->ios, this->ep);
-      // UDPService	UDPS();
+      TCPService	TCPS(this->ios, this->etcp);
+      // UDPService	UDPS(this->ios, this->eudp);
       
       this->ios.run();
     }

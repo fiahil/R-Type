@@ -25,7 +25,7 @@ bool		Connect::isValid()
   RoomManager&	RM = Resources::RM;
   std::string	username(parameters.username);
 
-  if (RM.getPlayerFromName(username) == NULL)
+  if (RM.getPlayerFromName(username) == 0)
     return true;
   return false;
 }

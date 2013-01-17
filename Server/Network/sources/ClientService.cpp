@@ -64,6 +64,7 @@ void		ClientService::operator()(void)
 			}
 			DEBUG << "Packet Sent" << std::endl;
 		}
+		DEBUG << "Client Service wait" << std::endl;
 		if (flag)
 			this->outConsumer_.wait();
 	}

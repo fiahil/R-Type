@@ -14,10 +14,10 @@ RegisterManager::~RegisterManager(void)
 
 void	RegisterManager::addAccount(IAccount *)
 {
-	DEBUG << "\n{RoomManager::addAccount}..." << std::endl;
+	DEBUG << "{RoomManager::addAccount}..." << std::endl;
 }
 
 void	RegisterManager::removeAccount(int)
 {
-	DEBUG << "\n{RoomManager::removeAccount}..." << std::endl;
+	DEBUG << "{RoomManager::removeAccount}..." << std::endl;
 }

@@ -1,10 +1,11 @@
 #include "GameplayEngine.h"
 
-#include <iostream> // remove
+#include <string>
+#include "logger.h"
 
 GameplayEngine::GameplayEngine(void) : quad_(0)
 {
-	std::cout << "--Construction GameplayEngine" << std::endl;
+	DEBUG << "--Construction GameplayEngine" << std::endl;
 }
 
 GameplayEngine::~GameplayEngine(void)
@@ -14,7 +15,7 @@ GameplayEngine::~GameplayEngine(void)
 	for (std::list<IEntity *>::iterator it = list_.begin(); it != list_.end();)
 		list_.erase(it);
 
-	std::cout << "--Destruction GameplayEngine" << std::endl;
+	DEBUG << "--Destruction GameplayEngine" << std::endl;
 }
 
 void	GameplayEngine::createQuadTree(int x, int y, unsigned int maxEPN, unsigned int maxDepth)

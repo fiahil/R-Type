@@ -3,6 +3,8 @@
 #include "Hall.h"
 #include "deleteObj.h"
 
+#include <cassert>
+
 #include "logger.h"
 
 RoomManager::RoomManager(void)
@@ -39,6 +41,7 @@ int		RoomManager::operator()(int idTest) const
 		if (tmp && tmp->getId() == idTest)
 			return pos;
 	}
+	assert(0);
 	return -1;
 }
 
@@ -68,7 +71,7 @@ bool		RoomManager::isFull()
 
 void		RoomManager::setNbGames(int nbr)
 {
-	DEBUG << "\n{RoomManager::setNbGames}..." << std::endl;
+	DEBUG << "{RoomManager::setNbGames}..." << std::endl;
 	if (nbr > 0)
 	{
 		DEBUG << "[Ok] setNbGames : [" << nbr << "]" << std::endl;
@@ -81,7 +84,7 @@ void		RoomManager::setNbGames(int nbr)
 
 void		RoomManager::linkRoomToThreadPool(int idRoom)
 {
-	DEBUG << "\n{RoomManager::linkRoomToThreadPool}..." << std::endl;
+	DEBUG << "{RoomManager::linkRoomToThreadPool}..." << std::endl;
 	DEBUG << "Id to find = [" << idRoom << "]" << std::endl;
 
 	IRoom *fetch = this->getRoomById(idRoom);
@@ -101,7 +104,7 @@ void		RoomManager::linkRoomToThreadPool(int idRoom)
 
 int		RoomManager::createRoom()
 {
-	DEBUG << "\n{RoomManager::createRoom}..." << std::endl;
+	DEBUG << "{RoomManager::createRoom}..." << std::endl;
 
 	if (!this->isFull())
 	{
@@ -119,7 +122,7 @@ int		RoomManager::createRoom()
 
 void	RoomManager::removeRoom(int idRoom)
 {
-	DEBUG << "\n{RoomManager::removeRoom}..." << std::endl;
+	DEBUG << "{RoomManager::removeRoom}..." << std::endl;
 	DEBUG << "id to remove is [" << idRoom << "]" << std::endl;
 
 	/* checks if any Room in [rooms_]'s deque has the same id as [idRoom] using operator() */
@@ -141,7 +144,7 @@ void	RoomManager::removeRoom(int idRoom)
 
 void	RoomManager::removePlayerFromRoom(int idRoom, int idPlayer)
 {
-	DEBUG << "\n{RoomManager::removePlayerFromRoom}..." << std::endl;
+	DEBUG << "{RoomManager::removePlayerFromRoom}..." << std::endl;
 
 	DEBUG << "Player's id [" << idPlayer << "]" << std::endl;
 	DEBUG << "Room's id [" << idRoom << "]" << std::endl;
@@ -170,7 +173,7 @@ void	RoomManager::removePlayerFromRoom(int idRoom, int idPlayer)
 
 void	RoomManager::clonePlayerFromHallToRoom(int idRoom, int idPlayer)
 {
-	DEBUG << "\n{RoomManager::clonePlayerFromHallToRoom}..." << std::endl;
+	DEBUG << "{RoomManager::clonePlayerFromHallToRoom}..." << std::endl;
 
 	/* Clones a IPlayer from Hall */
 	IPlayer * clone = this->hall_->clonePlayer(idPlayer);

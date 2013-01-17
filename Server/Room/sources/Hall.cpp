@@ -71,7 +71,7 @@ IPlayer *		Hall::operator()(IService *s) const
 
 void	Hall::addPlayer(const std::string &name, const std::string &hash, IService *playerService)
 {
-	DEBUG << "\n{Hall::addPlayer}..." << std::endl;
+	DEBUG << "{Hall::addPlayer}..." << std::endl;
 
 	if (name.empty() || hash.empty() /*|| !playerService*/)
 		{ std::cerr << "[Error] : Bad parameter" << std::endl; return; }
@@ -95,7 +95,7 @@ void	Hall::addPlayer(const std::string &name, const std::string &hash, IService 
 
 void	Hall::removePlayer(int idPlayer)
 {
-	DEBUG << "\n{Hall::removePlayer}..." << std::endl;	
+	DEBUG << "{Hall::removePlayer}..." << std::endl;	
 	DEBUG << "-> Id to find player is [" << idPlayer << "]" << std::endl;
 
 	/* checks if any Player in deque has the same id as [idPlayer] using operator() */
@@ -117,7 +117,7 @@ void	Hall::removePlayer(int idPlayer)
 
 IPlayer *	Hall::clonePlayer(int idPlayer) const
 {
-	DEBUG << "\n{Hall::clonePlayer}..." << std::endl;	
+	DEBUG << "{Hall::clonePlayer}..." << std::endl;	
 	DEBUG << "-> Id to find player is [" << idPlayer << "]" << std::endl;
 
 	/* checks if any Player in deque has the same id as [idPlayer] using operator() */

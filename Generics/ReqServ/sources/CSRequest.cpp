@@ -1,13 +1,14 @@
 
+#include	<cassert>
 #include	<sstream>
 #include	"PackMan.h"
 #include	"CSRequest.h"
 
-Connect::Connect(char *usr, char *passwd) :
+Connect::Connect(std::string const& usr, std::string const& passwd) :
   ec(Success)
 {
-  parameters.username = usr;
-  parameters.passwd = passwd;
+	PackMan::Memcpy(parameters.username, usr.data(), usr.size());
+	PackMan::Memcpy(parameters.passwd, passwd.data(), passwd.size());
 }
 
 Connect::Connect(std::string &data)
@@ -68,6 +69,10 @@ eRequestType	Connect::getType()
   return CONNECT;
 }
 
+Connect::parameter&  Connect::getParam()
+{
+	return this->parameters;
+}
 
 CreateRoom::CreateRoom() :
   ec(Success)
@@ -148,7 +153,7 @@ void		LeaveRoom::doOp()
 
 }
 
-void		LeaveRoom::doOp(IService *S)
+void		LeaveRoom::doOp(IService * S)
 {
   RoomManager&	RM = Resources::RM;
 
@@ -187,6 +192,11 @@ std::string	LeaveRoom::toString()
 eRequestType	LeaveRoom::getType()
 {
   return LEAVE_ROOM;
+}
+
+LeaveRoom::parameter&  LeaveRoom::getParam()
+{
+	return this->parameters;
 }
 
 JoinRoom::JoinRoom(int roomId) :
@@ -253,10 +263,16 @@ eRequestType	JoinRoom::getType()
   return JOIN_ROOM;
 }
 
-InvitePlayer::InvitePlayer(char *usr) :
+JoinRoom::parameter&  JoinRoom::getParam()
+{
+	return this->parameters;
+}
+
+InvitePlayer::InvitePlayer(char* u) :
   ec(Success), P(0)
 {
-  parameters.username = usr;
+	std::string usr(u);
+	PackMan::Memcpy(this->parameters.username, usr.data(), usr.size());
 }
 
 InvitePlayer::InvitePlayer(std::string &data)
@@ -308,6 +324,11 @@ std::string	InvitePlayer::toString()
 eRequestType	InvitePlayer::getType()
 {
   return INVITE_PLAYER;
+}
+
+InvitePlayer::parameter&  InvitePlayer::getParam()
+{
+	return this->parameters;
 }
 
 SetGameParam::SetGameParam(int key, int value) :
@@ -372,6 +393,11 @@ eRequestType	SetGameParam::getType()
   return SET_GAME_PARAM;
 }
 
+SetGameParam::parameter&  SetGameParam::getParam()
+{
+	return this->parameters;
+}
+
 LaunchGame::LaunchGame(int roomId) : 
   ec(Success)
 {
@@ -428,6 +454,11 @@ std::string	LaunchGame::toString()
 eRequestType	LaunchGame::getType()
 {
   return LAUNCH_GAME;
+}
+
+LaunchGame::parameter&  LaunchGame::getParam()
+{
+	return this->parameters;
 }
 
 Ping::Ping() :
@@ -491,7 +522,8 @@ eRequestType	Ping::getType()
 Ready::Ready(char *ep) :
   ec(Success), P(0)
 {
-  this->parameters.endpoint = ep;
+	std::string	epp(ep);
+	PackMan::Memcpy(this->parameters.endpoint, epp.data(), epp.size());
 }
 
 Ready::Ready(std::string &data)
@@ -544,4 +576,9 @@ std::string	Ready::toString()
 eRequestType	Ready::getType()
 {
   return READY;
+}
+
+Ready::parameter&  Ready::getParam()
+{
+	return this->parameters;
 }

@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-//
-// CSRequest.cpp for RType in /home/teisse_a//Documents/Tek3/RType/Requests
-// 
-// Made by alexandre teisseire
-// Login   <teisse_a@epitech.net>
-// 
-// Started on  Thu Jan  3 18:32:43 2013 alexandre teisseire
-// Last update Wed Jan 16 00:08:41 2013 alexandre teisseire
-//
-=======
->>>>>>> [Service] Patch
 
 #include	<sstream>
 #include	"PackMan.h"
@@ -32,11 +20,11 @@ Connect::~Connect() {}
 
 bool		Connect::isValid()
 {
-  // RoomManager&	RM = Resources::RM;
-  // std::string	username(parameters.username);
+  RoomManager&	RM = Resources::RM;
+  std::string	username(parameters.username);
 
-  // if (RM.getPlayerFromName(username) == NULL)
-  //   return true;
+  if (RM.getPlayerFromName(username) == NULL)
+    return true;
   return false;
 }
 
@@ -45,13 +33,13 @@ void		Connect::doOp()
 
 }
 
-void		Connect::doOp(IService*)
+void		Connect::doOp(IService* S)
 {
-  // RoomManager&	RM = Resources::RM;
-  // std::string	username(parameters.username);
-  // std::string	password(parameters.passwd);
+  RoomManager&	RM = Resources::RM;
+  std::string	username(parameters.username);
+  std::string	password(parameters.passwd);
 
-  // RM.addPlayerToHall(username, password, S);
+  RM.addPlayerToHall(username, password, S);
 }
 
 void		Connect::finalize(IService *S)
@@ -99,11 +87,11 @@ bool		CreateRoom::isValid()
 
 void		CreateRoom::doOp()
 {
-  // RoomManager&	RM = Resources::RM;
-  // int		idRoom;
+  RoomManager&	RM = Resources::RM;
+  int		idRoom;
 
-  // if((idRoom = RM.createRoom()) == -1)
-  //   this->ec = S_cmd_refused;
+  if((idRoom = RM.createRoom()) == -1)
+    this->ec = S_cmd_refused;
 
   //
   // envoi de la request au client -> SCRequest
@@ -136,12 +124,13 @@ eRequestType	CreateRoom::getType()
 }
 
 LeaveRoom::LeaveRoom(int roomId) :
-  ec(Success)
+  ec(Success), P(0)
 {
   parameters.roomId = roomId;
 }
 
 LeaveRoom::LeaveRoom(std::string &data)
+	: P(0)
 {
   PackMan::Memcpy(&(this->parameters), data.data(),  static_cast<size_t>(data.length()));
   ec = Success;
@@ -159,12 +148,12 @@ void		LeaveRoom::doOp()
 
 }
 
-void		LeaveRoom::doOp(IService *)
+void		LeaveRoom::doOp(IService *S)
 {
-  // RoomManager&	RM = Resources::RM;
+  RoomManager&	RM = Resources::RM;
 
-  // RM.removePlayerFromRoom(this->P->getId(), parameters.roomId);
-  // RM.addPlayerToHall(this->P->getName(), this->P->getHash(), S);
+  RM.removePlayerFromRoom(this->P->getId(), parameters.roomId);
+  RM.addPlayerToHall(this->P->getName(), this->P->getHash(), S);
 }
 
 void		LeaveRoom::finalize(IService* S)
@@ -175,9 +164,9 @@ void		LeaveRoom::finalize(IService* S)
 
 bool		LeaveRoom::manageRequest(IService *S)
 {
-  // RoomManager&	RM = Resources::RM;
+  RoomManager&	RM = Resources::RM;
 
-  // this->P = RM.getPlayerFromRoom(S, parameters.roomId);
+  this->P = RM.getPlayerFromRoom(S, parameters.roomId);
 
   if (this->isValid())
     this->doOp();
@@ -201,12 +190,13 @@ eRequestType	LeaveRoom::getType()
 }
 
 JoinRoom::JoinRoom(int roomId) :
-  ec(Success)
+  ec(Success), P(0)
 {
   parameters.roomId = roomId;
 }
 
 JoinRoom::JoinRoom(std::string &data)
+	: P(0)
 {
   PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
   ec = Success;
@@ -216,18 +206,18 @@ JoinRoom::~JoinRoom() {}
 
 bool		JoinRoom::isValid()
 {
-  // RoomManager&	RM = Resources::RM;
+  RoomManager&	RM = Resources::RM;
 
-  // if (RM.getRoomById(parameters.roomId) == NULL)
-  //   return false;
+  if (RM.getRoomById(parameters.roomId) == NULL)
+    return false;
   return true;
 }
 
 void		JoinRoom::doOp()
 {
-  // RoomManager&	RM = Resources::RM;
+  RoomManager&	RM = Resources::RM;
 
-  // RM.clonePlayerFromHallToRoom(parameters.roomId, this->P->getId());
+  RM.clonePlayerFromHallToRoom(parameters.roomId, this->P->getId());
 }
 
 void		JoinRoom::finalize(IService* S)
@@ -238,9 +228,9 @@ void		JoinRoom::finalize(IService* S)
 
 bool		JoinRoom::manageRequest(IService *S)
 {
-  // RoomManager&	RM = Resources::RM;
+  RoomManager&	RM = Resources::RM;
   
-  // this->P = RM.getPlayerFromHall(S);
+  this->P = RM.getPlayerFromHall(S);
 
   if (this->isValid())
     this->doOp();
@@ -264,12 +254,13 @@ eRequestType	JoinRoom::getType()
 }
 
 InvitePlayer::InvitePlayer(char *usr) :
-  ec(Success)
+  ec(Success), P(0)
 {
   parameters.username = usr;
 }
 
 InvitePlayer::InvitePlayer(std::string &data)
+	: P(0)
 {
   PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
   ec = Success;
@@ -279,11 +270,11 @@ InvitePlayer::~InvitePlayer() {}
 
 bool		InvitePlayer::isValid()
 {
-  // RoomManager&	RM = Resources::RM;
-  // std::string	username(parameters.username);
+  RoomManager&	RM = Resources::RM;
+  std::string	username(parameters.username);
 
-  // if ((this->P = RM.getPlayerFromName(username)) == NULL)
-  //   return false;
+  if ((this->P = RM.getPlayerFromName(username)) == NULL)
+    return false;
   return true;
 }
 
@@ -402,11 +393,11 @@ bool		LaunchGame::isValid()
 
 void		LaunchGame::doOp()
 {
-  // RoomManager&	RM = Resources::RM;
-  // std::deque<IPlayer*> players = RM.getPlayersFromRoom(this->parameters.roomId);
+  RoomManager&	RM = Resources::RM;
+  std::deque<IPlayer*> players = RM.getPlayersFromRoom(this->parameters.roomId);
 
-  // RM.setRoomStatus(this->parameters.roomId, true);
-  // RM.linkRoomToThreadPool(this->parameters.roomId);
+  RM.setRoomStatus(this->parameters.roomId, true);
+  RM.linkRoomToThreadPool(this->parameters.roomId);
 
   //
   // notifier les autres clients que le jeu est lancé
@@ -440,12 +431,13 @@ eRequestType	LaunchGame::getType()
 }
 
 Ping::Ping() :
-  ec(Success)
+  ec(Success), P(0)
 {
 
 }
 
 Ping::Ping(std::string &)
+	: P(0)
 {
   ec = Success;
 }
@@ -474,9 +466,9 @@ void		Ping::finalize(IService* S)
 
 bool		Ping::manageRequest(IService *S)
 {
-  // RoomManager&	RM = Resources::RM;
+  RoomManager&	RM = Resources::RM;
 
-  // this->P = RM.getPlayerFromHall(S);
+  this->P = RM.getPlayerFromHall(S);
 
   if (this->isValid())
     this->doOp();
@@ -497,12 +489,13 @@ eRequestType	Ping::getType()
 }
 
 Ready::Ready(char *ep) :
-  ec(Success)
+  ec(Success), P(0)
 {
   this->parameters.endpoint = ep;
 }
 
 Ready::Ready(std::string &data)
+	: P(0)
 {
   PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
   ec = Success;
@@ -533,9 +526,9 @@ void		Ready::finalize(IService* S)
 
 bool		Ready::manageRequest(IService *S)
 {
-  // RoomManager&	RM = Resources::RM;
+  RoomManager&	RM = Resources::RM;
 
-  // this->P = RM.getPlayerFromHall(S);
+  this->P = RM.getPlayerFromHall(S);
 
   if (this->isValid())
     this->doOp();

@@ -12,14 +12,14 @@ extern "C"
 {
   PackedPlugin * entryPoint()
   {
-    return this;
+    return new PackedPlugin();
   }
 }
 
 PackedPlugin::PackedPlugin()
 {
   this->gm_ = new GameMod();
-  this->sc_ = new Scenario();
+  this->sc_ = new Scenario(50);
 }
 
 PackedPlugin::~PackedPlugin()
@@ -36,4 +36,9 @@ IGameMod * PackedPlugin::getGM() const
 IScenario * PackedPlugin::getSC() const
 {
   return this->sc_;
+}
+
+std::string const& PackedPlugin::getId() const{
+
+	return this->id_;
 }

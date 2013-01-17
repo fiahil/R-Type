@@ -1,6 +1,8 @@
 
 #pragma once
 
+#include <string>
+
 struct	Point
 {
 	int	x_;

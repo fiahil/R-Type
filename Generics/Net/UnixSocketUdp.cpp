@@ -90,7 +90,7 @@ namespace Net
     if ((ret = recvfrom(this->socket_, buff, 4095, 0, reinterpret_cast<struct sockaddr*>(&sin), &len)) == -1)
       throw ErrorInOut("Cannot send data");
     buff[ret] = 0;
-    return (std::string(buff));
+    return (std::string(buff, ret));
   }
 
 }			// namespace Net

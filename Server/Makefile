@@ -5,7 +5,7 @@
 ## Login   <teisse_a@epitech.net>
 ## 
 ## Started on  Wed Jan  9 09:55:44 2013 alexandre teisseire
-## Last update Thu Jan 17 15:58:50 2013 alexandre teisseire
+## Last update Thu Jan 17 17:51:33 2013 alexandre teisseire
 ##
 
 NAME		= R-Type
@@ -28,7 +28,6 @@ PATH_INC_PC	= ../Generics/PC/
 PATH_INC_PS	= ../Generics/PS/
 PATH_INC_TP	= ../Generics/TP/
 PATH_INC_NETW	= Network/include/
-PATH_INC_ENT	= Entities/include/
 PATH_INC_LOG	= ../Generics/Logger/
 PATH_INC_QTREE	= Quadtree/include/
 PATH_INC_GPLAY	= Gameplay/include/
@@ -40,7 +39,8 @@ SRC		= $(PATH_SRC)Account.cpp		\
 		  $(PATH_SRC)RegisterManager.cpp	\
 		  $(PATH_SRC)Room.cpp			\
 		  $(PATH_SRC)RoomManager.cpp		\
-		  $(PATH_SRC)Resources.cpp		
+		  $(PATH_SRC)Resources.cpp		\
+		  Main.cpp
 
 SRC_NET		= $(PATH_SRC_NET)EndPoint.cpp		\
 		  $(PATH_SRC_NET)UnixSocketTcp.cpp	\
@@ -75,7 +75,6 @@ OBJ_REQ		= $(SRC_REQ:.cpp=.o)
 OBJ_CL		= $(SRC_CL:.cpp=.o)
 OBJ_LWP		= $(SRC_LWP:.cpp=.o)
 OBJ_NETW	= $(SRC_NETW:.cpp=.o)
-OBJ_ENT		= $(SRC_ENT:.cpp=.o)
 OBJ_LOG		= $(SRC_LOG:.cpp=.o)
 OBJ_NET		= $(SRC_NET:.cpp=.o)
 OBJ_QTREE	= $(SRC_QTREE:.cpp=.o)
@@ -89,7 +88,6 @@ INCLUDES	= -I$(PATH_INC) 	\
 		  -I$(PATH_INC_PC)	\
 		  -I$(PATH_INC_PS)	\
 		  -I$(PATH_INC_TP)	\
-		  -I$(PATH_INC_ENT)	\
 		  -I$(PATH_INC_LOG)	\
 		  -I$(PATH_INC_NETW)	\
 		  -I$(PATH_INC_GPLAY)	\
@@ -97,7 +95,7 @@ INCLUDES	= -I$(PATH_INC) 	\
 
 CXX		= g++
 
-CXXFLAGS	= -Wall -Wextra -O3 -DNDEBUG $(INCLUDES) -std=c++0x -g3
+CXXFLAGS	= -Wall -Wextra -O3 $(INCLUDES) -std=c++0x -g3
 
 LDFLAGS		= -lpthread
 
@@ -105,11 +103,11 @@ RM		= rm -rf
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY)
-		$(CXX) -o $(NAME) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY) $(LDFLAGS)
+$(NAME):	$(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY)
+		$(CXX) -o $(NAME) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY) $(LDFLAGS)
 
 clean:
-		$(RM) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_ENT) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY)
+		$(RM) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY)
 
 fclean:		clean
 		$(RM) $(NAME)

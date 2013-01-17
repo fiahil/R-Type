@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 21:50:21 2013 alexandre teisseire
-// Last update Tue Jan 15 22:30:19 2013 alexandre teisseire
+// Last update Thu Jan 17 18:51:02 2013 alexandre teisseire
 //
 
 #ifndef		_NETWORKMANAGER_HPP_
@@ -18,7 +18,8 @@ class		NetworkManager : public INetworkManager
 {
 private:
   boost::asio::io_service	 ios;
-  boost::asio::ip::tcp::endpoint ep;
+  boost::asio::ip::udp::endpoint eudp;
+  boost::asio::ip::tcp::endpoint etcp;
   int				 port;
 
 public:

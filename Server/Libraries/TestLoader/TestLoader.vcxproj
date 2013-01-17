@@ -11,13 +11,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B035ECB0-385C-41D4-A6EA-B763DD4A1E13}</ProjectGuid>
+    <ProjectGuid>{016FE160-960C-4E0D-98D5-12A5569048F8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Monster</RootNamespace>
+    <RootNamespace>TestLoader</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Spades\Documents\GitHub\R-Type\Server\Quadtree\include;C:\Users\Spades\Documents\GitHub\R-Type\Generics\Dl;C:\Users\Spades\Documents\GitHub\R-Type\Server\Libraries\Monster\include;C:\Users\Spades\Documents\GitHub\R-Type\Server\Gameplay\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Spades\Documents\GitHub\R-Type\Server\Quadtree\include;C:\Users\Spades\Documents\GitHub\R-Type\Server\Gameplay\include;C:\Users\Spades\Documents\GitHub\R-Type\Generics\Dl;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -75,28 +75,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Gameplay\sources\GameMod.cpp" />
-    <ClCompile Include="..\..\Gameplay\sources\PackedPlugin.cpp" />
-    <ClCompile Include="..\..\Gameplay\sources\Scenario.cpp" />
-    <ClCompile Include="sources\Alien1.cpp" />
-    <ClCompile Include="sources\AMonster.cpp" />
+    <ClCompile Include="..\..\Gameplay\sources\GameplayEngine.cpp" />
+    <ClCompile Include="..\..\Quadtree\sources\Collider.cpp" />
+    <ClCompile Include="..\..\Quadtree\sources\Node.cpp" />
+    <ClCompile Include="..\..\Quadtree\sources\QuadTree.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Gameplay\include\GameMod.h" />
-    <ClInclude Include="..\..\Gameplay\include\IArmable.h" />
-    <ClInclude Include="..\..\Gameplay\include\ICollidable.h" />
-    <ClInclude Include="..\..\Gameplay\include\IDestroyable.h" />
-    <ClInclude Include="..\..\Gameplay\include\IDrawable.h" />
-    <ClInclude Include="..\..\Gameplay\include\IEntity.h" />
-    <ClInclude Include="..\..\Gameplay\include\IGameMod.h" />
-    <ClInclude Include="..\..\Gameplay\include\IMoveable.h" />
-    <ClInclude Include="..\..\Gameplay\include\IPlayable.h" />
-    <ClInclude Include="..\..\Gameplay\include\IScenario.h" />
-    <ClInclude Include="..\..\Gameplay\include\IScriptable.h" />
-    <ClInclude Include="..\..\Gameplay\include\PackedPlugin.h" />
-    <ClInclude Include="..\..\Gameplay\include\Scenario.h" />
-    <ClInclude Include="include\Alien1.h" />
-    <ClInclude Include="include\AMonster.h" />
+    <ClInclude Include="..\..\Gameplay\include\GameplayEngine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

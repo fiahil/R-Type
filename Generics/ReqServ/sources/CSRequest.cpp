@@ -93,7 +93,6 @@ bool		CreateRoom::isValid()
 
 void		CreateRoom::doOp()
 {
-
 }
 
 void		CreateRoom::doOp(IService* S)
@@ -346,17 +345,10 @@ InvitePlayer::parameter&  InvitePlayer::getParam()
 	return this->parameters;
 }
 
-SetGameParam::SetGameParam(int key, int value) :
+SetGameParam::SetGameParam(std::string &param) :
   ec(Success)
 {
-  parameters.key = key;
-  parameters.value = value;
-}
-
-SetGameParam::SetGameParam(std::string &data)
-{
-  PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
-  ec = Success;
+  PackMan::Memcpy(this->parameters.param, param.data(),  param.size());
 }
 
 SetGameParam::~SetGameParam() {}
@@ -394,13 +386,7 @@ bool		SetGameParam::manageRequest(IService *S)
 
 std::string	SetGameParam::toString()
 {
-  std::stringstream ss;
-
-  ss << this->parameters.key;
-  ss << ":";
-  ss << this->parameters.value;
-
-  return (ss.str());
+  return (std::string(this->parameters.param));
 }
 
 eRequestType	SetGameParam::getType()

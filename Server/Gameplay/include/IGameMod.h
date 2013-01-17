@@ -4,7 +4,7 @@
 
 class IGameMod {
 public:
-  virtual ~IGameMod() = 0;
+  virtual ~IGameMod() {}
   virtual void onCollision(IEntity*,IEntity*) = 0;
   virtual void onEntityDestruction(IEntity*) = 0;
   virtual void onFire(IEntity*) = 0;
@@ -19,5 +19,4 @@ public:
   virtual void onScriptBegin(IEntity*) = 0;
   virtual void onScriptEnd(IEntity*) = 0;
   virtual void onUltimate(IEntity*) = 0;
-  virtual std::string const& getId() const = 0;
 };

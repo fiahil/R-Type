@@ -5,9 +5,10 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 23:16:13 2013 alexandre teisseire
-// Last update Wed Jan 16 19:10:55 2013 alexandre teisseire
+// Last update Fri Jan 18 00:21:31 2013 alexandre teisseire
 //
 
+#include	<unistd.h>
 #include	<boost/bind.hpp>
 #include	"TCPService.hpp"
 #include	"PackMan.h"
@@ -67,18 +68,24 @@ void			TCPService::handleConnect(const boost::system::error_code& e, boost::asio
   std::cout << "Connected to : " << ep << std::endl;
   if (!e)
     { 
-      Connect	C(std::string("bob"), std::string("Passwd.pas.Hash.>_<"));
+
+      //
+      // Launch GUI
+      //
+
+      Connect	C(std::string("bob2"), std::string("Passwd.pas.Hash.>_<"));
       Connect::parameters param = C.getParam();
       TCPPacket* TCPP = new TCPPacket();
       TCPP->H.size = sizeof(param) + 4;
       TCPP->H.type = C.getType();
       PackMan::Memcpy(TCPP->B, &param, sizeof(param));
-
-     std::cout << "package type : " << TCPP->H.type << std::endl;
-      std::cout << "His size is : " << TCPP->H.size << std::endl;
-      std::cout << "and he contains : " << TCPP->B << std::endl;
- 
       this->sendData(TCPP);
+
+      CreateRoom	CR;
+      TCPPacket* TCPP2 = new TCPPacket();
+      TCPP2->H.size = 4;
+      TCPP2->H.type = CR.getType();
+      this->sendData(TCPP2);
       this->recvData();
     }
   else

@@ -3,7 +3,7 @@
 GameMod::GameMod() {
 }
 
-GameMod::~IGameMod(){
+GameMod::~GameMod(){
 }
 
 void GameMod::onCollision(IEntity*,IEntity*){
@@ -48,5 +48,3 @@ void GameMod::onScriptEnd(IEntity*){
 void GameMod::onUltimate(IEntity*){
 }
 
-std::string const& GameMod::getId() const{
-}

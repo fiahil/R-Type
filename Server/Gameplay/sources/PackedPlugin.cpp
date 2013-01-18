@@ -8,16 +8,24 @@
 #include "Scenario.h"
 #include "GameMod.h"
 
+#ifdef WIN32
 extern "C" __declspec(dllexport) PackedPlugin * entryPoint()
 {
-    return new PackedPlugin();
+	return new PackedPlugin();
 }
+#else
+extern "C" {
+PackedPlugin * entryPoint() {
+		return new PackedPlugin();
+	}
+}
+#endif
 
 PackedPlugin::PackedPlugin()
 {
 	this->id_ = "Test Loader";
 	this->gm_ = new GameMod();
-  this->sc_ = new Scenario(50);
+	this->sc_ = new Scenario(50);
 }
 
 PackedPlugin::~PackedPlugin()

@@ -41,7 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\Server\Quadtree\include;..\Server\Network\include;..\Server\Room\include;..\Generics\TP;..\Server\Gameplay\include;..\Generics\Net;..\Generics\PC;..\Generics\LWP;..\Generics\PS;..\Generics\ReqServ\include;..\Generics\ReqCl;..\Generics\Logger;..\Generics\Cmd;$(IncludePath)</IncludePath>
+    <IncludePath>..\Server\Quadtree\include;..\Server\Network\include;..\Server\Room\include;..\Generics\TP;..\Server\Gameplay\include;..\Generics\Net;..\Generics\PC;..\Generics\LWP;..\Generics\PS;..\Generics\ReqServ\include;..\Generics\ReqCl\include;..\Generics\Logger;..\Generics\Cmd;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>

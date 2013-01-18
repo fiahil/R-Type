@@ -26,8 +26,8 @@ class ClientService : public IClientService
 	typedef PC::Consumer<TCPPacket, storage> consumer;
 	typedef PC::Producer<TCPPacket, storage> producer;
 	typedef PC::Storage<UDPPacket, TP::ThreadPoolQueue<UDPPacket>, LWP::CondVar> UDPstorage;
-	typedef PC::Consumer<UDPPacket, storage> UDPconsumer;
-	typedef PC::Producer<UDPPacket, storage> UDPproducer;
+	typedef PC::Consumer<UDPPacket, UDPstorage> UDPconsumer;
+	typedef PC::Producer<UDPPacket, UDPstorage> UDPproducer;
 
 private:
 	Net::ISocket*		sock_;
@@ -40,9 +40,7 @@ private:
 
 	Net::ISocket*		UDPsock_;
 	UDPstorage			UDPinStorage_;
-	UDPstorage			UDPoutStorage_;
 	UDPconsumer			UDPinConsumer_;
-	UDPproducer			UDPoutProducer_;
 	ClientServiceUDPWorker UDPworker_;
 
 public:

@@ -25,7 +25,11 @@ ClientService::ClientService(Net::ISocket* s)
 	outConsumer_(&outStorage_),
 	inConsumer_(&inStorage_),
 	outProducer_(&outStorage_),
-	worker_(inStorage_, s, this)
+	worker_(inStorage_, s, this),
+	UDPsock_(0),
+	UDPinStorage_(),
+	UDPinConsumer_(&UDPinStorage_),
+	UDPworker_(UDPinStorage_, 0, this)
 {
 }
 
@@ -103,4 +107,15 @@ void		ClientService::push(IRequest* r)
 	  DEBUG << "Null Packet" << std::endl;
 
   this->outProducer_.produce(pack);
+}
+
+void		ClientService::push(ICommand* r)
+{
+	DEBUG << "Client Service UDP push" << std::endl;
+}
+
+ICommand*		ClientService::Zpull()
+{
+	DEBUG << "Client Service UDP pull" << std::endl;
+	return 0;
 }

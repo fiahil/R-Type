@@ -164,7 +164,6 @@ void		LeaveRoom::doOp(IService * S)
   RoomManager&	RM = Resources::RM;
 
   RM.removePlayerFromRoom(this->P->getId(), parameters.roomId);
-  RM.addPlayerToHall(this->P->getName(), this->P->getHash(), S);
 }
 
 void		LeaveRoom::finalize(IService* S)

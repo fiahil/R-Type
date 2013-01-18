@@ -164,9 +164,11 @@
     <ClCompile Include="Gameplay\sources\Scenario.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Network\sources\ClientService.cpp" />
+    <ClCompile Include="Network\sources\ClientServiceUDPWorker.cpp" />
     <ClCompile Include="Network\sources\ClientServiceWorker.cpp" />
     <ClCompile Include="Network\sources\NetworkManager.cpp" />
     <ClCompile Include="Network\sources\PackMan.cpp" />
+    <ClCompile Include="Network\sources\PackManUDP.cpp" />
     <ClCompile Include="Network\sources\ServerService.cpp" />
     <ClCompile Include="Quadtree\sources\Collider.cpp" />
     <ClCompile Include="Quadtree\sources\Node.cpp" />

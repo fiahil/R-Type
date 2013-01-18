@@ -1,5 +1,6 @@
 
-#include	"CSCommand.h"
+#include	"Command.h"
+#include	"Cmd.h"
 #include	"PackManUDP.h"
 
 static std::map<eCommandType, ICommand* (*)(const UDPPacket*)> initCommandTab() {

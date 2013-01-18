@@ -48,6 +48,8 @@ void	ClientServiceWorker::operator()()
 				DEBUG << "Manage Request" << std::endl;
 				r->manageRequest(this->service_);
 			}
+			else
+				DEBUG << "NULL request" << std::endl;
 		}
 		catch (Net::ErrorInOut&)
 		{

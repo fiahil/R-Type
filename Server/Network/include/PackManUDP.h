@@ -47,7 +47,7 @@ public:
 		pack->H.size = sizeof(T) + sizeof(pack->H);
 		pack->H.player = player;
 		pack->H.type = type;
-		pack->H.clock = clock;
+		pack->clock = clock;
 		PackManUDP::Memcpy(pack->value, t, sizeof(T));
 		return (pack);
 	}

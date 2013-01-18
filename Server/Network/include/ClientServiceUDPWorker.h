@@ -7,6 +7,7 @@
 #include "ThreadPoolQueue.h"
 #include "UDPPacket.h"
 #include "ISocket.h"
+#include "EndPoint.h"
 #include "IClientService.h"
 
 #ifdef WIN32
@@ -24,7 +25,6 @@ class ClientServiceUDPWorker
 	IClientService*		service_;
 	UDPproducer			inProducer_;
 	Net::ISocket*		sock_;
-	bool				mode;
 
 public:
 	ClientServiceUDPWorker(UDPstorage& in, Net::ISocket* s, IClientService* cs);

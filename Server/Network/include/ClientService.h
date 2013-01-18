@@ -52,4 +52,5 @@ public:
 	ICommand*	Zpull();
 	void		push(IRequest*);
 	void		push(ICommand*);
+	void		bind(Net::EndPoint const&);
 };

@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 23:16:13 2013 alexandre teisseire
-// Last update Fri Jan 18 01:06:53 2013 alexandre teisseire
+// Last update Sat Jan 19 00:18:37 2013 alexandre teisseire
 //
 
 #include	<unistd.h>
@@ -92,7 +92,7 @@ void			TCPService::handleConnect(const boost::system::error_code& e, boost::asio
       TCPPacket* TCPP3 = new TCPPacket();
       TCPP3->H.size = sizeof(param1) + 4;
       TCPP3->H.type = JR.getType();
-      PackMan::Memcpy(TCPP->B, &param1, sizeof(param1));
+      PackMan::Memcpy(TCPP3->B, &param1, sizeof(param1));
       this->sendData(TCPP3);
 
       LeaveRoom		LR(0);
@@ -103,6 +103,30 @@ void			TCPService::handleConnect(const boost::system::error_code& e, boost::asio
       PackMan::Memcpy(TCPP4->B, &param2, sizeof(param2));
       this->sendData(TCPP4);
 
+      JoinRoom		JR2(0);
+      JoinRoom::parameters param3 = JR2.getParam();
+      TCPPacket* TCPP5 = new TCPPacket();
+      TCPP5->H.size = sizeof(param3) + 4;
+      TCPP5->H.type = JR.getType();
+      PackMan::Memcpy(TCPP5->B, &param1, sizeof(param3));
+      this->sendData(TCPP5);
+
+      Connect	C2(std::string("Jacky"), std::string("Passwd.pas.Hash.>_<"));
+      Connect::parameters param4 = C2.getParam();
+      TCPPacket* TCPP6 = new TCPPacket();
+      TCPP6->H.size = sizeof(param4) + 4;
+      TCPP6->H.type = C.getType();
+      PackMan::Memcpy(TCPP6->B, &param4, sizeof(param4));
+      this->sendData(TCPP6);
+
+      std::string	s("Jacky");
+      InvitePlayer	IP(s);
+      InvitePlayer::parameters param5 = IP.getParam();
+      TCPPacket* TCPP7 = new TCPPacket();
+      TCPP7->H.size = sizeof(param5) + 4;
+      TCPP7->H.type = IP.getType();
+      PackMan::Memcpy(TCPP7->B, &param5, sizeof(param5));
+      this->sendData(TCPP7);
       this->recvData();
     }
   else

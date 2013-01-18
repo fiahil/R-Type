@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:45:41 2013 alexandre teisseire
-// Last update Fri Jan 18 00:49:26 2013 alexandre teisseire
+// Last update Sat Jan 19 00:19:03 2013 alexandre teisseire
 //
 
 #include <sstream>
@@ -85,8 +85,12 @@ bool		ClientInvited::isValid()
   return true;
 }
 
-void		ClientInvited::doOp()
+void		ClientInvited::doOp() {}
+
+void		ClientInvited::doOp(IService *S)
 {
+  IRequest*	IR = new JoinRoom(this->parameters.roomId);
+  S->push(IR);
 }
 
 void		ClientInvited::finalize(IService*)
@@ -99,7 +103,7 @@ void		ClientInvited::finalize(IService*)
 bool		ClientInvited::manageRequest(IService *S)
 {
   if (this->isValid())
-    this->doOp();
+    this->doOp(S);
   else
     this->ec = C_client_refuse;
   this->finalize(S);
@@ -144,9 +148,9 @@ void		ACK::doOp()
   //
 }
 
-void		ACK::finalize(IService* S)
+void		ACK::finalize(IService*)
 {
-  S->push(this);
+  // S->push(this);
 }
 
 bool		ACK::manageRequest(IService *S)

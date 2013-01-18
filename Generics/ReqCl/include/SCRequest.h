@@ -47,6 +47,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
+  void			doOp(IService*);
   virtual void		finalize(IService*);
 
 public:

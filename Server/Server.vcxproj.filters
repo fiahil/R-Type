@@ -293,6 +293,9 @@
     <ClInclude Include="Network\include\UDPPacket.h">
       <Filter>Header Files\Network</Filter>
     </ClInclude>
+    <ClInclude Include="Network\include\ClientServiceUDPWorker.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Generics\LWP\ScopedLock.cpp">

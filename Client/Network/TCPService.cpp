@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 23:16:13 2013 alexandre teisseire
-// Last update Fri Jan 18 00:21:31 2013 alexandre teisseire
+// Last update Fri Jan 18 01:06:53 2013 alexandre teisseire
 //
 
 #include	<unistd.h>
@@ -86,6 +86,23 @@ void			TCPService::handleConnect(const boost::system::error_code& e, boost::asio
       TCPP2->H.size = 4;
       TCPP2->H.type = CR.getType();
       this->sendData(TCPP2);
+
+      JoinRoom		JR(0);
+      JoinRoom::parameters param1 = JR.getParam();
+      TCPPacket* TCPP3 = new TCPPacket();
+      TCPP3->H.size = sizeof(param1) + 4;
+      TCPP3->H.type = JR.getType();
+      PackMan::Memcpy(TCPP->B, &param1, sizeof(param1));
+      this->sendData(TCPP3);
+
+      LeaveRoom		LR(0);
+      LeaveRoom::parameters param2 = LR.getParam();
+      TCPPacket* TCPP4 = new TCPPacket();
+      TCPP4->H.size = sizeof(param2) + 4;
+      TCPP4->H.type = LR.getType();
+      PackMan::Memcpy(TCPP4->B, &param2, sizeof(param2));
+      this->sendData(TCPP4);
+
       this->recvData();
     }
   else

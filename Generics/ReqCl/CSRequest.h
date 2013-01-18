@@ -72,7 +72,6 @@ private:
   virtual bool		isValid();
   virtual void		doOp();
   virtual void		finalize(IService*);
-  parameters&		getParam();
 
 private:
     void		doOp(IService*);
@@ -86,6 +85,7 @@ public:
   virtual bool		manageRequest(IService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
+  parameters&		getParam();
 };
 
 class		JoinRoom : public IRequest
@@ -246,7 +246,6 @@ private:
   virtual bool		isValid();
   virtual void		doOp();
   virtual void		finalize(IService*);
-  parameters&		getParam();
 
 private:
   Ready();
@@ -260,4 +259,5 @@ public:
   virtual bool		manageRequest(IService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
+  parameters&		getParam();
 };

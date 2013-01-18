@@ -1,19 +1,23 @@
 
 #pragma once
 
+typedef unsigned short ID;
+
 struct Move
 {
-	int x;
-	int y;
-	int speedx;
-	int speedy;
+  ID  id;
+  int x;
+  int y;
+  int speedx;
+  int speedy;
 };
 
 struct Fire
 {
-	int x;
-	int y;
-	int speedx;
-	int speedy;
-	int power;
+  ID  id;
+  int x;
+  int y;
+  int speedx;
+  int speedy;
+  int power;
 };

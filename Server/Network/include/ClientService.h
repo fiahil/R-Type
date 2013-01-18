@@ -31,6 +31,7 @@ class ClientService : public IClientService
 
 private:
 	Net::ISocket*		sock_;
+	//ajout socket UDP
 	storage				inStorage_;
 	storage				outStorage_;
 	consumer			outConsumer_;

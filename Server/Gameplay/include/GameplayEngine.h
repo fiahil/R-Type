@@ -12,12 +12,12 @@
 class GameplayEngine {
   Collider * coll_;
   QuadTree * quad_;
-  IGameMod * gm_;
-  IScenario * sc_;
   static Dl::DlManager<PackedPlugin> * manager_;
 public:
   GameplayEngine(std::string);
   ~GameplayEngine();
+  IGameMod * gm_;
+  IScenario * sc_;
   void handleEvent(/*Event*/);
   void plugEntity(IEntity *);
   void update();

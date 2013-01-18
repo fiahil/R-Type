@@ -85,7 +85,7 @@ void SocketUdp::Send(const std::string& packet)
 
 		WSABUF* fb = new WSABUF();
 		CHAR* buffer = new CHAR[sizeof(UDPPacket)];
-		PackManUDP::Memcpy(buffer, packet.data(), sizeof(UDPPacket));
+		PackManUDP::Memcpy(buffer, packet.data(), packet.size());
 		fb->buf = buffer;
 		fb->len = sizeof(UDPPacket);
 

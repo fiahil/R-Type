@@ -36,7 +36,7 @@ ClientService::~ClientService()
 
 void		ClientService::operator()(void)
 {
-	DEBUG << "ClientService functor" << std::endl;
+	DEBUG << "Client's Service launched" << std::endl;
 
 	TP::ThreadPool<ClientServiceWorker>*	tp = TP::ThreadPool<ClientServiceWorker>::getInstance(10);
 
@@ -64,10 +64,13 @@ void		ClientService::operator()(void)
 			}
 			DEBUG << "Packet Sent" << std::endl;
 		}
-		DEBUG << "Client Service wait" << std::endl;
 		if (flag)
+		{
+			DEBUG << "Client Service wait" << std::endl;
 			this->outConsumer_.wait();
+		}
 	}
+	DEBUG << "Client Service ended" << std::endl;
 }
 
 IRequest*	ClientService::pull()

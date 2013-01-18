@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Fri Jan 18 14:41:06 2013 alexandre teisseire
-// Last update Fri Jan 18 15:13:07 2013 alexandre teisseire
+// Last update Fri Jan 18 15:32:43 2013 alexandre teisseire
 //
 
 #ifndef	__GAMECLOCK_HPP__
@@ -19,14 +19,13 @@ class		GameClock : public IClock
 {
 private:
   struct timeval	_startMark;
-  struct timeval	_saveMark;
 
 public:
   GameClock();
   ~GameClock();
 
 public:
-  virtual void	update();
+  virtual void	reset();
   virtual float	getElapsedTime() const;
 };
 

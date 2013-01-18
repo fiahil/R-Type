@@ -8,13 +8,14 @@ GameplayEngine::GameplayEngine(std::string path) {
   this->manager_ = new Dl::DlManager<PackedPlugin>();
   this->manager_->loadPlugin(path);
 
-  if (this->manager_->isPluginLoaded(path) == true) {
-    PackedPlugin * pp_ = this->manager_->getObject("getInstance");
+  if (this->manager_->isPluginLoaded("Test Loader") == true) {
+    PackedPlugin * pp_ = this->manager_->getObject("Test Loader");
 	this->gm_ = pp_->gm_;
 	this->sc_ = pp_->sc_;
+	std::cout << "Success on the recuperation of the pack : " << path << std::endl;
   }
   else
-    std::cerr << "Error on the pack selected." << std::endl;
+    std::cerr << "Error on the pack selected : " << path << std::endl;
 }
 
 GameplayEngine::~GameplayEngine() {

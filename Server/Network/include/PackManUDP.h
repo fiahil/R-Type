@@ -6,6 +6,7 @@
 
 #include	"ICommand.h"
 #include	"UDPPacket.h"
+#include	"Command.h"
 
 class PackManUDP
 {

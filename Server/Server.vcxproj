@@ -78,6 +78,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Generics\Cmd\Cmd.h" />
+    <ClInclude Include="..\Generics\Cmd\Command.h" />
+    <ClInclude Include="..\Generics\Cmd\ICommand.h" />
     <ClInclude Include="..\Generics\Dl\DlExceptions.h" />
     <ClInclude Include="..\Generics\Dl\DlManager.h" />
     <ClInclude Include="..\Generics\Dl\IDlLoader.h" />
@@ -127,8 +130,10 @@
     <ClInclude Include="Network\include\IServerService.h" />
     <ClInclude Include="Network\include\IService.h" />
     <ClInclude Include="Network\include\PackMan.h" />
+    <ClInclude Include="Network\include\PackManUDP.h" />
     <ClInclude Include="Network\include\ServerService.h" />
     <ClInclude Include="Network\include\TCPPacket.h" />
+    <ClInclude Include="Network\include\UDPPacket.h" />
     <ClInclude Include="Quadtree\include\Collider.h" />
     <ClInclude Include="Quadtree\include\Node.h" />
     <ClInclude Include="Quadtree\include\QuadTree.h" />

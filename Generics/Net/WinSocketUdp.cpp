@@ -1,9 +1,10 @@
+#include "logger.h"
 
-#include	<iostream>
 #include	<cassert>
 
 #include	"WinSocketUdp.h"
 #include	"exceptionSocket.h"
+#include	"PackManUDP.h"
 
 namespace Net
 {
@@ -76,30 +77,53 @@ void SocketUdp::Send(const std::string& packet)
 {
 	SOCKADDR_IN sin;
 
+	DEBUG << "Sending in progress" << std::endl;
 	for (std::list<EndPoint*>::iterator it = this->client_.begin() ; it != this->client_.end() ; ++it) { 
 		sin.sin_family = AF_INET;
 		sin.sin_addr.s_addr = inet_addr((*it)->getIpStr().c_str());
 		WSAHtons(this->socket_, (*it)->getPort(), &sin.sin_port);
-		if ((sendto(this->socket_, packet.c_str(), packet.size(), 0, reinterpret_cast<struct sockaddr*>(&sin), sizeof(sin))) == SOCKET_ERROR)
+
+		WSABUF* fb = new WSABUF();
+		CHAR* buffer = new CHAR[sizeof(UDPPacket)];
+		PackManUDP::Memcpy(buffer, packet.data(), sizeof(UDPPacket));
+		fb->buf = buffer;
+		fb->len = sizeof(UDPPacket);
+
+		DWORD sended = 0;
+
+		if (WSASendTo(this->socket_, fb, 1, &sended, 0, reinterpret_cast<struct sockaddr*>(&sin), sizeof(sin), 0, 0) == SOCKET_ERROR)
 			throw ErrorInOut("Cannot send data");
+		DEBUG << "Sending completed" << std::endl;
+
+		delete fb;
+		delete buffer;
 	}
 }
 
 std::string SocketUdp::Recv(void)
 {
-	char buff[4096] = {0};
 	SOCKADDR_IN sin;
 
-	sin.sin_family = AF_INET;
-	sin.sin_addr.s_addr = INADDR_ANY;
-	sin.sin_port = 0;
 	int len = sizeof(sin);
 
-	int ret;
-	if ((ret = recvfrom(this->socket_, buff, 4095, 0, reinterpret_cast<struct sockaddr*>(&sin), &len)) == SOCKET_ERROR)
+	char* buff = new char[sizeof(UDPPacket)];
+	DWORD flags = 0;
+	DWORD ret = 0;
+	WSABUF* fb = new WSABUF();
+	fb->buf = buff;
+	fb->len = sizeof(UDPPacket);
+
+
+	DWORD error = WSARecvFrom(this->socket_, fb, 1, &ret, &flags, reinterpret_cast<struct sockaddr*>(&sin), &len, 0, 0);
+	if (error == SOCKET_ERROR && WSAGetLastError() != WSAEMSGSIZE)
 		throw ErrorInOut("Cannot send data");
-	buff[ret] = 0;
-	return (std::string(buff));
+
+	std::string pack = std::string(buff, ret);
+
+	delete fb;
+	delete buff;
+
+	return (pack);
 }
 
 }			// namespace Net

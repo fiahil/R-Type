@@ -5,20 +5,20 @@
 ## Login   <teisse_a@epitech.net>
 ## 
 ## Started on  Sun Jan 13 01:24:40 2013 alexandre teisseire
-## Last update Thu Jan 17 17:49:59 2013 alexandre teisseire
+## Last update Fri Jan 18 15:27:31 2013 alexandre teisseire
 ##
 
 NAME	= testClient
 
-PATH_SRC_REQ	= ../../Generics/ReqCl/
-PATH_INC_REQ	= ../../Generics/ReqCl/
+PATH_SRC_REQ	= ../../Generics/ReqCl/sources/
+PATH_INC_REQ	= ../../Generics/ReqCl/include/
 
 PATH_SRC_LOG	= ../../Generics/Logger/
 PATH_INC_LOG	= ../../Generics/Logger/
 
-SRCXX	= NetworkManager.cpp	\
-	TCPService.cpp		\
-	UDPService.cpp		\
+SRCXX	= NetworkManager.cpp			\
+	TCPService.cpp				\
+	UDPService.cpp				\
 	client.cpp
 
 SRCXX_CL = $(PATH_SRC_REQ)CSRequest.cpp		\

@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:45:41 2013 alexandre teisseire
-// Last update Fri Jan 18 00:43:56 2013 alexandre teisseire
+// Last update Fri Jan 18 00:49:26 2013 alexandre teisseire
 //
 
 #include <sstream>
@@ -33,7 +33,7 @@ bool		AnswerCreateRoom::isValid()
 
 void		AnswerCreateRoom::doOp()
 {
-  std::cout << "I got my room Id : " << this->parameters.Id << std::endl;
+  std::cout << "I got my room Id : " << this->parameters.roomId << std::endl;
 }
 
 void		AnswerCreateRoom::finalize(IService *S)

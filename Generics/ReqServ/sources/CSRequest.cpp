@@ -117,7 +117,7 @@ void		CreateRoom::finalize(IService* S)
 bool		CreateRoom::manageRequest(IService *S)
 {
   if (this->isValid())
-    this->doOp();
+    this->doOp(S);
   else
     this->ec = G_invalid_request;
   this->finalize(S);
@@ -180,7 +180,7 @@ bool		LeaveRoom::manageRequest(IService *S)
   this->P = RM.getPlayerFromRoom(S, parameters.roomId);
 
   if (this->isValid())
-    this->doOp();
+    this->doOp(S);
   else
     this->ec = G_invalid_request;
   this->finalize(S);
@@ -324,7 +324,7 @@ void		InvitePlayer::finalize(IService* S)
 bool		InvitePlayer::manageRequest(IService *S)
 {
   if (this->isValid())
-    this->doOp();
+    this->doOp(S);
   else
     this->ec = S_cmd_refused;
   this->finalize(S);
@@ -530,8 +530,8 @@ eRequestType	Ping::getType()
 Ready::Ready(char *ep) :
   ec(Success), P(0)
 {
-	std::string	epp(ep);
-	PackMan::Memcpy(this->parameters.endpoint, epp.data(), epp.size());
+  std::string	epp(ep);
+  PackMan::Memcpy(this->parameters.endpoint, epp.data(), epp.size());
 }
 
 Ready::Ready(std::string &data)

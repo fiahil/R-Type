@@ -31,8 +31,8 @@ float		WinGameClock::getElapsedTime()
 
   QueryPerformanceCounter(&save);
 
-  elapsedTime = (this->startCount).QuadPart * (1000000.0f / (this->frequency).QuadPart);
-  elapsedTime -= save.QuadPart * (1000000.0f / (this->frequency).QuadPart);
+  elapsedTime = save.QuadPart * (1000000.0f / (this->frequency).QuadPart);
+  elapsedTime -= (this->startCount).QuadPart * (1000000.0f / (this->frequency).QuadPart);
 
-  return (elapsedTime * 0.001f);
+  return (elapsedTime * 0.000001f);
 }

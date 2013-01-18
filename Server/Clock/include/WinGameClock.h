@@ -15,7 +15,7 @@
 #include <windows.h>
 #include "IClock.h"
 
-class	WinGameClock
+class	WinGameClock : public IClock
 {
 private:
   LARGE_INTEGER frequency;

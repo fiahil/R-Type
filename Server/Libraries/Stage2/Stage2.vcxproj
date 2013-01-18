@@ -39,6 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\Spades\Documents\GitHub\R-Type\Generics\Dl;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -74,6 +75,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Gameplay\include\IArmable.h" />
+    <ClInclude Include="..\..\Gameplay\include\ICollidable.h" />
+    <ClInclude Include="..\..\Gameplay\include\IDestroyable.h" />
+    <ClInclude Include="..\..\Gameplay\include\IDrawable.h" />
+    <ClInclude Include="..\..\Gameplay\include\IEntity.h" />
+    <ClInclude Include="..\..\Gameplay\include\IGameMod.h" />
+    <ClInclude Include="..\..\Gameplay\include\IMoveable.h" />
+    <ClInclude Include="..\..\Gameplay\include\IPlayable.h" />
+    <ClInclude Include="..\..\Gameplay\include\IScenario.h" />
+    <ClInclude Include="..\..\Gameplay\include\IScriptable.h" />
+    <ClInclude Include="..\..\Gameplay\include\PackedPlugin.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

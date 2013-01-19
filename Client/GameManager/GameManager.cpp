@@ -19,57 +19,56 @@ void	GameManager::treatAction(ICommand *action)
 
 	if (move)
 	{
-			stack_.top->treatMove(move);
+			stack_.front()->treatMove(move);
 			return ;
 	}
 	Command<Death> * death = dynamic_cast<Command<Death> *>(action);
 
 	if (death)
 	{
-			//stack_.top->treatDeath(death);
+			stack_.front()->treatDeath(death);
 			return ;
 	}
 	Command<Fire> * fire = dynamic_cast<Command<Fire> *>(action);
 
 	if (fire)
 	{
-		//stack_.top->treatFire(fire);
+		stack_.front()->treatFire(fire);
 		return ;
 	}
 	Command<NewEntity> * newentity = dynamic_cast<Command<NewEntity> *>(action);
 
-	//if (newentity)
-		//stack_.top->treatNewEntity(newentity);
+	if (newentity)
+		stack_.front()->treatNewEntity(newentity);
 }
 
 ICommand*	GameManager::getAction()
 {
 	return net_->getAction();
 }
-/*
-void	Stage::treatMove(Command<Move> *cmd)
+
+void	GameManager::update()
 {
-	struct Move deplace = cmd->getT();
-	this->components.at(deplace.id).move(deplace.x, deplace.y);
+
 }
 
-void	Stage::treatDeath(Command<Death> *cmd)
+void	GameManager::draw()
 {
-	struct Death dead = cmd->getT();
-	this->components.at(dead.id).death();
+
 }
 
-void	Stage::treatDeath(Command<Fire> *cmd)
+void	GameManager::release()
 {
-	struct Fire shoot = cmd->getT();
-	this->components.at(shoot.id).fire(shoot.x, shoot.y);
+
 }
-#include	"GameComponent.h"
-void	Stage::treatNewEntity(Command<NewEntity> *cmd)
+
+void		GameManager::run()
 {
-	struct NewEntity life = cmd->getT();
-	ISpriteSheet *sprite = new sfSpriteSheet(life.filename, life.anim, life.frame);
-	ISpriteSheet *death = new sfSpriteSheet("..\\Resources\\Sprite\\little_death.gif", 1, 6);
-	this->components.at(life.id) = new GameComponent(sprite, death);
+  //	Timer
+  //	while(isAlive)
+  //	{
+  //	  Timer.wait();
+  this->update();
+  this->draw();
+  //    }
 }
-*/

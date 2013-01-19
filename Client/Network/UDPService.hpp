@@ -5,23 +5,27 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Wed Jan 16 14:24:01 2013 alexandre teisseire
-// Last update Wed Jan 16 17:24:05 2013 alexandre teisseire
+// Last update Sat Jan 19 15:31:36 2013 alexandre teisseire
 //
 
 #ifndef	__UDPSERVICE_HPP__
 #define	__UDPSERVICE_HPP__
 
-#include "boost/asio.hpp"
+#include <deque>
+#include <boost/asio.hpp>
 #include "UDPPacket.h"
+#include "Command.h"
+#include "NetworkManager.hpp"
 
 class	UDPService
 {
 private:
-  boost::asio::ip::udp::socket	sock;
+  NetworkManager&		  NM;
+  boost::asio::ip::udp::socket	  sock;
   boost::asio::ip::udp::endpoint  ep;
 
 public:
-  UDPService(boost::asio::io_service&, boost::asio::ip::udp::endpoint);
+  UDPService(NetworkManager&, boost::asio::io_service&, boost::asio::ip::udp::endpoint);
   ~UDPService();
 
 public:

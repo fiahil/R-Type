@@ -2,7 +2,7 @@
 #pragma once
 
 #include	<list>
-#include	"IEntity.h"
+#include	"ICollidable.h"
 
 class Collider
 {
@@ -10,5 +10,5 @@ class Collider
 public:
 	Collider();
 	~Collider();
-	bool	collide(std::list<IEntity *>&, IEntity *); 
+	bool	collide(std::list<ICollidable *>&, ICollidable *); 
 };

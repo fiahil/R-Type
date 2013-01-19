@@ -3,6 +3,7 @@
 
 #include	<algorithm>
 #include	<list>
+#include	"ICollidable.h"
 #include	"Collider.h"
 
 class Node
@@ -10,7 +11,7 @@ class Node
 	Node						*leaf_;
 	Collider					*collider_;
 	bool						isLast_;
-	std::list<IEntity*>			items_;
+	std::list<ICollidable*>			items_;
 	int							maxDepth_;
 	unsigned int				maxEntity_;
 	int							centerX_;
@@ -25,8 +26,8 @@ public:
 	Node(int, unsigned int, int, int, int, int, Collider*);
 	Node(int, unsigned int, Collider*);
 	~Node();
-	void	addEntity(IEntity*);
-	bool	checkCollision(IEntity *);
+	void	addEntity(ICollidable*);
+	bool	checkCollision(ICollidable *);
 	void	setCenterX(int);
 	void	setCenterY(int);
 	void	setSizeX(int);

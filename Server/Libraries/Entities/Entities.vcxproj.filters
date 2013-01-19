@@ -15,25 +15,26 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Gameplay\sources\GameplayEngine.cpp">
+    <ClCompile Include="sources\AEntityMonster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="sources\Alien1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Quadtree\sources\Node.cpp">
+    <ClCompile Include="sources\EntityDecor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Quadtree\sources\QuadTree.cpp">
+    <ClCompile Include="sources\EntityPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Quadtree\sources\Collider.cpp">
+    <ClCompile Include="sources\EntityWeapon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Gameplay\include\GameplayEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="sources\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\AEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

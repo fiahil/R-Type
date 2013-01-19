@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A287C860-8D9E-4E1C-8B51-88BBD70A2BBF}</ProjectGuid>
+    <ProjectGuid>{055112BB-F24D-4179-B7C6-686E5B3D4402}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Stage3</RootNamespace>
+    <RootNamespace>Stage_1</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Spades\Documents\GitHub\R-Type\Generics\Dl;$(IncludePath)</IncludePath>
+    <IncludePath>.\include;..\Entities\include;..\..\Gameplay\include;..\..\..\Generics\Dl;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -50,7 +50,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;STAGE3_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;STAGE_1_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -65,7 +65,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;STAGE3_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;STAGE_1_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -75,17 +75,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Gameplay\include\IArmable.h" />
-    <ClInclude Include="..\..\Gameplay\include\ICollidable.h" />
-    <ClInclude Include="..\..\Gameplay\include\IDestroyable.h" />
-    <ClInclude Include="..\..\Gameplay\include\IDrawable.h" />
-    <ClInclude Include="..\..\Gameplay\include\IEntity.h" />
-    <ClInclude Include="..\..\Gameplay\include\IGameMod.h" />
-    <ClInclude Include="..\..\Gameplay\include\IMoveable.h" />
-    <ClInclude Include="..\..\Gameplay\include\IPlayable.h" />
-    <ClInclude Include="..\..\Gameplay\include\IScenario.h" />
-    <ClInclude Include="..\..\Gameplay\include\IScriptable.h" />
-    <ClInclude Include="..\..\Gameplay\include\PackedPlugin.h" />
+    <ClCompile Include="..\Entities\sources\AEntity.cpp" />
+    <ClCompile Include="..\Entities\sources\AEntityMonster.cpp" />
+    <ClCompile Include="..\Entities\sources\Alien1.cpp" />
+    <ClCompile Include="..\Entities\sources\EntityDecor.cpp" />
+    <ClCompile Include="..\Entities\sources\EntityPlayer.cpp" />
+    <ClCompile Include="..\Entities\sources\EntityWeapon.cpp" />
+    <ClCompile Include="sources\GameMod.cpp" />
+    <ClCompile Include="sources\PackedPlugin.cpp" />
+    <ClCompile Include="sources\Scenario.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Entities\include\AEntity.h" />
+    <ClInclude Include="..\Entities\include\AEntityMonster.h" />
+    <ClInclude Include="..\Entities\include\Alien1.h" />
+    <ClInclude Include="..\Entities\include\EntityDecor.h" />
+    <ClInclude Include="..\Entities\include\EntityPlayer.h" />
+    <ClInclude Include="..\Entities\include\EntityWeapon.h" />
+    <ClInclude Include="include\GameMod.h" />
+    <ClInclude Include="include\IGameMod.h" />
+    <ClInclude Include="include\IScenario.h" />
+    <ClInclude Include="include\PackedPlugin.h" />
+    <ClInclude Include="include\Scenario.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

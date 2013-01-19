@@ -15,75 +15,66 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Input\sfKeyboard.cpp">
+    <ClCompile Include="sources\PackedPlugin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Input\sfJoystick.cpp">
+    <ClCompile Include="sources\Scenario.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Input\sfMouse.cpp">
+    <ClCompile Include="sources\GameMod.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameComponent\IGameComponent.cpp">
+    <ClCompile Include="..\Entities\sources\Alien1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteSheet\sfSpriteSheet.cpp">
+    <ClCompile Include="..\Entities\sources\EntityDecor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteSheet\Main.cpp">
+    <ClCompile Include="..\Entities\sources\EntityPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameComponent\GameComponent.cpp">
+    <ClCompile Include="..\Entities\sources\EntityWeapon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Window\sfWindow.cpp">
+    <ClCompile Include="..\Entities\sources\AEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameManager\GameManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Stage\Stage.cpp">
+    <ClCompile Include="..\Entities\sources\AEntityMonster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameComponent\IGameComponent.h">
+    <ClInclude Include="include\GameMod.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameComponent\GameComponent.h">
+    <ClInclude Include="include\IGameMod.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Window\sfWindow.h">
+    <ClInclude Include="include\IScenario.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Window\IGameWindow.h">
+    <ClInclude Include="include\PackedPlugin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteSheet\ISpriteSheet.h">
+    <ClInclude Include="include\Scenario.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteSheet\sfSpriteSheet.h">
+    <ClInclude Include="..\Entities\include\AEntity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Input\sfKeyboard.h">
+    <ClInclude Include="..\Entities\include\EntityWeapon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Input\sfJoystick.h">
+    <ClInclude Include="..\Entities\include\AEntityMonster.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Input\IInput.h">
+    <ClInclude Include="..\Entities\include\Alien1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Input\sfMouse.h">
+    <ClInclude Include="..\Entities\include\EntityDecor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sfMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameManager\GameManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Stage\Stage.h">
+    <ClInclude Include="..\Entities\include\EntityPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

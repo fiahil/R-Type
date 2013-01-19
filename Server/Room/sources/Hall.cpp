@@ -1,3 +1,4 @@
+
 #include "Hall.h"
 #include "Player.h"
 
@@ -5,13 +6,11 @@
 
 Hall::Hall(void)
 {
-	DEBUG << "--Construction Hall" << std::endl;
 }
 
 
 Hall::~Hall(void)
 {
-	DEBUG << "--Destruction Hall" << std::endl;
 }
 
 
@@ -29,7 +28,7 @@ int		Hall::operator()(int idTest) const
 		if (tmp && tmp->getId() == idTest)
 			return pos;
 	}
-	return -1; 
+	return -1;
 }
 
 

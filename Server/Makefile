@@ -22,6 +22,7 @@ PATH_SRC_GPLAY	= ./Gameplay/sources/
 PATH_INC	= Room/include/
 PATH_INC_REQ	= ../Generics/ReqServ/include/
 PATH_INC_DL	= ../Generics/Dl/
+PATH_INC_CMD	= ../Generics/Cmd/
 PATH_INC_LWP	= ../Generics/LWP/
 PATH_INC_NET	= ../Generics/Net/
 PATH_INC_PC	= ../Generics/PC/
@@ -44,10 +45,10 @@ SRC		= $(PATH_SRC)Account.cpp		\
 
 SRC_NET		= $(PATH_SRC_NET)EndPoint.cpp		\
 		  $(PATH_SRC_NET)UnixSocketTcp.cpp	\
-		  $(PATH_SRC_NET)UnixSocketUdp.cpp	
+		  $(PATH_SRC_NET)UnixSocketUdp.cpp
 
 SRC_REQ		= $(PATH_SRC_REQ)CSRequest.cpp		\
-		  $(PATH_SRC_REQ)SCRequest.cpp		
+		  $(PATH_SRC_REQ)SCRequest.cpp
 
 SRC_LWP		= $(PATH_SRC_LWP)ScopedLock.cpp		\
 		  $(PATH_SRC_LWP)UnixCondVar.cpp	\
@@ -57,13 +58,15 @@ SRC_LOG		= $(PATH_SRC_LOG)logger.cpp
 
 SRC_GPLAY	= $(PATH_SRC_GPLAY)GameplayEngine.cpp	\
 		  $(PATH_SRC_GPLAY)PackedPlugin.cpp	\
-		  $(PATH_SRC_GPLAY) Scenario.cpp
+		  $(PATH_SRC_GPLAY)Scenario.cpp
 
 SRC_NETW	= $(PATH_SRC_NETW)ClientService.cpp	\
 		  $(PATH_SRC_NETW)NetworkManager.cpp	\
 		  $(PATH_SRC_NETW)PackMan.cpp		\
+		  $(PATH_SRC_NETW)PackManUDP.cpp	\
 		  $(PATH_SRC_NETW)ServerService.cpp	\
-		  $(PATH_SRC_NETW)ClientServiceWorker.cpp
+		  $(PATH_SRC_NETW)ClientServiceWorker.cpp \
+		  $(PATH_SRC_NETW)ClientServiceUDPWorker.cpp
 
 SRC_QTREE	= $(PATH_SRC_QTREE)Collider.cpp		\
 		  $(PATH_SRC_QTREE)Node.cpp		\
@@ -83,6 +86,7 @@ INCLUDES	= -I$(PATH_INC) 	\
 		  -I$(PATH_INC_REQ) 	\
 		  -I$(PATH_INC_CL) 	\
 		  -I$(PATH_INC_DL)	\
+		  -I$(PATH_INC_CMD)	\
 		  -I$(PATH_INC_LWP)	\
 		  -I$(PATH_INC_NET)	\
 		  -I$(PATH_INC_PC)	\

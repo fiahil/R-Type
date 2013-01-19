@@ -50,7 +50,7 @@ void		Connect::finalize(IService *S)
   S->push(req);
 }
 
-bool		Connect::manageRequest(IService *S) 
+bool		Connect::manageRequest(IService *S)
 {
   if (this->isValid())
     this->doOp(S);
@@ -159,7 +159,7 @@ void		LeaveRoom::doOp()
 
 }
 
-void		LeaveRoom::doOp(IService * S)
+void		LeaveRoom::doOp(IService *)
 {
   RoomManager&	RM = Resources::RM;
 

@@ -5,7 +5,7 @@
 ## Login   <teisse_a@epitech.net>
 ## 
 ## Started on  Fri Jan 18 20:15:19 2013 alexandre teisseire
-## Last update Sat Jan 19 18:10:46 2013 alexandre teisseire
+## Last update Sat Jan 19 20:16:32 2013 alexandre teisseire
 ##
 
 NAME		= R-Type
@@ -77,7 +77,7 @@ CXX		= g++
 
 CXXFLAGS	= -Wall -Wextra -O3 $(INCLUDES) $(LDFLAGS) -std=c++0x -g3
 
-LDFLAGS		= -lboost_system -lpthread -L./SFML-Unix/lib/ -lsfml-graphics -lsfml-window -lsfml-system
+LDFLAGS		= -lboost_system -lpthread -L./SFML-Unix/lib/  -Wl,--rpath=./SFML-Unix/lib/ -lsfml-graphics -lsfml-window -lsfml-system
 
 RM		= rm -rf
 

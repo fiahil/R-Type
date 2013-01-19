@@ -10,9 +10,10 @@
 
 class GameManager : public IGameManager
 {
+  bool		alive;
   IInput	*input_;
   INetworkManager *net_;
-  /* std::deque<Stage*> stack_; */
+  /* std::stack<Stage*> stack_; */
 
 public:
   GameManager(char**);
@@ -21,6 +22,7 @@ public:
 public:
   void		treatAction(ICommand *);
   ICommand*	getAction();
+  bool		isAlive() const;
 
 public:
   virtual void	run();

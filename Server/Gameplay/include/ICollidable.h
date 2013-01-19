@@ -16,6 +16,9 @@ struct HitBox
 class ICollidable
 {
 public:
-  virtual ~ICollidable(void) {}
-  virtual const HitBox & getHitBox() const = 0; // Type de retour incertain ...
+	virtual ~ICollidable(void) {}
+
+public:
+	virtual const HitBox &	getHitBox() const						= 0;
+	virtual void			fetchLeftBorder(int& x, int& y) const	= 0;
 };

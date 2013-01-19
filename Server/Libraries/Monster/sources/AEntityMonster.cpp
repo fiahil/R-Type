@@ -1,71 +1,103 @@
-#include "AMonster.h"
+#include "AEntityMonster.h"
 
-AMonster::AMonster(const Point&, const Point&)
-	:	life_(0),
-		power_(0),
-		skin_(ErrorSkin),
-		speed_(0.0f),
-		pos_(0, 0),
-		dir_(0, 0),
-		hb_(0, 0, 0, 0)
+AEntityMonster::AEntityMonster(const Point& pos, const Point& dir)
+	:	AEntity(),
+		life_(-1),
+		power_(-1),
+		skin_(ErrorMonsterSkin),
+		speed_(-1.0f),
+		pos_(pos),
+		dir_(dir),
+		hb_(-1, -1, -1, -1),
+		id_(currentId_++)
 {
 }
 
-AMonster::~AMonster()
+AEntityMonster::~AEntityMonster()
 {
 }
 
 
-void			AMonster::fetchLeftBorder(int& x, int& y) const
+uint16_t		AEntityMonster::getId() const
+{
+	return this->id_;	
+}
+
+
+int				AEntityMonster::getSkin() const
+{
+	return this->skin_;
+}
+
+
+int				AEntityMonster::getPower() const
+{
+	return this->power_;
+}
+
+
+const HitBox&	AEntityMonster::getHitBox() const
+{
+	return this->hb_;
+}
+
+
+void			AEntityMonster::fetchLeftBorder(int& x, int& y) const
 {
 	x = this->hb_.xmin_;
 	y = this->hb_.ymin_;
 }
 
 
-int				AMonster::getSkin() const
+const Point&	AEntityMonster::getPosition() const
 {
-	return this->skin_;
+	return this->pos_;		
 }
 
 
-int				AMonster::getPower() const
-{
-	return this->power_;
-}
-
-
-const HitBox&	AMonster::getHitBox() const
-{
-	return this->hb_;
-}
-
-
-const Point&	AMonster::getDirection() const
+const Point&	AEntityMonster::getDirection() const
 {
 	return this->dir_;
 }
 
 
-float			AMonster::getSpeed() const
+float			AEntityMonster::getSpeed() const
 {
 	return this->speed_;
 }
 
 
-void			AMonster::destroy()
+void			AEntityMonster::setPosition(int x, int y)
 {
-	//
+	this->pos_.x_ = x;
+	this->pos_.y_ = y;
 }
 
 
-int				AMonster::getLife() const
+void			AEntityMonster::setDirection(int x, int y)
+{
+	this->dir_.x_ = x;
+	this->dir_.y_ = y;
+}
+
+
+void			AEntityMonster::setSpeed(float s)
+{
+	this->speed_ = s;
+}
+
+void			AEntityMonster::destroy()
+{
+}
+
+
+int				AEntityMonster::getLife() const
 {
 	return this->life_;
 }
 
 
-void			AMonster::subLife(int dmg)
+void			AEntityMonster::subLife(int dmg)
 {
 	this->life_ -= dmg;
 	if (this->life_ <= 0)
@@ -73,7 +105,7 @@ void			AMonster::subLife(int dmg)
 }
 
 
-eAction			AMonster::getNextAction(float atTime) const
+eAction			AEntityMonster::getNextAction(float atTime) const
 {
 	for (std::deque<Actions>::const_iterator it = this->script_.begin();
 		it != this->script_.end(); ++it)

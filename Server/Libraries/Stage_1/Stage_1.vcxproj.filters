@@ -59,5 +59,23 @@
     <ClInclude Include="include\Scenario.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Entities\include\AEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Entities\include\EntityWeapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Entities\include\AEntityMonster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Entities\include\Alien1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Entities\include\EntityDecor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Entities\include\EntityPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

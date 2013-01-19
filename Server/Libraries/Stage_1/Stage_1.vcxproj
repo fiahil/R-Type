@@ -86,6 +86,12 @@
     <ClCompile Include="sources\Scenario.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Entities\include\AEntity.h" />
+    <ClInclude Include="..\Entities\include\AEntityMonster.h" />
+    <ClInclude Include="..\Entities\include\Alien1.h" />
+    <ClInclude Include="..\Entities\include\EntityDecor.h" />
+    <ClInclude Include="..\Entities\include\EntityPlayer.h" />
+    <ClInclude Include="..\Entities\include\EntityWeapon.h" />
     <ClInclude Include="include\GameMod.h" />
     <ClInclude Include="include\IGameMod.h" />
     <ClInclude Include="include\IScenario.h" />

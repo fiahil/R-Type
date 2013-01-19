@@ -75,14 +75,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\AEntity.h" />
-    <ClInclude Include="include\AEntityMonster.h" />
-    <ClInclude Include="include\Alien1.h" />
-    <ClInclude Include="include\EntityDecor.h" />
-    <ClInclude Include="include\EntityPlayer.h" />
-    <ClInclude Include="include\EntityWeapon.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="sources\AEntity.cpp" />
     <ClCompile Include="sources\AEntityMonster.cpp" />
     <ClCompile Include="sources\Alien1.cpp" />

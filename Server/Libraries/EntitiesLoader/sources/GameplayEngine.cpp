@@ -31,5 +31,5 @@ void GameplayEngine::plugEntity(IEntity * tity) {
 }
 
 void GameplayEngine::update() {
-  //this->quad_->update(this);
+	this->quad_->update(this->gm_);
 }

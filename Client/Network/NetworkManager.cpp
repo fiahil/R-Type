@@ -21,7 +21,7 @@ NetworkManager::NetworkManager(char**av)
   ss >> this->port;
 
   boost::asio::ip::tcp::endpoint etcp(boost::asio::ip::address::from_string(std::string(av[1])), this->port);
-  boost::asio::ip::udp::endpoint eudp(boost::asio::ip::address::from_string(std::string(av[1])), this->port);
+  boost::asio::ip::udp::endpoint eudp(boost::asio::ip::address::from_string(std::string(av[1])), 42999);
   this->etcp = etcp;
   this->eudp = eudp;
 }
@@ -32,13 +32,13 @@ void		NetworkManager::run()
     {
       TCPService	TCPS(this->ios, this->etcp);
       UDPService	UDPS(*this, this->ios, this->eudp);
-      
+
       this->ios.run();
     }
   catch (std::exception& e)
     {
       std::cerr << e.what() << std::endl;
-    }      
+    }
 }
 
 void		NetworkManager::push_back(ICommand *IC)

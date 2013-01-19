@@ -65,7 +65,13 @@
     <ClInclude Include="..\..\Gameplay\include\GameMod.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Gameplay\include\Scenario.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Gameplay\include\IArmable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Gameplay\include\PackedPlugin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Gameplay\include\ICollidable.h">
@@ -93,12 +99,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Gameplay\include\IScriptable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Gameplay\include\PackedPlugin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Gameplay\include\Scenario.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

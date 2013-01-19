@@ -11,14 +11,14 @@ class Command : public ICommand
 {
 private:
 	T cmd_;
-	eCommandType type_;
+	CommandType::eCommandType type_;
 
 public:
-	Command(T cmd, eCommandType type) : cmd_(cmd), type_(type)
+	Command(T cmd, CommandType::eCommandType type) : cmd_(cmd), type_(type)
 	{
 	}
 
-	virtual eCommandType getType() const
+	virtual CommandType::eCommandType getType() const
 	{
 		return (this->type_);
 	}

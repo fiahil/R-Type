@@ -15,63 +15,60 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sfJoystick.cpp">
+    <ClCompile Include="Input\sfKeyboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="Input\sfJoystick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sfWindow.cpp">
+    <ClCompile Include="Input\sfMouse.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sfMouse.cpp">
+    <ClCompile Include="GameComponent\IGameComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sfKeyboard.cpp">
+    <ClCompile Include="SpriteSheet\sfSpriteSheet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sfSpriteSheet.cpp">
+    <ClCompile Include="SpriteSheet\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Ship.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameComponent.cpp">
+    <ClCompile Include="GameComponent\GameComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IGameComponent.cpp">
+    <ClCompile Include="Window\sfWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IInput.h">
+    <ClInclude Include="GameComponent\IGameComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IGameWindow.h">
+    <ClInclude Include="GameComponent\GameComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sfJoystick.h">
+    <ClInclude Include="Window\sfWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sfWindow.h">
+    <ClInclude Include="Window\IGameWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sfMouse.h">
+    <ClInclude Include="SpriteSheet\ISpriteSheet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sfKeyboard.h">
+    <ClInclude Include="SpriteSheet\sfSpriteSheet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sfSpriteSheet.h">
+    <ClInclude Include="Input\sfKeyboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ISpriteSheet.h">
+    <ClInclude Include="Input\sfJoystick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IGameComponent.h">
+    <ClInclude Include="Input\IInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameComponent.h">
+    <ClInclude Include="Input\sfMouse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

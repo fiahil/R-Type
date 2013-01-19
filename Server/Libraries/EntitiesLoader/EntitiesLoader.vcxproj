@@ -75,10 +75,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Gameplay\sources\GameplayEngine.cpp" />
     <ClCompile Include="..\..\Quadtree\sources\Collider.cpp" />
     <ClCompile Include="..\..\Quadtree\sources\Node.cpp" />
     <ClCompile Include="..\..\Quadtree\sources\QuadTree.cpp" />
-    <ClCompile Include="sources\GameplayEngine.cpp" />
     <ClCompile Include="sources\main.cpp" />
   </ItemGroup>
   <ItemGroup>

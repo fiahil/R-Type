@@ -8,8 +8,8 @@ GameplayEngine::GameplayEngine(std::string path) {
   this->manager_ = new Dl::DlManager<PackedPlugin>();
   this->manager_->loadPlugin(path);
 
-  if (this->manager_->isPluginLoaded("Test Loader") == true) {
-    PackedPlugin * pp_ = this->manager_->getObject("Test Loader");
+  if (this->manager_->isPluginLoaded("Stage_1") == true) {
+    PackedPlugin * pp_ = this->manager_->getObject("Stage_1");
 	this->gm_ = pp_->gm_;
 	this->sc_ = pp_->sc_;
 	std::cout << "Success on the recuperation of the pack : " << path << std::endl;
@@ -27,7 +27,7 @@ void GameplayEngine::handleEvent(/*Event & evt*/) {
   // A coder une fois que la class Event est prete
 }
 
-void GameplayEngine::plugEntity(ICollidable * tity) {
+void GameplayEngine::plugEntity(IEntity * tity) {
 }
 
 void GameplayEngine::update() {

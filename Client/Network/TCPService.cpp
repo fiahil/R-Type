@@ -8,7 +8,6 @@
 // Last update Sat Jan 19 02:25:35 2013 alexandre teisseire
 //
 
-#include	<unistd.h>
 #include	<boost/bind.hpp>
 #include	"TCPService.hpp"
 #include	"PackMan.h"

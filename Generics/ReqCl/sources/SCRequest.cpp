@@ -60,11 +60,10 @@ eRequestType	AnswerCreateRoom::getType()
   return ANSWER_CREATE_ROOM;
 }
 
-ClientInvited::ClientInvited(char *usernameFrom, int roomId) :
+ClientInvited::ClientInvited(std::string const &usernameFrom, int roomId) :
   ec(Success)
 {
-  std::string	s(usernameFrom);
-  PackMan::Memcpy(parameters.usernameFrom, s.data(), s.size());
+  PackMan::Memcpy(parameters.usernameFrom, usernameFrom.data(), usernameFrom.size());
   parameters.roomId = roomId;
 }
 

@@ -5,7 +5,7 @@
 #include "GameComponent.h"
 
 extern	sfWindow	sfmlWin;
-
+/*
 int main()
 {
 	ISpriteSheet	*test = new sfSpriteSheet("..\\Resources\\Sprite\\round_bot.gif", 1, 12);
@@ -58,3 +58,4 @@ int main()
 
 	return 0;
 }
+*/

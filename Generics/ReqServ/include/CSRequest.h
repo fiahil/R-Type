@@ -5,6 +5,8 @@
 #include	"IRequest.h"
 #include	"IPlayer.h"
 
+
+
 class		Connect : public IRequest
 {
 private:
@@ -14,7 +16,7 @@ private:
     char	passwd[32];
   };
 
-  parameter	parameters;
+  parameter	data;
   errorCode	ec;
 private:
   virtual bool		isValid();
@@ -66,7 +68,7 @@ private:
     int		roomId;
   };
 
-  parameter	parameters;
+  parameter	data;
   errorCode	ec;
   IPlayer*	P;
 
@@ -98,7 +100,7 @@ private:
     int		roomId;
   };
 
-  parameter	parameters;
+  parameter	data;
   errorCode	ec;
   IPlayer	*P;
 
@@ -127,7 +129,7 @@ private:
     char	username[32];
   };
 
-  parameter	parameters;
+  parameter	data;
   errorCode	ec;
   IPlayer*	P;
 
@@ -157,7 +159,7 @@ private:
     char	param[32];
   };
 
-  parameter	parameters;
+  parameter	data;
   errorCode	ec;
 
 private:
@@ -185,7 +187,7 @@ private:
     int		roomId;
   };
 
-  parameter	parameters;
+  parameter	data;
   errorCode	ec;
 
 private:
@@ -235,7 +237,7 @@ private:
     char	endpoint[32];
   };
 
-  parameter	parameters;
+  parameter	data;
   errorCode	ec;
   IPlayer*	P;
 

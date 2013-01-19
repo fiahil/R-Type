@@ -1,6 +1,7 @@
 
 #pragma once
 
+#include	"IService.h"
 #include	"IRequest.h"
 
 class		AnswerCreateRoom : public IRequest
@@ -30,6 +31,7 @@ public:
   virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
+  void	finalize(IService*);
 };
 
 class		ClientInvited : public IRequest
@@ -51,7 +53,7 @@ private:
   virtual void		finalize(TCPService*);
 
 public:
-  ClientInvited(char *, int);
+  ClientInvited(std::string const &, int);
   ClientInvited(std::string &);
   ~ClientInvited();
 

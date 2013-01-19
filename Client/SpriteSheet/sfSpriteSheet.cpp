@@ -2,8 +2,7 @@
 
 sfSpriteSheet::sfSpriteSheet(std::string const& path, int nbAnim, int nbFrame) : window_(sfmlWin), nbAnim_(nbAnim), nbFrame_(nbFrame), currentFrame_(-1)
 {
-	if (!texture_.loadFromFile(path))
-		throw ("Exception TODO");
+	texture_.loadFromFile(path);
 	anim_.setTexture(texture_);
 	size_ = texture_.getSize();
 	sub_.top = 0;
@@ -16,6 +15,7 @@ sfSpriteSheet::sfSpriteSheet(std::string const& path, int nbAnim, int nbFrame) :
 
 sfSpriteSheet::~sfSpriteSheet(void)
 {
+
 }
 
 void	sfSpriteSheet::draw()

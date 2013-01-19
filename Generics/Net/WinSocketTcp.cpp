@@ -125,10 +125,10 @@ std::string SocketTcp::Recv(void)
 
 		DWORD l = MSG_WAITALL;
 
-		if (WSARecv(this->socket_, fb, 1, &ret, &l, 0, 0) == SOCKET_ERROR)
+		if (WSARecv(this->socket_, fb, 1, &ret, &l, 0, 0) == SOCKET_ERROR || ret == 0)
 		{
 			int err = WSAGetLastError();
-			if (err == WSAECONNRESET || err == WSAENETRESET || err == WSAECONNABORTED)
+			if (err == WSAECONNRESET || err == WSAENETRESET || err == WSAECONNABORTED || ret == 0)
 				throw ErrorInOut("Disconnect");
 		}
 

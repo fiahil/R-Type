@@ -32,6 +32,7 @@ void	ClientServiceWorker::operator()()
 			DEBUG << "Packet received by worker" << std::endl;
 
 			TCPPacket*	pack = new TCPPacket();
+
 			PackMan::Memcpy(pack, s.data(), s.size());
 
 			  DEBUG << "Packet Size : " << pack->H.size

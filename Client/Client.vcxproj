@@ -70,7 +70,6 @@
     <ClCompile Include="Input\sfJoystick.cpp" />
     <ClCompile Include="Input\sfKeyboard.cpp" />
     <ClCompile Include="Input\sfMouse.cpp" />
-    <ClCompile Include="sfMenu.cpp" />
     <ClCompile Include="SpriteSheet\Main.cpp" />
     <ClCompile Include="SpriteSheet\sfSpriteSheet.cpp" />
     <ClCompile Include="Window\sfWindow.cpp" />

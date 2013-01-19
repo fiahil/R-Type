@@ -40,20 +40,3 @@ struct Input
   ID	id;
   int	enumKey;
 };
-
-struct Death
-{
-  ID  id;
-  int x;
-  int y;
-};
-
-struct NewEntity
-{
-  ID  id;
-  int x;
-  int y;
-  int speedx;
-  int speedy;
-  int type;
-};

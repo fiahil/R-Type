@@ -193,7 +193,7 @@ bool		LeaveRoom::manageRequest(IService *S)
 
 std::string	LeaveRoom::toString()
 {
-  return std::string(reinterpret_cast<char const *>(this->parameters), sizeof(this->parameters));
+  return std::string(reinterpret_cast<char const *>(&this->parameters), sizeof(this->parameters));
 }
 
 eRequestType	LeaveRoom::getType()

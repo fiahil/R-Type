@@ -21,4 +21,5 @@ public:
 	void	update();
 	void	move(int, int);
 	void	death();
+	void	fire(int, int);
 };

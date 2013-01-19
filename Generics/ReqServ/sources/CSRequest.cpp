@@ -62,7 +62,7 @@ bool		Connect::manageRequest(IService *S)
 
 std::string	Connect::toString()
 {
-  return (std::string(this->parameters.username) + ":" + std::string(this->parameters.passwd));
+  return (std::string(this->parameters.username) + std::string(this->parameters.passwd));
 }
 
 eRequestType	Connect::getType()
@@ -163,6 +163,11 @@ void		LeaveRoom::doOp(IService * S)
 {
   RoomManager&	RM = Resources::RM;
 
+  if (this->P == 0)
+  {
+	  this->ec = S_process_fail;
+	  return;
+  }
   RM.removePlayerFromRoom(this->P->getId(), parameters.roomId);
 }
 
@@ -232,6 +237,11 @@ void		JoinRoom::doOp()
 {
   RoomManager&	RM = Resources::RM;
 
+  if (this->P == 0)
+  {
+	  this->ec = S_process_fail;
+	  return;
+  }
   RM.clonePlayerFromHallToRoom(parameters.roomId, this->P->getId());
 }
 
@@ -257,10 +267,8 @@ bool		JoinRoom::manageRequest(IService *S)
 
 std::string	JoinRoom::toString()
 {
-  std::stringstream ss;
-
-  ss << this->parameters.roomId;
-  return (ss.str());
+	assert(0);
+	return ("");
 }
 
 eRequestType	JoinRoom::getType()
@@ -308,6 +316,11 @@ void		InvitePlayer::doOp(IService* S)
 {
   RoomManager&	RM = Resources::RM;
   IPlayer*	P = RM.getPlayerFromService(S);
+  if (P == 0)
+  {
+	  this->ec = S_process_fail;
+	  return;
+  }
   int		id = RM.getRoomIdFromPlayer(P);
   IRequest	*req = new ClientInvited(P->getName(), id);
 

@@ -65,7 +65,7 @@ eRequestType	AnswerCreateRoom::getType()
 ClientInvited::ClientInvited(std::string const &usernameFrom, int roomId) :
   ec(Success)
 {
- PackMan::Memcpy(&(this->parameters), usernameFrom.data(), usernameFrom.size());
+	PackMan::Memcpy(&(this->parameters.usernameFrom), usernameFrom.data(), usernameFrom.size());
   parameters.roomId = roomId;  
 }
 
@@ -104,10 +104,7 @@ bool		ClientInvited::manageRequest(IService *)
 
 std::string	ClientInvited::toString()
 {
-  std::stringstream	ss;
-
-  ss << this->parameters.usernameFrom << ":" << this->parameters.roomId;
-  return (ss.str());
+	return std::string(reinterpret_cast<char const*>(&this->parameters), sizeof(this->parameters));
 }
 
 eRequestType	ClientInvited::getType()

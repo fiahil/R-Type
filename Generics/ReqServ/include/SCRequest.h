@@ -37,7 +37,7 @@ class		ClientInvited : public IRequest
 private:
   struct	parameters
   {
-    char	*usernameFrom;
+    char	usernameFrom[32];
     int		roomId;
   };
 

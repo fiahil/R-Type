@@ -21,6 +21,15 @@
 # include "UnixSocketUdp.h"
 #endif
 
+static Net::ISocket*	iniSocket()
+{
+	Net::ISocket*	s = new Net::SocketUdp(Net::SERVERMODE);
+	s->Bind(Net::EndPoint(42999));
+	return s;
+}
+
+Net::ISocket*	ClientService::UDPsock_ = iniSocket();
+
 ClientService::ClientService(Net::ISocket* s)
 	: sock_(s),
 	inStorage_(),
@@ -29,12 +38,10 @@ ClientService::ClientService(Net::ISocket* s)
 	inConsumer_(&inStorage_),
 	outProducer_(&outStorage_),
 	worker_(inStorage_, s, this),
-	UDPsock_(new Net::SocketUdp(Net::SERVERMODE)),
 	UDPinStorage_(),
 	UDPinConsumer_(&UDPinStorage_),
-	UDPworker_(UDPinStorage_,UDPsock_, this)
+	UDPworker_(UDPinStorage_, ClientService::UDPsock_, this)
 {
-	this->UDPsock_->Bind(Net::EndPoint(42999));
 }
 
 ClientService::~ClientService()

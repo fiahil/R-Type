@@ -10,8 +10,8 @@ class		Connect : public IRequest
 private:
   struct	parameter
   {
-    char	username[20];
-    char	passwd[20];
+    char	username[32];
+    char	passwd[32];
   };
 
   parameter	parameters;
@@ -124,7 +124,7 @@ class		InvitePlayer : public IRequest
 private:
   struct	parameter
   {
-    char	username[20];
+    char	username[32];
   };
 
   parameter	parameters;
@@ -154,7 +154,7 @@ class		SetGameParam : public IRequest
 private:
   struct	parameter
   {
-    char	*param;
+    char	param[32];
   };
 
   parameter	parameters;
@@ -232,7 +232,7 @@ class		Ready : public IRequest
 private:
   struct	parameter
   {
-    char	endpoint[25];
+    char	endpoint[32];
   };
 
   parameter	parameters;

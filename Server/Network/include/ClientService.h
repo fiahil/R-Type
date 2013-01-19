@@ -39,10 +39,10 @@ private:
 	producer			outProducer_;
 	ClientServiceWorker	worker_;
 
-	Net::ISocket*		UDPsock_;
-	UDPstorage			UDPinStorage_;
-	UDPconsumer			UDPinConsumer_;
-	ClientServiceUDPWorker UDPworker_;
+	static Net::ISocket*	UDPsock_;
+	UDPstorage				UDPinStorage_;
+	UDPconsumer				UDPinConsumer_;
+	ClientServiceUDPWorker	UDPworker_;
 
 public:
 	ClientService(Net::ISocket*);

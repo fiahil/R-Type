@@ -21,3 +21,20 @@ struct Fire
   int speedy;
   int power;
 };
+
+struct Death
+{
+  ID  id;
+  int x;
+  int y;
+};
+
+struct NewEntity
+{
+  ID  id;
+  int x;
+  int y;
+  int speedx;
+  int speedy;
+  int type;
+};

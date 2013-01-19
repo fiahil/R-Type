@@ -43,7 +43,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\SFML-2.0-rc\include;Window;SpriteSheet;Network;Input;GameComponent;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SFML-2.0-rc\include;Window;SpriteSheet;Network;Input;GameComponent;..\Generics\cmd</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -67,6 +67,7 @@
   <ItemGroup>
     <ClCompile Include="GameComponent\GameComponent.cpp" />
     <ClCompile Include="GameComponent\IGameComponent.cpp" />
+    <ClCompile Include="GameManager\GameManager.cpp" />
     <ClCompile Include="Input\sfJoystick.cpp" />
     <ClCompile Include="Input\sfKeyboard.cpp" />
     <ClCompile Include="Input\sfMouse.cpp" />
@@ -77,6 +78,7 @@
   <ItemGroup>
     <ClInclude Include="GameComponent\GameComponent.h" />
     <ClInclude Include="GameComponent\IGameComponent.h" />
+    <ClInclude Include="GameManager\GameManager.h" />
     <ClInclude Include="Input\IInput.h" />
     <ClInclude Include="Input\sfJoystick.h" />
     <ClInclude Include="Input\sfKeyboard.h" />

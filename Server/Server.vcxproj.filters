@@ -182,9 +182,6 @@
     <ClInclude Include="Room\include\Account.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
-    <ClInclude Include="Room\include\GameplayEngine.h">
-      <Filter>Header Files\Room</Filter>
-    </ClInclude>
     <ClInclude Include="Room\include\Hall.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
@@ -269,9 +266,6 @@
     <ClInclude Include="Gameplay\include\IMoveable.h">
       <Filter>Header Files\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="Gameplay\include\IGameMod.h">
-      <Filter>Header Files\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="..\Generics\ReqServ\include\SCRequest.h">
       <Filter>Header Files\Generics\Req</Filter>
     </ClInclude>
@@ -295,6 +289,15 @@
     </ClInclude>
     <ClInclude Include="Network\include\ClientServiceUDPWorker.h">
       <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\include\GameplayEngine.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\include\GameMod.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\include\IGameMod.h">
+      <Filter>Header Files\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -337,9 +340,6 @@
     <ClCompile Include="Room\sources\Account.cpp">
       <Filter>Source Files\Room</Filter>
     </ClCompile>
-    <ClCompile Include="Room\sources\GameplayEngine.cpp">
-      <Filter>Source Files\Room</Filter>
-    </ClCompile>
     <ClCompile Include="Room\sources\Hall.cpp">
       <Filter>Source Files\Room</Filter>
     </ClCompile>
@@ -373,9 +373,6 @@
     <ClCompile Include="Network\sources\ClientServiceWorker.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
-    <ClCompile Include="Gameplay\sources\Scenario.cpp">
-      <Filter>Source Files\Gameplay</Filter>
-    </ClCompile>
     <ClCompile Include="..\Generics\ReqServ\sources\SCRequest.cpp">
       <Filter>Source Files\Generics\Req</Filter>
     </ClCompile>
@@ -384,6 +381,18 @@
     </ClCompile>
     <ClCompile Include="Network\sources\PackManUDP.cpp">
       <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\sources\Scenario.cpp">
+      <Filter>Source Files\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\sources\GameMod.cpp">
+      <Filter>Source Files\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\sources\PackedPlugin.cpp">
+      <Filter>Source Files\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\sources\GameplayEngine.cpp">
+      <Filter>Source Files\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

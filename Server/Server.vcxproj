@@ -54,6 +54,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Generics\Dl;Gameplay\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -111,6 +112,8 @@
     <ClInclude Include="..\Generics\TP\ThreadPool.h" />
     <ClInclude Include="..\Generics\TP\ThreadPoolQueue.h" />
     <ClInclude Include="..\Generics\TP\ThreadPoolWorker.h" />
+    <ClInclude Include="Gameplay\include\GameMod.h" />
+    <ClInclude Include="Gameplay\include\GameplayEngine.h" />
     <ClInclude Include="Gameplay\include\IArmable.h" />
     <ClInclude Include="Gameplay\include\ICollidable.h" />
     <ClInclude Include="Gameplay\include\IDestroyable.h" />
@@ -139,7 +142,6 @@
     <ClInclude Include="Quadtree\include\Node.h" />
     <ClInclude Include="Quadtree\include\QuadTree.h" />
     <ClInclude Include="Room\include\Account.h" />
-    <ClInclude Include="Room\include\GameplayEngine.h" />
     <ClInclude Include="Room\include\Hall.h" />
     <ClInclude Include="Room\include\IAccount.h" />
     <ClInclude Include="Room\include\IPlayer.h" />
@@ -161,6 +163,9 @@
     <ClCompile Include="..\Generics\Net\WinSocketUdp.cpp" />
     <ClCompile Include="..\Generics\ReqServ\sources\CSRequest.cpp" />
     <ClCompile Include="..\Generics\ReqServ\sources\SCRequest.cpp" />
+    <ClCompile Include="Gameplay\sources\GameMod.cpp" />
+    <ClCompile Include="Gameplay\sources\GameplayEngine.cpp" />
+    <ClCompile Include="Gameplay\sources\PackedPlugin.cpp" />
     <ClCompile Include="Gameplay\sources\Scenario.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Network\sources\ClientService.cpp" />
@@ -174,7 +179,6 @@
     <ClCompile Include="Quadtree\sources\Node.cpp" />
     <ClCompile Include="Quadtree\sources\QuadTree.cpp" />
     <ClCompile Include="Room\sources\Account.cpp" />
-    <ClCompile Include="Room\sources\GameplayEngine.cpp" />
     <ClCompile Include="Room\sources\Hall.cpp" />
     <ClCompile Include="Room\sources\Player.cpp" />
     <ClCompile Include="Room\sources\RegisterManager.cpp" />

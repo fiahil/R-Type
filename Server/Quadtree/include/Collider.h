@@ -10,5 +10,5 @@ class Collider
 public:
 	Collider();
 	~Collider();
-	bool	collide(std::list<ICollidable *>&, ICollidable *); 
+	ICollidable*	collide(std::list<ICollidable *>&, ICollidable *); 
 };

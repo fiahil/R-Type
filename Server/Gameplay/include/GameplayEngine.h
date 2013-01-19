@@ -7,6 +7,7 @@
 #include "IGameMod.h"
 #include "IScenario.h"
 #include "QuadTree.h"
+#include "ICollidable.h"
 // Ajouter l'include de la class Event
 
 class GameplayEngine {
@@ -19,6 +20,6 @@ public:
   IGameMod * gm_;
   IScenario * sc_;
   void handleEvent(/*Event*/);
-  void plugEntity(IEntity *);
+  void plugEntity(ICollidable *);
   void update();
 };

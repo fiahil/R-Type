@@ -93,9 +93,9 @@ void	Node::addEntity(ICollidable *entity)
 	}
 }
 
-bool	Node::checkCollision(ICollidable * check)
+ICollidable*	Node::checkCollision(ICollidable * check)
 {
-	bool	collision = false;
+	ICollidable*	collision = 0;
 	
 	if (items_.size() <= maxEntity_)
 	{
@@ -107,7 +107,7 @@ bool	Node::checkCollision(ICollidable * check)
 	else
 	{
 		for (int i = 0; i < 4; ++i)
-			collision |= leaf_[i].checkCollision(check);
+			collision = leaf_[i].checkCollision(check);
 	}
 
 	return collision;

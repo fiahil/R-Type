@@ -1,6 +1,8 @@
-
 #pragma once
 
+<<<<<<< HEAD
+#include <cstdint>
+=======
 #include <string>
 
 struct	Point
@@ -33,6 +35,7 @@ enum	eSkin
 /* Others */
 	ErrorSkin
 };
+>>>>>>> 5b1a32f69af3e5002c88100c2e0c19e44b8da9ea
 
 class	IEntity
 {
@@ -40,5 +43,5 @@ public:
 	virtual ~IEntity() {}
 
 public:
-	virtual void		fetchLeftBorder(int& x, int& y) const	= 0;
+	virtual uint16_t	getId() const	= 0;
 };

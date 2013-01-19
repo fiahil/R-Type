@@ -2,9 +2,9 @@
 
 #include <deque>
 
-#include "AMonster.h"
+#include "AEntityMonster.h"
 
-class	Alien1 :	public AMonster
+class	Alien1 :	public AEntityMonster
 {
 public:
 	Alien1(const Point& pos, const Point& dir);

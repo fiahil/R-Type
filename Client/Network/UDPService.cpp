@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Wed Jan 16 15:12:08 2013 alexandre teisseire
-// Last update Thu Jan 17 19:29:48 2013 alexandre teisseire
+// Last update Sat Jan 19 14:04:42 2013 alexandre teisseire
 //
 //
 
@@ -117,9 +117,7 @@ void			UDPService::handlePack(const boost::system::error_code&error, std::string
       std::cout << "His size is : " << UDPP->H.size << std::endl;
       std::cout << "and he contains : " << UDPP->value << std::endl;
 
-      // IRequest* IR = PackMan::unpack(UDPP);
-      // if (IR)
-      // 	IR->manageRequest(*this);
+      ICommand*	IC = PackManUDP::unpack(UDPP);
 
       // delete header;
       // delete body;

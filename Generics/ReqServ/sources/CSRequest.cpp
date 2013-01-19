@@ -8,8 +8,8 @@
 Connect::Connect(std::string const& usr, std::string const& passwd) :
   ec(Success)
 {
-	PackMan::Memcpy(parameters.username, usr.data(), usr.size());
-	PackMan::Memcpy(parameters.passwd, passwd.data(), passwd.size());
+  PackMan::Memcpy(parameters.username, usr.data(), usr.size());
+  PackMan::Memcpy(parameters.passwd, passwd.data(), passwd.size());
 }
 
 Connect::Connect(std::string &data)

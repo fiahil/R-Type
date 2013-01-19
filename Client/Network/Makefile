@@ -5,13 +5,16 @@
 ## Login   <teisse_a@epitech.net>
 ## 
 ## Started on  Sun Jan 13 01:24:40 2013 alexandre teisseire
-## Last update Sat Jan 19 01:29:25 2013 alexandre teisseire
+## Last update Sat Jan 19 14:02:54 2013 alexandre teisseire
 ##
 
 NAME	= testClient
 
 PATH_SRC_REQ	= ../../Generics/ReqCl/sources/
 PATH_INC_REQ	= ../../Generics/ReqCl/include/
+
+PATH_SRC_CMD	= ../../Generics/Cmd/
+PATH_INC_CMD	= ../../Generics/Cmd/
 
 PATH_SRC_LOG	= ../../Generics/Logger/
 PATH_INC_LOG	= ../../Generics/Logger/
@@ -20,6 +23,7 @@ SRCXX	= NetworkManager.cpp			\
 	TCPService.cpp				\
 	UDPService.cpp				\
 	PackMan.cpp				\
+	PackManUDP.cpp				\
 	client.cpp
 
 SRCXX_CL = $(PATH_SRC_REQ)CSRequest.cpp		\
@@ -36,6 +40,7 @@ OBJXX_CL= $(SRCXX_CL:.cpp=.o)
 INCLUDE	= -I../../Server/Network/include/	\
 	  -I$(PATH_INC_REQ)			\
 	  -I$(PATH_INC_LOG)			\
+	  -I$(PATH_INC_CMD)			\
 	  -I./
 
 RM	= rm -f

@@ -46,3 +46,29 @@ ICommand*	GameManager::getAction()
 {
 	return net_->getAction();
 }
+
+void	GameManager::update()
+{
+
+}
+
+void	GameManager::draw()
+{
+
+}
+
+void	GameManager::release()
+{
+
+}
+
+void		GameManager::run()
+{
+  //	Timer
+  //	while(isAlive)
+  //	{
+  //	  Timer.wait();
+  this->update();
+  this->draw();
+  //    }
+}

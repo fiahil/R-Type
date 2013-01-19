@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EntitiesLoader", "EntitiesLoader.vcxproj", "{47C8E391-A6F3-4F6E-BA52-5165BB7C1688}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Entities", "..\Entities\Entities.vcxproj", "{39E6CBCE-C84C-4C66-871D-73CF9A648FA2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Stage_1", "..\Stage_1\Stage_1.vcxproj", "{055112BB-F24D-4179-B7C6-686E5B3D4402}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47C8E391-A6F3-4F6E-BA52-5165BB7C1688}.Debug|Win32.ActiveCfg = Debug|Win32
+		{47C8E391-A6F3-4F6E-BA52-5165BB7C1688}.Debug|Win32.Build.0 = Debug|Win32
+		{47C8E391-A6F3-4F6E-BA52-5165BB7C1688}.Release|Win32.ActiveCfg = Release|Win32
+		{47C8E391-A6F3-4F6E-BA52-5165BB7C1688}.Release|Win32.Build.0 = Release|Win32
+		{39E6CBCE-C84C-4C66-871D-73CF9A648FA2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{39E6CBCE-C84C-4C66-871D-73CF9A648FA2}.Debug|Win32.Build.0 = Debug|Win32
+		{39E6CBCE-C84C-4C66-871D-73CF9A648FA2}.Release|Win32.ActiveCfg = Release|Win32
+		{39E6CBCE-C84C-4C66-871D-73CF9A648FA2}.Release|Win32.Build.0 = Release|Win32
+		{055112BB-F24D-4179-B7C6-686E5B3D4402}.Debug|Win32.ActiveCfg = Debug|Win32
+		{055112BB-F24D-4179-B7C6-686E5B3D4402}.Debug|Win32.Build.0 = Debug|Win32
+		{055112BB-F24D-4179-B7C6-686E5B3D4402}.Release|Win32.ActiveCfg = Release|Win32
+		{055112BB-F24D-4179-B7C6-686E5B3D4402}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

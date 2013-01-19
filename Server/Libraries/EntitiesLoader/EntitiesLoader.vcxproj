@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{016FE160-960C-4E0D-98D5-12A5569048F8}</ProjectGuid>
+    <ProjectGuid>{47C8E391-A6F3-4F6E-BA52-5165BB7C1688}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>TestLoader</RootNamespace>
+    <RootNamespace>EntitiesLoader</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Spades\Documents\GitHub\R-Type\Server\Quadtree\include;C:\Users\Spades\Documents\GitHub\R-Type\Server\Gameplay\include;C:\Users\Spades\Documents\GitHub\R-Type\Generics\Dl;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\Generics\Dl;.\include;..\..\Gameplay\include;..\..\Quadtree\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -75,14 +75,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Gameplay\sources\GameplayEngine.cpp" />
     <ClCompile Include="..\..\Quadtree\sources\Collider.cpp" />
     <ClCompile Include="..\..\Quadtree\sources\Node.cpp" />
     <ClCompile Include="..\..\Quadtree\sources\QuadTree.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="sources\GameplayEngine.cpp" />
+    <ClCompile Include="sources\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Gameplay\include\GameplayEngine.h" />
+    <ClInclude Include="include\GameplayEngine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

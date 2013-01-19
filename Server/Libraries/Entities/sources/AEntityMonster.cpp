@@ -111,5 +111,5 @@ eAction			AEntityMonster::getNextAction(float atTime) const
 		it != this->script_.end(); ++it)
 			if ((*it).time_ == atTime)
 				return (*it).action_;
-	return (ERROR);
+	return ERRORACTION;
 }

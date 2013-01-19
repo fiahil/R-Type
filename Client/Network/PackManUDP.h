@@ -11,7 +11,7 @@
 class PackManUDP
 {
 private:
-  static std::map<CommandType::eCommandType, ICommand* (*)(const UDPPacket*)> cmdTab;
+	static std::map<CommandType::eCommandType, ICommand* (*)(const UDPPacket*)> cmdTab;
 
 	template<typename S>
 	static void* MemSet(S* dest, std::size_t c)
@@ -73,5 +73,4 @@ public:
 			return (0);
 	}
 
-	
 };

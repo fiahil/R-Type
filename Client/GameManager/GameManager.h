@@ -1,24 +1,31 @@
 #pragma once
 
 #include	<stack>
+#include	"IGameManager.hpp"
 #include	"IInput.h"
 #include	"IGameWindow.h"
 #include	"INetworkManager.hpp"
 #include	"Command.h"
+#include	"Stage.h"
 
-typedef int Stage;
-
-class GameManager
+class GameManager : public IGameManager
 {
-	IGameWindow			*window_;
-	IInput				*input_;
-	INetworkManager		*net_;
-	std::stack<Stage*>	stack_;
+  IInput	*input_;
+  INetworkManager *net_;
+  std::stack<Stage*> stack_;
 
 public:
-	GameManager(void);
-	~GameManager(void);
-	void		treatAction(ICommand *);
-	ICommand*	getAction();
+  GameManager(char**);
+  virtual ~GameManager(void);
+
+public:
+  void		treatAction(ICommand *);
+  ICommand*	getAction();
+
+public:
+  virtual void	run();
+  virtual void	update();
+  virtual void	draw();
+  virtual void	release();
 };
 

@@ -133,16 +133,35 @@ void		ClientService::push(ICommand* r)
 	DEBUG << "TODO gameclock" << std::endl;
 	UDPPacket* pack = PackManUDP::pack(r, 666, r->getType(), 5555); // todo cmd to pack
 
-	DEBUG << "Packet UDP Size : " << pack->H.size
-	<< " ; Packet UDP Type : " << pack->H.type
-	<< " ; Packet UDP Player : " << pack->H.player
-	<< " ; Packet UDP Clock : " << pack->clock
-	<< " ; Pack Data : " << pack->value << std::endl;
+	DEBUG << "Packet UDP Size : " << pack->H.size << std::endl
+		<< " ; Packet UDP Type : " << pack->H.type << std::endl
+		<< " ; Packet UDP Player : " << pack->H.player << std::endl
+		<< " ; Packet UDP Clock : " << pack->clock << std::endl
+		<< " ; Pack Data : " << pack->value << std::endl;
 
 	try
 	{
-		std::string buffer(reinterpret_cast<char const*>(pack), pack->H.size);
-		this->sock_->Send(buffer);
+		std::string buffer(reinterpret_cast<char const*>(pack), sizeof(UDPPacket));
+		this->bind(Net::EndPoint("10.19.252.216", 42998));
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
+		this->UDPsock_->Send(buffer);
 		DEBUG << "UDP SEND SUCCEED" << std::endl;
 	}
 	catch (Net::ErrorInOut&)

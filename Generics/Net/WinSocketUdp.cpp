@@ -40,7 +40,7 @@ bool SocketUdp::isClientMode(void) const
 
 void SocketUdp::Create_(void)
 {
-	this->socket_ = WSASocket(AF_INET, SOCK_DGRAM, IPPROTO_UDP, 0, 0, 0);
+	this->socket_ = WSASocket(AF_INET, SOCK_DGRAM, IPPROTO_UDP, 0, 0, WSA_FLAG_OVERLAPPED);
 }
 
 void SocketUdp::Close_(void)
@@ -116,7 +116,9 @@ std::string SocketUdp::Recv(void)
 
 	DWORD error = WSARecvFrom(this->socket_, fb, 1, &ret, &flags, reinterpret_cast<struct sockaddr*>(&sin), &len, 0, 0);
 	if (error == SOCKET_ERROR && WSAGetLastError() != WSAEMSGSIZE)
-		throw ErrorInOut("Cannot send data");
+		throw ErrorInOut("Cannot recv data");
+
+	DEBUG << "Receiving complete" << std::endl;
 
 	std::string pack = std::string(buff, ret);
 

@@ -427,6 +427,12 @@ bool		LaunchGame::isValid()
   return true;
 }
 
+#include "Cmd.h"
+#include "Command.h"
+#include "ICommand.h"
+#include "IClientService.h"
+#include "Windows.h"
+
 void		LaunchGame::doOp()
 {
   RoomManager&	RM = Resources::RM;
@@ -444,6 +450,21 @@ void		LaunchGame::doOp()
 		IRequest* ir = new GameLaunched(666, 5555.5555);
 
 		(*it)->getService()->push(ir);
+
+		DEBUG << "INCOMMING UDP PACKET" << std::endl;
+		DEBUG << "Wait for it" << std::endl;
+
+		Fire f;
+		f.id = 666;
+		f.power = 100;
+		f.speedx = 55;
+		f.speedy = 77;
+		f.x = 500;
+		f.y = 600;
+
+		ICommand* ic = new Command<Fire>(f, CommandType::FIRE);
+
+		dynamic_cast<IClientService*>((*it)->getService())->push(ic);
 	}
   }
   catch (RoomNotFound&)

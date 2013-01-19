@@ -1,6 +1,6 @@
-
 #pragma once
 
+#include <cstdint>
 #include <string>
 
 struct	Point
@@ -40,5 +40,5 @@ public:
 	virtual ~IEntity() {}
 
 public:
-	virtual void		fetchLeftBorder(int& x, int& y) const	= 0;
+	virtual uint16_t	getId() const	= 0;
 };

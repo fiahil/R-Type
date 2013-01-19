@@ -3,6 +3,9 @@
 class IPlayable
 {
 public:
-  virtual ~IPlayable(void) {}
-  virtual int getInput() const = 0; // Changement de retour plus que probable.
+	virtual ~IPlayable(void) {}
+
+public:
+	virtual const Point&	getPosition() const				= 0;
+	virtual void			setPosition(int x, int y)		= 0;
 };

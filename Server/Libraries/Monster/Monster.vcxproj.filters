@@ -18,7 +18,19 @@
     <ClCompile Include="sources\Alien1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sources\AMonster.cpp">
+    <ClCompile Include="sources\AEntityMonster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\EntityDecor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\EntityPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\EntityWeapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\AEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Gameplay\sources\GameMod.cpp">
@@ -35,13 +47,31 @@
     <ClInclude Include="include\Alien1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\AMonster.h">
+    <ClInclude Include="include\AEntityMonster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EntityDecor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EntityPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EntityWeapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AEntity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Gameplay\include\GameMod.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Gameplay\include\Scenario.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Gameplay\include\IArmable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Gameplay\include\PackedPlugin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Gameplay\include\ICollidable.h">
@@ -69,12 +99,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Gameplay\include\IScriptable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Gameplay\include\PackedPlugin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Gameplay\include\Scenario.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -45,7 +45,7 @@ void	Node::init(int maxDepth, unsigned int maxEntity,
 
 void	Node::clear()
 {
-	for (std::list<IEntity *>::iterator it = items_.begin(); it != items_.end();)
+	for (std::list<ICollidable *>::iterator it = items_.begin(); it != items_.end();)
 	{
 		items_.erase(it);
 	}
@@ -66,27 +66,24 @@ void	Node::autoSplit()
 	for (int i = 0; i < 4; ++i)
 		leaf_[i].clear();
 	
-	for (std::list<IEntity *>::iterator it = items_.begin();
+	HitBox	hit;
+	for (std::list<ICollidable *>::iterator it = items_.begin();
 		 it != items_.end();
 		 ++it)
 	{
-		int x, y;
-		/*
-		(*it)->getPos(x, y);
-
-		if ((*it)->getXDown() <= centerX_ && (*it)->getYLeft() <= centerY_)
+		hit = (*it)->getHitBox();
+		if (hit.xmin_ <= centerX_ && hit.ymin_ <= centerY_)
 			leaf_[0].addEntity(*it);
-		if ((*it)->getXDown() <= centerX_ && (*it)->getYRight() > centerY_)
+		if (hit.xmin_ <= centerX_ && hit.ymax_ > centerY_)
 			leaf_[1].addEntity(*it);
-		if ((*it)->getXUp() > centerX_ && (*it)->getYLeft() <= centerY_)
+		if (hit.xmax_ > centerX_ && hit.ymin_ <= centerY_)
 			leaf_[2].addEntity(*it);
-		if ((*it)->getXUp() > centerX_ && (*it)->getYRight() > centerY_)
+		if (hit.xmax_ > centerX_ && hit.ymax_ > centerY_)
 			leaf_[3].addEntity(*it);
-			*/
 	} 
 }
 
-void	Node::addEntity(IEntity *entity)
+void	Node::addEntity(ICollidable *entity)
 {
 	if (isLast_)
 	{
@@ -96,9 +93,9 @@ void	Node::addEntity(IEntity *entity)
 	}
 }
 
-bool	Node::checkCollision(IEntity * check)
+ICollidable*	Node::checkCollision(ICollidable * check)
 {
-	bool	collision = false;
+	ICollidable*	collision = 0;
 	
 	if (items_.size() <= maxEntity_)
 	{
@@ -110,7 +107,7 @@ bool	Node::checkCollision(IEntity * check)
 	else
 	{
 		for (int i = 0; i < 4; ++i)
-			collision |= leaf_[i].checkCollision(check);
+			collision = leaf_[i].checkCollision(check);
 	}
 
 	return collision;

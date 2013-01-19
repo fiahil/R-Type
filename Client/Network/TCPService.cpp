@@ -129,6 +129,14 @@ void			TCPService::handleConnect(const boost::system::error_code& e, boost::asio
       PackMan::Memcpy(TCPP7->B, &param5, sizeof(param5));
       this->sendData(TCPP7);
 
+      LaunchGame	IP2(0);
+      LaunchGame::parameters param6 = IP2.getParam();
+      TCPPacket* TCPP8 = new TCPPacket();
+      TCPP7->H.size = sizeof(param6) + 4;
+      TCPP7->H.type = IP2.getType();
+      PackMan::Memcpy(TCPP8->B, &param6, sizeof(param6));
+      this->sendData(TCPP8);
+
       this->recvData();
     }
   else

@@ -15,7 +15,6 @@ RoomManager::RoomManager(void)
 {
 	this->hall_ = new Hall();
 	this->tp_ = TP::ThreadPool<IRoom>::getInstance(this->nbMaxGames_);
-	DEBUG << "--Construction RoomManager" << std::endl;
 }
 
 
@@ -24,7 +23,6 @@ RoomManager::~RoomManager(void)
 	deleteObject<Hall>(this->hall_);
 	// unlink toutes les room
 	// faire quelque chose avec la thread pool ?
-	DEBUG << "--Destruction RoomManager" << std::endl;
 }
 
 

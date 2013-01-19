@@ -71,5 +71,8 @@
     <ClInclude Include="Input\sfMouse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="sfMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

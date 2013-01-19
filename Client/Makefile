@@ -8,3 +8,52 @@
 ## Last update Fri Jan 18 20:38:42 2013 alexandre teisseire
 ##
 
+NAME		= R-Type
+
+PATH_SRC	= ./Network/
+
+PATH_SRC_NTK	= ./Network/
+
+PATH_SRC_REQ	= ../../Generics/ReqCl/sources/
+PATH_SRC_LOG    = ../../Generics/Logger/
+
+PATH_INC_REQ    = ../../Generics/ReqCl/include/
+PATH_INC_LOG    = ../../Generics/Logger/
+
+SRC		= $(PATH_SRC_NTK)NetworkManager.cpp	\
+		$(PATH_SRC_NTK)TCPService.cpp		\
+		$(PATH_SRC_NTK)UDPService.cpp		\
+		$(PATH_SRC_NTK)PackMan.cpp		\
+		$(PATH_SRC)client.cpp
+
+SRC_CL		=
+
+SRC_LOG		= 
+
+OBJ		= $(SRC:.cpp=.o)
+
+OBJ_LOG		= $(SRC:.cpp=.o)
+
+INCLUDES	= -I$(PATH_INC_REQ)			\
+		= -I$(PATH_INC_LOG)
+
+CXX		= g++
+
+CXXFLAGS	= -Wall -Wextra -O3 $(INCLUDES) -std=c++0x -g3
+
+LDFLAGS		= -lboost_system -lpthread
+
+RM		= rm -rf
+
+all:		$(NAME)
+
+$(NAME):	$(OBJ)
+		$(CXX) -o $(NAME) $(OBJ) $(LDFLAGS)
+
+clean:
+		$(RM) $(OBJ)
+
+fclean:		clean
+		$(RM) $(NAME)
+
+re:		fclean all

@@ -50,7 +50,7 @@ void		Connect::finalize(IService *S)
   S->push(req);
 }
 
-bool		Connect::manageRequest(IService *S) 
+bool		Connect::manageRequest(IService *S)
 {
   if (this->isValid())
     this->doOp(S);
@@ -159,7 +159,7 @@ void		LeaveRoom::doOp()
 
 }
 
-void		LeaveRoom::doOp(IService * S)
+void		LeaveRoom::doOp(IService *)
 {
   RoomManager&	RM = Resources::RM;
 
@@ -193,10 +193,7 @@ bool		LeaveRoom::manageRequest(IService *S)
 
 std::string	LeaveRoom::toString()
 {
-  std::stringstream ss;
-
-  ss << this->parameters.roomId;
-  return (ss.str());
+  return std::string(reinterpret_cast<char const *>(this->parameters), sizeof(this->parameters));
 }
 
 eRequestType	LeaveRoom::getType()
@@ -216,7 +213,7 @@ JoinRoom::JoinRoom(int roomId) :
 }
 
 JoinRoom::JoinRoom(std::string &data)
-	: P(0)
+: P(0)
 {
   PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
   ec = Success;

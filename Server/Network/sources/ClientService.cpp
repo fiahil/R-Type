@@ -1,6 +1,6 @@
 
 #include "PackMan.h"
-#include "PackmanUDP.h"
+#include "PackManUDP.h"
 #include "logger.h"
 #include "ClientService.h"
 #include "IRequest.h"
@@ -113,12 +113,12 @@ IRequest*	ClientService::pull()
 void		ClientService::push(IRequest* r)
 {
   DEBUG << "Sending request" << std::endl;
-  
+
   TCPPacket* pack = PackMan::pack(r);
 
   if (pack)
-  DEBUG << "Packet Size : " << pack->H.size 
-   	<< " ; Pack Type : " << pack->H.type 
+  DEBUG << "Packet Size : " << pack->H.size
+   	<< " ; Pack Type : " << pack->H.type
   	<< " ; Pack Data : " << pack->B << std::endl;
   else
 	  DEBUG << "Null Packet" << std::endl;
@@ -131,7 +131,7 @@ void		ClientService::push(ICommand* r)
 	DEBUG << "Client Service UDP push" << std::endl;
 
 	DEBUG << "TODO gameclock" << std::endl;
-	UDPPacket* pack = PackManUDP::pack(pack, 666, r->getType(), 5555);
+	UDPPacket* pack = PackManUDP::pack(r, 666, r->getType(), 5555); // todo cmd to pack
 
 	DEBUG << "Packet UDP Size : " << pack->H.size
 	<< " ; Packet UDP Type : " << pack->H.type

@@ -51,10 +51,7 @@ bool		AnswerCreateRoom::manageRequest(TCPService *S)
 
 std::string	AnswerCreateRoom::toString()
 {
-  std::stringstream	ss;
-
-  ss << this->parameters.roomId;
-  return (ss.str());
+  return (std::string(reinterpret_cast<char const *>(&this->parameters), sizeof(this->parameters)));
 }
 
 eRequestType	AnswerCreateRoom::getType()
@@ -108,10 +105,7 @@ bool		ClientInvited::manageRequest(TCPService *S)
 
 std::string	ClientInvited::toString()
 {
-  std::stringstream	ss;
-
-  ss << this->parameters.usernameFrom << ":" << this->parameters.roomId;
-  return (ss.str());
+  return (std::string(reinterpret_cast<char const *>(&this->parameters), sizeof(this->parameters)));
 }
 
 eRequestType	ClientInvited::getType()
@@ -160,10 +154,7 @@ bool		ACK::manageRequest(TCPService *S)
 
 std::string	ACK::toString()
 {
-  std::stringstream ss;
-
-  ss << this->parameters.eCode;
-  return (ss.str());
+  return std::string(reinterpret_cast<char const *>(&this->parameters), sizeof(this->parameters));
 }
 
 eRequestType	ACK::getType()
@@ -214,10 +205,7 @@ bool		GameLaunched::manageRequest(TCPService *S)
 
 std::string	GameLaunched::toString()
 {
-  std::stringstream	ss;
-
-  ss << this->parameters.timestamp << ":" << this->parameters.clock;
-  return (ss.str());
+  return (std::string(reinterpret_cast<char const *>(&this->parameters), sizeof(this->parameters)));
 }
 
 eRequestType	GameLaunched::getType()

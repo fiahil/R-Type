@@ -9,64 +9,40 @@ Collider::~Collider()
 {
 }
 
-bool	Collider::collide(std::list<IEntity *>& items, IEntity *object)
+ICollidable*	Collider::collide(std::list<ICollidable *>& items, ICollidable *object)
 {
-	bool	hasCollide = false;
-	std::list<IEntity *>::iterator it = items.begin();
+	std::list<ICollidable *>::iterator it = items.begin();
+	HitBox	hit;
+	const	HitBox	box = object->getHitBox();
 
 	for (; it != items.end(); ++it)
 	{
-		/*
-		if ((*it)->getXUp() < object->getXUp() &&  (*it)->getXUp() > object->getXDown() &&
-			(*it)->getYLeft() > object->getYLeft() &&  (*it)->getYLeft() < object->getYRight())
-				{
-					hasCollide = true;
-					continue ;
-				}
-		if ((*it)->getXUp() < object->getXUp() &&  (*it)->getXUp() > object->getXDown() &&
-			(*it)->getYRight() > object->getYLeft() &&  (*it)->getYRight() < object->getYRight())
-				{
-					hasCollide = true;
-					continue ;
-				}
-		if ((*it)->getXDown() < object->getXUp() &&  (*it)->getXDown() > object->getXDown() &&
-			(*it)->getYLeft() > object->getYLeft() &&  (*it)->getYLeft() < object->getYRight())
-				{
-					hasCollide = true;
-					continue ;
-				}
-		if ((*it)->getXDown() < object->getXUp() &&  (*it)->getXDown() > object->getXDown() &&
-			(*it)->getYRight() > object->getYLeft() &&  (*it)->getYRight() < object->getYRight())
-				{
-					hasCollide = true;
-					continue ;
-				}
+		hit = (*it)->getHitBox();
 
-		if (object->getXUp() < (*it)->getXUp() &&  object->getXUp() > (*it)->getXDown() &&
-			object->getYLeft() > (*it)->getYLeft() &&  object->getYLeft() < (*it)->getYRight())
-				{
-					hasCollide = true;
-					continue ;
-				}
-		if (object->getXUp() < (*it)->getXUp() &&  object->getXUp() > (*it)->getXDown() &&
-			object->getYRight() > (*it)->getYLeft() &&  object->getYRight() < (*it)->getYRight())
-				{
-					hasCollide = true;
-					continue ;
-				}
-		if (object->getXDown() < (*it)->getXUp() &&  object->getXDown() > (*it)->getXDown() &&
-			object->getYLeft() > (*it)->getYLeft() &&  object->getYLeft() < (*it)->getYRight())
-				{
-					hasCollide = true;
-					continue ;
-				}
-		if (object->getXDown() < (*it)->getXUp() &&  object->getXDown() > (*it)->getXDown() &&
-			object->getYRight() > (*it)->getYLeft() &&  object->getYRight() < (*it)->getYRight())
-				{
-					hasCollide = true;
-					continue ;
-				}
-				*/
+		if (hit.xmin_ < box.xmin_ &&  hit.xmin_ > box.xmax_ &&
+			hit.ymin_ > box.ymin_ &&  hit.ymin_ < box.ymax_)
+				return (*it);
+		if (hit.xmin_ < box.xmin_ &&  hit.xmin_ > box.xmax_ &&
+			hit.ymax_ > box.ymin_ &&  hit.ymax_ < box.ymax_)
+				return (*it);
+		if (hit.xmax_ < box.xmin_ &&  hit.xmax_ > box.xmax_ &&
+			hit.ymin_ > box.ymin_ &&  hit.ymin_ < box.ymax_)
+				return (*it);
+		if (hit.xmax_ < box.xmin_ &&  hit.xmax_ > box.xmax_ &&
+			hit.ymax_ > box.ymin_ &&  hit.ymax_ < box.ymax_)
+				return (*it);
+		if (box.xmin_ < hit.xmin_ &&  box.xmin_ > hit.xmax_ &&
+			box.ymin_ > hit.ymin_ &&  box.ymin_ < hit.ymax_)
+				return (*it);
+		if (box.xmin_ < hit.xmin_ &&  box.xmin_ > hit.xmax_ &&
+			box.ymax_ > hit.ymin_ &&  box.ymax_ < hit.ymax_)
+				return (*it);
+		if (box.xmax_ < hit.xmin_ &&  box.xmax_ > hit.xmax_ &&
+			box.ymin_ > hit.ymin_ &&  box.ymin_ < hit.ymax_)
+				return (*it);
+		if (box.xmax_ < hit.xmin_ &&  box.xmax_ > hit.xmax_ &&
+			box.ymax_ > hit.ymin_ &&  box.ymax_ < hit.ymax_)
+				return (*it);
 	}
-	return hasCollide;
+	return 0;
 }

@@ -16,51 +16,72 @@ QuadTree::~QuadTree()
 {
 }
 
-bool	QuadTree::checkCollision(IEntity *check)
+ICollidable*	QuadTree::checkCollision(ICollidable *check)
 {
-	bool	isDead = false;
+	ICollidable	*collide = 0;
 
 	for (int i = 0; i < 4; ++i)
 	{
-		if (tree_[i].checkCollision(check))
-		{
-			isDead = true;
-		}
+		collide = tree_[i].checkCollision(check);
+		if (collide)
+			return collide;
 	}
-	return isDead;
+	return collide;
 }
 
-void	QuadTree::addShip(IEntity *ship)
-{/*
+void	QuadTree::addShip(ICollidable *ship)
+{
+	const	HitBox	hit = ship->getHitBox();
 	ship_.push_back(ship);
-	if (ship->getXUp() < (x_ / 2) && ship->getYLeft() < (y_ / 2))
+	if (hit.xmin_ < (x_ / 2) && hit.ymin_ < (y_ / 2))
 		tree_[0].addEntity(ship);
-	if (ship->getXUp() < (x_ / 2) && ship->getYLeft() >= (y_ / 2))
+	if (hit.xmin_ < (x_ / 2) && hit.ymax_ >= (y_ / 2))
 		tree_[1].addEntity(ship);
-	if (ship->getXUp() >= (x_ / 2) && ship->getYLeft() < (y_ / 2))
+	if (hit.xmax_ >= (x_ / 2) && hit.ymin_ < (y_ / 2))
 		tree_[2].addEntity(ship);
-	if (ship->getXUp() >= (x_ / 2) && ship->getYLeft() >= (y_ / 2))
+	if (hit.xmax_ >= (x_ / 2) && hit.ymax_ >= (y_ / 2))
 		tree_[3].addEntity(ship);
-		*/
 }
 
-void	QuadTree::addEnnemy(IEntity *ennemy)
+void	QuadTree::addEnnemy(ICollidable *ennemy)
 {
-	/*
+	const	HitBox	hit = ennemy->getHitBox();
 	ennemy_.push_back(ennemy);
-	if (ennemy->getXDown() < (x_ / 2) && ennemy->getYLeft() < (y_ / 2))
+	if (hit.xmin_ < (x_ / 2) && hit.ymin_ < (y_ / 2))
 		tree_[0].addEntity(ennemy);
-	if (ennemy->getXDown() < (x_ / 2) && ennemy->getYRight() >= (y_ / 2))
+	if (hit.xmin_ < (x_ / 2) && hit.ymax_ >= (y_ / 2))
 		tree_[1].addEntity(ennemy);
-	if (ennemy->getXUp() >= (x_ / 2) && ennemy->getYLeft() < (y_ / 2))
+	if (hit.xmax_ >= (x_ / 2) && hit.ymin_ < (y_ / 2))
 		tree_[2].addEntity(ennemy);
-	if (ennemy->getXUp() >= (x_ / 2) && ennemy->getYRight() >= (y_ / 2))
+	if (hit.xmax_ >= (x_ / 2) && hit.ymax_ >= (y_ / 2))
 		tree_[3].addEntity(ennemy);
-		*/
 }
 
-void	QuadTree::addBullet(IEntity *bullet)
+void	QuadTree::addBullet(ICollidable *bullet)
 {
+	const	HitBox	hit = bullet->getHitBox();
 	bullet_.push_back(bullet);
+	if (hit.xmin_ < (x_ / 2) && hit.ymin_ < (y_ / 2))
+		tree_[0].addEntity(bullet);
+	if (hit.xmin_ < (x_ / 2) && hit.ymax_ >= (y_ / 2))
+		tree_[1].addEntity(bullet);
+	if (hit.xmax_ >= (x_ / 2) && hit.ymin_ < (y_ / 2))
+		tree_[2].addEntity(bullet);
+	if (hit.xmax_ >= (x_ / 2) && hit.ymax_ >= (y_ / 2))
+		tree_[3].addEntity(bullet);
 }
 
+void	QuadTree::update(IGameMod *gm)
+{
+	ICollidable	*collide = 0;
+
+	for (std::list<ICollidable*>::iterator it = ship_.begin(); it != ship_.end(); ++it)
+		{
+			collide = checkCollision(*it);
+			if (collide)
+				{
+					gm->onCollision((*it), collide);
+					collide = 0;
+				}
+	}
+}

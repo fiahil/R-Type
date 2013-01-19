@@ -1,11 +1,12 @@
 #pragma once
 
 #include "IEntity.h"
+#include "ICollidable.h"
 
 class IGameMod {
 public:
   virtual ~IGameMod() {}
-  virtual void onCollision(IEntity*,IEntity*) = 0;
+  virtual void onCollision(ICollidable*,ICollidable*) = 0;
   virtual void onEntityDestruction(IEntity*) = 0;
   virtual void onFire(IEntity*) = 0;
   virtual void onLevelStart() = 0;

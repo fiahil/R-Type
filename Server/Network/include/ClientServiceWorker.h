@@ -25,7 +25,6 @@ private:
 	IClientService*	service_;
 	producer		inProducer_;
 	Net::ISocket*	sock_;
-	// ajout socket UDP
 	volatile bool*	online_;
 
 public:

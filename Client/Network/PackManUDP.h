@@ -11,7 +11,7 @@
 class PackManUDP
 {
 private:
-	static std::map<eCommandType, ICommand* (*)(const UDPPacket*)> cmdTab;
+	static std::map<CommandType::eCommandType, ICommand* (*)(const UDPPacket*)> cmdTab;
 
 	template<typename S>
 	static void* MemSet(S* dest, std::size_t c)
@@ -39,7 +39,7 @@ public:
 	}
 
 	template<class T>
-	static UDPPacket* pack(T* t, int16_t player, eCommandType type, int32_t clock)
+	static UDPPacket* pack(T* t, int16_t player, CommandType::eCommandType type, int32_t clock)
 	{
 		if (!t)
 			return (0);
@@ -59,13 +59,13 @@ public:
 			return (0);
 		T packCmd;
 		PackManUDP::Memcpy(&packCmd, pack->value, pack->H.size - sizeof(pack->H));
-		ICommand* cmd = new Command<T>(packCmd, static_cast<eCommandType>(pack->H.type));
+		ICommand* cmd = new Command<T>(packCmd, static_cast<CommandType::eCommandType>(pack->H.type));
 		return (cmd);
 	}
 
 	static ICommand* unpack(const UDPPacket* pack)
 	{
-		std::map<eCommandType, ICommand* (*)(const UDPPacket*)>::const_iterator cmd = PackManUDP::cmdTab.find(static_cast<eCommandType>(pack->H.type));
+		std::map<CommandType::eCommandType, ICommand* (*)(const UDPPacket*)>::const_iterator cmd = PackManUDP::cmdTab.find(static_cast<CommandType::eCommandType>(pack->H.type));
 
 		if (cmd != PackManUDP::cmdTab.end())
 			return (cmd->second(pack));
@@ -73,5 +73,4 @@ public:
 			return (0);
 	}
 
-	
 };

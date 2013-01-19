@@ -22,7 +22,7 @@ public:
 	{
 		return (this->type_);
 	}
-	
+
 	T& getT()
 	{
 		return (this->cmd_);

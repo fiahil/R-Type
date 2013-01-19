@@ -43,7 +43,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\SFML-2.0-rc\include;Window;SpriteSheet;Network;Input;GameComponent;..\Generics\cmd</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SFML-2.0-rc\include;Window;SpriteSheet;Network;Input;GameComponent;..\Generics\cmd;Stage</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -73,6 +73,7 @@
     <ClCompile Include="Input\sfMouse.cpp" />
     <ClCompile Include="SpriteSheet\Main.cpp" />
     <ClCompile Include="SpriteSheet\sfSpriteSheet.cpp" />
+    <ClCompile Include="Stage\Stage.cpp" />
     <ClCompile Include="Window\sfWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +87,7 @@
     <ClInclude Include="sfMenu.h" />
     <ClInclude Include="SpriteSheet\ISpriteSheet.h" />
     <ClInclude Include="SpriteSheet\sfSpriteSheet.h" />
+    <ClInclude Include="Stage\Stage.h" />
     <ClInclude Include="Window\IGameWindow.h" />
     <ClInclude Include="Window\sfWindow.h" />
   </ItemGroup>

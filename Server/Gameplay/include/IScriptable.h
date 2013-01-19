@@ -7,7 +7,8 @@ enum eAction {
   SPEEDOWN,
   VIEWVERT,
   VIEWHORI,
-  ERROR
+  FIRE,
+  ERRORACTION
 };
 
 struct Actions {

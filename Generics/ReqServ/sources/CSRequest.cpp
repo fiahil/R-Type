@@ -436,15 +436,20 @@ void		LaunchGame::doOp()
 
 	RM.setRoomStatus(this->parameters.roomId, true);
 	RM.linkRoomToThreadPool(this->parameters.roomId);
+
+	for (std::deque<IPlayer*>::const_iterator it = players.begin();
+		it != players.end();
+		++it)
+	{
+		IRequest* ir = new GameLaunched(666, 5555.5555);
+
+		(*it)->getService()->push(ir);
+	}
   }
   catch (RoomNotFound&)
   {
 	  this->ec = S_process_fail;
   }
-
-  //
-  // notifier les autres clients que le jeu est lancé
-  //
 }
 
 void		LaunchGame::finalize(IService* S)

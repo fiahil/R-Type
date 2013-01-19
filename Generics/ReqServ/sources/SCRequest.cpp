@@ -202,10 +202,7 @@ bool		GameLaunched::manageRequest(IService *)
 
 std::string	GameLaunched::toString()
 {
-  std::stringstream	ss;
-
-  ss << this->parameters.timestamp << ":" << this->parameters.clock;
-  return (ss.str());
+	return std::string(reinterpret_cast<char const*>(&this->parameters), sizeof(this->parameters));
 }
 
 eRequestType	GameLaunched::getType()

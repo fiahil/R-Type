@@ -7,8 +7,8 @@ class		Connect : public IRequest
 public:
   typedef struct	parameter
   {
-    char	username[20];
-    char	passwd[20];
+    char	username[32];
+    char	passwd[32];
   }		parameters;
 
 private:
@@ -17,10 +17,10 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  virtual void		finalize(TCPService*);
 
 private:
-    void		doOp(IService*);
+    void		doOp(TCPService*);
 
 public:
     Connect(std::string, std::string);
@@ -28,7 +28,7 @@ public:
   ~Connect();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
   parameters&	getParam();
@@ -42,7 +42,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  virtual void		finalize(TCPService*);
 
 public:
   CreateRoom();
@@ -50,7 +50,7 @@ public:
   ~CreateRoom();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
 };
@@ -71,10 +71,10 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  virtual void		finalize(TCPService*);
 
 private:
-    void		doOp(IService*);
+    void		doOp(TCPService*);
 
 public:
   LeaveRoom(int);
@@ -82,7 +82,7 @@ public:
   ~LeaveRoom();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
   parameters&		getParam();
@@ -104,7 +104,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  virtual void		finalize(TCPService*);
 
 public:
   JoinRoom(int);
@@ -112,7 +112,7 @@ public:
   ~JoinRoom();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
   parameters&		getParam();
@@ -123,7 +123,7 @@ class		InvitePlayer : public IRequest
 public:
   typedef struct	parameter
   {
-    char	username[20];
+    char	username[32];
   }		parameters;
 
 private:
@@ -134,7 +134,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  virtual void		finalize(TCPService*);
 
 public:
   InvitePlayer(char  *);
@@ -142,7 +142,7 @@ public:
   ~InvitePlayer();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
   parameters&		getParam();
@@ -164,7 +164,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  virtual void		finalize(TCPService*);
 
 public:
   SetGameParam(int, int);
@@ -172,7 +172,7 @@ public:
   ~SetGameParam();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
   parameters&		getParam();
@@ -193,7 +193,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  virtual void		finalize(TCPService*);
 
 public:
   LaunchGame(int);
@@ -201,7 +201,7 @@ public:
   ~LaunchGame();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
   parameters&		getParam();
@@ -216,7 +216,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  virtual void		finalize(TCPService*);
 
 public:
   Ping();
@@ -224,7 +224,7 @@ public:
   ~Ping();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
 };
@@ -234,7 +234,7 @@ class		Ready : public IRequest
 public:
   typedef struct	parameter
   {
-    char	endpoint[25];
+    char	endpoint[32];
   }		parameters;
 
 private:
@@ -245,7 +245,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  virtual void		finalize(TCPService*);
 
 private:
   Ready();
@@ -256,7 +256,7 @@ public:
   ~Ready();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
   parameters&		getParam();

@@ -5,13 +5,13 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Wed Jan  2 10:13:52 2013 alexandre teisseire
-// Last update Sun Jan 13 04:41:14 2013 alexandre teisseire
+// Last update Sat Jan 19 01:26:54 2013 alexandre teisseire
 //
 
 #pragma once
 
 #include <string>
-#include "IService.h"
+#include "TCPService.hpp"
 #include "TCPPacket.h"
 
 enum			errorCode
@@ -56,11 +56,11 @@ class			IRequest
 private:
   virtual bool		isValid() = 0;
   virtual void		doOp() = 0;
-  virtual void		finalize(IService*) = 0;
+  virtual void		finalize(TCPService*) = 0;
 
 public:
   virtual		~IRequest() {};
-  virtual bool		manageRequest(IService*) = 0;
+  virtual bool		manageRequest(TCPService*) = 0;
   virtual std::string	toString() = 0;
   virtual eRequestType	getType() = 0;
 };

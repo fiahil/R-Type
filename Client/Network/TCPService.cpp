@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 23:16:13 2013 alexandre teisseire
-// Last update Sat Jan 19 00:18:37 2013 alexandre teisseire
+// Last update Sat Jan 19 02:25:35 2013 alexandre teisseire
 //
 
 #include	<unistd.h>
@@ -53,6 +53,7 @@ void			TCPService::retrieveBody(std::string header)
   struct TCPPacket::Header *H = new TCPPacket::Header();
 
   PackMan::Memcpy(H, header.data(), 4);
+  std::cout << "Header Size :" << H->size << " ; Header Type : " << H->type << std::endl;
 
   char			*pack = new char[H->size - 4];
 
@@ -95,21 +96,21 @@ void			TCPService::handleConnect(const boost::system::error_code& e, boost::asio
       PackMan::Memcpy(TCPP3->B, &param1, sizeof(param1));
       this->sendData(TCPP3);
 
-      LeaveRoom		LR(0);
-      LeaveRoom::parameters param2 = LR.getParam();
-      TCPPacket* TCPP4 = new TCPPacket();
-      TCPP4->H.size = sizeof(param2) + 4;
-      TCPP4->H.type = LR.getType();
-      PackMan::Memcpy(TCPP4->B, &param2, sizeof(param2));
-      this->sendData(TCPP4);
+      // LeaveRoom		LR(0);
+      // LeaveRoom::parameters param2 = LR.getParam();
+      // TCPPacket* TCPP4 = new TCPPacket();
+      // TCPP4->H.size = sizeof(param2) + 4;
+      // TCPP4->H.type = LR.getType();
+      // PackMan::Memcpy(TCPP4->B, &param2, sizeof(param2));
+      // this->sendData(TCPP4);
 
-      JoinRoom		JR2(0);
-      JoinRoom::parameters param3 = JR2.getParam();
-      TCPPacket* TCPP5 = new TCPPacket();
-      TCPP5->H.size = sizeof(param3) + 4;
-      TCPP5->H.type = JR.getType();
-      PackMan::Memcpy(TCPP5->B, &param1, sizeof(param3));
-      this->sendData(TCPP5);
+      // JoinRoom		JR2(0);
+      // JoinRoom::parameters param3 = JR2.getParam();
+      // TCPPacket* TCPP5 = new TCPPacket();
+      // TCPP5->H.size = sizeof(param3) + 4;
+      // TCPP5->H.type = JR.getType();
+      // PackMan::Memcpy(TCPP5->B, &param1, sizeof(param3));
+      // this->sendData(TCPP5);
 
       Connect	C2(std::string("Jacky"), std::string("Passwd.pas.Hash.>_<"));
       Connect::parameters param4 = C2.getParam();
@@ -127,6 +128,7 @@ void			TCPService::handleConnect(const boost::system::error_code& e, boost::asio
       TCPP7->H.type = IP.getType();
       PackMan::Memcpy(TCPP7->B, &param5, sizeof(param5));
       this->sendData(TCPP7);
+
       this->recvData();
     }
   else
@@ -175,9 +177,9 @@ void			TCPService::handlePack(const boost::system::error_code&error, std::string
       std::cout << "His size is : " << TCPP->H.size << std::endl;
       std::cout << "and he contains : " << TCPP->B << std::endl;
 
-      // IRequest* IR = PackMan::unpack(TCPP);
-      // if (IR)
-      // 	IR->manageRequest(*this);
+      IRequest* IR = PackMan::unpack(TCPP);
+      if (IR)
+      	IR->manageRequest(this);
 
       // delete header;
       // delete body;

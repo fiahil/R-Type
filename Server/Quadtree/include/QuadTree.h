@@ -2,6 +2,7 @@
 
 #include	"Node.h"
 #include	"Collider.h"
+#include	"IGameMod.h"
 
 class QuadTree
 {
@@ -18,7 +19,8 @@ class QuadTree
 public:
 	QuadTree(int x, int y, unsigned int maxEPN, unsigned int maxDepth);
 	~QuadTree();
-	bool					checkCollision(ICollidable *);
+	void					update(IGameMod*);
+	ICollidable*			checkCollision(ICollidable *);
 	void					addEnnemy(ICollidable *);
 	void					addShip(ICollidable *);
 	void					addBullet(ICollidable *);

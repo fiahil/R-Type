@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 22:05:03 2013 alexandre teisseire
-// Last update Fri Jan 18 00:02:39 2013 alexandre teisseire
+// Last update Sat Jan 19 15:39:05 2013 alexandre teisseire
 //
 
 #include	<iostream>
@@ -31,7 +31,7 @@ void		NetworkManager::run()
   try
     {
       TCPService	TCPS(this->ios, this->etcp);
-      // UDPService	UDPS(this->ios, this->eudp);
+      // UDPService	UDPS(*this, this->ios, this->eudp);
       
       this->ios.run();
     }
@@ -39,4 +39,20 @@ void		NetworkManager::run()
     {
       std::cerr << e.what() << std::endl;
     }      
+}
+
+void		NetworkManager::push_back(ICommand *IC)
+{
+  this->actions.push_back(IC);
+}
+
+ICommand*	NetworkManager::getAction()
+{
+  if (!this->actions.empty())
+    {
+      ICommand*	IC = this->actions.front();
+      this->actions.pop_front();
+      return IC;
+    }
+  return 0;
 }

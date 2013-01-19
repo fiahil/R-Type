@@ -6,7 +6,7 @@ class GameMod : public IGameMod {
 public:
   GameMod();
   ~GameMod();
-  void onCollision(IEntity*,IEntity*);
+  void onCollision(ICollidable*,ICollidable*);
   void onEntityDestruction(IEntity*);
   void onFire(IEntity*);
   void onLevelStart();

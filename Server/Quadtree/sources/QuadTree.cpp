@@ -16,18 +16,17 @@ QuadTree::~QuadTree()
 {
 }
 
-bool	QuadTree::checkCollision(ICollidable *check)
+ICollidable*	QuadTree::checkCollision(ICollidable *check)
 {
-	bool	isDead = false;
+	ICollidable	*collide = 0;
 
 	for (int i = 0; i < 4; ++i)
 	{
-		if (tree_[i].checkCollision(check))
-		{
-			isDead = true;
-		}
+		collide = tree_[i].checkCollision(check);
+		if (collide)
+			return collide;
 	}
-	return isDead;
+	return collide;
 }
 
 void	QuadTree::addShip(ICollidable *ship)
@@ -72,3 +71,17 @@ void	QuadTree::addBullet(ICollidable *bullet)
 		tree_[3].addEntity(bullet);
 }
 
+void	QuadTree::update(IGameMod *gm)
+{
+	ICollidable	*collide = 0;
+
+	for (std::list<ICollidable*>::iterator it = ship_.begin(); it != ship_.end(); ++it)
+		{
+			collide = checkCollision(*it);
+			if (collide)
+				{
+					gm->onCollision((*it), collide);
+					collide = 0;
+				}
+	}
+}

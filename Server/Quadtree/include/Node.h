@@ -26,13 +26,13 @@ public:
 	Node(int, unsigned int, int, int, int, int, Collider*);
 	Node(int, unsigned int, Collider*);
 	~Node();
-	void	addEntity(ICollidable*);
-	bool	checkCollision(ICollidable *);
-	void	setCenterX(int);
-	void	setCenterY(int);
-	void	setSizeX(int);
-	void	setSizeY(int);
-	void	clear();
-	void	init(int, unsigned int, int, int, int, int, Collider*);
+	void			addEntity(ICollidable*);
+	ICollidable*	checkCollision(ICollidable *);
+	void			setCenterX(int);
+	void			setCenterY(int);
+	void			setSizeX(int);
+	void			setSizeY(int);
+	void			clear();
+	void			init(int, unsigned int, int, int, int, int, Collider*);
 };
 

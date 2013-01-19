@@ -6,7 +6,7 @@ GameMod::GameMod() {
 GameMod::~GameMod(){
 }
 
-void GameMod::onCollision(IEntity*,IEntity*){
+void GameMod::onCollision(ICollidable*,ICollidable*){
 }
 
 void GameMod::onEntityDestruction(IEntity*){

@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:45:41 2013 alexandre teisseire
-// Last update Thu Jan 17 16:22:15 2013 alexandre teisseire
+// Last update Sat Jan 19 13:36:25 2013 alexandre teisseire
 //
 
 #include <assert.h>
@@ -104,7 +104,7 @@ bool		ClientInvited::manageRequest(IService *)
 
 std::string	ClientInvited::toString()
 {
-	return std::string(reinterpret_cast<char const*>(&this->parameters), sizeof(this->parameters));
+  return std::string(reinterpret_cast<char const*>(&this->parameters), sizeof(this->parameters));
 }
 
 eRequestType	ClientInvited::getType()

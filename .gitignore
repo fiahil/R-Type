@@ -24,6 +24,7 @@
 *.opensdf
 *.sdf
 *.lastbuildstate
+*.unsucessfulbuild
 
 # SFML
 *.dll

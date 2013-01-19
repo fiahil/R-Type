@@ -9,6 +9,7 @@
 
 class	PackMan
 {
+public:
   template<typename S>
   static void* MemSet(S* dest, std::size_t c)
   {
@@ -20,7 +21,6 @@ class	PackMan
     return (dest);
   }
 
-public:
   template<typename S, typename U>
   static void* Memcpy(U* dest, S* src, std::size_t c)
   {

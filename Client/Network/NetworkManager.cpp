@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 22:05:03 2013 alexandre teisseire
-// Last update Sat Jan 19 15:39:05 2013 alexandre teisseire
+// Last update Sat Jan 19 16:09:28 2013 alexandre teisseire
 //
 
 #include	<iostream>
@@ -31,7 +31,7 @@ void		NetworkManager::run()
   try
     {
       TCPService	TCPS(this->ios, this->etcp);
-      // UDPService	UDPS(*this, this->ios, this->eudp);
+      UDPService	UDPS(*this, this->ios, this->eudp);
       
       this->ios.run();
     }

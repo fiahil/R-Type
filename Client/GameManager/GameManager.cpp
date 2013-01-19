@@ -1,8 +1,18 @@
 #include "GameManager.h"
+#include "NetworkManager.hpp"
+#include "sfWindow.h"
+#include "sfJoystick.h"
+#include "sfKeyboard.h"
+#include "sfMouse.h"
 
+extern sfWindow sfmlWin;
 
-GameManager::GameManager(void)
-{
+GameManager::GameManager(char** av)
+{ 
+  this->net_ = new NetworkManager(av);
+  this->input_ = new sfKeyboard();
+
+  this->net_->run();
 }
 
 

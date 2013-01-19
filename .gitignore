@@ -7,6 +7,8 @@
 *.ilk
 *.pdb
 *.idb
+*.exp
+*.lib
 
 # Compiled Dynamic libraries
 *.so

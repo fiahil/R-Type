@@ -16,12 +16,14 @@
 Connect::Connect(std::string usr, std::string passwd) :
   ec(Success)
 {
+  PackMan::MemSet(&this->param, sizeof(this->param));
   PackMan::Memcpy(param.username, usr.data(), usr.size());
   PackMan::Memcpy(param.passwd, passwd.data(), passwd.size());
 }
 
 Connect::Connect(std::string &data)
 {
+  PackMan::MemSet(&this->param, sizeof(this->param));
   PackMan::Memcpy(&(this->param), data.data(), data.size());
   ec = Success;
 }
@@ -121,6 +123,7 @@ LeaveRoom::LeaveRoom(int roomId) :
 
 LeaveRoom::LeaveRoom(std::string &data)
 {
+  PackMan::MemSet(&this->param, sizeof(this->param));
   PackMan::Memcpy(&(this->param), data.data(),  static_cast<size_t>(data.length()));
   ec = Success;
 }
@@ -178,6 +181,7 @@ JoinRoom::JoinRoom(int roomId) :
 
 JoinRoom::JoinRoom(std::string &data)
 {
+  PackMan::MemSet(&this->param, sizeof(this->param));
   PackMan::Memcpy(&(this->param), data.data(),  data.size());
   ec = Success;
 }
@@ -222,14 +226,17 @@ JoinRoom::parameters&	JoinRoom::getParam()
   return this->param;
 }
 
-InvitePlayer::InvitePlayer(char *) :
+InvitePlayer::InvitePlayer(const char *u, int) :
   ec(Success)
 {
-  // param.username = usr;
+  std::string usr(u);
+  PackMan::MemSet(&this->param, sizeof(this->param));
+  PackMan::Memcpy(this->param.username, usr.data(), usr.size());
 }
 
 InvitePlayer::InvitePlayer(std::string &data)
 {
+  PackMan::MemSet(&this->param, sizeof(this->param));
   PackMan::Memcpy(&(this->param), data.data(),  data.size());
   ec = Success;
 }
@@ -286,6 +293,7 @@ SetGameParam::SetGameParam(int key, int value) :
 
 SetGameParam::SetGameParam(std::string &data)
 {
+  PackMan::MemSet(&this->param, sizeof(this->param));
   PackMan::Memcpy(&(this->param), data.data(),  data.size());
   ec = Success;
 }
@@ -345,6 +353,7 @@ LaunchGame::LaunchGame(int roomId) :
 
 LaunchGame::LaunchGame(std::string &data)
 {
+  PackMan::MemSet(&this->param, sizeof(this->param));
   PackMan::Memcpy(&(this->param), data.data(),  data.size());
   ec = Success;
 }
@@ -450,6 +459,7 @@ Ready::Ready(char *) :
 
 Ready::Ready(std::string &data)
 {
+  PackMan::MemSet(&this->param, sizeof(this->param));
   PackMan::Memcpy(&(this->param), data.data(),  data.size());
   ec = Success;
 }

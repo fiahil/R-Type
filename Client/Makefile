@@ -26,9 +26,10 @@ SRC		= $(PATH_SRC_NTK)NetworkManager.cpp	\
 		$(PATH_SRC_NTK)PackMan.cpp		\
 		$(PATH_SRC)client.cpp
 
-SRC_CL		=
+SRC_CL		= $(PATH_SRC_REQ)CSReqiest.cpp		\
+		$(PATH_SRC_REQ)SCRequest.cpp
 
-SRC_LOG		= 
+SRC_LOG		= $(PATH_SRC_LOG)logger.cpp
 
 OBJ		= $(SRC:.cpp=.o)
 

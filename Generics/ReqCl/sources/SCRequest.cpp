@@ -21,6 +21,7 @@ AnswerCreateRoom::AnswerCreateRoom(int roomId) :
 AnswerCreateRoom::AnswerCreateRoom(std::string &data) :
   ec(Success)
 {
+  PackMan::MemSet(&(this->parameters), sizeof(this->parameters));
   PackMan::Memcpy(&(this->parameters), data.data(), data.size());
 }
 
@@ -64,12 +65,13 @@ ClientInvited::ClientInvited(char *usernameFrom, int roomId) :
 {
   std::string	s(usernameFrom);
   PackMan::Memcpy(parameters.usernameFrom, s.data(), s.size());
-  parameters.roomId = roomId;  
+  parameters.roomId = roomId;
 }
 
 ClientInvited::ClientInvited(std::string &data) :
   ec(Success)
 {
+  PackMan::MemSet(&(this->parameters), sizeof(this->parameters));
   PackMan::Memcpy(&(this->parameters), data.data(), data.size());
 }
 
@@ -121,6 +123,7 @@ ACK::ACK(errorCode e)
 
 ACK::ACK(std::string &data)
 {
+  PackMan::MemSet(&(this->parameters), sizeof(this->parameters));
   PackMan::Memcpy(&(this->parameters), data.data(), data.size());
 }
 
@@ -166,12 +169,13 @@ GameLaunched::GameLaunched(int timeStamp, float clock) :
   ec(Success)
 {
   parameters.timestamp = timeStamp;
-  parameters.clock = clock;  
+  parameters.clock = clock;
 }
 
 GameLaunched::GameLaunched(std::string &data) :
   ec(Success)
 {
+  PackMan::MemSet(&(this->parameters), sizeof(this->parameters));
   PackMan::Memcpy(&(this->parameters), data.data(), data.size());
 }
 

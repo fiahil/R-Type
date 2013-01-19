@@ -137,7 +137,7 @@ private:
   virtual void		finalize(TCPService*);
 
 public:
-  InvitePlayer(char  *);
+  InvitePlayer(const char  *, int);
   InvitePlayer(std::string &);
   ~InvitePlayer();
 

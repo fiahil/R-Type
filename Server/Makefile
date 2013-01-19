@@ -56,9 +56,7 @@ SRC_LWP		= $(PATH_SRC_LWP)ScopedLock.cpp		\
 
 SRC_LOG		= $(PATH_SRC_LOG)logger.cpp
 
-SRC_GPLAY	= $(PATH_SRC_GPLAY)GameplayEngine.cpp	\
-		  $(PATH_SRC_GPLAY)PackedPlugin.cpp	\
-		  $(PATH_SRC_GPLAY)Scenario.cpp
+SRC_GPLAY	= $(PATH_SRC_GPLAY)GameplayEngine.cpp
 
 SRC_NETW	= $(PATH_SRC_NETW)ClientService.cpp	\
 		  $(PATH_SRC_NETW)NetworkManager.cpp	\

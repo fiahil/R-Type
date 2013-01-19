@@ -193,10 +193,7 @@ bool		LeaveRoom::manageRequest(IService *S)
 
 std::string	LeaveRoom::toString()
 {
-  std::stringstream ss;
-
-  ss << this->parameters.roomId;
-  return (ss.str());
+  return std::string(reinterpret_cast<char const *>(this->parameters), sizeof(this->parameters));
 }
 
 eRequestType	LeaveRoom::getType()
@@ -216,7 +213,7 @@ JoinRoom::JoinRoom(int roomId) :
 }
 
 JoinRoom::JoinRoom(std::string &data)
-	: P(0)
+: P(0)
 {
   PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
   ec = Success;

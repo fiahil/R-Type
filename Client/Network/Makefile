@@ -5,29 +5,38 @@
 ## Login   <teisse_a@epitech.net>
 ## 
 ## Started on  Sun Jan 13 01:24:40 2013 alexandre teisseire
-## Last update Wed Jan 16 18:14:18 2013 alexandre teisseire
+## Last update Sat Jan 19 01:29:25 2013 alexandre teisseire
 ##
 
 NAME	= testClient
 
-PATH_SRC_REQ	= ../../Generics/ReqCl/
-PATH_INC_REQ	= ../../Generics/ReqCl/
+PATH_SRC_REQ	= ../../Generics/ReqCl/sources/
+PATH_INC_REQ	= ../../Generics/ReqCl/include/
 
-SRCXX	= NetworkManager.cpp	\
-	TCPService.cpp		\
-	UDPService.cpp		\
+PATH_SRC_LOG	= ../../Generics/Logger/
+PATH_INC_LOG	= ../../Generics/Logger/
+
+SRCXX	= NetworkManager.cpp			\
+	TCPService.cpp				\
+	UDPService.cpp				\
+	PackMan.cpp				\
 	client.cpp
 
 SRCXX_CL = $(PATH_SRC_REQ)CSRequest.cpp		\
 	  $(PATH_SRC_REQ)SCRequest.cpp
 
+SRCXX_LOG = $(PATH_SRC_LOG)logger.cpp
+
 CC	= g++
 
 OBJXX	= $(SRCXX:.cpp=.o)
+OBJXX_LOG = $(SRCXX_LOG:.cpp=.o)
 OBJXX_CL= $(SRCXX_CL:.cpp=.o)
 
 INCLUDE	= -I../../Server/Network/include/	\
-	  -I$(PATH_INC_REQ)
+	  -I$(PATH_INC_REQ)			\
+	  -I$(PATH_INC_LOG)			\
+	  -I./
 
 RM	= rm -f
 
@@ -37,11 +46,11 @@ CXXFLAGS = -W -Wall -Werror $(INCLUDE) $(LIB)  -std=c++0x -g3
 
 all :		$(NAME)
 
-$(NAME) :	$(OBJXX) $(OBJXX_CL)
-		$(CC) -o $(NAME) $(OBJXX) $(OBJXX_CL) $(LIB)
+$(NAME) :	$(OBJXX) $(OBJXX_CL) $(OBJXX_LOG)
+		$(CC) -o $(NAME) $(OBJXX) $(OBJXX_CL) $(OBJXX_LOG) $(LIB)
 
 clean :
-		$(RM) $(OBJXX)
+		$(RM) $(OBJXX) $(OBJXX_CL) $(OBJXX_LOG)
 
 fclean :	clean
 		$(RM) $(NAME)

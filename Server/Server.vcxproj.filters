@@ -75,6 +75,9 @@
     <Filter Include="Source Files\Gameplay">
       <UniqueIdentifier>{72a6c83f-b90d-4970-828d-d6987b5f9ea4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Generics\Cmd">
+      <UniqueIdentifier>{449b6294-cf21-42fd-88e9-ef08b7aae1bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Generics\Dl\DlExceptions.h">
@@ -218,9 +221,6 @@
     <ClInclude Include="..\Generics\ReqServ\include\CSRequest.h">
       <Filter>Header Files\Generics\Req</Filter>
     </ClInclude>
-    <ClInclude Include="..\Generics\ReqCl\SCRequest.h">
-      <Filter>Header Files\Generics\Req</Filter>
-    </ClInclude>
     <ClInclude Include="Room\include\Resources.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
@@ -272,6 +272,30 @@
     <ClInclude Include="Gameplay\include\IGameMod.h">
       <Filter>Header Files\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="..\Generics\ReqServ\include\SCRequest.h">
+      <Filter>Header Files\Generics\Req</Filter>
+    </ClInclude>
+    <ClInclude Include="Room\include\RoomException.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\Cmd\Cmd.h">
+      <Filter>Header Files\Generics\Cmd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\Cmd\Command.h">
+      <Filter>Header Files\Generics\Cmd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\Cmd\ICommand.h">
+      <Filter>Header Files\Generics\Cmd</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\include\PackManUDP.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\include\UDPPacket.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\include\ClientServiceUDPWorker.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Generics\LWP\ScopedLock.cpp">
@@ -293,9 +317,6 @@
       <Filter>Source Files\Generics\Net</Filter>
     </ClCompile>
     <ClCompile Include="..\Generics\ReqServ\sources\CSRequest.cpp">
-      <Filter>Source Files\Generics\Req</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Generics\ReqCl\SCRequest.cpp">
       <Filter>Source Files\Generics\Req</Filter>
     </ClCompile>
     <ClCompile Include="Network\sources\PackMan.cpp">
@@ -354,6 +375,15 @@
     </ClCompile>
     <ClCompile Include="Gameplay\sources\Scenario.cpp">
       <Filter>Source Files\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generics\ReqServ\sources\SCRequest.cpp">
+      <Filter>Source Files\Generics\Req</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\sources\ClientServiceUDPWorker.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\sources\PackManUDP.cpp">
+      <Filter>Source Files\Network</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

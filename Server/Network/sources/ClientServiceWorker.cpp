@@ -48,8 +48,10 @@ void	ClientServiceWorker::operator()()
 				DEBUG << "Manage Request" << std::endl;
 				r->manageRequest(this->service_);
 			}
+			else
+				DEBUG << "NULL request" << std::endl;
 		}
-		catch (Net::ErrorInOut&)
+		catch (std::exception&)
 		{
 			DEBUG << "ClientServiceWorker disconnected" << std::endl;
 			*this->online_ = false;

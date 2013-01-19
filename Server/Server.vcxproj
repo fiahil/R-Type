@@ -41,7 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\Server\Quadtree\include;..\Server\Network\include;..\Server\Room\include;..\Generics\TP;..\Server\Gameplay\include;..\Generics\Net;..\Generics\PC;..\Generics\LWP;..\Generics\PS;..\Generics\ReqServ\include;..\Generics\ReqCl;..\Generics\Logger;$(IncludePath)</IncludePath>
+    <IncludePath>..\Server\Quadtree\include;..\Server\Network\include;..\Server\Room\include;..\Generics\TP;..\Server\Gameplay\include;..\Generics\Net;..\Generics\PC;..\Generics\LWP;..\Generics\PS;..\Generics\ReqServ\include;..\Generics\ReqCl\include;..\Generics\Logger;..\Generics\Cmd;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -78,6 +78,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Generics\Cmd\Cmd.h" />
+    <ClInclude Include="..\Generics\Cmd\Command.h" />
+    <ClInclude Include="..\Generics\Cmd\ICommand.h" />
     <ClInclude Include="..\Generics\Dl\DlExceptions.h" />
     <ClInclude Include="..\Generics\Dl\DlManager.h" />
     <ClInclude Include="..\Generics\Dl\IDlLoader.h" />
@@ -102,9 +105,9 @@
     <ClInclude Include="..\Generics\PC\Storage.h" />
     <ClInclude Include="..\Generics\PS\IPoolSystemElement.h" />
     <ClInclude Include="..\Generics\PS\PoolSystem.h" />
-    <ClInclude Include="..\Generics\ReqCl\SCRequest.h" />
     <ClInclude Include="..\Generics\ReqServ\include\CSRequest.h" />
     <ClInclude Include="..\Generics\ReqServ\include\IRequest.h" />
+    <ClInclude Include="..\Generics\ReqServ\include\SCRequest.h" />
     <ClInclude Include="..\Generics\TP\ThreadPool.h" />
     <ClInclude Include="..\Generics\TP\ThreadPoolQueue.h" />
     <ClInclude Include="..\Generics\TP\ThreadPoolWorker.h" />
@@ -121,14 +124,17 @@
     <ClInclude Include="Gameplay\include\PackedPlugin.h" />
     <ClInclude Include="Gameplay\include\Scenario.h" />
     <ClInclude Include="Network\include\ClientService.h" />
+    <ClInclude Include="Network\include\ClientServiceUDPWorker.h" />
     <ClInclude Include="Network\include\ClientServiceWorker.h" />
     <ClInclude Include="Network\include\IClientService.h" />
     <ClInclude Include="Network\include\NetworkManager.h" />
     <ClInclude Include="Network\include\IServerService.h" />
     <ClInclude Include="Network\include\IService.h" />
     <ClInclude Include="Network\include\PackMan.h" />
+    <ClInclude Include="Network\include\PackManUDP.h" />
     <ClInclude Include="Network\include\ServerService.h" />
     <ClInclude Include="Network\include\TCPPacket.h" />
+    <ClInclude Include="Network\include\UDPPacket.h" />
     <ClInclude Include="Quadtree\include\Collider.h" />
     <ClInclude Include="Quadtree\include\Node.h" />
     <ClInclude Include="Quadtree\include\QuadTree.h" />
@@ -142,6 +148,7 @@
     <ClInclude Include="Room\include\RegisterManager.h" />
     <ClInclude Include="Room\include\Resources.h" />
     <ClInclude Include="Room\include\Room.h" />
+    <ClInclude Include="Room\include\RoomException.h" />
     <ClInclude Include="Room\include\RoomManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -152,14 +159,16 @@
     <ClCompile Include="..\Generics\Net\EndPoint.cpp" />
     <ClCompile Include="..\Generics\Net\WinSocketTcp.cpp" />
     <ClCompile Include="..\Generics\Net\WinSocketUdp.cpp" />
-    <ClCompile Include="..\Generics\ReqCl\SCRequest.cpp" />
     <ClCompile Include="..\Generics\ReqServ\sources\CSRequest.cpp" />
+    <ClCompile Include="..\Generics\ReqServ\sources\SCRequest.cpp" />
     <ClCompile Include="Gameplay\sources\Scenario.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Network\sources\ClientService.cpp" />
+    <ClCompile Include="Network\sources\ClientServiceUDPWorker.cpp" />
     <ClCompile Include="Network\sources\ClientServiceWorker.cpp" />
     <ClCompile Include="Network\sources\NetworkManager.cpp" />
     <ClCompile Include="Network\sources\PackMan.cpp" />
+    <ClCompile Include="Network\sources\PackManUDP.cpp" />
     <ClCompile Include="Network\sources\ServerService.cpp" />
     <ClCompile Include="Quadtree\sources\Collider.cpp" />
     <ClCompile Include="Quadtree\sources\Node.cpp" />

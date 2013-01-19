@@ -80,13 +80,13 @@ namespace Net
 
     if ((ret->socket_ = accept(this->socket_, reinterpret_cast<struct sockaddr*>(&sin), &sinlen)) != -1)
       ret->connected_ = true;
-    return (0);
+    return (ret);
   }
 
   void SocketTcp::Send(const std::string& packet)
   {
     if (this->connected_)
-      if (send(this->socket_, packet.c_str(), packet.size(), 0) == -1)
+      if ((send(this->socket_, packet.c_str(), packet.size(), 0)) == -1)
 	throw ErrorInOut("Cannot send data");
   }
 
@@ -96,10 +96,10 @@ namespace Net
       char buff[4096] = {0};
 
       int ret;
-      if ((ret = recv(this->socket_, buff, 4095, 0)) == -1)
+      if ((ret = recv(this->socket_, buff, 4095, 0)) == -1 || ret == 0)
 	throw ErrorInOut("Cannot receive data");
       buff[ret] = 0;
-      return (std::string(buff));
+      return (std::string(buff, ret));
     }
     else
       throw std::exception();

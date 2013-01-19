@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\magere_n\Documents\GitHub\R-Type\Server\Libraries\Monster\include;C:\Users\magere_n\Documents\GitHub\R-Type\Server\Gameplay\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Spades\Documents\GitHub\R-Type\Server\Quadtree\include;C:\Users\Spades\Documents\GitHub\R-Type\Generics\Dl;C:\Users\Spades\Documents\GitHub\R-Type\Server\Libraries\Monster\include;C:\Users\Spades\Documents\GitHub\R-Type\Server\Gameplay\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -75,19 +75,41 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClCompile Include="sources\AEntity.cpp" />
     <ClCompile Include="sources\EntityDecor.cpp" />
     <ClCompile Include="sources\AEntityMonster.cpp" />
     <ClCompile Include="sources\EntityPlayer.cpp" />
     <ClCompile Include="sources\EntityWeapon.cpp" />
+=======
+    <ClCompile Include="..\..\Gameplay\sources\GameMod.cpp" />
+    <ClCompile Include="..\..\Gameplay\sources\PackedPlugin.cpp" />
+    <ClCompile Include="..\..\Gameplay\sources\Scenario.cpp" />
+>>>>>>> 5b1a32f69af3e5002c88100c2e0c19e44b8da9ea
     <ClCompile Include="sources\Alien1.cpp" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClInclude Include="include\AEntity.h" />
     <ClInclude Include="include\EntityDecor.h" />
     <ClInclude Include="include\AEntityMonster.h" />
     <ClInclude Include="include\EntityPlayer.h" />
     <ClInclude Include="include\EntityWeapon.h" />
+=======
+    <ClInclude Include="..\..\Gameplay\include\GameMod.h" />
+    <ClInclude Include="..\..\Gameplay\include\IArmable.h" />
+    <ClInclude Include="..\..\Gameplay\include\ICollidable.h" />
+    <ClInclude Include="..\..\Gameplay\include\IDestroyable.h" />
+    <ClInclude Include="..\..\Gameplay\include\IDrawable.h" />
+    <ClInclude Include="..\..\Gameplay\include\IEntity.h" />
+    <ClInclude Include="..\..\Gameplay\include\IGameMod.h" />
+    <ClInclude Include="..\..\Gameplay\include\IMoveable.h" />
+    <ClInclude Include="..\..\Gameplay\include\IPlayable.h" />
+    <ClInclude Include="..\..\Gameplay\include\IScenario.h" />
+    <ClInclude Include="..\..\Gameplay\include\IScriptable.h" />
+    <ClInclude Include="..\..\Gameplay\include\PackedPlugin.h" />
+    <ClInclude Include="..\..\Gameplay\include\Scenario.h" />
+>>>>>>> 5b1a32f69af3e5002c88100c2e0c19e44b8da9ea
     <ClInclude Include="include\Alien1.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,6 +1,7 @@
 
 #include	<cassert>
 #include	<sstream>
+#include	"RoomException.h"
 #include	"PackMan.h"
 #include	"CSRequest.h"
 
@@ -24,7 +25,7 @@ bool		Connect::isValid()
   RoomManager&	RM = Resources::RM;
   std::string	username(parameters.username);
 
-  if (RM.getPlayerFromName(username) == NULL)
+  if (RM.getPlayerFromName(username) == 0)
     return true;
   return false;
 }
@@ -61,7 +62,7 @@ bool		Connect::manageRequest(IService *S)
 
 std::string	Connect::toString()
 {
-  return (std::string(this->parameters.username) + ":" + std::string(this->parameters.passwd));
+  return (std::string(this->parameters.username) + std::string(this->parameters.passwd));
 }
 
 eRequestType	Connect::getType()
@@ -92,7 +93,6 @@ bool		CreateRoom::isValid()
 
 void		CreateRoom::doOp()
 {
-
 }
 
 void		CreateRoom::doOp(IService* S)
@@ -117,7 +117,7 @@ void		CreateRoom::finalize(IService* S)
 bool		CreateRoom::manageRequest(IService *S)
 {
   if (this->isValid())
-    this->doOp();
+    this->doOp(S);
   else
     this->ec = G_invalid_request;
   this->finalize(S);
@@ -163,8 +163,12 @@ void		LeaveRoom::doOp(IService * S)
 {
   RoomManager&	RM = Resources::RM;
 
+  if (this->P == 0)
+  {
+	  this->ec = S_process_fail;
+	  return;
+  }
   RM.removePlayerFromRoom(this->P->getId(), parameters.roomId);
-  RM.addPlayerToHall(this->P->getName(), this->P->getHash(), S);
 }
 
 void		LeaveRoom::finalize(IService* S)
@@ -180,7 +184,7 @@ bool		LeaveRoom::manageRequest(IService *S)
   this->P = RM.getPlayerFromRoom(S, parameters.roomId);
 
   if (this->isValid())
-    this->doOp();
+    this->doOp(S);
   else
     this->ec = G_invalid_request;
   this->finalize(S);
@@ -233,6 +237,11 @@ void		JoinRoom::doOp()
 {
   RoomManager&	RM = Resources::RM;
 
+  if (this->P == 0)
+  {
+	  this->ec = S_process_fail;
+	  return;
+  }
   RM.clonePlayerFromHallToRoom(parameters.roomId, this->P->getId());
 }
 
@@ -258,10 +267,8 @@ bool		JoinRoom::manageRequest(IService *S)
 
 std::string	JoinRoom::toString()
 {
-  std::stringstream ss;
-
-  ss << this->parameters.roomId;
-  return (ss.str());
+	assert(0);
+	return ("");
 }
 
 eRequestType	JoinRoom::getType()
@@ -309,6 +316,11 @@ void		InvitePlayer::doOp(IService* S)
 {
   RoomManager&	RM = Resources::RM;
   IPlayer*	P = RM.getPlayerFromService(S);
+  if (P == 0)
+  {
+	  this->ec = S_process_fail;
+	  return;
+  }
   int		id = RM.getRoomIdFromPlayer(P);
   IRequest	*req = new ClientInvited(P->getName(), id);
 
@@ -324,7 +336,7 @@ void		InvitePlayer::finalize(IService* S)
 bool		InvitePlayer::manageRequest(IService *S)
 {
   if (this->isValid())
-    this->doOp();
+    this->doOp(S);
   else
     this->ec = S_cmd_refused;
   this->finalize(S);
@@ -345,17 +357,10 @@ InvitePlayer::parameter&  InvitePlayer::getParam()
 	return this->parameters;
 }
 
-SetGameParam::SetGameParam(int key, int value) :
+SetGameParam::SetGameParam(std::string &param) :
   ec(Success)
 {
-  parameters.key = key;
-  parameters.value = value;
-}
-
-SetGameParam::SetGameParam(std::string &data)
-{
-  PackMan::Memcpy(&(this->parameters), data.data(),  data.size());
-  ec = Success;
+  PackMan::Memcpy(this->parameters.param, param.data(),  param.size());
 }
 
 SetGameParam::~SetGameParam() {}
@@ -393,13 +398,7 @@ bool		SetGameParam::manageRequest(IService *S)
 
 std::string	SetGameParam::toString()
 {
-  std::stringstream ss;
-
-  ss << this->parameters.key;
-  ss << ":";
-  ss << this->parameters.value;
-
-  return (ss.str());
+  return (std::string(this->parameters.param));
 }
 
 eRequestType	SetGameParam::getType()
@@ -434,10 +433,17 @@ bool		LaunchGame::isValid()
 void		LaunchGame::doOp()
 {
   RoomManager&	RM = Resources::RM;
-  std::deque<IPlayer*> players = RM.getPlayersFromRoom(this->parameters.roomId);
+  try
+  {
+	std::deque<IPlayer*> players = RM.getPlayersFromRoom(this->parameters.roomId);
 
-  RM.setRoomStatus(this->parameters.roomId, true);
-  RM.linkRoomToThreadPool(this->parameters.roomId);
+	RM.setRoomStatus(this->parameters.roomId, true);
+	RM.linkRoomToThreadPool(this->parameters.roomId);
+  }
+  catch (RoomNotFound&)
+  {
+	  this->ec = S_process_fail;
+  }
 
   //
   // notifier les autres clients que le jeu est lancé
@@ -536,8 +542,8 @@ eRequestType	Ping::getType()
 Ready::Ready(char *ep) :
   ec(Success), P(0)
 {
-	std::string	epp(ep);
-	PackMan::Memcpy(this->parameters.endpoint, epp.data(), epp.size());
+  std::string	epp(ep);
+  PackMan::Memcpy(this->parameters.endpoint, epp.data(), epp.size());
 }
 
 Ready::Ready(std::string &data)

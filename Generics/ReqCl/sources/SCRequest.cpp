@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:45:41 2013 alexandre teisseire
-// Last update Wed Jan 16 00:26:14 2013 alexandre teisseire
+// Last update Sat Jan 19 02:54:33 2013 alexandre teisseire
 //
 
 #include <sstream>
@@ -33,19 +33,13 @@ bool		AnswerCreateRoom::isValid()
 
 void		AnswerCreateRoom::doOp()
 {
-  //
-  // Client process his room id
-  //
 }
 
-void		AnswerCreateRoom::finalize(IService*)
+void		AnswerCreateRoom::finalize(TCPService *)
 {
-  //
-  // ACK
-  //
 }
 
-bool		AnswerCreateRoom::manageRequest(IService *S)
+bool		AnswerCreateRoom::manageRequest(TCPService *S)
 {
   if (this->isValid())
     this->doOp();
@@ -71,7 +65,8 @@ eRequestType	AnswerCreateRoom::getType()
 ClientInvited::ClientInvited(char *usernameFrom, int roomId) :
   ec(Success)
 {
-  parameters.usernameFrom = usernameFrom;
+  std::string	s(usernameFrom);
+  PackMan::Memcpy(parameters.usernameFrom, s.data(), s.size());
   parameters.roomId = roomId;  
 }
 
@@ -88,21 +83,23 @@ bool		ClientInvited::isValid()
   return true;
 }
 
-void		ClientInvited::doOp()
+void		ClientInvited::doOp() {}
+
+void		ClientInvited::doOp(TCPService *S)
+{
+  IRequest*	IR = new JoinRoom(this->parameters.roomId);
+  TCPPacket*	P = PackMan::pack(IR);
+  S->sendData(P);
+}
+
+void		ClientInvited::finalize(TCPService*)
 {
 }
 
-void		ClientInvited::finalize(IService*)
-{
-  //
-  // ACK
-  //
-}
-
-bool		ClientInvited::manageRequest(IService *S)
+bool		ClientInvited::manageRequest(TCPService *S)
 {
   if (this->isValid())
-    this->doOp();
+    this->doOp(S);
   else
     this->ec = C_client_refuse;
   this->finalize(S);
@@ -142,15 +139,16 @@ bool		ACK::isValid()
 
 void		ACK::doOp()
 {
-  // treatError
+  //
+  //	- treat Error -
+  //
 }
 
-void		ACK::finalize(IService* S)
+void		ACK::finalize(TCPService*)
 {
-	S->push(this);
 }
 
-bool		ACK::manageRequest(IService *S)
+bool		ACK::manageRequest(TCPService *S)
 {
   if (this->isValid())
     this->doOp();
@@ -200,14 +198,11 @@ void		GameLaunched::doOp()
   //
 }
 
-void		GameLaunched::finalize(IService*)
+void		GameLaunched::finalize(TCPService*)
 {
-  //
-  // ACK
-  //
 }
 
-bool		GameLaunched::manageRequest(IService *S)
+bool		GameLaunched::manageRequest(TCPService *S)
 {
   if (this->isValid())
     this->doOp();

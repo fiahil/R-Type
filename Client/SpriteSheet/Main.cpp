@@ -8,7 +8,7 @@ extern	sfWindow	sfmlWin;
 
 int main()
 {
-	ISpriteSheet	*test = new sfSpriteSheet("..\\Resources\\Sprite\\r-typesheet42.gif", 5, 5);
+	ISpriteSheet	*test = new sfSpriteSheet("..\\Resources\\Sprite\\round_bot.gif", 1, 12);
 	ISpriteSheet	*test2 = new sfSpriteSheet("..\\Resources\\Sprite\\r-typesheet42.gif", 5, 5);
 	ISpriteSheet	*ships = new sfSpriteSheet("..\\Resources\\Sprite\\ennemy_bullet1.gif", 1, 8);
 	ISpriteSheet	*boom = new sfSpriteSheet("..\\Resources\\Sprite\\little_death.gif", 1, 6);

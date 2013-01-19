@@ -1,5 +1,6 @@
 
 #include "PackMan.h"
+#include "PackmanUDP.h"
 #include "logger.h"
 #include "ClientService.h"
 #include "IRequest.h"
@@ -12,11 +13,22 @@
 # ifndef WIN32_LEAN_AND_MEAN_HEADER_PROTECTION
 #  define WIN32_LEAN_AND_MEAN_HEADER_PROTECTION
 #  include "WinSocketTcp.h"
+#  include "WinSocketUdp.h"
 # endif
 
 #else
 # include "UnixSocketTcp.h"
+# include "UnixSocketUdp.h"
 #endif
+
+static Net::ISocket*	iniSocket()
+{
+	Net::ISocket*	s = new Net::SocketUdp(Net::SERVERMODE);
+	s->Bind(Net::EndPoint(42999));
+	return s;
+}
+
+Net::ISocket*	ClientService::UDPsock_ = iniSocket();
 
 ClientService::ClientService(Net::ISocket* s)
 	: sock_(s),
@@ -25,7 +37,10 @@ ClientService::ClientService(Net::ISocket* s)
 	outConsumer_(&outStorage_),
 	inConsumer_(&inStorage_),
 	outProducer_(&outStorage_),
-	worker_(inStorage_, s, this)
+	worker_(inStorage_, s, this),
+	UDPinStorage_(),
+	UDPinConsumer_(&UDPinStorage_),
+	UDPworker_(UDPinStorage_, ClientService::UDPsock_, this)
 {
 }
 
@@ -36,13 +51,19 @@ ClientService::~ClientService()
 
 void		ClientService::operator()(void)
 {
-	DEBUG << "ClientService functor" << std::endl;
+	DEBUG << "Client's Service launched" << std::endl;
 
 	TP::ThreadPool<ClientServiceWorker>*	tp = TP::ThreadPool<ClientServiceWorker>::getInstance(10);
 
 	tp->push(&this->worker_);
 	if (tp->isSaturated())
 		tp->allocate();
+	
+	TP::ThreadPool<ClientServiceUDPWorker>*	tUDPp = TP::ThreadPool<ClientServiceUDPWorker>::getInstance(10);
+
+	tUDPp->push(&this->UDPworker_);
+	if (tUDPp->isSaturated())
+		tUDPp->allocate();
 
 	bool flag = true;
 
@@ -65,8 +86,12 @@ void		ClientService::operator()(void)
 			DEBUG << "Packet Sent" << std::endl;
 		}
 		if (flag)
+		{
+			DEBUG << "Client Service wait" << std::endl;
 			this->outConsumer_.wait();
+		}
 	}
+	DEBUG << "Client Service ended" << std::endl;
 }
 
 IRequest*	ClientService::pull()
@@ -99,4 +124,54 @@ void		ClientService::push(IRequest* r)
 	  DEBUG << "Null Packet" << std::endl;
 
   this->outProducer_.produce(pack);
+}
+
+void		ClientService::push(ICommand* r)
+{
+	DEBUG << "Client Service UDP push" << std::endl;
+
+	DEBUG << "TODO gameclock" << std::endl;
+	UDPPacket* pack = PackManUDP::pack(pack, 666, r->getType(), 5555);
+
+	DEBUG << "Packet UDP Size : " << pack->H.size
+	<< " ; Packet UDP Type : " << pack->H.type
+	<< " ; Packet UDP Player : " << pack->H.player
+	<< " ; Packet UDP Clock : " << pack->clock
+	<< " ; Pack Data : " << pack->value << std::endl;
+
+	try
+	{
+		std::string buffer(reinterpret_cast<char const*>(pack), pack->H.size);
+		this->sock_->Send(buffer);
+		DEBUG << "UDP SEND SUCCEED" << std::endl;
+	}
+	catch (Net::ErrorInOut&)
+	{
+		DEBUG << "UDP SEND FAIL" << std::endl;
+	}
+}
+
+ICommand*		ClientService::Zpull()
+{
+	DEBUG << "Client Service UDP pull" << std::endl;
+
+	UDPPacket*	 pack = this->UDPinConsumer_.consume();
+
+	if (pack)
+	{
+		DEBUG << "UDP Packet Received" << std::endl;
+		ICommand* r = PackManUDP::unpack(pack);
+
+		return r;
+	}
+
+	DEBUG << "NULL UDP Packet received" << std::endl;
+	return 0;
+
+	return 0;
+}
+
+void			ClientService::bind(Net::EndPoint const& e)
+{
+	this->UDPsock_->Connect(e);
 }

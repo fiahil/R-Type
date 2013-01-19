@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:32:43 2013 alexandre teisseire
-// Last update Wed Jan 16 18:19:49 2013 alexandre teisseire
+// Last update Sat Jan 19 02:44:41 2013 alexandre teisseire
 //
 
 #include	<assert.h>
@@ -39,14 +39,14 @@ void		Connect::doOp()
   assert(0);
 }
 
-void		Connect::finalize(IService *)
+void		Connect::finalize(TCPService *)
 {
   assert(0);
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		Connect::manageRequest(IService *)
+bool		Connect::manageRequest(TCPService *)
 {
   assert(0);
 }
@@ -91,14 +91,14 @@ void		CreateRoom::doOp()
   // envoi de la request au client -> SCRequest
   //
 }
-void		CreateRoom::finalize(IService*)
+void		CreateRoom::finalize(TCPService*)
 {
   assert(0);
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		CreateRoom::manageRequest(IService *)
+bool		CreateRoom::manageRequest(TCPService *)
 {
   assert(0);
 }
@@ -138,18 +138,18 @@ void		LeaveRoom::doOp()
 
 }
 
-void		LeaveRoom::doOp(IService *)
+void		LeaveRoom::doOp(TCPService *)
 {
   assert(0);
 }
 
-void		LeaveRoom::finalize(IService*)
+void		LeaveRoom::finalize(TCPService*)
 {
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		LeaveRoom::manageRequest(IService *)
+bool		LeaveRoom::manageRequest(TCPService *)
 {
   assert(0);
   return true;
@@ -157,10 +157,7 @@ bool		LeaveRoom::manageRequest(IService *)
 
 std::string	LeaveRoom::toString()
 {
-  std::stringstream ss;
-
-  ss << this->param.roomId;
-  return (ss.str());
+  return std::string(reinterpret_cast<char const *>(&(this->param)), sizeof(this->param));
 }
 
 eRequestType	LeaveRoom::getType()
@@ -198,13 +195,13 @@ void		JoinRoom::doOp()
   assert(0);
 }
 
-void		JoinRoom::finalize(IService*)
+void		JoinRoom::finalize(TCPService*)
 {
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		JoinRoom::manageRequest(IService *)
+bool		JoinRoom::manageRequest(TCPService *)
 {
   assert(0);
   return true;
@@ -212,10 +209,7 @@ bool		JoinRoom::manageRequest(IService *)
 
 std::string	JoinRoom::toString()
 {
-  std::stringstream ss;
-
-  ss << this->param.roomId;
-  return (ss.str());
+  return std::string(reinterpret_cast<char const *>(&(this->param)), sizeof(this->param));
 }
 
 eRequestType	JoinRoom::getType()
@@ -256,14 +250,14 @@ void		InvitePlayer::doOp()
   //
 }
 
-void		InvitePlayer::finalize(IService*)
+void		InvitePlayer::finalize(TCPService*)
 {
   assert(0);
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		InvitePlayer::manageRequest(IService *)
+bool		InvitePlayer::manageRequest(TCPService *)
 {
   assert(0);
   return (true);
@@ -315,14 +309,14 @@ void		SetGameParam::doOp()
   // 
 }
 
-void		SetGameParam::finalize(IService*)
+void		SetGameParam::finalize(TCPService*)
 {
   assert(0);
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		SetGameParam::manageRequest(IService *)
+bool		SetGameParam::manageRequest(TCPService *)
 {
   assert(0);
   return (true);
@@ -330,13 +324,7 @@ bool		SetGameParam::manageRequest(IService *)
 
 std::string	SetGameParam::toString()
 {
-  std::stringstream ss;
-
-  ss << this->param.key;
-  ss << ":";
-  ss << this->param.value;
-
-  return (ss.str());
+  return std::string(reinterpret_cast<char const *>(&(this->param)), sizeof(this->param));
 }
 
 eRequestType	SetGameParam::getType()
@@ -378,13 +366,13 @@ void		LaunchGame::doOp()
   //
 }
 
-void		LaunchGame::finalize(IService*)
+void		LaunchGame::finalize(TCPService*)
 {
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		LaunchGame::manageRequest(IService *)
+bool		LaunchGame::manageRequest(TCPService *)
 {
   assert(0);
   return (true);
@@ -432,13 +420,13 @@ void		Ping::doOp()
   // this->P->isAlive();
 }
 
-void		Ping::finalize(IService*)
+void		Ping::finalize(TCPService*)
 {
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		Ping::manageRequest(IService *)
+bool		Ping::manageRequest(TCPService *)
 {
   assert(0);
   return (true);
@@ -482,14 +470,14 @@ void		Ready::doOp()
   //
 }
 
-void		Ready::finalize(IService*)
+void		Ready::finalize(TCPService*)
 {
   assert(0);
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		Ready::manageRequest(IService *)
+bool		Ready::manageRequest(TCPService *)
 {
   assert(0);
   return (true);

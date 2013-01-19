@@ -2,7 +2,6 @@
 #pragma once
 
 #include <iostream>
-#include <ctime>
 
 class Logger
 {
@@ -23,16 +22,6 @@ template <class T>
 std::ostream& operator<<(Logger& logger, T o)
 {
 #ifndef NDEBUG
-	/*
-	time_t rawtime;
-	tm timeinfo;
-	char timer[4096];
-
-	time(&rawtime);
-	localtime_s(&timeinfo, &rawtime);
-	asctime_s(timer, &timeinfo);
-	*/
-
 	logger.getStream() << logger.getLabel() << "\t" << o;
 #else
 	(void)o;

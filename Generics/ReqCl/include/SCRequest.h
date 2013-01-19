@@ -17,17 +17,17 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  virtual void		finalize(TCPService*);
 
 private:
-  void			doOp(IService*);
+  void			doOp(TCPService*);
 public:
   AnswerCreateRoom(int);
   AnswerCreateRoom(std::string &);
   ~AnswerCreateRoom();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
 };
@@ -37,7 +37,7 @@ class		ClientInvited : public IRequest
 private:
   struct	parameters
   {
-    char	*usernameFrom;
+    char	usernameFrom[32];
     int		roomId;
   };
 
@@ -47,7 +47,8 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  void			doOp(TCPService*);
+  virtual void		finalize(TCPService*);
 
 public:
   ClientInvited(char *, int);
@@ -55,7 +56,7 @@ public:
   ~ClientInvited();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
 };
@@ -74,7 +75,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  virtual void		finalize(TCPService*);
 
 public:
   ACK(errorCode);
@@ -82,7 +83,7 @@ public:
   ~ACK();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
 };
@@ -101,7 +102,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  virtual void		finalize(TCPService*);
 
 public:
   StartDataStream(char const *);
@@ -109,7 +110,7 @@ public:
   ~StartDataStream();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
 };
@@ -130,7 +131,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  virtual void		finalize(TCPService*);
 
 public:
   Stream(char const *, char const *);
@@ -138,7 +139,7 @@ public:
   ~Stream();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
 };
@@ -161,7 +162,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  virtual void		finalize(TCPService*);
 
 public:
   StopDataStream(char const *, char const *, int, char const *);
@@ -169,7 +170,7 @@ public:
   ~StopDataStream();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
 };
@@ -189,7 +190,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(IService*);
+  virtual void		finalize(TCPService*);
 
 public:
   GameLaunched(int, float);
@@ -197,7 +198,7 @@ public:
   ~GameLaunched();
 
 public:
-  virtual bool		manageRequest(IService*);
+  virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
 };

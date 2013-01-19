@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 23:16:10 2013 alexandre teisseire
-// Last update Wed Jan 16 14:35:59 2013 alexandre teisseire
+// Last update Sat Jan 19 01:24:34 2013 alexandre teisseire
 //
 
 #ifndef	_TCPSERVICE_HPP_

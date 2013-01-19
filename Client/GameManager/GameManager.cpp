@@ -29,27 +29,27 @@ void	GameManager::treatAction(ICommand *action)
 
 	if (move)
 	{
-			stack_.front()->treatMove(move);
-			return ;
+		stack_.top()->treatMove(move);
+		return ;
 	}
 	Command<Death> * death = dynamic_cast<Command<Death> *>(action);
 
 	if (death)
 	{
-			stack_.front()->treatDeath(death);
-			return ;
+		stack_.top()->treatDeath(death);
+		return ;
 	}
 	Command<Fire> * fire = dynamic_cast<Command<Fire> *>(action);
 
 	if (fire)
 	{
-		stack_.front()->treatFire(fire);
+		stack_.top()->treatShoot(fire);
 		return ;
 	}
 	Command<NewEntity> * newentity = dynamic_cast<Command<NewEntity> *>(action);
 
 	if (newentity)
-		stack_.front()->treatNewEntity(newentity);
+		stack_.top()->treatNewEntity(newentity);
 }
 
 ICommand*	GameManager::getAction()

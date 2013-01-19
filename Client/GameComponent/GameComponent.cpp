@@ -50,3 +50,8 @@ void	GameComponent::move(int x, int y)
 	x_ = x;
 	y_ = y;
 }
+
+void	GameComponent::fire(int, int)
+{
+
+}

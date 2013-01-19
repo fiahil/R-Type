@@ -73,3 +73,29 @@ void	Stage::treatNewEntity(Command<NewEntity> *cmd)
 	this->components.at(life.id) = new GameComponent(sprite, death);
 }
 */
+
+void	GameManager::update()
+{
+
+}
+
+void	GameManager::draw()
+{
+
+}
+
+void	GameManager::release()
+{
+
+}
+
+void		GameManager::run()
+{
+  //	Timer
+  //	while(isAlive)
+  //	{
+  //	  Timer.wait();
+  this->update();
+  this->draw();
+  //    }
+}

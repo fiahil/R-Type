@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\..\Generics\Dl;.\include;..\..\Gameplay\include;..\..\Quadtree\include;..\Stage_1\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\magere_n\Documents\GitHub\R-Type\Generics\Cmd;C:\Users\magere_n\Documents\GitHub\R-Type\Generics\ReqServ\include;C:\Users\magere_n\Documents\GitHub\R-Type\Generics\TP;C:\Users\magere_n\Documents\GitHub\R-Type\Generics\PS;C:\Users\magere_n\Documents\GitHub\R-Type\Generics\PC;C:\Users\magere_n\Documents\GitHub\R-Type\Generics\Net;C:\Users\magere_n\Documents\GitHub\R-Type\Generics\LWP;C:\Users\magere_n\Documents\GitHub\R-Type\Server\Network\include;C:\Users\magere_n\Documents\GitHub\R-Type\Server\Gameplay\include;C:\Users\magere_n\Documents\GitHub\R-Type\Generics\Logger;C:\Users\magere_n\Documents\GitHub\R-Type\Server\Room\include;..\..\..\Generics\Dl;.\include;..\..\Gameplay\include;..\..\Quadtree\include;..\Stage_1\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -75,13 +75,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Generics\Logger\logger.cpp" />
+    <ClCompile Include="..\..\..\Generics\LWP\ScopedLock.cpp" />
+    <ClCompile Include="..\..\..\Generics\LWP\WinCondVar.cpp" />
+    <ClCompile Include="..\..\..\Generics\LWP\WinMutex.cpp" />
+    <ClCompile Include="..\..\..\Generics\Net\EndPoint.cpp" />
     <ClCompile Include="..\..\Gameplay\sources\GameplayEngine.cpp" />
     <ClCompile Include="..\..\Quadtree\sources\Collider.cpp" />
     <ClCompile Include="..\..\Quadtree\sources\Node.cpp" />
     <ClCompile Include="..\..\Quadtree\sources\QuadTree.cpp" />
+    <ClCompile Include="..\..\Room\sources\Player.cpp" />
+    <ClCompile Include="..\..\Room\sources\Room.cpp" />
     <ClCompile Include="sources\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Generics\LWP\ScopedLock.h" />
+    <ClInclude Include="..\..\..\Generics\LWP\WinCondVar.h" />
+    <ClInclude Include="..\..\Network\include\IClientService.h" />
+    <ClInclude Include="..\..\Network\include\IServerService.h" />
+    <ClInclude Include="..\..\Network\include\IService.h" />
+    <ClInclude Include="..\..\Room\include\IPlayer.h" />
+    <ClInclude Include="..\..\Room\include\IRoom.h" />
+    <ClInclude Include="..\..\Room\include\Player.h" />
+    <ClInclude Include="..\..\Room\include\Room.h" />
+    <ClInclude Include="..\Stage_1\include\Scenario.h" />
     <ClInclude Include="include\GameplayEngine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -3,9 +3,13 @@
 
 #include "Scenario.h"
 
+// remove
+#include <iostream>
+
 Scenario::Scenario()
 {
-  // Beginning of TOP Wall Definitions
+
+	// Beginning of TOP Wall Definitions
   Timepoint w01(0.0f, new EntityDecor(Wall_1, 0.5f, Point(0,   0), Point(-130, 0), HitBox(0,   0, 130, 50)));	this->addNewEvent(w01);
   Timepoint w02(0.0f, new EntityDecor(Wall_1, 0.5f, Point(130, 0), Point(-130, 0), HitBox(130, 0, 130, 50)));	this->addNewEvent(w02);
   Timepoint w03(0.0f, new EntityDecor(Wall_1, 0.5f, Point(260, 0), Point(-130, 0), HitBox(260, 0, 130, 50)));	this->addNewEvent(w03);
@@ -44,6 +48,8 @@ Scenario::Scenario()
   Timepoint tp18(23.0f, new Alien1(Point(800, 150), Point(0, 350)));	this->addNewEvent(tp18);
   Timepoint tp19(24.0f, new Alien1(Point(800, 400), Point(0, 75)));		this->addNewEvent(tp19);
   Timepoint tp20(25.0f, new Alien1(Point(800, 300), Point(0, 450)));	this->addNewEvent(tp20);
+
+	std::cout << "[Debug]-- Construction Scenario" << std::endl;
 }
 
 Scenario::~Scenario()

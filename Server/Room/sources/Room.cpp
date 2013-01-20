@@ -1,6 +1,6 @@
 
+#include <queue>
 #include "Room.h"
-
 #include "logger.h"
 
 /* Used to always provide a unique value to [id_] */
@@ -24,6 +24,8 @@ Room::~Room(void)
 void		Room::loadGame()
 {
 	DEBUG << "Loading Game" << std::endl;
+
+	this->engine_ = new GameplayEngine("Stage_1.dll");
 }
 
 

@@ -1,10 +1,12 @@
 #include "Stage.h"
+#include "Skin.h"
 #include "IGameComponent.h"
+
+extern	std::vector<skin> skinArray;
 
 Stage::Stage(void)
 {
 }
-
 
 Stage::~Stage(void)
 {
@@ -32,8 +34,8 @@ void	Stage::treatShoot(Command<Fire> *cmd)
 void	Stage::treatNewEntity(Command<NewEntity> *cmd)
 {
 	struct NewEntity entity = cmd->getT();
-	ISpriteSheet	*sprite = new sfSpriteSheet(entity.filename, entity.anim, entity.frame);
-	ISpriteSheet	*death = new sfSpriteSheet("..\\Resources\\Sprite\\little_death.gif", 1, 6);
+	ISpriteSheet	*sprite = new sfSpriteSheet(skinArray[entity.idSkin].filePath, skinArray[entity.idSkin].anim, skinArray[entity.idSkin].frame);
+	ISpriteSheet	*death = new sfSpriteSheet(skinArray[3].filePath, skinArray[3].anim, skinArray[3].frame);
 	GameComponent	*component = new GameComponent(sprite, death);
 	this->deck_.at(entity.id) = component;
 	this->deck_.at(entity.id)->move(entity.x_start, entity.y_start);

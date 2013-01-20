@@ -71,6 +71,7 @@
   <ItemGroup>
     <ClCompile Include="..\Generics\ReqCl\sources\CSRequest.cpp" />
     <ClCompile Include="..\Generics\ReqCl\sources\SCRequest.cpp" />
+    <ClCompile Include="..\Generics\Skin\Skins.cpp" />
     <ClCompile Include="GameComponent\GameComponent.cpp" />
     <ClCompile Include="GameComponent\IGameComponent.cpp" />
     <ClCompile Include="GameManager\GameManager.cpp" />

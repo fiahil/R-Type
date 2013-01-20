@@ -24,7 +24,7 @@ void	sfMouse::Bind(GameInputKey key)
 	if (event_.type == sf::Event::MouseButtonPressed)
 		binding_.insert(std::pair<GameInputKey, sf::Mouse::Button>(key, event_.mouseButton.button));
 }
-
+#include <iostream>
 int		sfMouse::getLastInput(GameInputKey key)
 {
 	if (key == FireKey || key == UltimateKey)
@@ -43,8 +43,8 @@ int		sfMouse::getLastInput(GameInputKey key)
 		lastPos_[RightKey] = pos.y - delta;
 		lastPos_[LeftKey] = delta - pos.y;
 	}
-	sf::Mouse::setPosition(pos, sfmlWin.getWindow());
-	return (delta - lastPos_[key]) >> 4;
+
+	return (delta - lastPos_[key]) >> 3;
 }
 
 bool	sfMouse::isPressed(GameInputKey key)

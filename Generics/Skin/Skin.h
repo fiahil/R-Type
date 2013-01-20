@@ -9,4 +9,6 @@ struct skin
 	int		frame;
 };
 
-std::vector<skin>	skinArray;
+void	fillArray();
+
+extern std::vector<skin>	skinArray;

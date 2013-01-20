@@ -30,9 +30,7 @@ struct Death
 struct NewEntity
 {
   ID	id;
-  char	filename[32];
-  int	anim;
-  int	frame;
+  int	idSkin;
   int	x_start;
   int	y_start;
 };

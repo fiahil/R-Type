@@ -5,7 +5,6 @@ GameComponent::GameComponent(ISpriteSheet* s, ISpriteSheet* d) : sprite_ (s), de
 {
 }
 
-
 GameComponent::~GameComponent(void)
 {
 }

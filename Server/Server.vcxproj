@@ -109,6 +109,7 @@
     <ClInclude Include="..\Generics\ReqServ\include\CSRequest.h" />
     <ClInclude Include="..\Generics\ReqServ\include\IRequest.h" />
     <ClInclude Include="..\Generics\ReqServ\include\SCRequest.h" />
+    <ClInclude Include="..\Generics\Skin\Skin.h" />
     <ClInclude Include="..\Generics\TP\ThreadPool.h" />
     <ClInclude Include="..\Generics\TP\ThreadPoolQueue.h" />
     <ClInclude Include="..\Generics\TP\ThreadPoolWorker.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="..\Generics\Net\WinSocketUdp.cpp" />
     <ClCompile Include="..\Generics\ReqServ\sources\CSRequest.cpp" />
     <ClCompile Include="..\Generics\ReqServ\sources\SCRequest.cpp" />
+    <ClCompile Include="..\Generics\Skin\Skins.cpp" />
     <ClCompile Include="Gameplay\sources\GameplayEngine.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Network\sources\ClientService.cpp" />

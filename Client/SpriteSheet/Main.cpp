@@ -24,8 +24,9 @@ int main()
 	ISpriteSheet	*bing = new sfSpriteSheet("..\\Resources\\Sprite\\big_death.gif", 1, 8);
 	ISpriteSheet	*ennemy = new sfSpriteSheet("..\\Resources\\Sprite\\ennemy1.gif", 1, 8);
 	
+
 	IInput	*input3 = new sfKeyboard();
-	IInput	*input2 = new sfJoystick();
+	//IInput	*input2 = new sfJoystick();
 	IInput	*input = new sfMouse();
 
 	input3->autoBind(UpKey, sf::Keyboard::W);

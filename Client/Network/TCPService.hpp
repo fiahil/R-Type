@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 23:16:10 2013 alexandre teisseire
-// Last update Sun Jan 20 03:48:03 2013 alexandre teisseire
+// Last update Sun Jan 20 22:01:21 2013 alexandre teisseire
 //
 
 #ifndef	_TCPSERVICE_HPP_
@@ -21,7 +21,6 @@ class	TCPService : public ITCPClientService
 {
 private:
   boost::asio::ip::tcp::socket sock;
-  char* p;
   
 public:
   TCPService(boost::asio::io_service&, boost::asio::ip::tcp::endpoint);

@@ -1,5 +1,4 @@
 #include "GameplayEngine.h"
-
 #include <string>
 #include "logger.h"
 

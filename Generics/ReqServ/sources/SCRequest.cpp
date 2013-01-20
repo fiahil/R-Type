@@ -5,11 +5,10 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:45:41 2013 alexandre teisseire
-// Last update Sat Jan 19 13:36:25 2013 alexandre teisseire
+// Last update Sun Jan 20 21:33:18 2013 alexandre teisseire
 //
 
 #include <assert.h>
-#include <sstream>
 #include "PackMan.h"
 #include "SCRequest.h"
 
@@ -51,10 +50,7 @@ bool		AnswerCreateRoom::manageRequest(IService *)
 
 std::string	AnswerCreateRoom::toString()
 {
-  std::stringstream	ss;
-
-  ss << this->parameters.roomId;
-  return (ss.str());
+  return std::string(reinterpret_cast<char const*>(&this->parameters), sizeof(this->parameters));
 }
 
 eRequestType	AnswerCreateRoom::getType()
@@ -152,10 +148,7 @@ bool		ACK::manageRequest(IService *S)
 
 std::string	ACK::toString()
 {
-  std::stringstream ss;
-
-  ss << this->parameters.eCode;
-  return (ss.str());
+  return std::string(reinterpret_cast<char const*>(&this->parameters), sizeof(this->parameters));
 }
 
 eRequestType	ACK::getType()

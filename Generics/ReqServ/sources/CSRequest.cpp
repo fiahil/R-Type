@@ -1,6 +1,5 @@
 
 #include	<cassert>
-#include	<sstream>
 #include	"RoomException.h"
 #include	"PackMan.h"
 #include	"CSRequest.h"

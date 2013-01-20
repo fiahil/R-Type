@@ -5,21 +5,19 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 23:16:13 2013 alexandre teisseire
-// Last update Sun Jan 20 20:09:05 2013 alexandre teisseire
+// Last update Sun Jan 20 22:51:28 2013 alexandre teisseire
 //
 
 #include	      <iostream>
 #include	<vector>
 #include	<string>
-#include	<boost/shared_ptr.hpp>
-#include	<boost/make_shared.hpp>
 #include	<boost/bind.hpp>
 #include	"TCPService.hpp"
 #include	"PackMan.h"
 #include	"CSRequest.h"
 
 TCPService::TCPService(boost::asio::io_service& ios, boost::asio::ip::tcp::endpoint ep) :
-  sock(ios), p(new char[4])
+  sock(ios)
 {
   this->sock.async_connect(ep, boost::bind(&TCPService::handleConnect, this,
 					   boost::asio::placeholders::error, ep));
@@ -29,11 +27,12 @@ TCPService::~TCPService() {}
 
 void			TCPService::recvData()
 {
+  char *pack = new char[4];
   boost::asio::async_read(this->sock,
-  			  boost::asio::buffer(this->p, 4),
+  			  boost::asio::buffer(pack, 4),
   			  boost::bind(&TCPService::handleRecv, 
   				      this,
-  				      boost::asio::placeholders::error, std::string(this->p)));
+  				      boost::asio::placeholders::error, std::string(pack, 4)));
 
 }
 
@@ -56,7 +55,6 @@ void			TCPService::retrieveBody(std::string header)
   struct TCPPacket::Header *H = new TCPPacket::Header();
 
   PackMan::Memcpy(H, header.data(), 4);
-  std::cout << "bita negra : " << H->size << " et ta soeur : " << H->type << std::endl;
 
   char			*pack = new char[H->size - 4];
 

@@ -7,6 +7,12 @@
 #include	"INetworkManager.hpp"
 #include	"Command.h"
 #include	"Stage.h"
+#include "sfJoystick.h"
+#include "sfMouse.h"
+#include "sfKeyboard.h"
+#include "sfSpriteSheet.h"
+#include "GameComponent.h"
+#include "Skin.h"
 
 class GameManager : public IGameManager
 {
@@ -15,6 +21,14 @@ class GameManager : public IGameManager
   INetworkManager *net_;
   std::stack<Stage*> stack_;
   int		RoomId;
+  
+  ISpriteSheet	*test2;
+  ISpriteSheet	*ships;
+  ISpriteSheet	*boom;
+  ISpriteSheet	*boom2;
+  IInput	*input3;
+  GameComponent	*vaisseau2;
+
 
 public:
   GameManager(char**);

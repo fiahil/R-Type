@@ -5,10 +5,9 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:45:41 2013 alexandre teisseire
-// Last update Sun Jan 20 19:53:26 2013 alexandre teisseire
+// Last update Sun Jan 20 21:33:35 2013 alexandre teisseire
 //
 
-#include <sstream>
 #include "PackMan.h"
 #include "IClientService.h"
 #include "SCRequest.h"

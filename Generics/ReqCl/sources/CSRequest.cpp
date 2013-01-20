@@ -5,11 +5,10 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:32:43 2013 alexandre teisseire
-// Last update Sat Jan 19 02:44:41 2013 alexandre teisseire
+// Last update Sun Jan 20 21:33:34 2013 alexandre teisseire
 //
 
 #include	<assert.h>
-#include	<sstream>
 #include	"IClientService.h"
 #include	"PackMan.h"
 #include	"CSRequest.h"

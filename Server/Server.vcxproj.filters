@@ -83,6 +83,7 @@
     </Filter>
     <Filter Include="Header Files\Generics\Skin">
       <UniqueIdentifier>{07f4997e-e4f0-4060-a549-e3dd9ff9fb3e}</UniqueIdentifier>
+	</Filter>
     <Filter Include="Header Files\Clock">
       <UniqueIdentifier>{6e3086dd-3e13-472b-be0c-4b0cf9ecbf7f}</UniqueIdentifier>
     </Filter>
@@ -312,6 +313,7 @@
     </ClInclude>
     <ClInclude Include="..\Generics\Skin\Skin.h">
       <Filter>Header Files\Generics\Skin</Filter>
+	</ClInclude>
     <ClInclude Include="Clock\include\IClock.h">
       <Filter>Header Files\Clock</Filter>
     </ClInclude>
@@ -406,6 +408,7 @@
     </ClCompile>
     <ClCompile Include="..\Generics\Skin\Skins.cpp">
       <Filter>Source Files\Generics\Skin</Filter>
+	</ClCompile>
     <ClCompile Include="Clock\sources\WinGameClock.cpp">
       <Filter>Source Files\Clock</Filter>
     </ClCompile>

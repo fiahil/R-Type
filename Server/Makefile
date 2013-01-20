@@ -15,12 +15,14 @@ PATH_SRC_REQ	= ../Generics/ReqServ/sources/
 PATH_SRC_LWP	= ../Generics/LWP/
 PATH_SRC_NET	= ../Generics/Net/
 PATH_SRC_NETW	= Network/sources/
+PATH_SRC_CLOCK	= Clock/sources/
 PATH_SRC_LOG	= ../Generics/Logger/
 PATH_SRC_QTREE	= ./Quadtree/sources/
 PATH_SRC_GPLAY	= ./Gameplay/sources/
 
 PATH_INC	= Room/include/
 PATH_INC_REQ	= ../Generics/ReqServ/include/
+PATH_INC_CL	= Clock/include/
 PATH_INC_DL	= ../Generics/Dl/
 PATH_INC_CMD	= ../Generics/Cmd/
 PATH_INC_LWP	= ../Generics/LWP/
@@ -34,7 +36,6 @@ PATH_INC_QTREE	= Quadtree/include/
 PATH_INC_GPLAY	= Gameplay/include/
 
 SRC		= $(PATH_SRC)Account.cpp		\
-		  $(PATH_SRC)GameplayEngine.cpp		\
 		  $(PATH_SRC)Hall.cpp			\
 		  $(PATH_SRC)Player.cpp			\
 		  $(PATH_SRC)RegisterManager.cpp	\
@@ -55,6 +56,8 @@ SRC_LWP		= $(PATH_SRC_LWP)ScopedLock.cpp		\
 		  $(PATH_SRC_LWP)UnixMutex.cpp
 
 SRC_LOG		= $(PATH_SRC_LOG)logger.cpp
+
+SRC_CLOCK	= $(PATH_SRC_CLOCK)UnixGameClock.cpp
 
 SRC_GPLAY	= $(PATH_SRC_GPLAY)GameplayEngine.cpp
 
@@ -79,10 +82,12 @@ OBJ_NETW	= $(SRC_NETW:.cpp=.o)
 OBJ_LOG		= $(SRC_LOG:.cpp=.o)
 OBJ_NET		= $(SRC_NET:.cpp=.o)
 OBJ_QTREE	= $(SRC_QTREE:.cpp=.o)
+OBJ_GPLAY	= $(SRC_GPLAY:.cpp=.o)
+OBJ_CLOCK	= $(SRC_CLOCK:.cpp=.o)
 
 INCLUDES	= -I$(PATH_INC) 	\
 		  -I$(PATH_INC_REQ) 	\
-		  -I$(PATH_INC_CL) 	\
+		  -I$(PATH_INC_CL)	\
 		  -I$(PATH_INC_DL)	\
 		  -I$(PATH_INC_CMD)	\
 		  -I$(PATH_INC_LWP)	\
@@ -99,17 +104,17 @@ CXX		= g++
 
 CXXFLAGS	= -Wall -Wextra -O3 $(INCLUDES) -std=c++0x -g3
 
-LDFLAGS		= -lpthread
+LDFLAGS		= -lpthread -ldl
 
 RM		= rm -rf
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY)
-		$(CXX) -o $(NAME) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY) $(LDFLAGS)
+$(NAME):	$(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY) $(OBJ_CLOCK)
+		$(CXX) -o $(NAME) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY) $(OBJ_CLOCK) $(LDFLAGS)
 
 clean:
-		$(RM) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY)
+		$(RM) $(OBJ) $(OBJ_REQ) $(OBJ_CL) $(OBJ_LWP) $(OBJ_NETW) $(OBJ_NET) $(OBJ_LOG) $(OBJ_QTREE) $(OBJ_GPLAY) $(OBJ_CLOCK)
 
 fclean:		clean
 		$(RM) $(NAME)

@@ -55,12 +55,12 @@ void		Room::playGame()
 	DEBUG << "-> PLAY LOOP" << std::endl;
 	while (!this->engine_->isGameEnded())
 	{
-		DEBUG << "-> LOOP" << std::endl;
+		//DEBUG << "-> LOOP" << std::endl;
 		
 		IEntity	*	fetch = 0;
 
 		/*update scenario*/
-		DEBUG << "UPDATE SCENARIO" << std::endl;
+		//DEBUG << "UPDATE SCENARIO" << std::endl;
 		while ((fetch = this->engine_->sc_->getNextEvent(clock->getElapsedTime())))
 		{
 			NewEntity ne;
@@ -82,18 +82,18 @@ void		Room::playGame()
 		}
 
 		/* treat cmds */
-		DEBUG << "UPDATE PLAYER'S INPUT" << std::endl;
+		//DEBUG << "UPDATE PLAYER'S INPUT" << std::endl;
 		this->engine_->treatPlayersCommands(cmds);
 
 		/* update engine */
-		DEBUG << "QUADTREE UPDATE" << std::endl;
+		//DEBUG << "QUADTREE UPDATE" << std::endl;
 		this->engine_->update();
 
 		/* remove cmds from the queue and dispatchts it to each client */
-		DEBUG << "FLUSH QUEUE" << std::endl;
+		//DEBUG << "FLUSH QUEUE" << std::endl;
 		while (!cmds.empty())
 		{
-			DEBUG << "--> Loop Vidage cmds" << std::endl;
+			//DEBUG << "--> Loop Vidage cmds" << std::endl;
 		
 			ICommand * tmp = cmds.front();
 

@@ -1,15 +1,14 @@
-
 #pragma once
 
 #include <queue>
+#include "IPlayer.h"
+#include "Collider.h"
 #include "DlManager.h"
 #include "PackedPlugin.h"
-#include "Collider.h"
 #include "IGameMod.h"
 #include "IScenario.h"
 #include "QuadTree.h"
 #include "ICollidable.h"
-#include "IPlayer.h"
 #include "ICommand.h"
 // Ajouter l'include de la class Event
 

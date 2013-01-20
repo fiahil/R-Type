@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:45:41 2013 alexandre teisseire
-// Last update Sun Jan 20 21:33:35 2013 alexandre teisseire
+// Last update Sun Jan 20 23:01:26 2013 alexandre teisseire
 //
 
 #include "PackMan.h"

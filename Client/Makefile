@@ -5,7 +5,7 @@
 ## Login   <teisse_a@epitech.net>
 ## 
 ## Started on  Fri Jan 18 20:15:19 2013 alexandre teisseire
-## Last update Sun Jan 20 22:32:03 2013 alexandre teisseire
+## Last update Sun Jan 20 23:05:00 2013 alexandre teisseire
 ##
 
 NAME		= R-Type
@@ -39,8 +39,8 @@ PATH_INC_LOG    = ../Generics/Logger/
 
 PATH_INC_CMD	= ../Generics/Cmd/
 
-PATH_INC_SKIN	= ../Generics/Skin/
-PATH_SRC_SKIN	= ../Generics/Skin/
+PATH_SRC_SNK	= ../Generics/Skin/
+PATH_INC_SNK	= ../Generics/Skin/
 
 PATH_SFML	= ./SFML-Unix/include/
 
@@ -50,6 +50,7 @@ SRC		= $(PATH_SRC_NTK)NetworkManager.cpp	\
 		$(PATH_SRC_NTK)PackMan.cpp		\
 		$(PATH_SRC_NTK)PackManUDP.cpp		\
 		main.cpp
+
 
 SRC_CL		= $(PATH_SRC_REQ)CSRequest.cpp		\
 		  $(PATH_SRC_REQ)SCRequest.cpp
@@ -73,6 +74,8 @@ SRC_WIN		= $(PATH_SRC_WIN)sfWindow.cpp
 
 SRC_STG		= $(PATH_SRC_STG)Stage.cpp
 
+SRC_SNK		= $(PATH_SRC_SNK)Skins.cpp
+
 OBJ		= $(SRC:.cpp=.o)
 
 OBJ_LOG		= $(SRC_LOG:.cpp=.o)
@@ -92,6 +95,8 @@ OBJ_WIN		= $(SRC_WIN:.cpp=.o)
 
 OBJ_STG		= $(SRC_STG:.cpp=.o)
 
+OBJ_SNK		= $(SRC_SNK:.cpp=.o)
+
 INCLUDES	= -I$(PATH_INC_REQ)			\
 		  -I$(PATH_INC_LOG)			\
 		  -I$(PATH_INC_NTK)			\
@@ -101,8 +106,9 @@ INCLUDES	= -I$(PATH_INC_REQ)			\
 		  -I$(PATH_INC_SS)			\
 		  -I$(PATH_INC_WIN)			\
 		  -I$(PATH_INC_CMD)			\
+		  -I$(PATH_INC_SNK)			\
 		  -I$(PATH_INC_STG)			\
-		  -I$(PATH_INC_SKIN)			\
+		  -I$(PATH_INC_SNK)			\
 		  -I$(PATH_SFML)
 
 CXX		= g++
@@ -115,11 +121,11 @@ RM		= rm -rf
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ) $(OBJ_LOG) $(OBJ_CL) $(OBJ_GM) $(OBJ_IN) $(OBJ_WIN) $(OBJ_STG) $(OBJ_SS) $(OBJ_GC) $(OBJ_SKIN)
-		$(CXX) -o $(NAME) $(OBJ) $(OBJ_LOG) $(OBJ_CL) $(OBJ_GM) $(OBJ_IN) $(OBJ_WIN) $(OBJ_STG) $(OBJ_SS) $(OBJ_GC) $(OBJ_SKIN) $(LDFLAGS)
+$(NAME):	$(OBJ) $(OBJ_LOG) $(OBJ_CL) $(OBJ_GM) $(OBJ_IN) $(OBJ_WIN) $(OBJ_SNK) $(OBJ_STG) $(OBJ_SS) $(OBJ_GC)
+		$(CXX) -o $(NAME) $(OBJ) $(OBJ_LOG) $(OBJ_CL) $(OBJ_GM) $(OBJ_IN) $(OBJ_WIN) $(OBJ_STG) $(OBJ_SNK) $(OBJ_SS) $(OBJ_GC) $(LDFLAGS)
 
 clean:
-		$(RM) $(OBJ) $(OBJ_LOG) $(OBJ_CL) $(OBJ_GM) $(OBJ_IN) $(OBJ_WIN) $(OBJ_STG) $(OBJ_SS) $(OBJ_GC)
+		$(RM) $(OBJ) $(OBJ_LOG) $(OBJ_CL) $(OBJ_GM) $(OBJ_IN) $(OBJ_WIN) $(OBJ_SNK) $(OBJ_STG) $(OBJ_SS) $(OBJ_GC)
 
 fclean:		clean
 		$(RM) $(NAME)

@@ -11,7 +11,7 @@ struct HitBox
 
   HitBox() {};
   HitBox(int x1, int y1, int width, int heigh)
-    :	xmin_(x1), ymin_(y1), xmax_(x1 + width), ymax_(y1 + heigh) {}
+    :	xmin_(x1), xmax_(x1 + width), ymin_(y1), ymax_(y1 + heigh) {}
 };
 
 class ICollidable

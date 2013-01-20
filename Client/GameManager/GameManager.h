@@ -14,15 +14,18 @@ class GameManager : public IGameManager
   IInput	*input_;
   INetworkManager *net_;
   std::stack<Stage*> stack_;
+  int		RoomId;
 
 public:
   GameManager(char**);
   virtual ~GameManager(void);
 
 public:
+  static GameManager *GM;
   void		treatAction(ICommand *);
   ICommand*	getAction();
   bool		isAlive() const;
+  void		pushStage(Stage*);
 
 public:
   virtual void	run();
@@ -30,4 +33,3 @@ public:
   virtual void	draw();
   virtual void	release();
 };
-

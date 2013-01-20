@@ -5,13 +5,14 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Thu Jan  3 18:45:41 2013 alexandre teisseire
-// Last update Sat Jan 19 02:54:33 2013 alexandre teisseire
+// Last update Sun Jan 20 19:53:26 2013 alexandre teisseire
 //
 
 #include <sstream>
 #include "PackMan.h"
 #include "IClientService.h"
 #include "SCRequest.h"
+#include "GameManager.h"
 
 AnswerCreateRoom::AnswerCreateRoom(int roomId) :
   ec(Success)
@@ -37,8 +38,12 @@ void		AnswerCreateRoom::doOp()
 {
 }
 
-void		AnswerCreateRoom::finalize(ITCPClientService *)
+void		AnswerCreateRoom::finalize(ITCPClientService *S)
 {
+  std::cout << "allo" << std::endl;
+  IRequest*	IR = new JoinRoom(this->parameters.roomId);
+  TCPPacket*	P = PackMan::pack(IR);
+  S->sendData(P);
 }
 
 bool		AnswerCreateRoom::manageRequest(ITCPClientService *S)
@@ -136,9 +141,6 @@ bool		ACK::isValid()
 
 void		ACK::doOp()
 {
-  //
-  //	- treat Error -
-  //
 }
 
 void		ACK::finalize(ITCPClientService*)
@@ -188,9 +190,9 @@ bool		GameLaunched::isValid()
 
 void		GameLaunched::doOp()
 {
-  //
-  // start Load
-  //
+  GameManager*	GM = GameManager::GM;
+  Stage*	S = new Stage();
+  GM->pushStage(S);
 }
 
 void		GameLaunched::finalize(ITCPClientService*)

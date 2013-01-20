@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Wed Jan 16 15:12:08 2013 alexandre teisseire
-// Last update Sun Jan 20 11:58:01 2013 alexandre teisseire
+// Last update Sun Jan 20 19:57:14 2013 alexandre teisseire
 //
 //
 
@@ -22,10 +22,7 @@ UDPService::UDPService(NetworkManager& NM, boost::asio::io_service& ios, boost::
   ep(ep),
   pack(new char[sizeof(UDPPacket)])
 {
-  std::cout << "Coucou UDP" << std::endl;
-  
   PackMan::MemSet(this->pack, sizeof(UDPPacket));
-  this->recvData();
 }
 
  UDPService::~UDPService() {}
@@ -45,9 +42,6 @@ UDPService::UDPService(NetworkManager& NM, boost::asio::io_service& ios, boost::
    char			*pack = new char[11];
 
    //PackMan::Memcpy(pack, UDPP, UDPP->H.size);
-   PackMan::Memcpy(pack, "Coucou !!", 10);
-
-   std::cout << "SEND DATA !!!" << std::endl;
 //   this->sock.async_send( boost::asio::buffer(pack, UDPP->H.size),
    this->sock.async_send_to( boost::asio::buffer(pack, 10), boost::asio::ip::udp::endpoint(boost::asio::ip::address::from_string("10.19.253.179"), 42999), 
 			    boost::bind(&UDPService::handleSend, 
@@ -60,30 +54,18 @@ UDPService::UDPService(NetworkManager& NM, boost::asio::io_service& ios, boost::
  {
  }
 
- void			UDPService::handleConnect(const boost::system::error_code& e, boost::asio::ip::udp::endpoint ep)
+ void			UDPService::handleConnect(const boost::system::error_code& , boost::asio::ip::udp::endpoint)
+ {
+ }
+
+ void			UDPService::handleRecv(const boost::system::error_code&e, char*header)
  {
    if (!e)
      {
-       //
-       // Send la request de connexion UDP.
-       //
-       std::cout << "[UDP] >> Receiving Datas from : " << ep << std::endl;
-
-       this->recvData();
+       std::cout << "HANDLE RECV : " << header << std::endl;
      }
    else
-     std::cout << "Error --> " << e.message() << " <-- catched while tring to connect to : " << ep << std::endl;
- }
-
- void			UDPService::handleRecv(const boost::system::error_code&, char*)
- {
-   // if (!e)
-   //   {
-   //     std::cout << "HANDLE RECV : " << header << std::endl;
-   //     //       this->retrieveBody(std::string(header, 8));
-   //   }
-   // else
-   //   std::cout << "Recv Error : " << e.message() << " while receiving datas" << std::endl;
+     std::cout << "Recv Error : " << e.message() << " while receiving datas" << std::endl;
  }
 
  void			UDPService::handleSend(const boost::system::error_code& error, char* request, UDPPacket *UDPP)
@@ -98,7 +80,7 @@ UDPService::UDPService(NetworkManager& NM, boost::asio::io_service& ios, boost::
      }
    else
      {
-       std::cout << "Send Error : " << error.message() << " with the request : " << request << std::endl;
+       std::cout << " [UDP] Send Error : " << error.message() << " with the request : " << request << std::endl;
      }
  }
 
@@ -134,7 +116,6 @@ UDPService::UDPService(NetworkManager& NM, boost::asio::io_service& ios, boost::
     }
   else
     {
-      std::cout << "Recv Error : " << error.message() << " while receiving datas" << std::endl;
+      std::cout << "[UDP] Recv Error : " << error.message() << " while receiving datas" << std::endl;
     }
-  this->recvData();
 }

@@ -9,6 +9,7 @@
 #include "SFML/System/Clock.hpp"
 
 extern sfWindow sfmlWin;
+GameManager*	GameManager::GM = 0;
 
 GameManager::GameManager(char** av) : alive(true)
 { 
@@ -63,19 +64,29 @@ bool		GameManager::isAlive() const
   return this->alive;
 }
 
+void		GameManager::pushStage(Stage*S)
+{
+  this->stack_.push(S);
+}
+
 void		GameManager::update()
 {
-
+   if (!this->stack_.empty() && this->alive)
+    {
+      this->stack_.top()->update();
+    }
 }
 
 void		GameManager::draw()
 {
-
+  if (!this->stack_.empty() && this->alive)
+    {
+      this->stack_.top()->draw();
+    }
 }
 
 void		GameManager::release()
 {
-
 }
 
 void		GameManager::run()
@@ -87,7 +98,6 @@ void		GameManager::run()
     {
       if (Clock.getElapsedTime().asSeconds() > 0.150f)
 	{
-	  std::cout << "IN" << std::endl;
 	  Clock.restart(); 
 	  ElapsedTime = 0;
 	  this->update();

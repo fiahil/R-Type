@@ -5,7 +5,7 @@
 ## Login   <teisse_a@epitech.net>
 ## 
 ## Started on  Fri Jan 18 20:15:19 2013 alexandre teisseire
-## Last update Sun Jan 20 10:43:08 2013 alexandre teisseire
+## Last update Sun Jan 20 19:03:29 2013 alexandre teisseire
 ##
 
 NAME		= R-Type
@@ -39,6 +39,9 @@ PATH_INC_LOG    = ../Generics/Logger/
 
 PATH_INC_CMD	= ../Generics/Cmd/
 
+PATH_INC_SKIN	= ../Generics/Skin/
+PATH_SRC_SKIN	= ../Generics/Skin/
+
 PATH_SFML	= ./SFML-Unix/include/
 
 SRC		= $(PATH_SRC_NTK)NetworkManager.cpp	\
@@ -52,6 +55,8 @@ SRC_CL		= $(PATH_SRC_REQ)CSRequest.cpp		\
 		  $(PATH_SRC_REQ)SCRequest.cpp
 
 SRC_LOG		= $(PATH_SRC_LOG)logger.cpp
+
+SRC_SKIN	= $(PATH_SRC_SKIN)Skins.cpp
 
 SRC_GM		= $(PATH_SRC_GM)GameManager.cpp
 
@@ -81,6 +86,7 @@ OBJ_GC		= $(SRC_GC:.cpp=.o)
 OBJ_SS		= $(SRC_SS:.cpp=.o)
 
 OBJ_IN		= $(SRC_IN:.cpp=.o)
+OBJ_SKIN	= $(SRC_SKIN:.cpp=.o)
 
 OBJ_WIN		= $(SRC_WIN:.cpp=.o)
 
@@ -96,6 +102,7 @@ INCLUDES	= -I$(PATH_INC_REQ)			\
 		  -I$(PATH_INC_WIN)			\
 		  -I$(PATH_INC_CMD)			\
 		  -I$(PATH_INC_STG)			\
+		  -I$(PATH_INC_SKIN)			\
 		  -I$(PATH_SFML)
 
 CXX		= g++
@@ -108,8 +115,8 @@ RM		= rm -rf
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ) $(OBJ_LOG) $(OBJ_CL) $(OBJ_GM) $(OBJ_IN) $(OBJ_WIN) $(OBJ_STG) $(OBJ_SS) $(OBJ_GC)
-		$(CXX) -o $(NAME) $(OBJ) $(OBJ_LOG) $(OBJ_CL) $(OBJ_GM) $(OBJ_IN) $(OBJ_WIN) $(OBJ_STG) $(OBJ_SS) $(OBJ_GC) $(LDFLAGS)
+$(NAME):	$(OBJ) $(OBJ_LOG) $(OBJ_CL) $(OBJ_GM) $(OBJ_IN) $(OBJ_WIN) $(OBJ_STG) $(OBJ_SS) $(OBJ_GC) $(OBJ_SKIN)
+		$(CXX) -o $(NAME) $(OBJ) $(OBJ_LOG) $(OBJ_CL) $(OBJ_GM) $(OBJ_IN) $(OBJ_WIN) $(OBJ_STG) $(OBJ_SS) $(OBJ_GC) $(OBJ_SKIN) $(LDFLAGS)
 
 clean:
 		$(RM) $(OBJ) $(OBJ_LOG) $(OBJ_CL) $(OBJ_GM) $(OBJ_IN) $(OBJ_WIN) $(OBJ_STG) $(OBJ_SS) $(OBJ_GC)

@@ -78,6 +78,18 @@
     <Filter Include="Header Files\Generics\Cmd">
       <UniqueIdentifier>{449b6294-cf21-42fd-88e9-ef08b7aae1bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Generics\Skin">
+      <UniqueIdentifier>{e9268557-5d5f-4100-b99b-85c63cfd155d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generics\Skin">
+      <UniqueIdentifier>{07f4997e-e4f0-4060-a549-e3dd9ff9fb3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Clock">
+      <UniqueIdentifier>{6e3086dd-3e13-472b-be0c-4b0cf9ecbf7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Clock">
+      <UniqueIdentifier>{691cd392-1837-4205-859d-1bb5c0b25407}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Generics\Dl\DlExceptions.h">
@@ -299,6 +311,15 @@
     <ClInclude Include="Gameplay\include\IGameMod.h">
       <Filter>Header Files\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="Clock\include\IClock.h">
+      <Filter>Header Files\Clock</Filter>
+    </ClInclude>
+    <ClInclude Include="Clock\include\WinGameClock.h">
+      <Filter>Header Files\Clock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\Skin\Skin.h">
+      <Filter>Header Files\Generics\Skin</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Generics\LWP\ScopedLock.cpp">
@@ -384,6 +405,12 @@
     </ClCompile>
     <ClCompile Include="Gameplay\sources\GameplayEngine.cpp">
       <Filter>Source Files\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Generics\Skin\Skins.cpp">
+      <Filter>Source Files\Generics\Skin</Filter>
+    </ClCompile>
+    <ClCompile Include="Clock\sources\WinGameClock.cpp">
+      <Filter>Source Files\Clock</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -46,7 +46,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\Generics\Logger;..\Generics\ReqCl\include;..\Server\Room\include;..\Generics\PS;..\Generics\LWP;..\Generics\PC;..\Generics\TP;..\Client\Room\include;..\Client\NetWork\include;..\SFML-2.0-rc\include;Window;SpriteSheet;Network;Input;GameComponent;..\Generics\cmd;Stage</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Generics\Skin;..\Generics\Logger;..\Generics\ReqCl\include;..\Server\Room\include;..\Generics\PS;..\Generics\LWP;..\Generics\PC;..\Generics\TP;..\Client\Room\include;..\Client\NetWork\include;..\SFML-2.0-rc\include;Window;SpriteSheet;Network;Input;GameComponent;..\Generics\cmd;Stage</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -71,6 +71,7 @@
   <ItemGroup>
     <ClCompile Include="..\Generics\ReqCl\sources\CSRequest.cpp" />
     <ClCompile Include="..\Generics\ReqCl\sources\SCRequest.cpp" />
+    <ClCompile Include="..\Generics\Skin\Skins.cpp" />
     <ClCompile Include="GameComponent\GameComponent.cpp" />
     <ClCompile Include="GameComponent\IGameComponent.cpp" />
     <ClCompile Include="GameManager\GameManager.cpp" />

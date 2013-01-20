@@ -11,19 +11,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{47C8E391-A6F3-4F6E-BA52-5165BB7C1688}</ProjectGuid>
+    <ProjectGuid>{D905FC21-F03E-443D-8CCB-C53E4559C2B8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>EntitiesLoader</RootNamespace>
+    <RootNamespace>Stage</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -39,7 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\magere_n\Documents\GitHub\R-Type\Server\Clock\include;C:\Users\magere_n\Documents\GitHub\R-Type\Generics\Cmd;C:\Users\magere_n\Documents\GitHub\R-Type\Generics\ReqServ\include;C:\Users\magere_n\Documents\GitHub\R-Type\Generics\TP;C:\Users\magere_n\Documents\GitHub\R-Type\Generics\PS;C:\Users\magere_n\Documents\GitHub\R-Type\Generics\PC;C:\Users\magere_n\Documents\GitHub\R-Type\Generics\Net;C:\Users\magere_n\Documents\GitHub\R-Type\Generics\LWP;C:\Users\magere_n\Documents\GitHub\R-Type\Server\Network\include;C:\Users\magere_n\Documents\GitHub\R-Type\Server\Gameplay\include;C:\Users\magere_n\Documents\GitHub\R-Type\Generics\Logger;C:\Users\magere_n\Documents\GitHub\R-Type\Server\Room\include;..\..\..\Generics\Dl;.\include;..\..\Gameplay\include;..\..\Quadtree\include;..\Stage_1\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\Stage\include;..\Entities\include;..\..\Gameplay\include;..\..\..\Generics\Dl;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -50,10 +52,10 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;STAGE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -65,44 +67,37 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;STAGE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Generics\Logger\logger.cpp" />
-    <ClCompile Include="..\..\..\Generics\LWP\ScopedLock.cpp" />
-    <ClCompile Include="..\..\..\Generics\LWP\WinCondVar.cpp" />
-    <ClCompile Include="..\..\..\Generics\LWP\WinMutex.cpp" />
-    <ClCompile Include="..\..\..\Generics\Net\EndPoint.cpp" />
-    <ClCompile Include="..\..\Clock\sources\WinGameClock.cpp" />
-    <ClCompile Include="..\..\Gameplay\sources\GameplayEngine.cpp" />
-    <ClCompile Include="..\..\Quadtree\sources\Collider.cpp" />
-    <ClCompile Include="..\..\Quadtree\sources\Node.cpp" />
-    <ClCompile Include="..\..\Quadtree\sources\QuadTree.cpp" />
-    <ClCompile Include="..\..\Room\sources\Player.cpp" />
-    <ClCompile Include="..\..\Room\sources\Room.cpp" />
-    <ClCompile Include="sources\main.cpp" />
+    <ClInclude Include="..\Entities\include\AEntity.h" />
+    <ClInclude Include="..\Entities\include\AEntityMonster.h" />
+    <ClInclude Include="..\Entities\include\Alien1.h" />
+    <ClInclude Include="..\Entities\include\EntityDecor.h" />
+    <ClInclude Include="..\Entities\include\EntityPlayer.h" />
+    <ClInclude Include="..\Entities\include\EntityWeapon.h" />
+    <ClInclude Include="include\GameMod.h" />
+    <ClInclude Include="include\IGameMod.h" />
+    <ClInclude Include="include\PackedPlugin.h" />
+    <ClInclude Include="include\Scenario.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Generics\LWP\ScopedLock.h" />
-    <ClInclude Include="..\..\..\Generics\LWP\WinCondVar.h" />
-    <ClInclude Include="..\..\Clock\include\IClock.h" />
-    <ClInclude Include="..\..\Clock\include\WinGameClock.h" />
-    <ClInclude Include="..\..\Gameplay\include\GameplayEngine.h" />
-    <ClInclude Include="..\..\Network\include\IClientService.h" />
-    <ClInclude Include="..\..\Network\include\IServerService.h" />
-    <ClInclude Include="..\..\Network\include\IService.h" />
-    <ClInclude Include="..\..\Room\include\IPlayer.h" />
-    <ClInclude Include="..\..\Room\include\IRoom.h" />
-    <ClInclude Include="..\..\Room\include\Player.h" />
-    <ClInclude Include="..\..\Room\include\Room.h" />
-    <ClInclude Include="..\Stage_1\include\Scenario.h" />
+    <ClCompile Include="..\Entities\sources\AEntity.cpp" />
+    <ClCompile Include="..\Entities\sources\AEntityMonster.cpp" />
+    <ClCompile Include="..\Entities\sources\Alien1.cpp" />
+    <ClCompile Include="..\Entities\sources\EntityDecor.cpp" />
+    <ClCompile Include="..\Entities\sources\EntityPlayer.cpp" />
+    <ClCompile Include="..\Entities\sources\EntityWeapon.cpp" />
+    <ClCompile Include="sources\GameMod.cpp" />
+    <ClCompile Include="sources\PackedPlugin.cpp" />
+    <ClCompile Include="sources\Scenario.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

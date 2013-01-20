@@ -41,7 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\Server\Quadtree\include;..\Server\Network\include;..\Server\Room\include;..\Generics\TP;..\Server\Gameplay\include;..\Generics\Net;..\Generics\PC;..\Generics\LWP;..\Generics\PS;..\Generics\ReqServ\include;..\Generics\ReqCl\include;..\Generics\Logger;..\Generics\Cmd;$(IncludePath)</IncludePath>
+    <IncludePath>..\Server\Quadtree\include;..\Server\Network\include;..\Server\Room\include;..\Generics\TP;..\Server\Gameplay\include;..\Generics\Net;..\Generics\PC;..\Generics\LWP;..\Generics\PS;..\Generics\ReqServ\include;..\Generics\ReqCl\include;..\Generics\Logger;..\Generics\Cmd;..\Server\Clock\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -54,7 +54,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Generics\Dl;Gameplay\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Generics\Skin;..\Generics\Dl;Gameplay\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -109,9 +109,12 @@
     <ClInclude Include="..\Generics\ReqServ\include\CSRequest.h" />
     <ClInclude Include="..\Generics\ReqServ\include\IRequest.h" />
     <ClInclude Include="..\Generics\ReqServ\include\SCRequest.h" />
+    <ClInclude Include="..\Generics\Skin\Skin.h" />
     <ClInclude Include="..\Generics\TP\ThreadPool.h" />
     <ClInclude Include="..\Generics\TP\ThreadPoolQueue.h" />
     <ClInclude Include="..\Generics\TP\ThreadPoolWorker.h" />
+    <ClInclude Include="Clock\include\IClock.h" />
+    <ClInclude Include="Clock\include\WinGameClock.h" />
     <ClInclude Include="Gameplay\include\GameMod.h" />
     <ClInclude Include="Gameplay\include\GameplayEngine.h" />
     <ClInclude Include="Gameplay\include\IArmable.h" />
@@ -163,6 +166,8 @@
     <ClCompile Include="..\Generics\Net\WinSocketUdp.cpp" />
     <ClCompile Include="..\Generics\ReqServ\sources\CSRequest.cpp" />
     <ClCompile Include="..\Generics\ReqServ\sources\SCRequest.cpp" />
+    <ClCompile Include="..\Generics\Skin\Skins.cpp" />
+    <ClCompile Include="Clock\sources\WinGameClock.cpp" />
     <ClCompile Include="Gameplay\sources\GameplayEngine.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Network\sources\ClientService.cpp" />

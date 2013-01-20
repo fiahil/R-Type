@@ -6,36 +6,41 @@
 #include "sfSpriteSheet.h"
 #include "GameComponent.h"
 #include "Stage.h"
+#include "Skin.h"
 
 #ifdef WIN32
 #include <boost\asio.hpp>
 #include <Windows.h>
 #endif
 
+extern	std::vector<skin>	skinArray;
 extern	sfWindow	sfmlWin;
 
 int main()
 {
-	ISpriteSheet	*test = new sfSpriteSheet("..\\Resources\\Sprite\\r-typesheet42.gif", 5, 5);
-	ISpriteSheet	*test2 = new sfSpriteSheet("..\\Resources\\Sprite\\big_monster.gif", 1, 6);
-	ISpriteSheet	*ships = new sfSpriteSheet("..\\Resources\\Sprite\\ennemy_bullet1.gif", 1, 8);
-	ISpriteSheet	*boom = new sfSpriteSheet("..\\Resources\\Sprite\\death_bullet_player.gif", 1, 5);
-	ISpriteSheet	*boom2 = new sfSpriteSheet("..\\Resources\\Sprite\\big_death.gif", 1, 8);
-	ISpriteSheet	*bing = new sfSpriteSheet("..\\Resources\\Sprite\\big_death.gif", 1, 8);
-	ISpriteSheet	*ennemy = new sfSpriteSheet("..\\Resources\\Sprite\\ennemy1.gif", 1, 8);
+	fillArray();
+	ISpriteSheet	*test = new sfSpriteSheet(skinArray[0].filePath, skinArray[0].anim, skinArray[0].frame);
+	ISpriteSheet	*test2 = new sfSpriteSheet(skinArray[8].filePath, skinArray[8].anim, skinArray[8].frame);
+	ISpriteSheet	*ships = new sfSpriteSheet("../Resources/Sprite/boss.gif", 1, 9);
+	ISpriteSheet	*boom = new sfSpriteSheet(skinArray[7].filePath, skinArray[7].anim, skinArray[7].frame);
+	ISpriteSheet	*boom2 = new sfSpriteSheet("../Resources/Sprite/boss_death.gif", 1, 9);
+	ISpriteSheet	*bing = new sfSpriteSheet(skinArray[9].filePath, skinArray[9].anim, skinArray[9].frame);
+	ISpriteSheet	*ennemy = new sfSpriteSheet("../Resources/Sprite/ennemy1.gif", 1, 8);
 	
-	IInput	*input3 = new sfKeyboard();
+	//IInput	*input3 = new sfKeyboard();
 	IInput	*input2 = new sfJoystick();
-	IInput	*input = new sfMouse();
+	//IInput	*input = new sfMouse();
 
+	/*
 	input3->autoBind(UpKey, sf::Keyboard::W);
 	input3->autoBind(DownKey, sf::Keyboard::S);
 	input3->autoBind(LeftKey, sf::Keyboard::A);
 	input3->autoBind(RightKey, sf::Keyboard::D);
 	input3->autoBind(FireKey, sf::Keyboard::Space);
-
-	GameComponent	*vaisseau = new GameComponent(test, boom);
-	GameComponent	*vaisseau2 = new GameComponent(test2, boom2);
+	*/
+		
+	GameComponent	*vaisseau = new GameComponent(ships, boom2);
+	GameComponent	*vaisseau2 = new GameComponent(test2, boom);
 	Stage st;
 	st.add(vaisseau);
 	st.add(vaisseau2);
@@ -46,14 +51,14 @@ int main()
 	sf::Event ev;
 	while (sfmlWin.isOpen())
 	{
+		int x = 0, y = 0;
 		sfmlWin.pollEvent(ev);
 		if (ev.type == sf::Event::Closed)
 			sfmlWin.getWindow().close();
-		Sleep(10); //TODO replace par truc utiles genre les packets udp lol
-		int x = 0, y = 0;
+		Sleep(100); //TODO replace par truc utiles genre les packets udp lol
 		//vaisseau->move(input->getLastInput(UpKey), input->getLastInput(LeftKey));
-		//vaisseau->move(input2->getLastInput(UpKey), input2->getLastInput(LeftKey));
-		if (input3->getLastInput(UpKey))
+		vaisseau->move(input2->getLastInput(UpKey), input2->getLastInput(LeftKey));
+		/*if (input3->getLastInput(UpKey))
 			y = -4;
 		else if (input3->getLastInput(DownKey))
 			y = 4;
@@ -62,8 +67,10 @@ int main()
 		else if (input3->getLastInput(RightKey))
 			x = 4;
 		vaisseau->move(x, y);
-		if (input3->isPressed(FireKey))
+		*/
+		if (input2->isPressed(FireKey))
 			vaisseau->death();
+		
 		st.update();
 		sfmlWin.clear();
 		st.draw();

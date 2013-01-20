@@ -66,6 +66,9 @@
     <ClCompile Include="..\Generics\ReqCl\sources\SCRequest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Generics\Skin\Skins.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameComponent\IGameComponent.h">

@@ -11,6 +11,7 @@ class GameComponent :
 	eStatus			state_;
 	int				x_;
 	int				y_;
+	bool			endLife_;
 
 public:
 	GameComponent(ISpriteSheet* s, ISpriteSheet* d);
@@ -22,4 +23,5 @@ public:
 	void	move(int, int);
 	void	death();
 	void	fire(int, int);
+	bool	getEndLife() const;
 };

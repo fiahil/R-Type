@@ -3,6 +3,7 @@
 #include "sfJoystick.h"
 #include "sfSpriteSheet.h"
 #include "GameComponent.h"
+#include "Stage.h"
 
 extern	sfWindow	sfmlWin;
 
@@ -16,22 +17,21 @@ int main()
 	ISpriteSheet	*bing = new sfSpriteSheet("..\\Resources\\Sprite\\big_death.gif", 1, 8);
 	ISpriteSheet	*ennemy = new sfSpriteSheet("..\\Resources\\Sprite\\ennemy1.gif", 1, 8);
 	
-	GameComponent	vaisseau(test, boom);
-	GameComponent	vaisseau2(test2, boom2);
+	GameComponent	*vaisseau = new GameComponent(test, boom);
+	GameComponent	*vaisseau2 = new GameComponent(test2, boom2);
+	Stage st;
+	st.add(vaisseau);
+	st.add(vaisseau2);
 
 	int	i = 0, o = 1;
 	ships->moveTo(-10 , 10);
-	vaisseau.move(1,4);
-	vaisseau2.move(4, 1);
-	vaisseau.update();
-	vaisseau.update();
+	vaisseau->move(1,4);
+	vaisseau2->move(4, 1);
 
 	while (sfmlWin.isOpen())
 	{
 		if (++i == 100)
 		{
-			ennemy->playAnimation(0);
-			ships->playAnimation(0);
 			i = 0;
 		}
 		if (i == 0)
@@ -39,20 +39,18 @@ int main()
 			++o;
 			if (o == 30)
 			{
-				vaisseau.death();
+				vaisseau->death();
 			}
 			if (o == 50)
-				vaisseau2.death();
-			vaisseau.update();
-			vaisseau2.update();
+				vaisseau2->death();
+			st.update();
 			ennemy->moveFrom(1,1);
 			ships->moveFrom(1,1);
 		}
 		sfmlWin.clear();
-		vaisseau.draw();
-		vaisseau2.draw();
-		//ennemy->draw();
-		//ships->draw();
+		st.draw();
+		//vaisseau.draw();
+		//vaisseau2.draw();
 		sfmlWin.display();
 	}
 

@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 21:50:21 2013 alexandre teisseire
-// Last update Sat Jan 19 15:41:34 2013 alexandre teisseire
+// Last update Sat Jan 19 22:36:53 2013 alexandre teisseire
 //
 
 #ifndef		_NETWORKMANAGER_HPP_
@@ -14,6 +14,8 @@
 #include	<deque>
 #include	<boost/asio.hpp>
 #include	"INetworkManager.hpp"
+#include	"TCPService.hpp"
+#include	"UDPService.hpp"
 
 class		NetworkManager : public INetworkManager
 {
@@ -24,6 +26,8 @@ private:
 private:
   int				 port;
   std::deque<ICommand*>		 actions;
+  TCPService*			 TCPS;
+  // UDPService*		 UDPS;
 
 public:
   NetworkManager(char**);

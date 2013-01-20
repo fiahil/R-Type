@@ -20,15 +20,15 @@ private:
   virtual void		finalize(TCPService*);
 
 private:
-    void		doOp(TCPService*);
+    void		doOp(IService*);
 
 public:
-    Connect(std::string, std::string);
+  Connect(std::string const&, std::string const&);
   Connect(std::string &);
   ~Connect();
 
 public:
-  virtual bool		manageRequest(TCPService*);
+	virtual bool		manageRequest(TCPService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
   parameters&	getParam();

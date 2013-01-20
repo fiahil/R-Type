@@ -13,7 +13,7 @@
 #include	"PackMan.h"
 #include	"CSRequest.h"
 
-Connect::Connect(std::string usr, std::string passwd) :
+Connect::Connect(std::string const& usr, std::string const& passwd) :
   ec(Success)
 {
   PackMan::MemSet(&this->param, sizeof(this->param));

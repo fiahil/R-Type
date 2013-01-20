@@ -21,7 +21,7 @@ class sfSpriteSheet : public ISpriteSheet
 public:
 	sfSpriteSheet(std::string const& path, int nbAnim, int nbFrame);
 	~sfSpriteSheet(void);
-	void	playAnimation(int);
+	bool	playAnimation(int);
 	void	draw();
 	void	moveTo(int, int);
 	void	moveFrom(int, int);

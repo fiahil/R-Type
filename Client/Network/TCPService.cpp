@@ -5,11 +5,12 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 23:16:13 2013 alexandre teisseire
-// Last update Sun Jan 20 01:15:24 2013 alexandre teisseire
+// Last update Sun Jan 20 01:28:08 2013 alexandre teisseire
 //
 
 #include	<vector>
 #include	<boost/shared_ptr.hpp>
+#include	<boost/bind.hpp>
 #include	"TCPService.hpp"
 #include	"PackMan.h"
 #include	"CSRequest.h"

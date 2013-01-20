@@ -13,7 +13,7 @@
 #include	"PackMan.h"
 #include	"CSRequest.h"
 
-Connect::Connect(std::string usr, std::string passwd) :
+Connect::Connect(std::string const& usr, std::string const& passwd) :
   ec(Success)
 {
   PackMan::MemSet(&this->param, sizeof(this->param));
@@ -51,6 +51,7 @@ void		Connect::finalize(TCPService *)
 bool		Connect::manageRequest(TCPService *)
 {
   assert(0);
+  return true;
 }
 
 std::string	Connect::toString()
@@ -103,6 +104,7 @@ void		CreateRoom::finalize(TCPService*)
 bool		CreateRoom::manageRequest(TCPService *)
 {
   assert(0);
+  return true;
 }
 
 std::string	CreateRoom::toString()

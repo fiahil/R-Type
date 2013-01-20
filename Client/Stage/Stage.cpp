@@ -1,5 +1,5 @@
 #include "Stage.h"
-
+#include "IGameComponent.h"
 
 Stage::Stage(void)
 {
@@ -25,7 +25,8 @@ void	Stage::treatDeath(Command<Death> *cmd)
 void	Stage::treatShoot(Command<Fire> *cmd)
 {
 	struct Fire fire = cmd->getT();
-	this->deck_.at(fire.id)->fire(fire.x, fire.y);
+	IGameComponent * bullet = GameResources::shoot(fire.x, fire.y);
+	this->deck_.at(fire.id) = dynamic_cast<GameComponent*>(bullet);
 }
 
 void	Stage::treatNewEntity(Command<NewEntity> *cmd)
@@ -36,4 +37,36 @@ void	Stage::treatNewEntity(Command<NewEntity> *cmd)
 	GameComponent	*component = new GameComponent(sprite, death);
 	this->deck_.at(entity.id) = component;
 	this->deck_.at(entity.id)->move(entity.x_start, entity.y_start);
+}
+
+void	Stage::update()
+{
+	std::deque<GameComponent*>::iterator it = deck_.begin();
+
+	for (; it != deck_.end();)
+	{
+		(*it)->update();
+		if ((*it)->getEndLife())
+		{
+			delete *it;
+			it = deck_.erase(it);
+		}
+		else
+			++it;
+	}
+}
+
+void	Stage::draw()
+{
+	std::deque<GameComponent*>::iterator it = deck_.begin();
+
+	for (; it != deck_.end(); ++it)
+	{
+		(*it)->draw();
+	}
+}
+
+void	Stage::add(GameComponent*lol)
+{
+	deck_.push_back(lol);
 }

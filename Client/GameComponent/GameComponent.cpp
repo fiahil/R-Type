@@ -1,7 +1,7 @@
 
 #include "GameComponent.h"
 
-GameComponent::GameComponent(ISpriteSheet* s, ISpriteSheet* d) : sprite_ (s), death_(d), x_(0), y_(0)
+GameComponent::GameComponent(ISpriteSheet* s, ISpriteSheet* d) : sprite_ (s), death_(d), x_(0), y_(0), endLife_(false)
 {
 }
 
@@ -32,8 +32,11 @@ void	GameComponent::update()
 {
 	sprite_->moveFrom(x_, y_);
 	death_->moveFrom(x_, y_);
-	sprite_->playAnimation(0);
-	death_->playAnimation(0);
+	if (state_ != DEATH)
+		sprite_->playAnimation(0);
+	else
+		if (death_->playAnimation(0))
+			endLife_ = true;
 }
 
 void	GameComponent::death()
@@ -51,4 +54,12 @@ void	GameComponent::move(int x, int y)
 	y_ = y;
 }
 
-void	GameComponent::fire(int , int ) {}
+void	GameComponent::fire(int, int)
+{
+
+}
+
+bool	GameComponent::getEndLife() const
+{
+	return endLife_;
+}

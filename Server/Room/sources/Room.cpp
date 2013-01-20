@@ -66,10 +66,7 @@ void		Room::playGame()
 			NewEntity ne;
 
 			ne.id = fetch->getId();
-			PackMan::Memcpy(ne.filename, "ennemy1", 7); // path
-			ne.anim = 8;
-			ne.frame = 1;
-	
+			ne.idSkin = 5;
 			ICollidable * c = 0;
 
 			if ((c = cast_entity<IEntity, ICollidable>(fetch)))

@@ -5,13 +5,13 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Wed Jan 16 15:12:08 2013 alexandre teisseire
-// Last update Sat Jan 19 15:29:28 2013 alexandre teisseire
+// Last update Sat Jan 19 22:41:03 2013 alexandre teisseire
 //
 //
 
 #include	<iostream>
 #include	<boost/bind.hpp>
-
+#include	"NetworkManager.hpp"
 #include	"UDPService.hpp"
 #include	"PackMan.h"
 #include	"PackManUDP.h"

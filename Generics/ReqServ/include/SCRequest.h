@@ -74,7 +74,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(TCPService*);
+  virtual void		finalize(IService*);
 
 public:
   ACK(errorCode);
@@ -82,7 +82,7 @@ public:
   ~ACK();
 
 public:
-  virtual bool		manageRequest(TCPService*);
+  virtual bool		manageRequest(IService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
 };
@@ -102,7 +102,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(TCPService*);
+  virtual void		finalize(IService*);
 
 public:
   GameLaunched(int, float);
@@ -110,7 +110,7 @@ public:
   ~GameLaunched();
 
 public:
-  virtual bool		manageRequest(TCPService*);
+  virtual bool		manageRequest(IService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
 };

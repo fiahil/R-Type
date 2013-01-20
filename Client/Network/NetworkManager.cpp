@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 22:05:03 2013 alexandre teisseire
-// Last update Sat Jan 19 20:19:15 2013 alexandre teisseire
+// Last update Sun Jan 20 01:09:26 2013 alexandre teisseire
 //
 
 #include	<iostream>
@@ -25,16 +25,17 @@ NetworkManager::NetworkManager(char**av)
   boost::asio::ip::udp::endpoint eudp(boost::asio::ip::address::from_string(std::string(av[1])), 42999);
   this->etcp = etcp;
   this->eudp = eudp;
+  this->TCPS = new TCPService(this->ios, this->etcp);
+  // this->UDPS = new UDPService(*this, this->ios, this->eudp);
 }
 
 void		NetworkManager::run()
 {
   try
     {
-      ITCPClientService* TCPS = new TCPService(this->ios, this->etcp);
-      IUDPClientService* UDPS = new UDPService(*this, this->ios, this->eudp);
-
-      this->ios.run();
+      this->TCPS->recvData();
+      // this->UDPS.recvData();
+      this->ios.poll();
     }
   catch (std::exception& e)
     {

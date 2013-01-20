@@ -16,6 +16,8 @@ static skin	initArray[] = {
 							{"../Resources/Sprite/death_bullet_player.gif", 1, 5},
 							{"../Resources/Sprite/big_monster.gif", 1, 6},
 							{"../Resources/Sprite/big_death.gif", 1, 8}
+							{"../Resources/Sprite/boss.gif", 1, 9}
+							{"../Resources/Sprite/boss_death.gif", 1, 9}
 						};
 
 void	fillArray()
@@ -30,6 +32,8 @@ void	fillArray()
 	skinArray.push_back(initArray[7]);
 	skinArray.push_back(initArray[8]);
 	skinArray.push_back(initArray[9]);
+	skinArray.push_back(initArray[10]);
+	skinArray.push_back(initArray[11]);
 }
 
 									

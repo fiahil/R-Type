@@ -1,4 +1,5 @@
 #include "GameplayEngine.h"
+#include "logger.h"
 
 Dl::DlManager<PackedPlugin> * GameplayEngine::manager_ = 0;
 
@@ -12,10 +13,10 @@ GameplayEngine::GameplayEngine(std::string path) {
     PackedPlugin * pp_ = this->manager_->getObject("Stage_1");
 	this->gm_ = pp_->gm_;
 	this->sc_ = pp_->sc_;
-	std::cout << "Success on the recuperation of the pack : " << path << std::endl;
+	DEBUG << "Success on the recuperation of the pack : " << path << std::endl;
   }
   else
-    std::cerr << "Error on the pack selected : " << path << std::endl;
+    DEBUG << "Error on the pack selected : " << path << std::endl;
 }
 
 GameplayEngine::~GameplayEngine() {

@@ -9,8 +9,7 @@ int Room::currentId_ = 0;
 Room::Room(void)
 	:	id_(currentId_++),
 		isPlaying_(false),
-		engine_(0),
-		scenario_(0)
+		engine_(0)
 {
 	DEBUG << "--Construction Room" << std::endl;
 }

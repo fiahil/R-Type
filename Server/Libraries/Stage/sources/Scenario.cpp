@@ -72,6 +72,9 @@ void		Scenario::addNewEvent(Timepoint elem)
 
 IEntity *	Scenario::getNextEvent(float atTime)
 {
+	if (this->timeline_.empty())
+		return 0;
+
 	Timepoint tmp = this->timeline_.front();
 
 	if (atTime < tmp.time_)

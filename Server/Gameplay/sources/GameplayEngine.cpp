@@ -73,7 +73,8 @@ bool	GameplayEngine::isGameEnded() const
 
 	for (unsigned int i = 0; i < players_.size(); ++i)
 	{
-		res |= players_.at(i)->isPlaying();
+		if (players_.at(i)->isPlaying() == false)
+			res = true;
 	}
 
 	return res;
@@ -95,7 +96,11 @@ void	GameplayEngine::treatPlayersCommands(std::queue<ICommand *>	& cmds)
 
 			if (tmp && tmp->getType() == CommandType::MOVE)
 			{
+				DEBUG << "MOVE PLAYER" << std::endl;
 			}
-			/* ... */
+			else if (tmp && tmp->getType() == CommandType::FIRE)
+			{
+				DEBUG << "FIRE IN DA FUCKIN HOLE" << std::endl;
+			}
 		}
 }

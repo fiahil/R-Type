@@ -4,6 +4,7 @@
 #include	"RoomException.h"
 #include	"PackMan.h"
 #include	"CSRequest.h"
+#include	"IClientService.h"
 
 Connect::Connect(std::string const& usr, std::string const& passwd) :
   ec(Success)

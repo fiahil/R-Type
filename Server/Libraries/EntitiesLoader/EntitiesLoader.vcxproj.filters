@@ -51,11 +51,11 @@
     <ClCompile Include="..\..\..\Generics\LWP\ScopedLock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Clock\sources\WinGameClock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\GameplayEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Room\include\IRoom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -84,6 +84,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Stage_1\include\Scenario.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Gameplay\include\GameplayEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Clock\include\IClock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Clock\include\WinGameClock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

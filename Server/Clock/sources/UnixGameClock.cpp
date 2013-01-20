@@ -10,19 +10,19 @@
 
 #include "UnixGameClock.h"
 
-UnixGameClock::UnixGameClock()
+GameClock::GameClock()
 {
   gettimeofday(&(this->_startMark), NULL);
 }
 
-UnixGameClock::~UnixGameClock() {}
+GameClock::~GameClock() {}
 
-void		UnixGameClock::reset()
+void		GameClock::reset()
 {
   gettimeofday(&(this->_startMark), NULL);
 }
 
-float		UnixGameClock::getElapsedTime()
+float		GameClock::getElapsedTime() const
 {
   float	elapsedTime;
   struct timeval saveMark;

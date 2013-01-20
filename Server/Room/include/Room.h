@@ -27,6 +27,7 @@ public:
 	int				operator()(int idTest) const;	/* Useful for method removePlayer */
 
 private:
+	void		updateScenario(float timer);
 	void		loadGame();
 	void		playGame();
 	

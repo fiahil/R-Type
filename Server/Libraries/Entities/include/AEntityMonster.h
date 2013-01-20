@@ -29,6 +29,7 @@ protected:
 	HitBox				hb_;
 	uint16_t			id_;
 	std::deque<Actions> script_;
+	bool				dead_;
 
 protected:
 	AEntityMonster(const Point& pos, const Point& dir);
@@ -51,4 +52,5 @@ protected:
 	virtual int				getLife() const;
 	virtual	void			subLife(int dmg);
 	virtual eAction			getNextAction(float) const;				/* Herited from IScriptable */
+	virtual bool			isDead() const;
 };

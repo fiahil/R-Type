@@ -9,7 +9,8 @@ AEntityMonster::AEntityMonster(const Point& pos, const Point& dir)
 		pos_(pos),
 		dir_(dir),
 		hb_(-1, -1, -1, -1),
-		id_(currentId_++)
+		id_(currentId_++),
+		dead_(false)
 {
 }
 
@@ -88,8 +89,12 @@ void			AEntityMonster::setSpeed(float s)
 
 void			AEntityMonster::destroy()
 {
+	this->dead_ = true;
 }
 
+bool			AEntityMonster::isDead() const {
+	return this->dead_;
+}
 
 int				AEntityMonster::getLife() const
 {

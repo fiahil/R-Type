@@ -27,12 +27,7 @@ int main()
 	ISpriteSheet	*bing = new sfSpriteSheet(skinArray[9].filePath, skinArray[9].anim, skinArray[9].frame);
 	ISpriteSheet	*ennemy = new sfSpriteSheet("../Resources/Sprite/ennemy1.gif", 1, 8);
 	
-<<<<<<< HEAD
 	//IInput	*input3 = new sfKeyboard();
-=======
-
-	IInput	*input3 = new sfKeyboard();
->>>>>>> 317e185242f0b1773191a19a6c54679e66905c46
 	//IInput	*input2 = new sfJoystick();
 	IInput	*input = new sfMouse();
 

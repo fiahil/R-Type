@@ -1,12 +1,19 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "sfJoystick.h"
+#include "sfMouse.h"
+#include "sfKeyboard.h"
 #include "sfSpriteSheet.h"
 #include "GameComponent.h"
 #include "Stage.h"
 
+#ifdef WIN32
+#include <boost\asio.hpp>
+#include <Windows.h>
+#endif
+
 extern	sfWindow	sfmlWin;
-/*
+
 int main()
 {
 	ISpriteSheet	*test = new sfSpriteSheet("..\\Resources\\Sprite\\r-typesheet42.gif", 5, 5);
@@ -17,6 +24,16 @@ int main()
 	ISpriteSheet	*bing = new sfSpriteSheet("..\\Resources\\Sprite\\big_death.gif", 1, 8);
 	ISpriteSheet	*ennemy = new sfSpriteSheet("..\\Resources\\Sprite\\ennemy1.gif", 1, 8);
 	
+	IInput	*input3 = new sfKeyboard();
+	IInput	*input2 = new sfJoystick();
+	IInput	*input = new sfMouse();
+
+	input3->autoBind(UpKey, sf::Keyboard::W);
+	input3->autoBind(DownKey, sf::Keyboard::S);
+	input3->autoBind(LeftKey, sf::Keyboard::A);
+	input3->autoBind(RightKey, sf::Keyboard::D);
+	input3->autoBind(FireKey, sf::Keyboard::Space);
+
 	GameComponent	*vaisseau = new GameComponent(test, boom);
 	GameComponent	*vaisseau2 = new GameComponent(test2, boom2);
 	Stage st;
@@ -24,33 +41,38 @@ int main()
 	st.add(vaisseau2);
 
 	int	i = 0, o = 1;
-	test->moveTo(0, 100);
-	//vaisseau->move(0, 100);
 	vaisseau2->move(5, 0); 
-
+	//balise copiage de code
+	sf::Event ev;
 	while (sfmlWin.isOpen())
 	{
-		if (++i == 250)
-		{
-			i = 0;
-		}
-		if (i == 0)
-		{
-			++o;
-			vaisseau->move(o + 15 * sin(o), (60 * cos(o)));
-			if (o == 35)
-				vaisseau2->death();
-			st.update();
-		}
+		sfmlWin.pollEvent(ev);
+		if (ev.type == sf::Event::Closed)
+			sfmlWin.getWindow().close();
+		Sleep(10); //TODO replace par truc utiles genre les packets udp lol
+		int x = 0, y = 0;
+		//vaisseau->move(input->getLastInput(UpKey), input->getLastInput(LeftKey));
+		//vaisseau->move(input2->getLastInput(UpKey), input2->getLastInput(LeftKey));
+		if (input3->getLastInput(UpKey))
+			y = -4;
+		else if (input3->getLastInput(DownKey))
+			y = 4;
+		if (input3->getLastInput(LeftKey))
+			x = -4;
+		else if (input3->getLastInput(RightKey))
+			x = 4;
+		vaisseau->move(x, y);
+		if (input3->isPressed(FireKey))
+			vaisseau->death();
+		st.update();
 		sfmlWin.clear();
 		st.draw();
 		sfmlWin.display();
 	}
-
+	//balise fin copiage de code
 	return 0;
 }
-*/
-
+/*
 #include	<iostream>
 #include	"NetworkManager.hpp"
 
@@ -64,3 +86,4 @@ int		main(int ac, char **av)
   else
     std::cout << "Usage : ./ClientRtype [ip] [port]" << std::endl;
 }
+*/

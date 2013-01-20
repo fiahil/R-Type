@@ -47,6 +47,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\Generics\Logger;..\Generics\ReqCl\include;..\Server\Room\include;..\Generics\PS;..\Generics\LWP;..\Generics\PC;..\Generics\TP;..\Client\Room\include;..\Client\NetWork\include;..\SFML-2.0-rc\include;Window;SpriteSheet;Network;Input;GameComponent;..\Generics\cmd;Stage</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -105,7 +106,6 @@
     <ClInclude Include="Network\TCPService.hpp" />
     <ClInclude Include="Network\UDPPacket.h" />
     <ClInclude Include="Network\UDPService.hpp" />
-    <ClInclude Include="sfMenu.h" />
     <ClInclude Include="SpriteSheet\ISpriteSheet.h" />
     <ClInclude Include="SpriteSheet\sfSpriteSheet.h" />
     <ClInclude Include="Stage\Stage.h" />

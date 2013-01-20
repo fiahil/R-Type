@@ -2,6 +2,11 @@
 
 sfWindow	sfmlWin;
 
+sf::Window&	sfWindow::getWindow()
+{
+	return this->window_;
+}
+
 void	sfWindow::setTitle(std::string const& title)
 {
 	window_.setTitle(title);

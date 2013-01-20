@@ -18,4 +18,5 @@ public:
 	void	Bind(GameInputKey);
 	int		getLastInput(GameInputKey);
 	bool	isPressed(GameInputKey);
+	void	autoBind(GameInputKey, int);
 };

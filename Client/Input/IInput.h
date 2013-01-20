@@ -21,4 +21,5 @@ public:
 	virtual void Bind(GameInputKey) = 0;
 	virtual int getLastInput(GameInputKey) = 0;
 	virtual bool isPressed(GameInputKey) = 0;
+	virtual void autoBind(GameInputKey, int) = 0;
 };

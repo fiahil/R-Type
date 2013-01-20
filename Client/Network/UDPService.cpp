@@ -22,7 +22,6 @@ UDPService::UDPService(NetworkManager& NM, boost::asio::io_service& ios, boost::
   ep(ep)
 {
   std::cout << "Coucou UDP" << std::endl;
-  //this->sock.async_connect(ep, boost::bind(&UDPService::handleConnect, this, boost::asio::placeholders::error, ep));
   this->recvData();
 }
 
@@ -37,7 +36,7 @@ UDPService::UDPService(NetworkManager& NM, boost::asio::io_service& ios, boost::
 				       boost::asio::placeholders::error, 
 				       pack));
 
-   this->sendData(0);
+//   this->sendData(0);
  }
 
  void			UDPService::sendData(UDPPacket *UDPP)
@@ -91,7 +90,8 @@ UDPService::UDPService(NetworkManager& NM, boost::asio::io_service& ios, boost::
  {
    if (!e)
      {
-       this->retrieveBody(std::string(header, 8));
+		 std::cout << "HANDLE RECV" << std::endl;
+//       this->retrieveBody(std::string(header, 8));
      }
    else
      std::cout << "Recv Error : " << e.message() << " while receiving datas" << std::endl;

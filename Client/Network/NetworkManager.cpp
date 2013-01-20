@@ -30,7 +30,7 @@ void		NetworkManager::run()
 {
   try
     {
-      TCPService	TCPS(this->ios, this->etcp);
+      //TCPService	TCPS(this->ios, this->etcp);
       UDPService	UDPS(*this, this->ios, this->eudp);
 
       this->ios.run();

@@ -51,6 +51,7 @@ void		Connect::finalize(TCPService *)
 bool		Connect::manageRequest(TCPService *)
 {
   assert(0);
+  return true;
 }
 
 std::string	Connect::toString()
@@ -103,6 +104,7 @@ void		CreateRoom::finalize(TCPService*)
 bool		CreateRoom::manageRequest(TCPService *)
 {
   assert(0);
+  return true;
 }
 
 std::string	CreateRoom::toString()

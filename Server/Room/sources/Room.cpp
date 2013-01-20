@@ -22,8 +22,24 @@ Room::~Room(void)
 }
 
 
-/* Useful for ThreadPool */
-void		Room::operator()(void) {}
+void		Room::loadGame()
+{
+	DEBUG << "Loading Game" << std::endl;
+}
+
+
+void		Room::playGame()
+{
+	DEBUG << "Playing Game" << std::endl;
+}
+
+
+/* Useful for ThreadPool : used to launch the game */
+void		Room::operator()(void)
+{
+	this->loadGame();
+	this->playGame();
+}
 
 
 /* Returns the IPlayer that matches the IService [s]; overwize returns 0 */

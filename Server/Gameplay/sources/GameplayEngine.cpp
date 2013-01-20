@@ -27,7 +27,7 @@ void GameplayEngine::handleEvent(/*Event & evt*/) {
   // A coder une fois que la class Event est prete
 }
 
-void GameplayEngine::plugEntity(ICollidable * tity) {
+void GameplayEngine::plugEntity(ICollidable * E) {
 }
 
 void GameplayEngine::update() {

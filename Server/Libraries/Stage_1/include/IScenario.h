@@ -12,15 +12,27 @@
 #include "IPlayable.h"
 #include "IScriptable.h"
 
-struct Timepoint {
-  float time_;
-  IEntity * spawn_;
+struct Timepoint
+{
+public:
+	float		time_;
+	IEntity *	spawn_;
+
+public:
+	Timepoint(float t, IEntity* E) : time_(t), spawn_(E) {}
+
+public:
+	bool	isValid() const { return (this->time_ >= 0.0f && this->spawn_); }
 };
 
-class IScenario {
+
+class IScenario
+{
 public:
-  virtual  ~IScenario(void) {}
-  virtual IEntity * getNextEvent(float,int) = 0;
-  virtual void addNewEvent(Timepoint) = 0;
-  virtual bool isOver(float) = 0;
+	virtual  ~IScenario(void) {}
+
+public:
+	virtual bool		isOver() const				= 0;
+	virtual void		addNewEvent(Timepoint)		= 0;
+	virtual IEntity *	getNextEvent(float atTime)	= 0;
 };

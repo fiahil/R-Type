@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\..\Generics\Dl;.\include;..\..\Gameplay\include;..\..\Quadtree\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\Generics\Dl;.\include;..\..\Gameplay\include;..\..\Quadtree\include;..\Stage_1\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>

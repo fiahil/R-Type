@@ -28,6 +28,10 @@ public:
 	IPlayer *		operator()(IPlayer *p) const;	/* Useful for method addPlayer */
 	int				operator()(int idTest) const;	/* Useful for method removePlayer */
 
+private:
+	void		loadGame();
+	void		playGame();
+	
 /* Methods herited from IRoom */
 public:
 	virtual int			getId() const;

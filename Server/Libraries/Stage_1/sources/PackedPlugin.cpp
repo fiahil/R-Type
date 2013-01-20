@@ -3,10 +3,10 @@
 #include "GameMod.h"
 
 #ifdef WIN32
-extern "C" __declspec(dllexport) PackedPlugin * entryPoint()
-{
+extern "C" __declspec(dllexport) PackedPlugin * entryPoint() {
 	return new PackedPlugin();
 }
+
 #else
 extern "C" {
 PackedPlugin * entryPoint() {
@@ -19,7 +19,7 @@ PackedPlugin::PackedPlugin()
 {
 	this->id_ = "Stage_1";
 	this->gm_ = new GameMod();
-	this->sc_ = new Scenario(90);
+	this->sc_ = new Scenario();
 }
 
 PackedPlugin::~PackedPlugin()

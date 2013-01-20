@@ -1,17 +1,18 @@
-#ifndef SCENARIO_H
-#define SCENARIO_H
+#pragma once
 
 #include "IScenario.h"
 
-class Scenario : public IScenario {
-  std::deque<Timepoint> timeline_;
-  float duration_;
-public:
-  Scenario(float);
-  ~Scenario();
-  IEntity * getNextEvent(float,int);
-  void addNewEvent(Timepoint);
-  bool isOver(float);
-};
+class Scenario : public IScenario
+{
+private:
+	std::deque<Timepoint> timeline_;
 
-#endif // SCENARIO_H
+public:
+  Scenario();
+  virtual ~Scenario();
+
+public:
+	virtual bool		isOver() const;
+	virtual void		addNewEvent(Timepoint);
+	virtual IEntity *	getNextEvent(float atTime);
+};

@@ -175,7 +175,7 @@ std::string SocketTcp::Recv(void)
 		}
 	}
 	else
-		throw std::exception();
+		throw ErrorInit("Try to receive data on a not connected socket");
 }
 
 }			// namespace Net

@@ -1,3 +1,4 @@
+#include <iostream>
 #include "GameManager.h"
 #include "NetworkManager.hpp"
 #include "sfWindow.h"
@@ -13,8 +14,6 @@ GameManager::GameManager(char** av) : alive(true)
 { 
   this->net_ = new NetworkManager(av);
   this->input_ = new sfKeyboard();
-
-  this->net_->run();
 }
 
 
@@ -22,7 +21,7 @@ GameManager::~GameManager(void)
 {
 }
 
-void	GameManager::treatAction(ICommand *action)
+void		GameManager::treatAction(ICommand *action)
 {
   if (!action)
     return ;
@@ -64,17 +63,17 @@ bool		GameManager::isAlive() const
   return this->alive;
 }
 
-void	GameManager::update()
+void		GameManager::update()
 {
 
 }
 
-void	GameManager::draw()
+void		GameManager::draw()
 {
 
 }
 
-void	GameManager::release()
+void		GameManager::release()
 {
 
 }
@@ -86,12 +85,14 @@ void		GameManager::run()
 
   while (this->alive)
     {
-      ElapsedTime += Clock.getElapsedTime().asSeconds();
-      if (ElapsedTime > 0.167f)
+      if (Clock.getElapsedTime().asSeconds() > 0.150f)
 	{
-	  Clock.restart();
+	  std::cout << "IN : " << ElapsedTime << std::endl;
+	  Clock.restart(); 
+	  ElapsedTime = 0;
 	  this->update();
 	  this->draw();
 	}
+      this->net_->run();
     }
 }

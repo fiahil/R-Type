@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Wed Jan 16 14:24:01 2013 alexandre teisseire
-// Last update Sat Jan 19 15:31:36 2013 alexandre teisseire
+// Last update Sat Jan 19 22:38:09 2013 alexandre teisseire
 //
 
 #ifndef	__UDPSERVICE_HPP__
@@ -15,7 +15,8 @@
 #include <boost/asio.hpp>
 #include "UDPPacket.h"
 #include "Command.h"
-#include "NetworkManager.hpp"
+
+class	NetworkManager;
 
 class	UDPService
 {

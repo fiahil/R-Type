@@ -163,10 +163,7 @@
     <ClCompile Include="..\Generics\Net\WinSocketUdp.cpp" />
     <ClCompile Include="..\Generics\ReqServ\sources\CSRequest.cpp" />
     <ClCompile Include="..\Generics\ReqServ\sources\SCRequest.cpp" />
-    <ClCompile Include="Gameplay\sources\GameMod.cpp" />
     <ClCompile Include="Gameplay\sources\GameplayEngine.cpp" />
-    <ClCompile Include="Gameplay\sources\PackedPlugin.cpp" />
-    <ClCompile Include="Gameplay\sources\Scenario.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Network\sources\ClientService.cpp" />
     <ClCompile Include="Network\sources\ClientServiceUDPWorker.cpp" />

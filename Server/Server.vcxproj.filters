@@ -382,15 +382,6 @@
     <ClCompile Include="Network\sources\PackManUDP.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
-    <ClCompile Include="Gameplay\sources\Scenario.cpp">
-      <Filter>Source Files\Gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="Gameplay\sources\GameMod.cpp">
-      <Filter>Source Files\Gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="Gameplay\sources\PackedPlugin.cpp">
-      <Filter>Source Files\Gameplay</Filter>
-    </ClCompile>
     <ClCompile Include="Gameplay\sources\GameplayEngine.cpp">
       <Filter>Source Files\Gameplay</Filter>
     </ClCompile>

@@ -153,7 +153,7 @@ void		ClientService::push(ICommand* r)
 
 ICommand*		ClientService::Zpull()
 {
-	DEBUG << "Client Service UDP pull" << std::endl;
+	//DEBUG << "Client Service UDP pull" << std::endl;
 
 	UDPPacket*	 pack = this->UDPinConsumer_.consume();
 
@@ -165,9 +165,7 @@ ICommand*		ClientService::Zpull()
 		return r;
 	}
 
-	DEBUG << "NULL UDP Packet received" << std::endl;
-	return 0;
-
+	//DEBUG << "NULL UDP Packet received" << std::endl;
 	return 0;
 }
 

@@ -8,7 +8,7 @@
 // Last update Sat Jan 19 02:54:33 2013 alexandre teisseire
 //
 
-#include <sstream>
+
 #include "PackMan.h"
 #include "IClientService.h"
 #include "SCRequest.h"

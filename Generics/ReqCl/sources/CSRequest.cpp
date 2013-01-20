@@ -9,7 +9,7 @@
 //
 
 #include	<assert.h>
-#include	<sstream>
+
 #include	"IClientService.h"
 #include	"PackMan.h"
 #include	"CSRequest.h"

@@ -9,7 +9,6 @@
 //
 
 #include <assert.h>
-#include <sstream>
 #include "PackMan.h"
 #include "SCRequest.h"
 
@@ -51,10 +50,7 @@ bool		AnswerCreateRoom::manageRequest(IService *)
 
 std::string	AnswerCreateRoom::toString()
 {
-  std::stringstream	ss;
-
-  ss << this->parameters.roomId;
-  return (ss.str());
+	return std::string(reinterpret_cast<const char*>(&this->parameters), sizeof(this->parameters));
 }
 
 eRequestType	AnswerCreateRoom::getType()
@@ -152,10 +148,7 @@ bool		ACK::manageRequest(IService *S)
 
 std::string	ACK::toString()
 {
-  std::stringstream ss;
-
-  ss << this->parameters.eCode;
-  return (ss.str());
+	return std::string(reinterpret_cast<const char *>(&this->parameters), sizeof(this->parameters));
 }
 
 eRequestType	ACK::getType()

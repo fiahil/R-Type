@@ -20,8 +20,10 @@ public:
 	QuadTree(int x, int y, unsigned int maxEPN, unsigned int maxDepth);
 	~QuadTree();
 	void					update(IGameMod*);
+	void					actualize();
 	ICollidable*			checkCollision(ICollidable *);
 	void					addEnnemy(ICollidable *);
 	void					addShip(ICollidable *);
 	void					addBullet(ICollidable *);
+	void					addFith(ICollidable *);
 };

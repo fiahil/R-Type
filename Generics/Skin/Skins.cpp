@@ -15,8 +15,8 @@ static skin	initArray[] = {
 							{"../Resources/Sprite/ennemy_bullet.gif", 1, 8},
 							{"../Resources/Sprite/death_bullet_player.gif", 1, 5},
 							{"../Resources/Sprite/big_monster.gif", 1, 6},
-							{"../Resources/Sprite/big_death.gif", 1, 8}
-							{"../Resources/Sprite/boss.gif", 1, 9}
+							{"../Resources/Sprite/big_death.gif", 1, 8},
+							{"../Resources/Sprite/boss.gif", 1, 9},
 							{"../Resources/Sprite/boss_death.gif", 1, 9}
 						};
 

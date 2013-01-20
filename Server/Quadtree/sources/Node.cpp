@@ -57,10 +57,10 @@ void	Node::autoSplit()
 	{
 		leaf_ = new Node[4];
 		
-		leaf_[0].init(maxDepth_ - 1, maxEntity_, centerX_ - (sizeX_ / 4), centerY_ - (sizeY_ / 4), sizeX_ / 2, sizeX_ / 2, collider_);
-		leaf_[1].init(maxDepth_ - 1, maxEntity_, centerX_ + (sizeX_ / 4), centerY_ - (sizeY_ / 4), sizeX_ / 2, sizeX_ / 2, collider_);
-		leaf_[2].init(maxDepth_ - 1, maxEntity_, centerX_ - (sizeX_ / 4), centerY_ + (sizeY_ / 4), sizeX_ / 2, sizeX_ / 2, collider_);
-		leaf_[3].init(maxDepth_ - 1, maxEntity_, centerX_ + (sizeX_ / 4), centerY_ + (sizeY_ / 4), sizeX_ / 2, sizeX_ / 2, collider_);
+		leaf_[0].init(maxDepth_ - 1, maxEntity_, centerX_ - (sizeX_ >> 2), centerY_ - (sizeY_ >> 2), sizeX_ >> 1, sizeX_ >> 1, collider_);
+		leaf_[1].init(maxDepth_ - 1, maxEntity_, centerX_ + (sizeX_ >> 2), centerY_ - (sizeY_ >> 2), sizeX_ >> 1, sizeX_ >> 1, collider_);
+		leaf_[2].init(maxDepth_ - 1, maxEntity_, centerX_ - (sizeX_ >> 2), centerY_ + (sizeY_ >> 2), sizeX_ >> 1, sizeX_ >> 1, collider_);
+		leaf_[3].init(maxDepth_ - 1, maxEntity_, centerX_ + (sizeX_ >> 2), centerY_ + (sizeY_ >> 2), sizeX_ >> 1, sizeX_ >> 1, collider_);
 	}
 
 	for (int i = 0; i < 4; ++i)

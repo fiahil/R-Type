@@ -3,7 +3,7 @@
 
 QuadTree::QuadTree(int x, int y, unsigned int maxEPN, unsigned int maxDepth): x_(x), y_(y), maxEntityPerNode_(maxEPN), maxDepth_(maxDepth)
 {
-	int x_opti1 = x >> 4, x_opti2 = (3 * x) >> 4, x_opti3 = x >> 2, y_opti1 = y >> 4, y_opti2 = (3 * y) >> 4, y_opti3 = y >> 2;
+	int x_opti1 = x >> 2, x_opti2 = (3 * x) >> 2, x_opti3 = x >> 1, y_opti1 = y >> 2, y_opti2 = (3 * y) >> 2, y_opti3 = y >> 1;
 
 	tree_[0].init(maxDepth, maxEPN, x_opti1, y_opti1, x_opti3, y_opti3, &collider_);
 	tree_[1].init(maxDepth, maxEPN, x_opti1, y_opti2, x_opti3, y_opti3, &collider_);
@@ -71,6 +71,11 @@ void	QuadTree::addBullet(ICollidable *bullet)
 		tree_[3].addEntity(bullet);
 }
 
+void	QuadTree::addFith(ICollidable* e)
+{
+	tree_[4].addEntity(e);
+}
+
 void	QuadTree::update(IGameMod *gm)
 {
 	ICollidable	*collide = 0;
@@ -83,5 +88,34 @@ void	QuadTree::update(IGameMod *gm)
 					gm->onCollision((*it), collide);
 					collide = 0;
 				}
+	}
+}
+
+void	QuadTree::actualize()
+{
+	std::list<ICollidable*> tmp;
+
+	tmp = ship_;
+	ship_.clear();
+	while (tmp.size())
+	{
+		this->addShip(tmp.front());
+		tmp.pop_front();
+	}
+
+	tmp = bullet_;
+	bullet_.clear();
+	while (tmp.size())
+	{
+		this->addBullet(tmp.front());
+		tmp.pop_front();
+	}
+
+	tmp = ennemy_;
+	ennemy_.clear();
+	while (tmp.size())
+	{
+		this->addEnnemy(tmp.front());
+		tmp.pop_front();
 	}
 }

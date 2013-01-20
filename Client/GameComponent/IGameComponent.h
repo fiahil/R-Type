@@ -24,3 +24,7 @@ public:
 	virtual	void	death() = 0;
 };
 
+namespace GameResources
+{
+	IGameComponent* shoot(int, int);
+};

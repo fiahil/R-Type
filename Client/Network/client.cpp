@@ -7,7 +7,7 @@
 // Started on  Tue Jan 15 22:01:51 2013 alexandre teisseire
 // Last update Tue Jan 15 22:31:23 2013 alexandre teisseire
 //
-
+/*
 #include	<iostream>
 #include	"NetworkManager.hpp"
 
@@ -21,3 +21,4 @@ int		main(int ac, char **av)
   else
     std::cout << "Usage : ./ClientRtype [ip] [port]" << std::endl;
 }
+*/

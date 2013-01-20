@@ -5,7 +5,7 @@
 ## Login   <teisse_a@epitech.net>
 ## 
 ## Started on  Fri Jan 18 20:15:19 2013 alexandre teisseire
-## Last update Sat Jan 19 21:43:45 2013 alexandre teisseire
+## Last update Sun Jan 20 10:43:08 2013 alexandre teisseire
 ##
 
 NAME		= R-Type
@@ -112,7 +112,7 @@ $(NAME):	$(OBJ) $(OBJ_LOG) $(OBJ_CL) $(OBJ_GM) $(OBJ_IN) $(OBJ_WIN) $(OBJ_STG) $
 		$(CXX) -o $(NAME) $(OBJ) $(OBJ_LOG) $(OBJ_CL) $(OBJ_GM) $(OBJ_IN) $(OBJ_WIN) $(OBJ_STG) $(OBJ_SS) $(OBJ_GC) $(LDFLAGS)
 
 clean:
-		$(RM) $(OBJ)
+		$(RM) $(OBJ) $(OBJ_LOG) $(OBJ_CL) $(OBJ_GM) $(OBJ_IN) $(OBJ_WIN) $(OBJ_STG) $(OBJ_SS) $(OBJ_GC)
 
 fclean:		clean
 		$(RM) $(NAME)

@@ -5,18 +5,19 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 23:16:13 2013 alexandre teisseire
-// Last update Sun Jan 20 01:28:08 2013 alexandre teisseire
+// Last update Sun Jan 20 03:53:20 2013 alexandre teisseire
 //
 
 #include	<vector>
 #include	<boost/shared_ptr.hpp>
+#include	<boost/make_shared.hpp>
 #include	<boost/bind.hpp>
 #include	"TCPService.hpp"
 #include	"PackMan.h"
 #include	"CSRequest.h"
 
 TCPService::TCPService(boost::asio::io_service& ios, boost::asio::ip::tcp::endpoint ep) :
-  sock(ios)
+  sock(ios), p(new char[4])
 {
   this->sock.async_connect(ep, boost::bind(&TCPService::handleConnect, this,
 					   boost::asio::placeholders::error, ep));
@@ -24,15 +25,20 @@ TCPService::TCPService(boost::asio::io_service& ios, boost::asio::ip::tcp::endpo
 
 TCPService::~TCPService() {}
 
+void			test_rcv(const boost::system::error_code&, std::size_t)
+{
+   std::cout << "j ai une grosse bite" << std::endl;
+}
+
 void			TCPService::recvData()
 {
-  boost::shared_ptr<std::vector<char> > data(new std::vector<char>);
+  this->sock.async_receive(boost::asio::buffer(this->p,4), &test_rcv);
+  // boost::asio::async_read(this->sock,
+  // 			  boost::asio::buffer(this->p, 4),
+  // 			  boost::bind(&TCPService::handleRecv, 
+  // 				      this,
+  // 				      boost::asio::placeholders::error, std::string(this->p)));
 
-  boost::asio::async_read(this->sock,
-  			  boost::asio::buffer(*data),
-			  boost::bind(&TCPService::handleRecv, 
-				      this,
-				      boost::asio::placeholders::error));
 }
 
 void			TCPService::sendData(TCPPacket *TCPP)
@@ -150,11 +156,11 @@ void			TCPService::handleConnect(const boost::system::error_code& e, boost::asio
     std::cout << "Error --> " << e.message() << " <-- catched while tring to connect to : " << ep << std::endl;
 }
 
-void			TCPService::handleRecv(const boost::system::error_code& e)
+void			TCPService::handleRecv(const boost::system::error_code& e, std::string h)
 {
   if (!e)
     {
-      // this->retrieveBody(std::string(header, 4));
+      this->retrieveBody(h);
       // delete[] header;
     }
   else
@@ -206,4 +212,9 @@ void			TCPService::handlePack(const boost::system::error_code&error, std::string
     {
       std::cout << "Recv Error : " << error.message() << " while receiving datas" << std::endl;
     }
+}
+
+boost::asio::ip::tcp::socket&	TCPService::socket()
+{
+  return this->sock;
 }

@@ -87,12 +87,12 @@ void		GameManager::run()
     {
       if (Clock.getElapsedTime().asSeconds() > 0.150f)
 	{
-	  std::cout << "IN : " << ElapsedTime << std::endl;
+	  std::cout << "IN" << std::endl;
 	  Clock.restart(); 
 	  ElapsedTime = 0;
 	  this->update();
 	  this->draw();
+	  this->net_->run();
 	}
-      this->net_->run();
     }
 }

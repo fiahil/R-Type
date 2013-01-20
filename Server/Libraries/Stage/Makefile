@@ -4,7 +4,7 @@
 ## Autor : Mister Jingles
 ##
 
-NAME	=	stage.dll
+NAME	=	Stage.dll
 
 SRC	=	$(DIRSRC)GameMod.cpp		\
 		$(DIRSRC)PackedPlugin.cpp	\
@@ -15,7 +15,7 @@ OBJ	=	$(patsubst $(DIRSRC)%.cpp, $(DIROBJ)%.o, $(SRC))
 
 INC	=	-I $(DIRINC) -I ../../Gameplay/include/ -I ../../../Generics/Dl/ -I ../Entities/include/
 
-DIRBIN	=	./
+DIRBIN	=	../../
 
 DIRSRC	=	sources/
 
@@ -58,7 +58,6 @@ clean:
 
 fclean:		clean
 		@$(RM) $(DIRBIN)$(NAME)
-		@$(RM) $(DIRBIN)
 
 re:		fclean all
 

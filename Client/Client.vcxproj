@@ -75,7 +75,6 @@
     <ClCompile Include="Input\sfJoystick.cpp" />
     <ClCompile Include="Input\sfKeyboard.cpp" />
     <ClCompile Include="Input\sfMouse.cpp" />
-    <ClCompile Include="Network\client.cpp" />
     <ClCompile Include="Network\NetworkManager.cpp" />
     <ClCompile Include="Network\PackMan.cpp" />
     <ClCompile Include="Network\PackManUDP.cpp" />

@@ -57,9 +57,6 @@
     <ClCompile Include="Network\NetworkManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Network\client.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Network\UDPService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

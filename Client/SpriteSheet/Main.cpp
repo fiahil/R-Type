@@ -9,10 +9,10 @@ extern	sfWindow	sfmlWin;
 
 int main()
 {
-	ISpriteSheet	*test = new sfSpriteSheet("..\\Resources\\Sprite\\round_bot.gif", 1, 12);
-	ISpriteSheet	*test2 = new sfSpriteSheet("..\\Resources\\Sprite\\r-typesheet42.gif", 5, 5);
+	ISpriteSheet	*test = new sfSpriteSheet("..\\Resources\\Sprite\\player_bullet.gif", 1, 2);
+	ISpriteSheet	*test2 = new sfSpriteSheet("..\\Resources\\Sprite\\big_monster.gif", 1, 6);
 	ISpriteSheet	*ships = new sfSpriteSheet("..\\Resources\\Sprite\\ennemy_bullet1.gif", 1, 8);
-	ISpriteSheet	*boom = new sfSpriteSheet("..\\Resources\\Sprite\\little_death.gif", 1, 6);
+	ISpriteSheet	*boom = new sfSpriteSheet("..\\Resources\\Sprite\\death_bullet_player.gif", 1, 5);
 	ISpriteSheet	*boom2 = new sfSpriteSheet("..\\Resources\\Sprite\\little_death.gif", 1, 6);
 	ISpriteSheet	*bing = new sfSpriteSheet("..\\Resources\\Sprite\\big_death.gif", 1, 8);
 	ISpriteSheet	*ennemy = new sfSpriteSheet("..\\Resources\\Sprite\\ennemy1.gif", 1, 8);
@@ -26,23 +26,21 @@ int main()
 	int	i = 0, o = 1;
 	ships->moveTo(-10 , 10);
 	vaisseau->move(1,4);
-	vaisseau2->move(4, 1);
+	vaisseau2->move(4, 1); 
 
 	while (sfmlWin.isOpen())
 	{
-		if (++i == 100)
+		if (++i == 250)
 		{
 			i = 0;
 		}
 		if (i == 0)
 		{
 			++o;
-			if (o == 30)
+			if (o == 60)
 			{
 				vaisseau->death();
 			}
-			if (o == 50)
-				vaisseau2->death();
 			st.update();
 			ennemy->moveFrom(1,1);
 			ships->moveFrom(1,1);

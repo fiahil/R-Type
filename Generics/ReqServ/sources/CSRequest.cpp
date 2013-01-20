@@ -427,12 +427,6 @@ bool		LaunchGame::isValid()
   return true;
 }
 
-#include "Cmd.h"
-#include "Command.h"
-#include "ICommand.h"
-#include "IClientService.h"
-#include "Windows.h"
-
 void		LaunchGame::doOp()
 {
   RoomManager&	RM = Resources::RM;

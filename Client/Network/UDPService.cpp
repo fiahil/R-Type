@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Wed Jan 16 15:12:08 2013 alexandre teisseire
-// Last update Sat Jan 19 22:41:03 2013 alexandre teisseire
+// Last update Sun Jan 20 11:58:01 2013 alexandre teisseire
 //
 //
 
@@ -19,9 +19,12 @@
 UDPService::UDPService(NetworkManager& NM, boost::asio::io_service& ios, boost::asio::ip::udp::endpoint ep) :
   NM(NM),
   sock(ios, boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 42998)),
-  ep(ep)
+  ep(ep),
+  pack(new char[sizeof(UDPPacket)])
 {
   std::cout << "Coucou UDP" << std::endl;
+  
+  PackMan::MemSet(this->pack, sizeof(UDPPacket));
   this->recvData();
 }
 
@@ -29,14 +32,11 @@ UDPService::UDPService(NetworkManager& NM, boost::asio::io_service& ios, boost::
 
  void			UDPService::recvData()
  {
-   char *pack = new char[8];
 
-   std::cout << "RECEIVE DATA !!!" << std::endl;
-   this->sock.async_receive(boost::asio::buffer(pack, 8), boost::bind(&UDPService::handleRecv, this,
-				       boost::asio::placeholders::error, 
-				       pack));
+   this->sock.async_receive(boost::asio::buffer(this->pack, sizeof(UDPPacket)), 
+			    boost::bind(&UDPService::handlePack, this,
+					boost::asio::placeholders::error, pack));
 
-//   this->sendData(0);
  }
 
  void			UDPService::sendData(UDPPacket *UDPP)
@@ -56,19 +56,8 @@ UDPService::UDPService(NetworkManager& NM, boost::asio::io_service& ios, boost::
 					pack, UDPP));
  }
 
- void			UDPService::retrieveBody(std::string header)
+ void			UDPService::retrieveBody(std::string)
  {
-   struct UDPPacket::Header *H = new UDPPacket::Header();
-
-   PackMan::Memcpy(H, header.data(), 8);
-
-   char			*pack = new char[H->size - 8];
-
-   std::cout << "RECEIVE DATA !!!" << std::endl;
-   this->sock.async_receive( boost::asio::buffer(pack, H->size - 8),
-			       boost::bind(&UDPService::handlePack, this,
-					   boost::asio::placeholders::error,
-					   header, pack));
  }
 
  void			UDPService::handleConnect(const boost::system::error_code& e, boost::asio::ip::udp::endpoint ep)
@@ -86,15 +75,15 @@ UDPService::UDPService(NetworkManager& NM, boost::asio::io_service& ios, boost::
      std::cout << "Error --> " << e.message() << " <-- catched while tring to connect to : " << ep << std::endl;
  }
 
- void			UDPService::handleRecv(const boost::system::error_code& e, char* header)
+ void			UDPService::handleRecv(const boost::system::error_code&, char*)
  {
-   if (!e)
-     {
-		 std::cout << "HANDLE RECV" << std::endl;
-//       this->retrieveBody(std::string(header, 8));
-     }
-   else
-     std::cout << "Recv Error : " << e.message() << " while receiving datas" << std::endl;
+   // if (!e)
+   //   {
+   //     std::cout << "HANDLE RECV : " << header << std::endl;
+   //     //       this->retrieveBody(std::string(header, 8));
+   //   }
+   // else
+   //   std::cout << "Recv Error : " << e.message() << " while receiving datas" << std::endl;
  }
 
  void			UDPService::handleSend(const boost::system::error_code& error, char* request, UDPPacket *UDPP)
@@ -113,25 +102,30 @@ UDPService::UDPService(NetworkManager& NM, boost::asio::io_service& ios, boost::
      }
  }
 
- void			UDPService::handlePack(const boost::system::error_code&error, std::string header, char *body)
+ void			UDPService::handlePack(const boost::system::error_code&error, char *pack)
  {
    if (!error)
      {
        std::cout << "#### [UDP] >> Package successfully received ####" << std::endl;
 
+       std::string header(pack, sizeof(UDPPacket));
+
        UDPPacket	*UDPP = new UDPPacket();
 
        PackMan::Memcpy(&UDPP->H.size, header.substr(0, 2).data(), 2);
-       PackMan::Memcpy(&UDPP->H.type, header.substr(2, 4).data(), 2);
-       PackMan::Memcpy(UDPP->value, body, UDPP->H.size - 4);
+       PackMan::Memcpy(&UDPP->H.player, header.substr(2, 4).data(), 2);
+       PackMan::Memcpy(&UDPP->H.type, header.substr(4, 8).data(), 4);
+       PackMan::Memcpy(&UDPP->clock, header.substr(8, 12).data(), 4);
+
+       PackMan::Memcpy(UDPP->value, header.substr(12).data(), UDPP->H.size - 12);
 
        std::cout << "[UDP] >> package type : " << UDPP->H.type << std::endl;
        std::cout << "[UDP] >> His size is : " << UDPP->H.size << std::endl;
        std::cout << "[UDP] >> and he contains : " << UDPP->value << std::endl;
 
-       ICommand*	IC = PackManUDP::unpack(UDPP);
-       if (IC)
-	 NM.push_back(IC);
+       // ICommand*	IC = PackManUDP::unpack(UDPP);
+       // if (IC)
+       // 	 NM.push_back(IC);
 
       // delete header;
       // delete body;

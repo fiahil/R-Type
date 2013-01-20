@@ -5,7 +5,7 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 23:16:13 2013 alexandre teisseire
-// Last update Sun Jan 20 03:53:20 2013 alexandre teisseire
+// Last update Sun Jan 20 10:47:56 2013 alexandre teisseire
 //
 
 #include	<vector>
@@ -33,12 +33,11 @@ void			test_rcv(const boost::system::error_code&, std::size_t)
 
 void			TCPService::recvData()
 {
-  this->sock.async_receive(boost::asio::buffer(this->p,4), &test_rcv);
-  // boost::asio::async_read(this->sock,
-  // 			  boost::asio::buffer(this->p, 4),
-  // 			  boost::bind(&TCPService::handleRecv, 
-  // 				      this,
-  // 				      boost::asio::placeholders::error, std::string(this->p)));
+  boost::asio::async_read(this->sock,
+  			  boost::asio::buffer(this->p, 4),
+  			  boost::bind(&TCPService::handleRecv, 
+  				      this,
+  				      boost::asio::placeholders::error, std::string(this->p)));
 
 }
 
@@ -153,13 +152,13 @@ void			TCPService::handleConnect(const boost::system::error_code& e, boost::asio
        PackMan::Memcpy(TCPP8->B, &param6, sizeof(param6));
        this->sendData(TCPP8);
 
-	   Ready	RD(this->sock.local_endpoint().address().to_string().c_str(), 0);
-	   Ready::parameters	param7 = RD.getParam();
-	   TCPPacket* TCPP9 = new TCPPacket();
-	   TCPP9->H.size = sizeof(param7) + 4;
-	   TCPP9->H.type = RD.getType();
-	   PackMan::Memcpy(TCPP9->B, &param7, sizeof(param7));
-	   this->sendData(TCPP9);
+       Ready	RD(this->sock.local_endpoint().address().to_string().c_str(), 0);
+       Ready::parameters	param7 = RD.getParam();
+       TCPPacket* TCPP9 = new TCPPacket();
+       TCPP9->H.size = sizeof(param7) + 4;
+       TCPP9->H.type = RD.getType();
+       PackMan::Memcpy(TCPP9->B, &param7, sizeof(param7));
+       this->sendData(TCPP9);
     }
   else
     std::cout << "Error --> " << e.message() << " <-- catched while tring to connect to : " << ep << std::endl;

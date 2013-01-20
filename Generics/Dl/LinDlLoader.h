@@ -22,8 +22,8 @@ namespace Dl
 		LinDlLoader(LinDlLoader const&);
 		LinDlLoader & operator=(LinDlLoader const&);
 
-		T*		object_;
 		void*		handle_;
+		T*		object_;
 
 	public:
 		LinDlLoader()

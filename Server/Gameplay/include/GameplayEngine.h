@@ -1,15 +1,15 @@
 #pragma once
 
+#include <queue>
 #include "IPlayer.h"
 #include "Collider.h"
-#include "PackedPlugin.h"
 #include "DlManager.h"
+#include "PackedPlugin.h"
 #include "IGameMod.h"
 #include "IScenario.h"
 #include "QuadTree.h"
 #include "ICollidable.h"
 #include "ICommand.h"
-#include <queue>
 // Ajouter l'include de la class Event
 
 class GameplayEngine

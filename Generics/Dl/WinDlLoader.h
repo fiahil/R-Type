@@ -36,7 +36,7 @@ namespace Dl
 			this->handle_ = LoadLibrary(std::wstring(path.begin(), path.end()).c_str());
 			if (!this->handle_)
 				throw DlLibLoadFail();
-		
+
 			procFunc ptr = reinterpret_cast<procFunc>(GetProcAddress(this->handle_, entryPoint.c_str()));
 			if (!ptr)
 				throw DlSymbolLoadFail();

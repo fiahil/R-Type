@@ -13,9 +13,9 @@ U *	cast_entity(T * m)
 void GameMod::onCollision(IEntity * x, IEntity * y) {
 	IDestroyable *	tmp;
 
-	if (tmp = cast_entity<IEntity, IDestroyable>(x))
+	if ((tmp = cast_entity<IEntity, IDestroyable>(x)))
 		tmp->destroy();
-	if (tmp = cast_entity<IEntity, IDestroyable>(y))
+	if ((tmp = cast_entity<IEntity, IDestroyable>(y)))
 		tmp->destroy();
 }
 

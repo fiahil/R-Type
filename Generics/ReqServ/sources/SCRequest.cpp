@@ -51,10 +51,7 @@ bool		AnswerCreateRoom::manageRequest(IService *)
 
 std::string	AnswerCreateRoom::toString()
 {
-  std::stringstream	ss;
-
-  ss << this->parameters.roomId;
-  return (ss.str());
+  return std::string (reinterpret_cast<char*>(&this->parameters), sizeof(this->parameters));
 }
 
 eRequestType	AnswerCreateRoom::getType()

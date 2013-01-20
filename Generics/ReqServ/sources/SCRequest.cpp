@@ -1,14 +1,5 @@
-//
-// SCRequest.cpp for RType in /home/teisse_a//Documents/Tek3/RType/Requests
-// 
-// Made by alexandre teisseire
-// Login   <teisse_a@epitech.net>
-// 
-// Started on  Thu Jan  3 18:45:41 2013 alexandre teisseire
-// Last update Sun Jan 20 23:01:45 2013 alexandre teisseire
-//
 
-#include <assert.h>
+#include <cassert>
 #include "PackMan.h"
 #include "SCRequest.h"
 
@@ -148,11 +139,7 @@ bool		ACK::manageRequest(IService *S)
 
 std::string	ACK::toString()
 {
-<<<<<<< HEAD
   return std::string(reinterpret_cast<char const*>(&this->parameters), sizeof(this->parameters));
-=======
-	return std::string(reinterpret_cast<const char *>(&this->parameters), sizeof(this->parameters));
->>>>>>> e68a4a99b9e9824adf92b30210ec3c00e2c537bc
 }
 
 eRequestType	ACK::getType()

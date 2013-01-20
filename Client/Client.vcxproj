@@ -46,7 +46,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\Generics\Skin;..\Generics\Logger;..\Generics\ReqCl\include;..\Server\Room\include;..\Generics\PS;..\Generics\LWP;..\Generics\PC;..\Generics\TP;..\Client\Room\include;..\Client\NetWork\include;..\SFML-2.0-rc\include;Window;SpriteSheet;Network;Input;GameComponent;..\Generics\cmd;Stage</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Generics\Skin;..\Generics\Logger;..\Generics\ReqCl\include;..\Server\Room\include;..\Generics\PS;..\Generics\LWP;..\Generics\PC;..\Generics\TP;..\Client\Room\include;..\Client\NetWork\include;..\SFML-2.0-rc\include;Window;SpriteSheet;Network;Input;GameComponent;..\Generics\cmd;Stage;GameManager</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -78,12 +78,12 @@
     <ClCompile Include="Input\sfJoystick.cpp" />
     <ClCompile Include="Input\sfKeyboard.cpp" />
     <ClCompile Include="Input\sfMouse.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Network\NetworkManager.cpp" />
     <ClCompile Include="Network\PackMan.cpp" />
     <ClCompile Include="Network\PackManUDP.cpp" />
     <ClCompile Include="Network\TCPService.cpp" />
     <ClCompile Include="Network\UDPService.cpp" />
-    <ClCompile Include="SpriteSheet\Main.cpp" />
     <ClCompile Include="SpriteSheet\sfSpriteSheet.cpp" />
     <ClCompile Include="Stage\Stage.cpp" />
     <ClCompile Include="Window\sfWindow.cpp" />

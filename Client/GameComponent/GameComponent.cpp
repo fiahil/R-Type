@@ -45,7 +45,7 @@ void	GameComponent::death()
 
 void	GameComponent::move(int x, int y)
 {
-	if (!x && !y)
+	if (!x && !y && state_ != DEATH)
 		state_ = IDLE;
 	else if (state_ != DEATH)
 		state_ = MOVE;

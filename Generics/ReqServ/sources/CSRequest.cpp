@@ -544,7 +544,7 @@ eRequestType	Ping::getType()
   return PING;
 }
 
-Ready::Ready(char *ep) :
+Ready::Ready(char *ep, int) :
   ec(Success), P(0)
 {
   std::string	epp(ep);
@@ -562,6 +562,11 @@ Ready::~Ready() {}
 
 bool		Ready::isValid()
 {
+	if (P == 0)
+  {
+	  this->ec = S_process_fail;
+	  return false;
+  }
   return true;
 }
 

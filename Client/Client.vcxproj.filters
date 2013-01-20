@@ -131,10 +131,13 @@
     <ClInclude Include="Network\INetworkManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Generics\ReqServ\include\SCRequest.h">
+    <ClInclude Include="..\Generics\ReqServ\include\IRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Generics\ReqServ\include\IRequest.h">
+    <ClInclude Include="..\Generics\ReqCl\include\SCRequest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\ReqCl\include\CSRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

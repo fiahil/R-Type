@@ -21,7 +21,7 @@ private:
   virtual void		finalize(ITCPClientService*);
 
 private:
-    void		doOp(IService*);
+    void		doOp(ITCPClientService*);
 
 public:
   Connect(std::string const&, std::string const&);
@@ -252,7 +252,7 @@ private:
   Ready();
 
 public:
-  Ready(char *ep);
+  Ready(char const *ep, int);
   Ready(std::string &);
   ~Ready();
 

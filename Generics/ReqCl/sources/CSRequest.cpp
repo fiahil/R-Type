@@ -454,10 +454,12 @@ eRequestType	Ping::getType()
   return PING;
 }
 
-Ready::Ready(char *) :
+Ready::Ready(char const * ep, int) :
   ec(Success)
 {
-  // this->param.endpoint = ep;
+	std::string	data(ep);
+  PackMan::MemSet(&this->param, sizeof(this->param));
+  PackMan::Memcpy(&(this->param.endpoint), data.data(),  data.size());
 }
 
 Ready::Ready(std::string &data)

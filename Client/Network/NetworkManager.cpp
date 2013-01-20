@@ -36,7 +36,7 @@ void		NetworkManager::run()
 
       this->TCPS->recvData();
       // this->UDPS.recvData();
-      this->ios.poll();
+      this->ios.run(); //POLL
     }
   catch (std::exception& e)
     {

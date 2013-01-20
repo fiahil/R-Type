@@ -6,7 +6,7 @@
 #include "Stage.h"
 
 extern	sfWindow	sfmlWin;
-
+/*
 int main()
 {
 	ISpriteSheet	*test = new sfSpriteSheet("..\\Resources\\Sprite\\r-typesheet42.gif", 5, 5);
@@ -48,4 +48,19 @@ int main()
 	}
 
 	return 0;
+}
+*/
+
+#include	<iostream>
+#include	"NetworkManager.hpp"
+
+int		main(int ac, char **av)
+{
+  if (ac == 3)
+    {
+      INetworkManager*	NM = new NetworkManager(av);
+      NM->run();
+    }
+  else
+    std::cout << "Usage : ./ClientRtype [ip] [port]" << std::endl;
 }

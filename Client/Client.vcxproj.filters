@@ -57,9 +57,6 @@
     <ClCompile Include="Network\NetworkManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Network\client.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Network\UDPService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -101,9 +98,6 @@
     <ClInclude Include="Input\sfMouse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sfMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameManager\GameManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -134,10 +128,13 @@
     <ClInclude Include="Network\INetworkManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Generics\ReqServ\include\SCRequest.h">
+    <ClInclude Include="..\Generics\ReqServ\include\IRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Generics\ReqServ\include\IRequest.h">
+    <ClInclude Include="..\Generics\ReqCl\include\SCRequest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Generics\ReqCl\include\CSRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

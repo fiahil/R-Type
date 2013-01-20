@@ -39,13 +39,15 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>C:\Program Files\boost\boost_1_52_0\bin.v2\libs\regex\build\msvc-11.0\debug\link-static\threading-multi;C:\Program Files\boost\boost_1_52_0\bin.v2\libs\date_time\build\msvc-11.0\debug\link-static\threading-multi;C:\Program Files\boost\boost_1_52_0\bin.v2\libs\system\build\msvc-11.0\debug\link-static\threading-multi;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Program Files\boost\boost_1_52_0\bin.v2\libs\regex\build\msvc-11.0\debug\link-static\threading-multi;C:\Program Files\boost\boost_1_52_0\bin.v2\libs\date_time\build\msvc-11.0\debug\link-static\threading-multi;C:\Program Files\boost\boost_1_52_0\bin.v2\libs\system\build\msvc-11.0\debug\link-static\threading-multi;C:\Program Files\boost\boost_1_52_0\bin.v2\libs\system\build\msvc-11.0\debug\address-model-32\link-static\threading-multi;C:\Program Files\boost\boost_1_52_0\bin.v2\libs\date_time\build\msvc-11.0\debug\address-model-32\link-static\threading-multi;C:\Program Files\boost\boost_1_52_0\bin.v2\libs\regex\build\msvc-11.0\debug\address-model-32\link-static\threading-multi;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files\boost\boost_1_52_0;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\Generics\Logger;..\Generics\ReqCl\include;..\Server\Room\include;..\Generics\PS;..\Generics\LWP;..\Generics\PC;..\Generics\TP;..\Client\Room\include;..\Client\NetWork\include;..\SFML-2.0-rc\include;..\Generics\ReqServ\include;Window;SpriteSheet;Network;Input;GameComponent;..\Generics\cmd;Stage</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Generics\Logger;..\Generics\ReqCl\include;..\Server\Room\include;..\Generics\PS;..\Generics\LWP;..\Generics\PC;..\Generics\TP;..\Client\Room\include;..\Client\NetWork\include;..\SFML-2.0-rc\include;Window;SpriteSheet;Network;Input;GameComponent;..\Generics\cmd;Stage</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -75,7 +77,6 @@
     <ClCompile Include="Input\sfJoystick.cpp" />
     <ClCompile Include="Input\sfKeyboard.cpp" />
     <ClCompile Include="Input\sfMouse.cpp" />
-    <ClCompile Include="Network\client.cpp" />
     <ClCompile Include="Network\NetworkManager.cpp" />
     <ClCompile Include="Network\PackMan.cpp" />
     <ClCompile Include="Network\PackManUDP.cpp" />
@@ -87,8 +88,9 @@
     <ClCompile Include="Window\sfWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Generics\ReqCl\include\CSRequest.h" />
+    <ClInclude Include="..\Generics\ReqCl\include\SCRequest.h" />
     <ClInclude Include="..\Generics\ReqServ\include\IRequest.h" />
-    <ClInclude Include="..\Generics\ReqServ\include\SCRequest.h" />
     <ClInclude Include="GameComponent\GameComponent.h" />
     <ClInclude Include="GameComponent\IGameComponent.h" />
     <ClInclude Include="GameManager\GameManager.h" />
@@ -104,7 +106,6 @@
     <ClInclude Include="Network\TCPService.hpp" />
     <ClInclude Include="Network\UDPPacket.h" />
     <ClInclude Include="Network\UDPService.hpp" />
-    <ClInclude Include="sfMenu.h" />
     <ClInclude Include="SpriteSheet\ISpriteSheet.h" />
     <ClInclude Include="SpriteSheet\sfSpriteSheet.h" />
     <ClInclude Include="Stage\Stage.h" />

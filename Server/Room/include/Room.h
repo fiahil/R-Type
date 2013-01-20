@@ -4,7 +4,6 @@
 #include "IRoom.h"
 #include "IPlayer.h"
 #include "GameplayEngine.h"
-#include "Scenario.h"
 
 class Room : public IRoom
 {
@@ -13,7 +12,6 @@ private:
 	bool					isPlaying_;
 	std::deque<IPlayer *>	players_;
 	GameplayEngine *		engine_;
-	Scenario *				scenario_;
 
 /* Used to always provide a unique value to [id_] */
 private:
@@ -28,6 +26,11 @@ public:
 	IPlayer *		operator()(IPlayer *p) const;	/* Useful for method addPlayer */
 	int				operator()(int idTest) const;	/* Useful for method removePlayer */
 
+private:
+	void		updateScenario(float timer);
+	void		loadGame();
+	void		playGame();
+	
 /* Methods herited from IRoom */
 public:
 	virtual int			getId() const;

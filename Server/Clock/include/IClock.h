@@ -16,7 +16,7 @@ class	IClock
 public:
   virtual ~IClock() {}
   virtual void	reset() = 0;
-  virtual float getElapsedTime() = 0;
+  virtual float getElapsedTime() const = 0;
 };
 
 #endif

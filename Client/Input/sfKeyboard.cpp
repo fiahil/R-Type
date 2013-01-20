@@ -27,3 +27,8 @@ bool	sfKeyboard::isPressed(GameInputKey key)
 {
 	return sf::Keyboard::isKeyPressed(binding_[key]);
 }
+
+void sfKeyboard::autoBind(GameInputKey key, int button)
+{
+	binding_[key] = static_cast<sf::Keyboard::Key>(button);
+}

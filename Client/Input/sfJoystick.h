@@ -20,6 +20,7 @@ public:
 	sfJoystick();
 	~sfJoystick(void);
 	void Bind(GameInputKey);
+	void autoBind(GameInputKey, int);
 	int getLastInput(GameInputKey);
 	bool isPressed(GameInputKey);
 };

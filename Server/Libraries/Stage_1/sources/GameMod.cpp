@@ -10,7 +10,7 @@ U *	cast_entity(T * m)
 	return (dynamic_cast<U *>(m));
 }
 
-void GameMod::onCollision(IEntity * x,IEntity * y) {
+void GameMod::onCollision(IEntity * x, IEntity * y) {
 	IDestroyable *	tmp;
 
 	if (tmp = cast_entity<IEntity, IDestroyable>(x))
@@ -19,54 +19,41 @@ void GameMod::onCollision(IEntity * x,IEntity * y) {
 		tmp->destroy();
 }
 
-void GameMod::onEntityDestruction(IEntity * x) {
-	(void)x;
+void GameMod::onEntityDestruction(IEntity *) {
 }
 
-void GameMod::onFire(IEntity * x) {
-	(void)x;
+void GameMod::onFire(IEntity *) {
 }
 
 void GameMod::onLevelStart() {
-
 }
 
 void GameMod::onLevelEnd() {
-
 }
 
-void GameMod::onModulePlug(IEntity * x) {
-	(void)x;
+void GameMod::onModulePlug(IEntity *) {
 }
 
-void GameMod::onModuleUnplug(IEntity * x) {
-	(void)x;
+void GameMod::onModuleUnplug(IEntity *) {
 }
 
-void GameMod::onNewEntity(IEntity * x) {
-	(void)x;
+void GameMod::onNewEntity(IEntity *) {
 }
 
-void GameMod::onPickUp(IEntity * x) {
-	(void)x;
+void GameMod::onPickUp(IEntity *) {
 }
 
-void GameMod::onScreenIn(IEntity * x) {
-	(void)x;
+void GameMod::onScreenIn(IEntity *) {
 }
 
-void GameMod::onScreenOut(IEntity * x) {
-	(void)x;
+void GameMod::onScreenOut(IEntity *) {
 }
 
-void GameMod::onScriptBegin(IEntity * x) {
-	(void)x;
+void GameMod::onScriptBegin(IEntity *) {
 }
 
-void GameMod::onScriptEnd(IEntity * x) {
-	(void)x;
+void GameMod::onScriptEnd(IEntity *) {
 }
 
-void GameMod::onUltimate(IEntity * x) {
-	(void)x;
+void GameMod::onUltimate(IEntity *) {
 }

@@ -15,8 +15,9 @@
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
 #include "TCPPacket.h"
+#include "IClientService.h"
 
-class	TCPService
+class	TCPService : public ITCPClientService
 {
 private:
   boost::asio::ip::tcp::socket sock;
@@ -24,11 +25,11 @@ private:
   
 public:
   TCPService(boost::asio::io_service&, boost::asio::ip::tcp::endpoint);
-  ~TCPService();
+  virtual ~TCPService();
 
 public:
-  void			recvData();
-  void			sendData(TCPPacket*);
+  virtual void		recvData();
+  virtual void		sendData(TCPPacket*);
   void			retrieveBody(std::string);
   boost::asio::ip::tcp::socket&	socket();
 public:

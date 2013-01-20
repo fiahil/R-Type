@@ -13,5 +13,5 @@ public:
   virtual void	operator()(void) = 0;
   virtual ICommand*		Zpull() = 0;
   virtual void			push(ICommand*) = 0;
-  virtual void			bind(Net::EndPoint const&) = 0;
+  virtual void			connect(std::string const&) = 0;
 };

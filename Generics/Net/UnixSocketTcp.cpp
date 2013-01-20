@@ -102,7 +102,7 @@ namespace Net
       return (std::string(buff, ret));
     }
     else
-      throw std::exception();
+      throw ErrorInit("Try to receive data on a not connected socket");
   }
 
 }			// namespace Net

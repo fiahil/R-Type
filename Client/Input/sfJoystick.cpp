@@ -41,13 +41,13 @@ int		sfJoystick::getLastInput(GameInputKey key)
 		{
 			const double tmp = sf::Joystick::getAxisPosition(joystickNb_, x_) / 7.5;
 		
-			return (tmp < 2 && tmp > -2) ? 0 : static_cast<int>(tmp);
+			return static_cast<int>(tmp);
 		}
 	else if (key == LeftKey || key == RightKey)
 		{
 			const double tmp = sf::Joystick::getAxisPosition(joystickNb_, y_) / 7.5;
 		
-			return (tmp < 2 && tmp > -2) ? 0 : static_cast<int>(tmp);
+			return static_cast<int>(tmp);
 		}
 	else
 		return sf::Joystick::isButtonPressed(joystickNb_, binding_[key]) ? 100 : 0;
@@ -58,4 +58,9 @@ bool	sfJoystick::isPressed(GameInputKey key)
 	sf::Joystick::update();
 
 	return sf::Joystick::isButtonPressed(joystickNb_, binding_[key]);
+}
+
+void sfJoystick::autoBind(GameInputKey key, int button)
+{
+	binding_[key] = button;
 }

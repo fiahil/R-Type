@@ -5,12 +5,15 @@
 // Login   <teisse_a@epitech.net>
 // 
 // Started on  Tue Jan 15 22:05:03 2013 alexandre teisseire
-// Last update Sun Jan 20 04:12:00 2013 alexandre teisseire
+// Last update Sun Jan 20 10:46:08 2013 alexandre teisseire
 //
 
 #include	<iostream>
 #include	<sstream>
 #include	"NetworkManager.hpp"
+#include	"IClientService.h"
+#include	"TCPService.hpp"
+#include	"UDPService.hpp"
 
 NetworkManager::NetworkManager(char**av)
 {
@@ -30,6 +33,7 @@ void		NetworkManager::run()
 {
   try
     {
+
       this->TCPS->recvData();
       // this->UDPS->recvData();
       this->ios.poll();

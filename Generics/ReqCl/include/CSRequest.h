@@ -1,5 +1,6 @@
 #pragma once
 
+#include	"IClientService.h"
 #include	"IRequest.h"
 
 class		Connect : public IRequest
@@ -17,10 +18,10 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(TCPService*);
+  virtual void		finalize(ITCPClientService*);
 
 private:
-    void		doOp(IService*);
+    void		doOp(ITCPClientService*);
 
 public:
   Connect(std::string const&, std::string const&);
@@ -28,7 +29,7 @@ public:
   ~Connect();
 
 public:
-	virtual bool		manageRequest(TCPService*);
+	virtual bool		manageRequest(ITCPClientService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
   parameters&	getParam();
@@ -42,7 +43,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(TCPService*);
+  virtual void		finalize(ITCPClientService*);
 
 public:
   CreateRoom();
@@ -50,7 +51,7 @@ public:
   ~CreateRoom();
 
 public:
-  virtual bool		manageRequest(TCPService*);
+  virtual bool		manageRequest(ITCPClientService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
 };
@@ -71,10 +72,10 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(TCPService*);
+  virtual void		finalize(ITCPClientService*);
 
 private:
-    void		doOp(TCPService*);
+    void		doOp(ITCPClientService*);
 
 public:
   LeaveRoom(int);
@@ -82,7 +83,7 @@ public:
   ~LeaveRoom();
 
 public:
-  virtual bool		manageRequest(TCPService*);
+  virtual bool		manageRequest(ITCPClientService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
   parameters&		getParam();
@@ -104,7 +105,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(TCPService*);
+  virtual void		finalize(ITCPClientService*);
 
 public:
   JoinRoom(int);
@@ -112,7 +113,7 @@ public:
   ~JoinRoom();
 
 public:
-  virtual bool		manageRequest(TCPService*);
+  virtual bool		manageRequest(ITCPClientService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
   parameters&		getParam();
@@ -134,7 +135,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(TCPService*);
+  virtual void		finalize(ITCPClientService*);
 
 public:
   InvitePlayer(const char  *, int);
@@ -142,7 +143,7 @@ public:
   ~InvitePlayer();
 
 public:
-  virtual bool		manageRequest(TCPService*);
+  virtual bool		manageRequest(ITCPClientService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
   parameters&		getParam();
@@ -164,7 +165,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(TCPService*);
+  virtual void		finalize(ITCPClientService*);
 
 public:
   SetGameParam(int, int);
@@ -172,7 +173,7 @@ public:
   ~SetGameParam();
 
 public:
-  virtual bool		manageRequest(TCPService*);
+  virtual bool		manageRequest(ITCPClientService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
   parameters&		getParam();
@@ -193,7 +194,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(TCPService*);
+  virtual void		finalize(ITCPClientService*);
 
 public:
   LaunchGame(int);
@@ -201,7 +202,7 @@ public:
   ~LaunchGame();
 
 public:
-  virtual bool		manageRequest(TCPService*);
+  virtual bool		manageRequest(ITCPClientService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
   parameters&		getParam();
@@ -216,7 +217,7 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(TCPService*);
+  virtual void		finalize(ITCPClientService*);
 
 public:
   Ping();
@@ -224,7 +225,7 @@ public:
   ~Ping();
 
 public:
-  virtual bool		manageRequest(TCPService*);
+  virtual bool		manageRequest(ITCPClientService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
 };
@@ -245,18 +246,18 @@ private:
 private:
   virtual bool		isValid();
   virtual void		doOp();
-  virtual void		finalize(TCPService*);
+  virtual void		finalize(ITCPClientService*);
 
 private:
   Ready();
 
 public:
-  Ready(char *ep);
+  Ready(char const *ep, int);
   Ready(std::string &);
   ~Ready();
 
 public:
-  virtual bool		manageRequest(TCPService*);
+  virtual bool		manageRequest(ITCPClientService*);
   virtual std::string	toString();
   virtual eRequestType	getType();
   parameters&		getParam();

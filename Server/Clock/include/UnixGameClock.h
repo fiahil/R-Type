@@ -15,17 +15,17 @@
 #include	<sys/time.h>
 #include	"IClock.h"
 
-class	UnixGameClock : public IClock
+class	GameClock : public IClock
 {
  private:
   struct timeval _startMark;
   
  public:
-  UnixGameClock();
-  virtual ~UnixGameClock();
+  GameClock();
+  virtual ~GameClock();
   
   virtual void	reset();
-  virtual float getElapsedTime();
+  virtual float getElapsedTime() const;
 };
 
 #endif

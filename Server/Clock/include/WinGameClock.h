@@ -15,19 +15,19 @@
 #include <windows.h>
 #include "IClock.h"
 
-class	WinGameClock : public IClock
+class	GameClock : public IClock
 {
 private:
   LARGE_INTEGER frequency;
   LARGE_INTEGER startCount;
 
 public:
-  WinGameClock();
-  ~WinGameClock();
+  GameClock();
+  ~GameClock();
 
 public:
   virtual void  reset();
-  virtual float getElapsedTime();
+  virtual float getElapsedTime() const;
 };
 
 #endif

@@ -46,7 +46,7 @@ RM	= rm -f
 
 LIB	= -lboost_system -lpthread
 
-CXXFLAGS = -W -Wall -Werror $(INCLUDE) $(LIB)  -std=c++0x -g3
+CXXFLAGS = -W -Wall $(INCLUDE) $(LIB)  -std=c++0x -g3
 
 all :		$(NAME)
 

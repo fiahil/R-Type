@@ -1,16 +1,27 @@
 
+#include <queue>
 #include "Room.h"
-
 #include "logger.h"
+#include "Command.h"
+#include "IClock.h"
+#include "Cmd.h"
+#include "PackMan.h"
+#include "IClientService.h"
 
 /* Used to always provide a unique value to [id_] */
 int Room::currentId_ = 0;
 
+#ifdef	WIN32
+	#include "WinGameClock.h"
+#else
+	#include "UnixGameClock.h"
+#endif
+
+
 Room::Room(void)
 	:	id_(currentId_++),
 		isPlaying_(false),
-		engine_(0),
-		scenario_(0)
+		engine_(0)
 {
 	DEBUG << "--Construction Room" << std::endl;
 }
@@ -22,8 +33,91 @@ Room::~Room(void)
 }
 
 
-/* Useful for ThreadPool */
-void		Room::operator()(void) {}
+void		Room::loadGame()
+{
+	DEBUG << "Loading Game" << std::endl;
+
+	this->engine_ = new GameplayEngine("Stage_1.dll", this->players_);
+}
+
+
+template<typename T, typename U>
+U *	cast_entity(T * m)
+{
+	return (dynamic_cast<U *>(m));
+}
+
+void		Room::playGame()
+{
+	IClock *	clock = new GameClock();
+	std::queue<ICommand *>	cmds;
+
+	DEBUG << "Playing Game" << std::endl;
+	while (!this->engine_->isGameEnded())
+	{
+		DEBUG << "-> Loop playGame" << std::endl;
+		
+		IEntity	*	fetch = 0;
+
+		/*update scenario*/
+		while ((fetch = this->engine_->sc_->getNextEvent(clock->getElapsedTime())))
+		{
+			NewEntity ne;
+
+			ne.id = fetch->getId();
+			PackMan::Memcpy(ne.filename, "ennemy1", 7); // path
+			ne.anim = 8;
+			ne.frame = 1;
+	
+			ICollidable * c = 0;
+
+			if ((c = cast_entity<IEntity, ICollidable>(fetch)))
+				c->fetchLeftBorder(ne.x_start, ne.y_start);
+			else
+			{
+				ne.x_start = 800;
+				ne.y_start = 600;
+			}
+
+			ICommand * ic = new Command<NewEntity>(ne, CommandType::NEW_ENT);
+			cmds.push(ic);
+		}
+
+		/* treat cmds */
+		this->engine_->treatPlayersCommands(cmds);
+
+		/* update engine */
+		this->engine_->update();
+
+		/* remove cmds from the queue and dispatchts it to each client */
+		while (!cmds.empty())
+		{
+			DEBUG << "--> Loop Vidage cmds" << std::endl;
+		
+			ICommand * tmp = cmds.front();
+
+			for (std::deque<IPlayer *>::iterator it = this->players_.begin() ;
+				it != this->players_.end() ; ++it)
+			{
+				IPlayer * fetch = *it;
+
+				dynamic_cast<IClientService *>(fetch->getService())->push(tmp);
+			}
+
+			cmds.pop();
+		}
+
+	}
+	delete clock;
+}
+
+
+/* Useful for ThreadPool : used to launch the game */
+void		Room::operator()(void)
+{
+	this->loadGame();
+	this->playGame();
+}
 
 
 /* Returns the IPlayer that matches the IService [s]; overwize returns 0 */

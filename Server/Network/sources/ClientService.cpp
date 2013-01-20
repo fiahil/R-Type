@@ -133,16 +133,16 @@ void		ClientService::push(ICommand* r)
 	DEBUG << "TODO gameclock" << std::endl;
 	UDPPacket* pack = PackManUDP::pack(r, 666, r->getType(), 5555); // todo cmd to pack
 
-	DEBUG << "Packet UDP Size : " << pack->H.size
-	<< " ; Packet UDP Type : " << pack->H.type
-	<< " ; Packet UDP Player : " << pack->H.player
-	<< " ; Packet UDP Clock : " << pack->clock
-	<< " ; Pack Data : " << pack->value << std::endl;
+	DEBUG << "Packet UDP Size : " << pack->H.size << std::endl
+		<< " ; Packet UDP Type : " << pack->H.type << std::endl
+		<< " ; Packet UDP Player : " << pack->H.player << std::endl
+		<< " ; Packet UDP Clock : " << pack->clock << std::endl
+		<< " ; Pack Data : " << pack->value << std::endl;
 
 	try
 	{
-		std::string buffer(reinterpret_cast<char const*>(pack), pack->H.size);
-		this->sock_->Send(buffer);
+		std::string buffer(reinterpret_cast<char const*>(pack), sizeof(UDPPacket));
+		this->UDPsock_->Send(buffer);
 		DEBUG << "UDP SEND SUCCEED" << std::endl;
 	}
 	catch (Net::ErrorInOut&)
@@ -171,7 +171,7 @@ ICommand*		ClientService::Zpull()
 	return 0;
 }
 
-void			ClientService::bind(Net::EndPoint const& e)
+void			ClientService::connect(std::string const& e)
 {
-	this->UDPsock_->Connect(e);
+	this->UDPsock_->Connect(Net::EndPoint(e, 42998));
 }

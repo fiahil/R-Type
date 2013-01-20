@@ -18,6 +18,7 @@ public:
 	bool	isOpen();
 	void	clear();
 	void	display();
+	sf::Window&	getWindow();
 
 	sfWindow(int x = 800, int y = 600);
 	~sfWindow();

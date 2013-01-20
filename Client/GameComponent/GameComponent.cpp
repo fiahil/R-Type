@@ -54,11 +54,6 @@ void	GameComponent::move(int x, int y)
 	y_ = y;
 }
 
-void	GameComponent::fire(int, int)
-{
-
-}
-
 bool	GameComponent::getEndLife() const
 {
 	return endLife_;

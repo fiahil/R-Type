@@ -3,18 +3,20 @@
 
 sfMouse::sfMouse(void) : window_(sfmlWin)
 {
-	lastPos_.insert(std::pair<GameInputKey, int>(UpKey, 0));
-	lastPos_.insert(std::pair<GameInputKey, int>(DownKey, 0));
-	lastPos_.insert(std::pair<GameInputKey, int>(RightKey, 0));
-	lastPos_.insert(std::pair<GameInputKey, int>(LeftKey, 0));
+	sf::Vector2i vec2(0, 0);
+	sf::Mouse::setPosition(vec2, sfmlWin.getWindow());
+	sf::Vector2i vec = sf::Mouse::getPosition(sfmlWin.getWindow());
+	lastPos_.insert(std::pair<GameInputKey, int>(UpKey, vec.y));
+	lastPos_.insert(std::pair<GameInputKey, int>(DownKey, vec.y));
+	lastPos_.insert(std::pair<GameInputKey, int>(RightKey, vec.x));
+	lastPos_.insert(std::pair<GameInputKey, int>(LeftKey, vec.x));
+	sfmlWin.getWindow().setMouseCursorVisible(false);
 }
-
 
 sfMouse::~sfMouse(void)
 {
+	sfmlWin.getWindow().setMouseCursorVisible(true);
 }
-
-
 
 void	sfMouse::Bind(GameInputKey key)
 {
@@ -28,29 +30,28 @@ int		sfMouse::getLastInput(GameInputKey key)
 	if (key == FireKey || key == UltimateKey)
 		return 100;
 
-	sf::Vector2i pos = sf::Mouse::getPosition();
-	int delta = 0;
+	sf::Vector2i pos = sf::Mouse::getPosition(sfmlWin.getWindow());
+	int delta = lastPos_[key];
 
 	if (key == UpKey || key == DownKey)
 	{
-		delta = lastPos_[key] - pos.y;
-		lastPos_[LeftKey] = pos.y;
-		lastPos_[DownKey] = pos.y;
+		lastPos_[UpKey] = delta - pos.x;
+		lastPos_[DownKey] = pos.x - delta;
 	}
 	else if (key == RightKey || key == LeftKey)
 	{
-		delta = lastPos_[key] - pos.x;
-		lastPos_[RightKey] = pos.x;
-		lastPos_[LeftKey] = pos.x;
+		lastPos_[RightKey] = pos.y - delta;
+		lastPos_[LeftKey] = delta - pos.y;
 	}
-	
-	delta = (delta < 0 ? -delta : delta);
-	delta = (delta > 100 ? 100 : delta);
-	
-	return delta;
+	sf::Mouse::setPosition(pos, sfmlWin.getWindow());
+	return (delta - lastPos_[key]) >> 4;
 }
 
 bool	sfMouse::isPressed(GameInputKey key)
 {
 	return sf::Mouse::isButtonPressed(binding_[key]);
+}
+
+void sfMouse::autoBind(GameInputKey, int)
+{
 }

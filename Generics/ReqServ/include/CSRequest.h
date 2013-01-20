@@ -250,7 +250,7 @@ private:
   Ready();
 
 public:
-  Ready(char *ep);
+  Ready(char *ep, int);
   Ready(std::string &);
   ~Ready();
 

@@ -10,21 +10,21 @@
 
 #include	"WinGameClock.h"
 
-WinGameClock::WinGameClock()
+GameClock::GameClock()
 {
   this->startCount.QuadPart = 0;
   QueryPerformanceFrequency(&(this->frequency));
   QueryPerformanceCounter(&startCount);
 }
 
-WinGameClock::~WinGameClock() {}
+GameClock::~GameClock() {}
 
-void		WinGameClock::reset()
+void		GameClock::reset()
 {
   QueryPerformanceCounter(&startCount); 
 }
 
-float		WinGameClock::getElapsedTime()
+float		GameClock::getElapsedTime() const
 {
   LARGE_INTEGER	save;
   float		elapsedTime;

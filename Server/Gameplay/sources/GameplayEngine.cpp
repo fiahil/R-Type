@@ -1,5 +1,10 @@
 #include "GameplayEngine.h"
 #include "logger.h"
+#include "Cmd.h"
+#include "PackMan.h"
+#include "IClientService.h"
+#include "Command.h"
+
 
 Dl::DlManager<PackedPlugin> * GameplayEngine::manager_ = 0;
 
@@ -32,8 +37,34 @@ void GameplayEngine::plugEntity(ICollidable * E) {
 
 }
 
-void GameplayEngine::update() {
-  this->quad_->update(this->gm_);
+template<typename T, typename U>
+U *	cast_entity(T * m)
+{
+	return (dynamic_cast<U *>(m));
+}
+
+void	GameplayEngine::refreshEntitiesPositions()
+{
+	for (std::deque<IEntity *>::iterator it = this->entities_.begin() ;
+		it != this->entities_.end() ; ++it)
+	{
+		IEntity *		fetch = *it;
+		IMoveable *		m = 0;
+		
+		if ((m = cast_entity<IEntity, IMoveable>(fetch)))
+		{
+			Point pos = m->getPosition();
+
+			m->setPosition(pos.x_ - 20, pos.y_);
+		}
+	}
+}
+
+void GameplayEngine::update()
+{
+	this->refreshEntitiesPositions();
+
+	this->quad_->update(this->gm_);
 }
 
 bool	GameplayEngine::isGameEnded() const
@@ -53,3 +84,18 @@ bool	GameplayEngine::isPlayerDead(int nb) const
 	return players_.at(nb)->isPlaying();
 }
 
+void	GameplayEngine::treatPlayersCommands(std::queue<ICommand *>	& cmds)
+{
+	for (std::deque<IPlayer *>::iterator it = this->players_.begin() ;
+				it != this->players_.end() ; ++it)
+		{
+			IPlayer *fetch = *it;
+
+			ICommand *tmp = dynamic_cast<IClientService *>(fetch->getService())->Zpull();
+
+			if (tmp && tmp->getType() == CommandType::MOVE)
+			{
+			}
+			/* ... */
+		}
+}

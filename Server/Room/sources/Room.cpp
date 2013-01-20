@@ -37,7 +37,7 @@ void		Room::loadGame()
 {
 	DEBUG << "Loading Game" << std::endl;
 
-	this->engine_ = new GameplayEngine("Stage_1.dll"/*, this->players_*/);
+	this->engine_ = new GameplayEngine("Stage_1.dll", this->players_);
 }
 
 
@@ -59,6 +59,7 @@ void		Room::playGame()
 		
 		IEntity	*	fetch = 0;
 
+		/*update scenario*/
 		while ((fetch = this->engine_->sc_->getNextEvent(clock->getElapsedTime())))
 		{
 			NewEntity ne;
@@ -78,10 +79,17 @@ void		Room::playGame()
 				ne.y_start = 600;
 			}
 
-		ICommand * ic = new Command<NewEntity>(ne, CommandType::NEW_ENT);
-		cmds.push(ic);
-		
+			ICommand * ic = new Command<NewEntity>(ne, CommandType::NEW_ENT);
+			cmds.push(ic);
 		}
+
+		/* treat cmds */
+		this->engine_->treatPlayersCommands(cmds);
+
+		/* update engine */
+		this->engine_->update();
+
+		/* remove cmds from the queue and dispatchts it to each client */
 		while (!cmds.empty())
 		{
 			DEBUG << "--> Loop Vidage cmds" << std::endl;
@@ -98,6 +106,7 @@ void		Room::playGame()
 
 			cmds.pop();
 		}
+
 	}
 	delete clock;
 }

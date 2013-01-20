@@ -440,9 +440,6 @@ void		LaunchGame::doOp()
   {
 	std::deque<IPlayer*> players = RM.getPlayersFromRoom(this->data.roomId);
 
-	RM.setRoomStatus(this->data.roomId, true);
-	RM.linkRoomToThreadPool(this->data.roomId);
-
 	for (std::deque<IPlayer*>::const_iterator it = players.begin();
 		it != players.end();
 		++it)
@@ -450,21 +447,6 @@ void		LaunchGame::doOp()
 		IRequest* ir = new GameLaunched(666, 5555.5555);
 
 		(*it)->getService()->push(ir);
-
-		DEBUG << "INCOMMING UDP PACKET" << std::endl;
-		DEBUG << "Wait for it" << std::endl;
-
-		Fire f;
-		f.id = 666;
-		f.power = 100;
-		f.speedx = 55;
-		f.speedy = 77;
-		f.x = 500;
-		f.y = 600;
-
-		ICommand* ic = new Command<Fire>(f, CommandType::FIRE);
-
-		dynamic_cast<IClientService*>((*it)->getService())->push(ic);
 	}
   }
   catch (RoomNotFound&)
@@ -586,11 +568,37 @@ bool		Ready::isValid()
 void		Ready::doOp()
 {
   this->P->setStatus(true);
-  this->P->setEp(std::string(this->data.endpoint));
+  this->P->setEp(std::string(this->data.endpoint)); //useless
+  dynamic_cast<IClientService*>(this->P->getService())->connect(this->data.endpoint); // <3
 
-  //
-  // are players ready for game ?
-  //
+  RoomManager&	RM = Resources::RM;
+
+  try
+  {
+	int id = 0;
+	bool allready = true;
+
+	id = RM.getRoomIdFromPlayer(this->P);
+	std::deque<IPlayer*> players = RM.getPlayersFromRoom(id);
+
+	for (std::deque<IPlayer*>::const_iterator it = players.begin();
+		it != players.end();
+		++it)
+	{
+		if ((*it)->isPlaying() == false)
+			allready = false;
+	}
+
+	if (allready)
+	{
+		RM.setRoomStatus(id, true);
+		RM.linkRoomToThreadPool(id);
+	}
+  }
+  catch (RoomNotFound&)
+  {
+	  this->ec = S_process_fail;
+  }
 }
 
 void		Ready::finalize(IService* S)

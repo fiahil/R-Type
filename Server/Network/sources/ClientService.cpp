@@ -142,25 +142,6 @@ void		ClientService::push(ICommand* r)
 	try
 	{
 		std::string buffer(reinterpret_cast<char const*>(pack), sizeof(UDPPacket));
-		this->bind(Net::EndPoint("10.19.252.216", 42998));
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
-		this->UDPsock_->Send(buffer);
 		this->UDPsock_->Send(buffer);
 		DEBUG << "UDP SEND SUCCEED" << std::endl;
 	}
@@ -190,7 +171,7 @@ ICommand*		ClientService::Zpull()
 	return 0;
 }
 
-void			ClientService::bind(Net::EndPoint const& e)
+void			ClientService::connect(std::string const& e)
 {
-	this->UDPsock_->Connect(e);
+	this->UDPsock_->Connect(Net::EndPoint(e, 42998));
 }

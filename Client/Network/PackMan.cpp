@@ -5,7 +5,7 @@
 static std::map<eRequestType, IRequest* (*)(TCPPacket*)>	init_request_tab()
 {
 	std::map<eRequestType, IRequest* (*)(TCPPacket*)>	map;
-	
+
 	map.insert(std::make_pair(CONNECT, &PackMan::unpack_T<Connect>));
 	map.insert(std::make_pair(CREATE_ROOM, &PackMan::unpack_T<CreateRoom>));
 	map.insert(std::make_pair(LEAVE_ROOM, &PackMan::unpack_T<LeaveRoom>));

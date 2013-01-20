@@ -10,6 +10,7 @@
 
 #include	<assert.h>
 #include	<sstream>
+#include	"IClientService.h"
 #include	"PackMan.h"
 #include	"CSRequest.h"
 
@@ -41,14 +42,14 @@ void		Connect::doOp()
   assert(0);
 }
 
-void		Connect::finalize(TCPService *)
+void		Connect::finalize(ITCPClientService *)
 {
   assert(0);
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		Connect::manageRequest(TCPService *)
+bool		Connect::manageRequest(ITCPClientService *)
 {
   assert(0);
   return true;
@@ -94,14 +95,14 @@ void		CreateRoom::doOp()
   // envoi de la request au client -> SCRequest
   //
 }
-void		CreateRoom::finalize(TCPService*)
+void		CreateRoom::finalize(ITCPClientService*)
 {
   assert(0);
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		CreateRoom::manageRequest(TCPService *)
+bool		CreateRoom::manageRequest(ITCPClientService *)
 {
   assert(0);
   return true;
@@ -143,18 +144,18 @@ void		LeaveRoom::doOp()
 
 }
 
-void		LeaveRoom::doOp(TCPService *)
+void		LeaveRoom::doOp(ITCPClientService *)
 {
   assert(0);
 }
 
-void		LeaveRoom::finalize(TCPService*)
+void		LeaveRoom::finalize(ITCPClientService*)
 {
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		LeaveRoom::manageRequest(TCPService *)
+bool		LeaveRoom::manageRequest(ITCPClientService *)
 {
   assert(0);
   return true;
@@ -201,13 +202,13 @@ void		JoinRoom::doOp()
   assert(0);
 }
 
-void		JoinRoom::finalize(TCPService*)
+void		JoinRoom::finalize(ITCPClientService*)
 {
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		JoinRoom::manageRequest(TCPService *)
+bool		JoinRoom::manageRequest(ITCPClientService *)
 {
   assert(0);
   return true;
@@ -259,14 +260,14 @@ void		InvitePlayer::doOp()
   //
 }
 
-void		InvitePlayer::finalize(TCPService*)
+void		InvitePlayer::finalize(ITCPClientService*)
 {
   assert(0);
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		InvitePlayer::manageRequest(TCPService *)
+bool		InvitePlayer::manageRequest(ITCPClientService *)
 {
   assert(0);
   return (true);
@@ -319,14 +320,14 @@ void		SetGameParam::doOp()
   // 
 }
 
-void		SetGameParam::finalize(TCPService*)
+void		SetGameParam::finalize(ITCPClientService*)
 {
   assert(0);
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		SetGameParam::manageRequest(TCPService *)
+bool		SetGameParam::manageRequest(ITCPClientService *)
 {
   assert(0);
   return (true);
@@ -377,13 +378,13 @@ void		LaunchGame::doOp()
   //
 }
 
-void		LaunchGame::finalize(TCPService*)
+void		LaunchGame::finalize(ITCPClientService*)
 {
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		LaunchGame::manageRequest(TCPService *)
+bool		LaunchGame::manageRequest(ITCPClientService *)
 {
   assert(0);
   return (true);
@@ -431,13 +432,13 @@ void		Ping::doOp()
   // this->P->isAlive();
 }
 
-void		Ping::finalize(TCPService*)
+void		Ping::finalize(ITCPClientService*)
 {
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		Ping::manageRequest(TCPService *)
+bool		Ping::manageRequest(ITCPClientService *)
 {
   assert(0);
   return (true);
@@ -482,14 +483,14 @@ void		Ready::doOp()
   //
 }
 
-void		Ready::finalize(TCPService*)
+void		Ready::finalize(ITCPClientService*)
 {
   assert(0);
   // IRequest	*req = new ACK(this->ec);
   // S.push(req);
 }
 
-bool		Ready::manageRequest(TCPService *)
+bool		Ready::manageRequest(ITCPClientService *)
 {
   assert(0);
   return (true);

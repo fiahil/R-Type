@@ -11,6 +11,7 @@
 #include	<iostream>
 #include	<sstream>
 #include	"NetworkManager.hpp"
+#include	"IClientService.h"
 #include	"TCPService.hpp"
 #include	"UDPService.hpp"
 
@@ -30,8 +31,8 @@ void		NetworkManager::run()
 {
   try
     {
-      TCPService	TCPS(this->ios, this->etcp);
-      UDPService	UDPS(*this, this->ios, this->eudp);
+      ITCPClientService* TCPS = new TCPService(this->ios, this->etcp);
+      IUDPClientService* UDPS = new UDPService(*this, this->ios, this->eudp);
 
       this->ios.run();
     }

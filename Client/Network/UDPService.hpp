@@ -15,9 +15,10 @@
 #include <boost/asio.hpp>
 #include "UDPPacket.h"
 #include "Command.h"
+#include "IClientService.h"
 #include "NetworkManager.hpp"
 
-class	UDPService
+class	UDPService :public IUDPClientService
 {
 private:
   NetworkManager&		  NM;
@@ -26,11 +27,11 @@ private:
 
 public:
   UDPService(NetworkManager&, boost::asio::io_service&, boost::asio::ip::udp::endpoint);
-  ~UDPService();
+  virtual ~UDPService();
 
 public:
-  void			recvData();
-  void			sendData(UDPPacket*);
+  virtual void		recvData();
+  virtual void		sendData(UDPPacket*);
   void			retrieveBody(std::string);
 public:
   void			handleRecv(const boost::system::error_code&, char*);

@@ -12,20 +12,21 @@
 #define	_TCPSERVICE_HPP_
 
 #include "boost/asio.hpp"
+#include "IClientService.h"
 #include "TCPPacket.h"
 
-class	TCPService
+class	TCPService : public ITCPClientService
 {
 private:
   boost::asio::ip::tcp::socket sock;
 
 public:
   TCPService(boost::asio::io_service&, boost::asio::ip::tcp::endpoint);
-  ~TCPService();
+  virtual ~TCPService();
 
 public:
-  void			recvData();
-  void			sendData(TCPPacket*);
+  virtual void		recvData();
+  virtual void		sendData(TCPPacket*);
   void			retrieveBody(std::string);
 public:
   void			handleRecv(const boost::system::error_code&, char*);

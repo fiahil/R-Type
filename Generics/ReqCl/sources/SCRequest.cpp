@@ -10,6 +10,7 @@
 
 #include <sstream>
 #include "PackMan.h"
+#include "IClientService.h"
 #include "SCRequest.h"
 
 AnswerCreateRoom::AnswerCreateRoom(int roomId) :
@@ -36,11 +37,11 @@ void		AnswerCreateRoom::doOp()
 {
 }
 
-void		AnswerCreateRoom::finalize(TCPService *)
+void		AnswerCreateRoom::finalize(ITCPClientService *)
 {
 }
 
-bool		AnswerCreateRoom::manageRequest(TCPService *S)
+bool		AnswerCreateRoom::manageRequest(ITCPClientService *S)
 {
   if (this->isValid())
     this->doOp();
@@ -83,18 +84,18 @@ bool		ClientInvited::isValid()
 
 void		ClientInvited::doOp() {}
 
-void		ClientInvited::doOp(TCPService *S)
+void		ClientInvited::doOp(ITCPClientService *S)
 {
   IRequest*	IR = new JoinRoom(this->parameters.roomId);
   TCPPacket*	P = PackMan::pack(IR);
   S->sendData(P);
 }
 
-void		ClientInvited::finalize(TCPService*)
+void		ClientInvited::finalize(ITCPClientService*)
 {
 }
 
-bool		ClientInvited::manageRequest(TCPService *S)
+bool		ClientInvited::manageRequest(ITCPClientService *S)
 {
   if (this->isValid())
     this->doOp(S);
@@ -140,11 +141,11 @@ void		ACK::doOp()
   //
 }
 
-void		ACK::finalize(TCPService*)
+void		ACK::finalize(ITCPClientService*)
 {
 }
 
-bool		ACK::manageRequest(TCPService *S)
+bool		ACK::manageRequest(ITCPClientService *S)
 {
   if (this->isValid())
     this->doOp();
@@ -192,11 +193,11 @@ void		GameLaunched::doOp()
   //
 }
 
-void		GameLaunched::finalize(TCPService*)
+void		GameLaunched::finalize(ITCPClientService*)
 {
 }
 
-bool		GameLaunched::manageRequest(TCPService *S)
+bool		GameLaunched::manageRequest(ITCPClientService *S)
 {
   if (this->isValid())
     this->doOp();

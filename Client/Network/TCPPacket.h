@@ -9,7 +9,7 @@ struct		TCPPacket
     int16_t	size;
     int16_t	type;
   };
-  
+
   Header	H;
   char		B[4096];
 };

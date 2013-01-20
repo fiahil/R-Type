@@ -43,12 +43,9 @@ enum			eRequestType
     PING = 1208,
     READY = 1209,
     ANSWER_CREATE_ROOM = 1301,
-    START_DATA_STREAM = 1302,
-    STREAM = 1303,
-    STOP_DATA_STREAM = 1304,
-    CLIENT_INVITED = 1305,
-    ACK_ = 1306,
-    GAME_LAUNCHED = 1307
+    CLIENT_INVITED = 1302,
+    ACK_ = 1303,
+    GAME_LAUNCHED = 1304
   };
 
 class			IRequest

@@ -11,6 +11,9 @@
 #include	<iostream>
 #include	<sstream>
 #include	"NetworkManager.hpp"
+#include	"IClientService.h"
+#include	"TCPService.hpp"
+#include	"UDPService.hpp"
 
 NetworkManager::NetworkManager(char**av)
 {

@@ -65,7 +65,7 @@ public:
 	    return req_elt->second(pack);
 
 	  IRequest*	IR = new ACK(G_request_not_found);
-	  
+
 	  return IR;
   }
 };

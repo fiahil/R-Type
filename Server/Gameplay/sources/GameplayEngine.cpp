@@ -3,7 +3,7 @@
 
 Dl::DlManager<PackedPlugin> * GameplayEngine::manager_ = 0;
 
-GameplayEngine::GameplayEngine(std::string path) {
+GameplayEngine::GameplayEngine(std::string path, std::deque<IPlayer*>& players): players_(players) {
   this->coll_ = new Collider();
   this->quad_ = new QuadTree(800, 600, 5, 5);
   this->manager_ = new Dl::DlManager<PackedPlugin>();
@@ -35,3 +35,21 @@ void GameplayEngine::plugEntity(ICollidable * E) {
 void GameplayEngine::update() {
   this->quad_->update(this->gm_);
 }
+
+bool	GameplayEngine::isGameEnded() const
+{
+	bool	res = false;
+
+	for (unsigned int i = 0; i < players_.size(); ++i)
+	{
+		res |= players_.at(i)->isPlaying();
+	}
+
+	return res;
+}
+
+bool	GameplayEngine::isPlayerDead(int nb) const
+{
+	return players_.at(nb)->isPlaying();
+}
+

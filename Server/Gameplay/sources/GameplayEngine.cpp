@@ -5,7 +5,7 @@ Dl::DlManager<PackedPlugin> * GameplayEngine::manager_ = 0;
 
 GameplayEngine::GameplayEngine(std::string path) {
   this->coll_ = new Collider();
-  this->quad_ = new QuadTree(1,1,5,5);
+  this->quad_ = new QuadTree(800, 600, 5, 5);
   this->manager_ = new Dl::DlManager<PackedPlugin>();
   this->manager_->loadPlugin(path);
 
@@ -29,6 +29,7 @@ void GameplayEngine::handleEvent(/*Event & evt*/) {
 }
 
 void GameplayEngine::plugEntity(ICollidable * E) {
+
 }
 
 void GameplayEngine::update() {

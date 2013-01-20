@@ -47,10 +47,7 @@ void	Stage::update()
 	{
 		(*it)->update();
 		if ((*it)->getEndLife())
-		{
-			delete *it;
 			it = deck_.erase(it);
-		}
 		else
 			++it;
 	}
